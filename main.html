@@ -750,7 +750,7 @@
             border-radius: 8px;
             overflow: hidden;
             position: relative;
-            height: 140px;
+            height: 165px;
             display: flex;
             flex-direction: column;
         }
@@ -2145,46 +2145,70 @@
             const dpsCanvas = document.getElementById('cctvDenpasar');
             const dpsTime = document.getElementById('cctvDpsTime');
             let dpsSweepY = 0;
+            let dpsLedBlink = 0;
+
+            const cctvImg = new Image();
+            cctvImg.src = 'images/cctv_gardu_denpasar.jpg';
+            let imgLoaded = false;
+            cctvImg.onload = () => { imgLoaded = true; };
 
             if (dpsCanvas) {
                 const ctx = dpsCanvas.getContext('2d');
                 function drawDpsFeed() {
                     const w = dpsCanvas.width = dpsCanvas.clientWidth || 300;
-                    const h = dpsCanvas.height = dpsCanvas.clientHeight || 120;
+                    const h = dpsCanvas.height = dpsCanvas.clientHeight || 140;
 
-                    ctx.fillStyle = '#061314';
-                    ctx.fillRect(0, 0, w, h);
+                    if (imgLoaded) {
+                        // Draw real high-voltage transformer CCTV image
+                        ctx.drawImage(cctvImg, 0, 0, w, h);
 
-                    ctx.strokeStyle = 'rgba(16, 185, 129, 0.12)';
+                        // Night-vision tactical tint
+                        ctx.fillStyle = 'rgba(6, 78, 59, 0.14)';
+                        ctx.fillRect(0, 0, w, h);
+
+                        // CCTV scanlines
+                        ctx.fillStyle = 'rgba(0, 0, 0, 0.22)';
+                        for (let y = 0; y < h; y += 3) {
+                            ctx.fillRect(0, y, w, 1);
+                        }
+
+                        // Blinking power indicator LED on transformer
+                        dpsLedBlink = (dpsLedBlink + 1) % 60;
+                        if (dpsLedBlink < 38) {
+                            ctx.fillStyle = '#34d399';
+                            ctx.shadowColor = '#10b981';
+                            ctx.shadowBlur = 6;
+                            ctx.beginPath();
+                            ctx.arc(w * 0.54, h * 0.76, 2.5, 0, Math.PI * 2);
+                            ctx.fill();
+                            ctx.shadowBlur = 0;
+                        }
+                    } else {
+                        // Fallback tactical wireframe
+                        ctx.fillStyle = '#061314';
+                        ctx.fillRect(0, 0, w, h);
+                        ctx.strokeStyle = 'rgba(16, 185, 129, 0.15)';
+                        for (let x = 0; x < w; x += 30) {
+                            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+                        }
+                    }
+
+                    // Tactical crosshair
+                    ctx.strokeStyle = 'rgba(52, 211, 153, 0.45)';
                     ctx.lineWidth = 1;
-                    for (let x = 0; x < w; x += 30) {
-                        ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-                    }
-                    for (let y = 0; y < h; y += 25) {
-                        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
-                    }
-
-                    // Simulated Substation Bushing / Transformer Vector Wireframe
-                    ctx.strokeStyle = 'rgba(52, 211, 153, 0.4)';
-                    ctx.lineWidth = 1.5;
-                    ctx.strokeRect(w * 0.35, h * 0.3, w * 0.3, h * 0.45);
+                    ctx.strokeRect(w/2 - 14, h/2 - 14, 28, 28);
                     ctx.beginPath();
-                    ctx.moveTo(w * 0.42, h * 0.3); ctx.lineTo(w * 0.42, h * 0.18);
-                    ctx.moveTo(w * 0.50, h * 0.3); ctx.lineTo(w * 0.50, h * 0.15);
-                    ctx.moveTo(w * 0.58, h * 0.3); ctx.lineTo(w * 0.58, h * 0.18);
+                    ctx.moveTo(w/2, h/2 - 8); ctx.lineTo(w/2, h/2 + 8);
+                    ctx.moveTo(w/2 - 8, h/2); ctx.lineTo(w/2 + 8, h/2);
                     ctx.stroke();
 
-                    // Scanning sweep line
+                    // Security sweep line
                     dpsSweepY = (dpsSweepY + 1.2) % h;
-                    ctx.strokeStyle = 'rgba(16, 185, 129, 0.5)';
-                    ctx.lineWidth = 2;
+                    ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
+                    ctx.lineWidth = 1.5;
                     ctx.beginPath();
                     ctx.moveTo(0, dpsSweepY); ctx.lineTo(w, dpsSweepY);
                     ctx.stroke();
-
-                    // Camera crosshair
-                    ctx.strokeStyle = 'rgba(52, 211, 153, 0.6)';
-                    ctx.strokeRect(w/2 - 15, h/2 - 15, 30, 30);
 
                     // Live clock
                     if (dpsTime) {
