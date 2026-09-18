@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noodp, noydir">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, max-snippet:0">
+    <title>Rencana Anggaran Biaya (RAB) Talangan Operasional - PLN UID Bali x Unsri</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&family=Tinos:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0f172a;
+            color: #1e293b;
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+        }
+
+        /* Top Action Bar (Screen Only) */
+        .action-bar {
+            width: 100%;
+            max-width: 820px;
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 12px 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            color: #f1f5f9;
+        }
+
+        .action-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-back {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+        }
+        .btn-back:hover { color: #38bdf8; }
+
+        .doc-badge {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399;
+            font-size: 10.5px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .action-center {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .date-input {
+            background: #0f172a;
+            border: 1px solid #38bdf8;
+            color: #ffffff;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .action-right {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+            transition: all 0.2s;
+        }
+        .btn-print:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.6);
+        }
+
+        .btn-download-pdf {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .btn-download-pdf:hover {
+            background: rgba(16, 185, 129, 0.25);
+            color: #ffffff;
+        }
+
+        /* Printable Paper Container (A4 Standard) */
+        .paper-sheet {
+            background: #ffffff;
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 18mm 14mm 18mm;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #0f172a;
+            font-family: Arial, Helvetica, sans-serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* KOP SURAT */
+        .kop-table {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 3px;
+        }
+
+        .kop-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .kop-center {
+            flex: 1;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        .kop-instansi {
+            font-size: 10.5pt;
+            font-weight: 800;
+            line-height: 1.25;
+            color: #0f172a;
+        }
+
+        .kop-sub {
+            font-size: 7.8pt;
+            color: #475569;
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+
+        .kop-collab {
+            font-size: 8.2pt;
+            font-weight: 800;
+            color: #0f172a;
+            margin-top: 2px;
+        }
+
+        .kop-hr-thick {
+            height: 2px;
+            background: #0f172a;
+            margin-top: 3px;
+        }
+        .kop-hr-thin {
+            height: 0.8px;
+            background: #0f172a;
+            margin-top: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        /* TITLE & NOMOR */
+        .doc-title {
+            text-align: center;
+            font-size: 11.5pt;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: 0.3px;
+        }
+
+        .doc-nomor {
+            text-align: center;
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: #2563eb;
+            margin-top: 2px;
+            margin-bottom: 8px;
+        }
+
+        /* IDENTITAS KOTAK */
+        .info-grid {
+            width: 100%;
+            border: 0.8px solid #cbd5e1;
+            background: #f8fafc;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 7.8pt;
+            margin-bottom: 8px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 14px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: baseline;
+        }
+
+        .info-label {
+            width: 115px;
+            color: #475569;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .info-colon {
+            margin-right: 6px;
+        }
+
+        .info-value {
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        /* TABEL RAB */
+        .rab-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #0f172a;
+            font-size: 7.8pt;
+            margin-bottom: 6px;
+        }
+
+        .rab-table th {
+            background: #f1f5f9;
+            border: 0.8px solid #0f172a;
+            padding: 5px 6px;
+            text-align: center;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .rab-table td {
+            border: 0.5px solid #cbd5e1;
+            padding: 4.5px 6px;
+            vertical-align: middle;
+            line-height: 1.3;
+        }
+
+        .rab-table tr:nth-child(even) td {
+            background: #fafafa;
+        }
+
+        .text-center { text-align: center; }
+        .text-right { text-align: right; font-family: 'Fira Code', monospace; }
+        .font-bold { font-weight: 700; }
+
+        .total-row td {
+            background: #f8fafc !important;
+            border-top: 1.5px solid #0f172a !important;
+            border-bottom: 1.5px solid #0f172a !important;
+            font-weight: 800;
+            color: #0f172a;
+            font-size: 8.5pt;
+        }
+
+        /* TERBILANG BOX */
+        .terbilang-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            padding: 5px 10px;
+            font-size: 7.8pt;
+            color: #1e3a8a;
+            margin-bottom: 7px;
+            font-style: italic;
+        }
+
+        /* KLAUSUL TALANGAN / REIMBURSEMENT */
+        .reimbursement-clause {
+            border: 1.2px solid #b91c1c;
+            background: #fffbfb;
+            border-radius: 5px;
+            padding: 6px 10px;
+            font-size: 7.5pt;
+            line-height: 1.4;
+            color: #7f1d1d;
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        .reimbursement-clause strong {
+            color: #991b1b;
+        }
+
+        /* TANDA TANGAN */
+        .tgl-right {
+            text-align: right;
+            font-size: 7.5pt;
+            color: #475569;
+            margin-bottom: 4px;
+            line-height: 1.35;
+        }
+
+        .ttd-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 4px;
+        }
+
+        .ttd-table td {
+            width: 33.33%;
+            text-align: center;
+            vertical-align: top;
+            padding: 0 6px;
+        }
+
+        .sign-title {
+            font-size: 7.5pt;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.25;
+            margin-bottom: 4px;
+        }
+
+        .stamp-box {
+            height: 44px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 6.5pt;
+            font-style: italic;
+            font-weight: 700;
+            border-radius: 4px;
+            margin: 2px 10px;
+        }
+
+        .stamp-unsri {
+            color: #2563eb;
+            border: 1px dashed rgba(37, 99, 235, 0.4);
+            background: rgba(37, 99, 235, 0.04);
+        }
+
+        .stamp-pln {
+            color: #dc2626;
+            border: 1px dashed rgba(220, 38, 38, 0.4);
+            background: rgba(220, 38, 38, 0.04);
+        }
+
+        .stamp-tech {
+            color: #059669;
+            border: 1px dashed rgba(5, 150, 105, 0.4);
+            background: rgba(5, 150, 105, 0.04);
+        }
+
+        .sign-name {
+            font-size: 7.8pt;
+            font-weight: 800;
+            color: #0f172a;
+            text-decoration: underline;
+            margin-top: 2px;
+        }
+
+        .sign-nip {
+            font-size: 6.8pt;
+            color: #475569;
+            margin-top: 1px;
+        }
+
+        /* FOOTER */
+        .security-footer {
+            border-top: 0.8px solid #cbd5e1;
+            padding-top: 3px;
+            margin-top: 4px;
+            text-align: center;
+            font-size: 6.5pt;
+            color: #64748b;
+            line-height: 1.35;
+            font-style: italic;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .paper-sheet {
+                width: 100% !important;
+                min-height: auto !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding: 8mm 14mm 6mm 14mm !important;
+                margin: 0 !important;
+            }
+
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Action Bar (Screen Only) -->
+    <div class="action-bar no-print">
+        <div class="action-left">
+            <a href="../main.html" class="btn-back">← Kembali ke Dashboard</a>
+            <span class="doc-badge">#RAB-2026/PLN-UID-BALI/042</span>
+        </div>
+
+        <div class="action-center">
+            <label for="dateOverride">📅 Tanggal Dokumen:</label>
+            <input type="date" id="dateOverride" class="date-input" onchange="updateDocDates(this.value)">
+        </div>
+
+        <div class="action-right">
+            <button type="button" class="btn-print" onclick="window.print()">
+                🖨️ Cetak / Print Dokumen
+            </button>
+            <button type="button" class="btn-download-pdf" onclick="generatePdfDirect()">
+                📥 Unduh PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Official Printable Paper Sheet -->
+    <div class="paper-sheet" id="documentContent">
+        <div>
+            <!-- KOP SURAT -->
+            <div class="kop-table">
+                <img src="../images/Lambang_Universitas_Sriwijaya.png" alt="UNSRI" class="kop-logo">
+                <div class="kop-center">
+                    <div class="kop-instansi">
+                        KEMENTERIAN PENDIDIKAN TINGGI, SAINS, DAN TEKNOLOGI<br>
+                        UNIVERSITAS SRIWIJAYA &mdash; FAKULTAS TEKNIK<br>
+                        LABORATORIUM SISTEM KOMPUTASI &amp; IOT TEKNIK ELEKTRO
+                    </div>
+                    <div class="kop-sub">
+                        Jl. Raya Palembang - Prabumulih Km. 32 Indralaya 30662
+                    </div>
+                    <div class="kop-collab">
+                        KERJASAMA OPERASIONAL DENGAN PT PLN (PERSERO) UID BALI
+                    </div>
+                </div>
+                <img src="../images/Logo_PLN.png" alt="PLN" class="kop-logo">
+            </div>
+
+            <div class="kop-hr-thick"></div>
+            <div class="kop-hr-thin"></div>
+
+            <!-- JUDUL SURAT -->
+            <div class="doc-title">
+                RENCANA ANGGARAN BIAYA (RAB) TALANGAN OPERASIONAL
+            </div>
+            <div class="doc-nomor" id="docNomorRab">
+                Nomor: RAB-042/PLN-UID-BALI/TE-UNSRI/IX/2026
+            </div>
+
+            <!-- IDENTITAS KOTAK -->
+            <div class="info-grid">
+                <div class="info-row">
+                    <span class="info-label">Dasar Penugasan</span>
+                    <span class="info-colon">:</span>
+                    <span class="info-value">SPK #042 &amp; SPPD #018 PLN Bali</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Pelaksana Lapangan</span>
+                    <span class="info-colon">:</span>
+                    <span class="info-value">Luthfi Hibatullah (NIM: 03041182530001)</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Mata Anggaran</span>
+                    <span class="info-colon">:</span>
+                    <span class="info-value">DIPA Riset Terapan PT PLN UID Bali TA 2026</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Jabatan Peneliti</span>
+                    <span class="info-colon">:</span>
+                    <span class="info-value">Lead Hardware &amp; Firmware Engineer Unsri</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Tujuan Lokasi</span>
+                    <span class="info-colon">:</span>
+                    <span class="info-value">Gardu Trafo Distribusi Kuta Beach, Bali</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">Durasi Pelaksanaan</span>
+                    <span class="info-colon">:</span>
+                    <span class="info-value">4 (Empat) Hari Kalender (On-Site)</span>
+                </div>
+            </div>
+
+            <!-- TABEL RINCIAN RAB -->
+            <table class="rab-table">
+                <thead>
+                    <tr>
+                        <th style="width: 24px;">NO</th>
+                        <th>URAIAN KEBUTUHAN BIAYA OPERASIONAL</th>
+                        <th style="width: 80px;">VOLUME</th>
+                        <th style="width: 105px;">HARGA SATUAN</th>
+                        <th style="width: 115px;">JUMLAH (RP)</th>
+                    </tr>
+                </thead>
+                <tbody id="rabTableBody">
+                    <tr>
+                        <td class="text-center font-bold">1</td>
+                        <td>
+                            <strong>Tiket Penerbangan Komersial PP (Palembang - Denpasar Bali)</strong><br>
+                            <span style="font-size: 7pt; color: #64748b;">Rute: Bandara SMB II (PLM) &harr; I Gusti Ngurah Rai (DPS) PP Termasuk Bagasi Peralatan Lab</span>
+                        </td>
+                        <td class="text-center" id="volFlight">1 Orang (PP)</td>
+                        <td class="text-right" id="unitFlight">Rp 3.450.000</td>
+                        <td class="text-right font-bold" id="subFlight">Rp 3.450.000</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center font-bold">2</td>
+                        <td>
+                            <strong>Uang Harian &amp; Uang Saku Dinas Luar Daerah (Standar BUMN)</strong><br>
+                            <span style="font-size: 7pt; color: #64748b;">Konsumsi harian, komunikasi darurat, dan uang saku penugasan lapangan (4 Hari × Rp 450.000)</span>
+                        </td>
+                        <td class="text-center" id="volAllowance">4 Hari</td>
+                        <td class="text-right" id="unitAllowance">Rp 450.000</td>
+                        <td class="text-right font-bold" id="subAllowance">Rp 1.800.000</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center font-bold">3</td>
+                        <td>
+                            <strong>Akomodasi / Penginapan Teknisi Terdekat Gardu Kuta Beach</strong><br>
+                            <span style="font-size: 7pt; color: #64748b;">Penginapan lokasi aman radius 2 km dari Gardu Trafo Kuta Beach (4 Malam × Rp 425.000)</span>
+                        </td>
+                        <td class="text-center" id="volHotel">4 Malam</td>
+                        <td class="text-right" id="unitHotel">Rp 425.000</td>
+                        <td class="text-right font-bold" id="subHotel">Rp 1.700.000</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center font-bold">4</td>
+                        <td>
+                            <strong>Komponen Pengganti &amp; Kit Flasher UART On-Site</strong><br>
+                            <span style="font-size: 7pt; color: #64748b;">Board ESP32 cadangan industri, Modul USB-UART FTDI FT232R, Sekring Fuse 500mA 20kV, Conformal Spray anti-garam</span>
+                        </td>
+                        <td class="text-center" id="volComponents">1 Paket Kit</td>
+                        <td class="text-right" id="unitComponents">Rp 550.000</td>
+                        <td class="text-right font-bold" id="subComponents">Rp 550.000</td>
+                    </tr>
+                    <tr>
+                        <td class="text-center font-bold">5</td>
+                        <td>
+                            <strong>Transportasi Lokal &amp; Logistik Bandara - Lokasi Gardu PP</strong><br>
+                            <span style="font-size: 7pt; color: #64748b;">Shuttle peralatan berat pengujian oscillogram &amp; relai dari Bandara Ngurah Rai ke Gardu Kuta PP</span>
+                        </td>
+                        <td class="text-center" id="volTransport">1 Paket</td>
+                        <td class="text-right" id="unitTransport">Rp 300.000</td>
+                        <td class="text-right font-bold" id="subTransport">Rp 300.000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="4" class="text-right" style="padding-right: 12px; letter-spacing: 0.3px;">TOTAL RENCANA ANGGARAN BIAYA OPERASIONAL:</td>
+                        <td class="text-right" id="grandTotal" style="color: #0f172a; font-size: 9.5pt;">Rp 7.800.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- TERBILANG -->
+            <div class="terbilang-box" id="terbilangBox">
+                <strong>Terbilang:</strong> <em>Tujuh Juta Delapan Ratus Ribu Rupiah</em>
+            </div>
+
+            <!-- KLAUSUL TALANGAN / REIMBURSEMENT -->
+            <div class="reimbursement-clause">
+                <strong>KETENTUAN TALANGAN MANDIRI &amp; 100% REIMBURSEMENT OLEH PLN:</strong><br>
+                Mengingat anomali tegangan nol (0.0V) pada Gardu Kuta Beach bersifat kritis terhadap kontinuitas jaringan listrik wilayah pariwisata Kuta, dan guna menghindari keterlambatan administrasi pencairan di muka, seluruh rincian pembiayaan darurat di atas <strong>ditalangi terlebih dahulu secara mandiri oleh pelaksana tugas / keluarga</strong>.
+                PT PLN (Persero) UID Bali menjamin <strong>penggantian dana secara penuh (100% Reimbursement)</strong> yang dicairkan langsung ke rekening pelaksana melalui Bagian Keuangan Kantor PLN UID Bali segera setelah penandatanganan Berita Acara Serah Terima (BAST) pemulihan hardware gardu.
+            </div>
+
+            <!-- TANGGAL & PENGESAHAN TIGA PIHAK -->
+            <div class="tgl-right">
+                Ditetapkan di : Palembang &amp; Denpasar<br>
+                Pada tanggal  : <strong id="tglDitetapkanRab">18 September 2026</strong>
+            </div>
+
+            <table class="ttd-table">
+                <tr>
+                    <td>
+                        <div class="sign-title">
+                            Pelaksana Tugas Lapangan,<br>
+                            <strong>Lead Hardware &amp; Firmware Engineer</strong>
+                        </div>
+                        <div class="stamp-box stamp-tech">
+                            <div>[ TANDA TANGAN DIGITAL ]</div>
+                            <div style="font-size: 5.5pt; color: #64748b; font-weight: normal; margin-top: 1px;">TOKEN: TECH-UNSRI-2026-042</div>
+                        </div>
+                        <div class="sign-name">Luthfi Hibatullah</div>
+                        <div class="sign-nip">NIM. 03041182530001</div>
+                    </td>
+                    <td>
+                        <div class="sign-title">
+                            Menyetujui Penugasan,<br>
+                            <strong>Kepala Lab IoT Unsri</strong>
+                        </div>
+                        <div class="stamp-box stamp-unsri">
+                            <div>[ STEMPEL ELEKTRONIK ]</div>
+                            <div style="font-size: 5.5pt; color: #64748b; font-weight: normal; margin-top: 1px;">Ref: BSSN-UNSRI-2026-RAB</div>
+                        </div>
+                        <div class="sign-name">Prof. Ir. Abu Bakar, M.T., Ph.D.</div>
+                        <div class="sign-nip">NIP. 19680315 199203 1 002</div>
+                    </td>
+                    <td>
+                        <div class="sign-title">
+                            Verifikator Beban Anggaran,<br>
+                            <strong>Senior Manager Distribusi PLN Bali</strong>
+                        </div>
+                        <div class="stamp-box stamp-pln">
+                            <div>[ VERIFIKASI ANGGARAN PLN ]</div>
+                            <div style="font-size: 5.5pt; color: #64748b; font-weight: normal; margin-top: 1px;">DIPA/PLN-BALI/DCC/2026/042</div>
+                        </div>
+                        <div class="sign-name">Ir. Nyoman Arya, M.Eng.</div>
+                        <div class="sign-nip">NIP. 19750821 200003 1 001</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SECURITY FOOTER -->
+        <div class="security-footer">
+            Dokumen ini sah dan terdaftar resmi pada Sistem Administrasi Terpadu SCADA PLN UID Bali &amp; Universitas Sriwijaya | Sertifikasi Keamanan ISO 27001 | Security Token: RAB-TALANGAN-PLN-BALI-042-LUTHFI-HIBATULLAH-SHA256
+        </div>
+    </div>
+
+    <!-- Script: Budget Storage Reader, Dynamic Dates, Number Formatter & HTML2PDF -->
+    <script>
+        const ROMAN_MONTHS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
+        const INDO_MONTHS = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ];
+
+        function formatRupiah(num) {
+            return 'Rp ' + Number(num).toLocaleString('id-ID');
+        }
+
+        function numberToTerbilang(nilai) {
+            nilai = Math.floor(Math.abs(nilai));
+            const huruf = ['', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan', 'Sepuluh', 'Sebelas'];
+            let temp = '';
+
+            if (nilai < 12) {
+                temp = ' ' + huruf[nilai];
+            } else if (nilai < 20) {
+                temp = numberToTerbilang(nilai - 10) + ' Belas';
+            } else if (nilai < 100) {
+                temp = numberToTerbilang(Math.floor(nilai / 10)) + ' Puluh' + numberToTerbilang(nilai % 10);
+            } else if (nilai < 200) {
+                temp = ' Seratus' + numberToTerbilang(nilai - 100);
+            } else if (nilai < 1000) {
+                temp = numberToTerbilang(Math.floor(nilai / 100)) + ' Ratus' + numberToTerbilang(nilai % 100);
+            } else if (nilai < 2000) {
+                temp = ' Seribu' + numberToTerbilang(nilai - 1000);
+            } else if (nilai < 1000000) {
+                temp = numberToTerbilang(Math.floor(nilai / 1000)) + ' Ribu' + numberToTerbilang(nilai % 1000);
+            } else if (nilai < 1000000000) {
+                temp = numberToTerbilang(Math.floor(nilai / 1000000)) + ' Juta' + numberToTerbilang(nilai % 1000000);
+            } else if (nilai < 1000000000000) {
+                temp = numberToTerbilang(Math.floor(nilai / 1000000000)) + ' Milyar' + numberToTerbilang(nilai % 1000000000);
+            }
+            return temp.trim();
+        }
+
+        function getLocalDateISO(date) {
+            const pad = (n) => n.toString().padStart(2, '0');
+            return `${date.getFullYear()}-${pad(date.getMonth()+1)}-${pad(date.getDate())}`;
+        }
+
+        function loadBudget() {
+            let budget = {
+                flight: 3450000,
+                allowance: 1800000,
+                hotel: 1700000,
+                components: 550000,
+                transport: 300000
+            };
+
+            try {
+                const stored = localStorage.getItem('noc_rab_budget');
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    budget = { ...budget, ...parsed };
+                }
+            } catch (e) {
+                console.warn('Error loading custom budget:', e);
+            }
+
+            // Update UI elements
+            document.getElementById('unitFlight').textContent = formatRupiah(budget.flight);
+            document.getElementById('subFlight').textContent = formatRupiah(budget.flight);
+
+            document.getElementById('unitAllowance').textContent = formatRupiah(Math.round(budget.allowance / 4));
+            document.getElementById('subAllowance').textContent = formatRupiah(budget.allowance);
+
+            document.getElementById('unitHotel').textContent = formatRupiah(Math.round(budget.hotel / 4));
+            document.getElementById('subHotel').textContent = formatRupiah(budget.hotel);
+
+            document.getElementById('unitComponents').textContent = formatRupiah(budget.components);
+            document.getElementById('subComponents').textContent = formatRupiah(budget.components);
+
+            document.getElementById('unitTransport').textContent = formatRupiah(budget.transport);
+            document.getElementById('subTransport').textContent = formatRupiah(budget.transport);
+
+            const total = Number(budget.flight) + Number(budget.allowance) + Number(budget.hotel) + Number(budget.components) + Number(budget.transport);
+            document.getElementById('grandTotal').textContent = formatRupiah(total);
+
+            const terbilangText = numberToTerbilang(total) + ' Rupiah';
+            document.getElementById('terbilangBox').innerHTML = `<strong>Terbilang:</strong> <em>${terbilangText}</em>`;
+        }
+
+        function updateDocDates(dateString) {
+            let targetDate;
+            if (dateString) {
+                targetDate = new Date(dateString + 'T00:00:00');
+            } else {
+                targetDate = new Date();
+            }
+
+            const day = targetDate.getDate();
+            const monthIndex = targetDate.getMonth();
+            const year = targetDate.getFullYear();
+            const monthName = INDO_MONTHS[monthIndex];
+            const romanMonth = ROMAN_MONTHS[monthIndex];
+
+            const formattedDate = `${day} ${monthName} ${year}`;
+
+            // Update DOM Elements
+            const tglDitetapkan = document.getElementById('tglDitetapkanRab');
+            if (tglDitetapkan) tglDitetapkan.textContent = formattedDate;
+
+            const docNomor = document.getElementById('docNomorRab');
+            if (docNomor) docNomor.textContent = `Nomor: RAB-042/PLN-UID-BALI/TE-UNSRI/${romanMonth}/${year}`;
+
+            // Update input value if not manually set
+            const dateInput = document.getElementById('dateOverride');
+            if (dateInput && !dateString) {
+                dateInput.value = getLocalDateISO(targetDate);
+            }
+        }
+
+        function generatePdfDirect() {
+            const element = document.getElementById('documentContent');
+            const targetDate = document.getElementById('dateOverride').value || getLocalDateISO(new Date());
+            const opt = {
+                margin:       [8, 8, 8, 8],
+                filename:     `RAB_042_Talangan_PLN_Bali_Kuta_${targetDate}.pdf`,
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadBudget();
+
+            // Check query param e.g. ?date=2026-09-20
+            const urlParams = new URLSearchParams(window.location.search);
+            const queryDate = urlParams.get('date');
+            updateDocDates(queryDate);
+
+            // Auto-print if query param ?print=1
+            if (urlParams.get('print') === '1') {
+                setTimeout(() => window.print(), 600);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1857,6 +1857,270 @@
             box-shadow: 0 6px 18px rgba(239, 68, 68, 0.7);
         }
 
+        .btn-export-rab {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.45);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.2s;
+        }
+        .btn-export-rab:hover {
+            background: rgba(16, 185, 129, 0.3);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-ht-radio {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.2s;
+        }
+        .btn-ht-radio:hover {
+            transform: translateY(-1px);
+            background: rgba(245, 158, 11, 0.25);
+        }
+        .btn-ht-radio.muted {
+            background: rgba(100, 116, 139, 0.15);
+            color: #94a3b8;
+            border-color: rgba(100, 116, 139, 0.4);
+        }
+
+        /* Secret Budget & Simulation Modal */
+        .secret-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(3, 7, 18, 0.9);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100005;
+            padding: 20px;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+
+        .secret-modal-card {
+            background: #0b1120;
+            border: 2px solid #06b6d4;
+            border-radius: 12px;
+            max-width: 680px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(6, 182, 212, 0.35);
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .secret-modal-header {
+            background: linear-gradient(90deg, #0e7490, #0891b2, #0e7490);
+            color: #ffffff;
+            padding: 12px 18px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .secret-modal-body {
+            padding: 20px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .secret-field-group {
+            margin-bottom: 12px;
+        }
+
+        .secret-field-label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-bottom: 5px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .secret-field-input {
+            width: 100%;
+            background: #030712;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            padding: 8px 12px;
+            color: #f1f5f9;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .secret-field-input:focus {
+            border-color: #06b6d4;
+            box-shadow: 0 0 8px rgba(6, 182, 212, 0.3);
+        }
+
+        .secret-total-box {
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin: 16px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .secret-total-val {
+            font-size: 18px;
+            font-weight: 800;
+            color: #22d3ee;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .secret-toggle-card {
+            background: rgba(16, 185, 129, 0.08);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .secret-toggle-info h4 {
+            font-size: 12.5px;
+            color: #34d399;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .secret-toggle-info p {
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        /* Interactive FTDI Serial Flasher & CLI */
+        .cli-input-line {
+            display: flex;
+            align-items: center;
+            background: #020617;
+            border: 1px solid #334155;
+            border-radius: 6px;
+            padding: 4px 10px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            gap: 6px;
+        }
+
+        .cli-prompt {
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            color: #10b981;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .diag-cli-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+        }
+
+        .cli-send-btn {
+            background: #1e293b;
+            color: #38bdf8;
+            border: 1px solid #334155;
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .cli-send-btn:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .flasher-quick-bar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .quick-cmd-btn {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid #334155;
+            color: #cbd5e1;
+            font-family: 'Fira Code', monospace;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .quick-cmd-btn:hover {
+            border-color: #38bdf8;
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+        }
+        .quick-cmd-btn.success {
+            border-color: rgba(16, 185, 129, 0.5);
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.1);
+        }
+        .quick-cmd-btn.success:hover {
+            background: rgba(16, 185, 129, 0.25);
+            color: #ffffff;
+        }
+
+        .flasher-progress-wrap {
+            height: 6px;
+            background: #1e293b;
+            border-radius: 3px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .flasher-progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4, #10b981);
+            transition: width 0.15s ease-out;
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid #1f2937;
@@ -1922,23 +2186,33 @@
         </nav>
 
         <div style="display: flex; align-items: center; gap: 8px;">
+            <button type="button" id="btnToggleHtRadio" class="btn-ht-radio" onclick="toggleHtRadio()" title="Mode Radio HT Komunikasi Lapangan PLN (Audio Web API)">
+                <span id="htRadioIcon">📻</span>
+                <span id="htRadioText">HT: ON</span>
+            </button>
             <a href="docs/Laporan_Harian_NOC_PLN_Bali.csv" download="Laporan_Harian_NOC_PLN_Bali_2026-09-18.csv" class="btn-export-report" title="Unduh data log rekapitulasi harian untuk arsip administrasi dinas">
                 <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
-                Export Laporan NOC (CSV)
+                Export CSV
             </a>
             <a href="docs/spk-print.html" target="_blank" class="btn-export-spk" title="Buka & Cetak Dokumen SPK Lapangan Resmi (Tanggal Dinamis)">
                 <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
-                Cetak / Unduh Dokumen SPK (PDF)
+                Cetak SPK (PDF)
             </a>
             <a href="docs/sppd-print.html" target="_blank" class="btn-export-sppd" title="Buka & Cetak Surat Perintah Perjalanan Dinas Resmi (SPPD - Tanggal Dinamis)">
                 <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                 </svg>
-                Cetak / Unduh SPPD Dinas (PDF)
+                Cetak SPPD (PDF)
+            </a>
+            <a href="docs/rab-print.html" target="_blank" class="btn-export-rab" title="Buka & Cetak Dokumen Rencana Anggaran Biaya Talangan Operasional (RAB - Tanggal Dinamis)">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                Cetak RAB (PDF)
             </a>
         </div>
 
@@ -2194,12 +2468,12 @@
 
                 <!-- Feed 2: Kuta Beach (Offline / No Signal Static) -->
                 <div class="cctv-screen-box">
-                    <div class="cctv-screen-header" style="border-bottom-color: rgba(239, 68, 68, 0.4);">
-                        <span style="color: #f87171; font-weight: 700;">CAM-KUTA-03 // GARDU TRAFO KUTA BEACH</span>
-                        <span style="color: #ef4444; font-weight: 800; animation: pulse-spk-border 1s infinite;">● NO SIGNAL</span>
+                    <div class="cctv-screen-header" id="cctvKutaHeader" style="border-bottom-color: rgba(239, 68, 68, 0.4);">
+                        <span id="cctvKutaTitle" style="color: #f87171; font-weight: 700;">CAM-KUTA-03 // GARDU TRAFO KUTA BEACH</span>
+                        <span id="cctvKutaStatus" style="color: #ef4444; font-weight: 800; animation: pulse-spk-border 1s infinite;">● NO SIGNAL</span>
                     </div>
                     <canvas id="cctvKuta" class="cctv-canvas"></canvas>
-                    <div class="cctv-overlay-offline">
+                    <div id="cctvKutaOverlayOffline" class="cctv-overlay-offline">
                         <div class="cctv-badge-alert">⚠️ VIDEO FEED TERMINATED (08:12:04 WITA)</div>
                         <div class="cctv-alert-sub">
                             FAULT: DC AUXILIARY BUS POWER LOSS (0.0V)<br>
@@ -2380,7 +2654,9 @@
         </div>
         <div style="text-align: right; font-family: 'Fira Code', monospace;">
             <div style="color: #38bdf8; font-size: 11px;">OPERATOR: LUTHFI HIBATULLAH</div>
-            <div style="color: #475569; font-size: 9.5px;">AUDIT REF: SKPI-UNSRI-2026-PLN // SPK-042-ACTIVE</div>
+            <div id="secretFooterTrigger" onclick="openSecretBudgetModal()" style="color: #475569; font-size: 9.5px; cursor: pointer; user-select: none;" title="Klik atau tekan [Ctrl + Shift + B] untuk Pengaturan Anggaran & Simulasi">
+                AUDIT REF: SKPI-UNSRI-2026-PLN // SPK-042-ACTIVE <span style="opacity: 0.2;">⚙️</span>
+            </div>
         </div>
     </footer>
 
@@ -2511,12 +2787,22 @@
 
         function renderNodeList(nodes) {
             const container = document.getElementById('nodeListContainer');
-            // Hanya render sekali atau update jika kosong
-            if (container.children.length > 0) return;
+            if (!container) return;
+            if (container.children.length > 0 && !container.dataset.forceUpdate) return;
+            container.dataset.forceUpdate = '';
 
             container.innerHTML = '';
             nodes.forEach(node => {
-                const isDown = node.status === 'CRITICAL_DOWN';
+                let nodeStatus = node.status;
+                let nodePing = node.ping_ms;
+                let isDown = node.status === 'CRITICAL_DOWN';
+
+                if (node.id === 'ESP32-KTA-03' && isKutaFixed) {
+                    nodeStatus = 'ONLINE';
+                    nodePing = 24;
+                    isDown = false;
+                }
+
                 const div = document.createElement('div');
                 div.className = `node-item ${isDown ? 'is-down' : ''}`;
                 div.innerHTML = `
@@ -2530,10 +2816,10 @@
                     </div>
                     <div class="node-status-badge">
                         <span class="status-pill ${isDown ? 'pill-crit' : 'pill-ok'}">
-                            ${node.status}
+                            ${nodeStatus}
                         </span>
                         <div style="font-size: 10px; color: ${isDown ? '#f87171' : '#9ca3af'}; margin-top: 4px; font-family: 'Fira Code', monospace;">
-                            ${isDown ? 'TIMEOUT > 300s' : node.ping_ms + ' ms'}
+                            ${isDown ? 'TIMEOUT > 300s' : nodePing + ' ms'}
                         </div>
                     </div>
                 `;
@@ -2678,15 +2964,15 @@
                                 fill: false
                             },
                             {
-                                label: 'Kuta Beach (ESP32-KTA-03) [DROP]',
-                                data: [...ktaVoltData],
-                                borderColor: '#ef4444',
-                                backgroundColor: 'rgba(239, 68, 68, 0.12)',
+                                label: isKutaFixed ? 'Kuta Beach (ESP32-KTA-03) [RECOVERED]' : 'Kuta Beach (ESP32-KTA-03) [DROP]',
+                                data: isKutaFixed ? [220.4, 221.1, 221.3, 221.5, 221.2, 221.6, 221.4, 221.7, 221.3, 221.5] : [...ktaVoltData],
+                                borderColor: isKutaFixed ? '#10b981' : '#ef4444',
+                                backgroundColor: isKutaFixed ? 'rgba(16, 185, 129, 0.12)' : 'rgba(239, 68, 68, 0.12)',
                                 borderWidth: 3.5,
                                 pointRadius: 3.5,
-                                pointBackgroundColor: '#ef4444',
+                                pointBackgroundColor: isKutaFixed ? '#10b981' : '#ef4444',
                                 tension: 0.1,
-                                borderDash: [4, 2],
+                                borderDash: isKutaFixed ? [] : [4, 2],
                                 fill: true
                             }
                         ]
@@ -2753,9 +3039,13 @@
                     voltChart.data.datasets[2].data.shift();
                     voltChart.data.datasets[2].data.push(+(220.8 + (Math.random() * 0.6 - 0.3)).toFixed(1));
 
-                    // Kuta Beach - always 0.0 V (FLATLINE)
+                    // Kuta Beach - dynamic based on isKutaFixed
                     voltChart.data.datasets[3].data.shift();
-                    voltChart.data.datasets[3].data.push(0.0);
+                    if (isKutaFixed) {
+                        voltChart.data.datasets[3].data.push(+(221.4 + (Math.random() * 0.6 - 0.3)).toFixed(1));
+                    } else {
+                        voltChart.data.datasets[3].data.push(0.0);
+                    }
 
                     voltChart.update('none');
                 }, 2500);
@@ -2996,34 +3286,85 @@
                 drawDpsFeed();
             }
 
-            // Screen 2: Kuta Beach Analog TV Static / Noise Generator
+            // Screen 2: Kuta Beach Analog TV Static or Recovered Live Feed
             const ktaCanvas = document.getElementById('cctvKuta');
             if (ktaCanvas) {
                 const ctx = ktaCanvas.getContext('2d');
+                let ktaSweep = 0;
                 function drawKutaStatic() {
                     const w = ktaCanvas.width = 160;
                     const h = ktaCanvas.height = 100;
-                    const imgData = ctx.createImageData(w, h);
-                    const buf = new Uint32Array(imgData.data.buffer);
-                    const len = buf.length;
 
-                    for (let i = 0; i < len; i++) {
-                        const v = (Math.random() * 60) | 0;
-                        buf[i] = (255 << 24) | (v << 16) | (v << 8) | v;
-                    }
+                    if (isKutaFixed) {
+                        // Recovered operational feed
+                        ctx.fillStyle = '#061314';
+                        ctx.fillRect(0, 0, w, h);
 
-                    if (Math.random() < 0.4) {
-                        const glitchY = (Math.random() * h) | 0;
-                        const glitchH = 2 + ((Math.random() * 4) | 0);
-                        for (let y = glitchY; y < glitchY + glitchH && y < h; y++) {
-                            for (let x = 0; x < w; x++) {
-                                const idx = y * w + x;
-                                buf[idx] = (255 << 24) | (180 << 16) | (180 << 8) | 180;
+                        // Grid lines
+                        ctx.strokeStyle = 'rgba(16, 185, 129, 0.15)';
+                        ctx.lineWidth = 0.8;
+                        for (let x = 0; x < w; x += 20) {
+                            ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+                        }
+                        for (let y = 0; y < h; y += 15) {
+                            ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+                        }
+
+                        // Substation transformer silhouette
+                        ctx.fillStyle = 'rgba(16, 185, 129, 0.2)';
+                        ctx.fillRect(w * 0.28, h * 0.3, w * 0.44, h * 0.55);
+                        ctx.strokeStyle = '#34d399';
+                        ctx.strokeRect(w * 0.28, h * 0.3, w * 0.44, h * 0.55);
+
+                        // Blinking power indicator LED
+                        ctx.fillStyle = '#10b981';
+                        ctx.shadowColor = '#34d399';
+                        ctx.shadowBlur = 6;
+                        ctx.beginPath();
+                        ctx.arc(w * 0.5, h * 0.52, 3, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.shadowBlur = 0;
+
+                        // Sweep line
+                        ktaSweep = (ktaSweep + 1) % h;
+                        ctx.strokeStyle = 'rgba(52, 211, 153, 0.4)';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath(); ctx.moveTo(0, ktaSweep); ctx.lineTo(w, ktaSweep); ctx.stroke();
+
+                        // Scanlines
+                        ctx.fillStyle = 'rgba(0, 0, 0, 0.22)';
+                        for (let y = 0; y < h; y += 2) {
+                            ctx.fillRect(0, y, w, 1);
+                        }
+
+                        // HUD Telemetry overlay
+                        ctx.fillStyle = '#34d399';
+                        ctx.font = '7.5px "Fira Code", monospace';
+                        ctx.fillText('REC ● RESTORED', 6, 12);
+                        ctx.fillText('221.4V // 50.0Hz', 6, h - 6);
+                    } else {
+                        const imgData = ctx.createImageData(w, h);
+                        const buf = new Uint32Array(imgData.data.buffer);
+                        const len = buf.length;
+
+                        for (let i = 0; i < len; i++) {
+                            const v = (Math.random() * 60) | 0;
+                            buf[i] = (255 << 24) | (v << 16) | (v << 8) | v;
+                        }
+
+                        if (Math.random() < 0.4) {
+                            const glitchY = (Math.random() * h) | 0;
+                            const glitchH = 2 + ((Math.random() * 4) | 0);
+                            for (let y = glitchY; y < glitchY + glitchH && y < h; y++) {
+                                for (let x = 0; x < w; x++) {
+                                    const idx = y * w + x;
+                                    buf[idx] = (255 << 24) | (180 << 16) | (180 << 8) | 180;
+                                }
                             }
                         }
-                    }
 
-                    ctx.putImageData(imgData, 0, 0);
+                        ctx.putImageData(imgData, 0, 0);
+                    }
                     requestAnimationFrame(drawKutaStatic);
                 }
                 drawKutaStatic();
@@ -3578,6 +3919,616 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
             }, 1600);
         }
 
+        // ==========================================
+        // 7. Mode Radio HT PLN Lapangan & Audio Squelch
+        // ==========================================
+        let isHtRadioActive = localStorage.getItem('noc_ht_radio') !== 'false';
+
+        function playHtRadioSquelch(type = 'burst') {
+            if (!isHtRadioActive) return;
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                const ctx = new AudioContext();
+                if (ctx.state === 'suspended') ctx.resume();
+
+                const now = ctx.currentTime;
+                // White noise burst
+                const duration = (type === 'chirp') ? 0.08 : 0.14;
+                const bufferSize = Math.floor(ctx.sampleRate * duration);
+                const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+
+                const whiteNoise = ctx.createBufferSource();
+                whiteNoise.buffer = noiseBuffer;
+
+                // Bandpass filter to simulate walkie-talkie speaker (600Hz - 3200Hz)
+                const filter = ctx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.value = 1750;
+                filter.Q.value = 2.2;
+
+                const noiseGain = ctx.createGain();
+                noiseGain.gain.setValueAtTime(0.09, now);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+                whiteNoise.connect(filter);
+                filter.connect(noiseGain);
+                noiseGain.connect(ctx.destination);
+
+                whiteNoise.start(now);
+                whiteNoise.stop(now + duration);
+
+                // Roger tone / radio chirp
+                const osc = ctx.createOscillator();
+                const toneGain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1480, now + duration * 0.6);
+                osc.frequency.setValueAtTime(1120, now + duration * 1.1);
+                toneGain.gain.setValueAtTime(0.04, now + duration * 0.6);
+                toneGain.gain.exponentialRampToValueAtTime(0.001, now + duration + 0.1);
+
+                osc.connect(toneGain);
+                toneGain.connect(ctx.destination);
+                osc.start(now + duration * 0.6);
+                osc.stop(now + duration + 0.1);
+
+                setTimeout(() => {
+                    if (ctx.state !== 'closed') ctx.close().catch(() => {});
+                }, 400);
+            } catch (e) {
+                console.warn('HT Radio Audio Warning:', e);
+            }
+        }
+
+        function toggleHtRadio() {
+            isHtRadioActive = !isHtRadioActive;
+            localStorage.setItem('noc_ht_radio', isHtRadioActive);
+            updateHtRadioUI();
+            if (isHtRadioActive) {
+                playHtRadioSquelch('chirp');
+                appendLog('info', '📻 Audio Radio HT PLN Lapangan: DIAKTIFKAN (Frekuensi 156.800 MHz Ch.16).');
+            } else {
+                appendLog('info', '🔇 Audio Radio HT PLN Lapangan: DIMUTE (Muted).');
+            }
+        }
+
+        function updateHtRadioUI() {
+            const btn = document.getElementById('btnToggleHtRadio');
+            const icon = document.getElementById('htRadioIcon');
+            const text = document.getElementById('htRadioText');
+            if (!btn) return;
+            if (isHtRadioActive) {
+                btn.classList.remove('muted');
+                if (icon) icon.textContent = '📻';
+                if (text) text.textContent = 'HT: ON';
+                btn.title = 'Mode Radio HT Lapangan PLN (Audio Aktif - Klik untuk Mute)';
+            } else {
+                btn.classList.add('muted');
+                if (icon) icon.textContent = '🔇';
+                if (text) text.textContent = 'HT: MUTE';
+                btn.title = 'Mode Radio HT Lapangan PLN (Audio Mute - Klik untuk Unmute)';
+            }
+        }
+
+        // Periodic simulated field radio chatter squelch
+        setInterval(() => {
+            if (isHtRadioActive && Math.random() < 0.35) {
+                playHtRadioSquelch('burst');
+                const htMessages = [
+                    '📻 [RADIO-HT] "DCC Bali memanggil Tim Regu 3 Gardu Kuta... Standby menunggu kedatangan teknisi Lab Unsri."',
+                    '📻 [RADIO-HT] "Operator Gardu Sanur melapor: Beban fasa sekunder aman terkendali 220.8V."',
+                    '📻 [RADIO-HT] "DCC Bali: Log insiden SPK #042 terkunci, menunggu bypass hardware manual on-site."'
+                ];
+                const randomMsg = htMessages[Math.floor(Math.random() * htMessages.length)];
+                appendLog('info', randomMsg);
+            }
+        }, 38000);
+
+        // ==========================================
+        // 8. Mode Simulasi Pemulihan (Fixing Mode)
+        // ==========================================
+        let isKutaFixed = localStorage.getItem('noc_kuta_fixed') === 'true';
+
+        function applyFixingModeState() {
+            // 1. Update Metrics Grid
+            const activeNodesEl = document.getElementById('metric-active-nodes');
+            const activeCard = activeNodesEl ? activeNodesEl.closest('.metric-card') : null;
+            if (activeNodesEl && activeCard) {
+                if (isKutaFixed) {
+                    activeNodesEl.textContent = '15';
+                    activeNodesEl.style.color = '#34d399';
+                    activeCard.classList.remove('critical');
+                    activeCard.classList.add('success');
+                    const subSpan = activeCard.querySelector('.metric-sub span:first-child');
+                    if (subSpan) {
+                        subSpan.textContent = 'Seluruh Node Stabil';
+                        subSpan.style.color = '#34d399';
+                    }
+                    const pill = activeCard.querySelector('.status-pill');
+                    if (pill) {
+                        pill.className = 'status-pill pill-ok';
+                        pill.textContent = 'OPTIMAL';
+                    }
+                } else {
+                    activeNodesEl.textContent = '14';
+                    activeNodesEl.style.color = '#f87171';
+                    activeCard.classList.remove('success');
+                    activeCard.classList.add('critical');
+                    const subSpan = activeCard.querySelector('.metric-sub span:first-child');
+                    if (subSpan) {
+                        subSpan.textContent = '1 Node Anomali';
+                        subSpan.style.color = '#f87171';
+                    }
+                    const pill = activeCard.querySelector('.status-pill');
+                    if (pill) {
+                        pill.className = 'status-pill pill-crit';
+                        pill.textContent = 'ALERT';
+                    }
+                }
+            }
+
+            // 2. Update Chart Alert Badge
+            const chartBadge = document.getElementById('chartAlertBadge');
+            if (chartBadge) {
+                if (isKutaFixed) {
+                    chartBadge.innerText = '✅ SISTEM GRID STABIL: KUTA BEACH 221.4 V (NORMAL)';
+                    chartBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+                    chartBadge.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+                    chartBadge.style.color = '#34d399';
+                } else {
+                    chartBadge.innerText = '💥 ANOMALI DROP TOTAL: KUTA BEACH 0.0 V (FLATLINE)';
+                    chartBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+                    chartBadge.style.borderColor = 'rgba(239, 68, 68, 0.5)';
+                    chartBadge.style.color = '#f87171';
+                }
+            }
+
+            // 3. Update Chart Dataset Properties
+            if (voltChart && voltChart.data && voltChart.data.datasets[3]) {
+                const ktaDs = voltChart.data.datasets[3];
+                if (isKutaFixed) {
+                    ktaDs.label = 'Kuta Beach (ESP32-KTA-03) [RECOVERED]';
+                    ktaDs.borderColor = '#10b981';
+                    ktaDs.backgroundColor = 'rgba(16, 185, 129, 0.12)';
+                    ktaDs.pointBackgroundColor = '#10b981';
+                    ktaDs.borderDash = [];
+                } else {
+                    ktaDs.label = 'Kuta Beach (ESP32-KTA-03) [DROP]';
+                    ktaDs.borderColor = '#ef4444';
+                    ktaDs.backgroundColor = 'rgba(239, 68, 68, 0.12)';
+                    ktaDs.pointBackgroundColor = '#ef4444';
+                    ktaDs.borderDash = [4, 2];
+                }
+                voltChart.update('none');
+            }
+
+            // 4. Update CCTV Kuta Overlay & Header
+            const cctvHeader = document.getElementById('cctvKutaHeader');
+            const cctvTitle = document.getElementById('cctvKutaTitle');
+            const cctvStatus = document.getElementById('cctvKutaStatus');
+            const cctvOverlay = document.getElementById('cctvKutaOverlayOffline');
+            if (cctvHeader && cctvStatus) {
+                if (isKutaFixed) {
+                    cctvHeader.style.borderBottomColor = 'rgba(16, 185, 129, 0.4)';
+                    if (cctvTitle) cctvTitle.style.color = '#34d399';
+                    cctvStatus.style.color = '#34d399';
+                    cctvStatus.style.animation = 'none';
+                    cctvStatus.innerText = '● LIVE [30 FPS]';
+                    if (cctvOverlay) cctvOverlay.style.display = 'none';
+                } else {
+                    cctvHeader.style.borderBottomColor = 'rgba(239, 68, 68, 0.4)';
+                    if (cctvTitle) cctvTitle.style.color = '#f87171';
+                    cctvStatus.style.color = '#ef4444';
+                    cctvStatus.style.animation = 'pulse-spk-border 1s infinite';
+                    cctvStatus.innerText = '● NO SIGNAL';
+                    if (cctvOverlay) cctvOverlay.style.display = 'flex';
+                }
+            }
+
+            // 5. Update Hardware Diagnostics Modal Status Elements
+            const hwLockBadge = document.getElementById('hwLockBadge');
+            const diagStatusPower = document.getElementById('diagStatusPower');
+            const diagStatusFuse = document.getElementById('diagStatusFuse');
+            const diagStatusBus = document.getElementById('diagStatusBus');
+            const diagStatusEeprom = document.getElementById('diagStatusEeprom');
+            const diagItemPower = document.getElementById('diagItemPower');
+            const diagItemFuse = document.getElementById('diagItemFuse');
+            const diagItemBus = document.getElementById('diagItemBus');
+            const diagItemEeprom = document.getElementById('diagItemEeprom');
+
+            if (hwLockBadge) {
+                if (isKutaFixed) {
+                    hwLockBadge.textContent = 'RECOVERED: NORMAL OPERATION';
+                    hwLockBadge.style.color = '#34d399';
+                    hwLockBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+                    hwLockBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                } else {
+                    hwLockBadge.textContent = 'HARDWARE LOCK: ACTIVE';
+                    hwLockBadge.style.color = '#ef4444';
+                    hwLockBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+                    hwLockBadge.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+                }
+            }
+
+            if (diagStatusPower) {
+                if (isKutaFixed) {
+                    diagStatusPower.innerHTML = '3.31 V &bull; NOMINAL (SHORT CLEARED)';
+                    diagStatusPower.style.color = '#34d399';
+                    if (diagItemPower) diagItemPower.classList.remove('fault');
+                } else {
+                    diagStatusPower.innerHTML = '0.04 V &bull; SHORT TO GND (SALT RESIDUE)';
+                    diagStatusPower.style.color = '#ef4444';
+                    if (diagItemPower) diagItemPower.classList.add('fault');
+                }
+            }
+
+            if (diagStatusFuse) {
+                if (isKutaFixed) {
+                    diagStatusFuse.innerHTML = 'REPLACED &bull; CONTINUITY OK (500mA FUSE)';
+                    diagStatusFuse.style.color = '#34d399';
+                    if (diagItemFuse) diagItemFuse.classList.remove('fault');
+                } else {
+                    diagStatusFuse.innerHTML = 'BLOWN / OPEN-CIRCUIT (TRIPPED)';
+                    diagStatusFuse.style.color = '#ef4444';
+                    if (diagItemFuse) diagItemFuse.classList.add('fault');
+                }
+            }
+
+            if (diagStatusBus) {
+                if (isKutaFixed) {
+                    diagStatusBus.innerHTML = '4.85 V &bull; MODBUS TRAFFIC ACTIVE';
+                    diagStatusBus.style.color = '#34d399';
+                    if (diagItemBus) diagItemBus.classList.remove('fault');
+                } else {
+                    diagStatusBus.innerHTML = '0.00 V &bull; NO PACKET TRAFFIC';
+                    diagStatusBus.style.color = '#ef4444';
+                    if (diagItemBus) diagItemBus.classList.add('fault');
+                }
+            }
+
+            if (diagStatusEeprom) {
+                if (isKutaFixed) {
+                    diagStatusEeprom.innerHTML = 'CRC32 OK &bull; FLASH AES-256 SIGNED';
+                    diagStatusEeprom.style.color = '#34d399';
+                    if (diagItemEeprom) diagItemEeprom.classList.remove('fault');
+                } else {
+                    diagStatusEeprom.innerHTML = 'CRC32 MISMATCH &bull; 0xDEADBEEF';
+                    diagStatusEeprom.style.color = '#ef4444';
+                    if (diagItemEeprom) diagItemEeprom.classList.add('fault');
+                }
+            }
+
+            // 6. Update secret panel checkbox
+            const secretToggle = document.getElementById('secretFixingToggle');
+            if (secretToggle) secretToggle.checked = isKutaFixed;
+        }
+
+        function toggleFixingMode(state) {
+            isKutaFixed = Boolean(state);
+            localStorage.setItem('noc_kuta_fixed', isKutaFixed);
+            applyFixingModeState();
+
+            const container = document.getElementById('nodeListContainer');
+            if (container) {
+                container.dataset.forceUpdate = 'true';
+                fetchMetricsFromJSON();
+            }
+
+            if (isKutaFixed) {
+                appendLog('ok', '⚡ [RECOVERY] Perbaikan Gardu Kuta Beach berhasil! Tegangan fasa kembali normal 221.4V. Seluruh 15 node online.');
+            } else {
+                appendLog('err', '🚨 [FAULT] Mode simulasi pemulihan dinonaktifkan. Gardu Kuta Beach kembali ke status gangguan (0.0V Flatline).');
+            }
+        }
+
+        function toggleFixingModeFromCheckbox(checked) {
+            toggleFixingMode(checked);
+        }
+
+        // ==========================================
+        // 9. Panel Rahasia Anggaran & Hotkey Ctrl+Shift+B
+        // ==========================================
+        function numberToTerbilangIndo(nilai) {
+            nilai = Math.floor(Math.abs(nilai));
+            const huruf = ['', 'Satu', 'Dua', 'Tiga', 'Empat', 'Lima', 'Enam', 'Tujuh', 'Delapan', 'Sembilan', 'Sepuluh', 'Sebelas'];
+            let temp = '';
+            if (nilai < 12) {
+                temp = ' ' + huruf[nilai];
+            } else if (nilai < 20) {
+                temp = numberToTerbilangIndo(nilai - 10) + ' Belas';
+            } else if (nilai < 100) {
+                temp = numberToTerbilangIndo(Math.floor(nilai / 10)) + ' Puluh' + numberToTerbilangIndo(nilai % 10);
+            } else if (nilai < 200) {
+                temp = ' Seratus' + numberToTerbilangIndo(nilai - 100);
+            } else if (nilai < 1000) {
+                temp = numberToTerbilangIndo(Math.floor(nilai / 100)) + ' Ratus' + numberToTerbilangIndo(nilai % 100);
+            } else if (nilai < 2000) {
+                temp = ' Seribu' + numberToTerbilangIndo(nilai - 1000);
+            } else if (nilai < 1000000) {
+                temp = numberToTerbilangIndo(Math.floor(nilai / 1000)) + ' Ribu' + numberToTerbilangIndo(nilai % 1000);
+            } else if (nilai < 1000000000) {
+                temp = numberToTerbilangIndo(Math.floor(nilai / 1000000)) + ' Juta' + numberToTerbilangIndo(nilai % 1000000);
+            } else if (nilai < 1000000000000) {
+                temp = numberToTerbilangIndo(Math.floor(nilai / 1000000000)) + ' Milyar' + numberToTerbilangIndo(nilai % 1000000000);
+            }
+            return temp.trim();
+        }
+
+        function calculateSecretBudgetTotal() {
+            const flight = Number(document.getElementById('budgetInputFlight').value) || 0;
+            const allowance = Number(document.getElementById('budgetInputAllowance').value) || 0;
+            const hotel = Number(document.getElementById('budgetInputHotel').value) || 0;
+            const components = Number(document.getElementById('budgetInputComponents').value) || 0;
+            const transport = Number(document.getElementById('budgetInputTransport').value) || 0;
+
+            const total = flight + allowance + hotel + components + transport;
+            const totalPreview = document.getElementById('secretTotalPreview');
+            const terbilangEl = document.getElementById('secretTerbilangText');
+
+            if (totalPreview) {
+                totalPreview.textContent = 'Rp ' + total.toLocaleString('id-ID');
+            }
+            if (terbilangEl) {
+                terbilangEl.innerHTML = `<strong>Terbilang:</strong> <em>${numberToTerbilangIndo(total)} Rupiah</em>`;
+            }
+            return total;
+        }
+
+        function loadSecretBudgetInputs() {
+            let budget = { flight: 3450000, allowance: 1800000, hotel: 1700000, components: 550000, transport: 300000 };
+            try {
+                const stored = localStorage.getItem('noc_rab_budget');
+                if (stored) {
+                    budget = { ...budget, ...JSON.parse(stored) };
+                }
+            } catch (e) {
+                console.warn('Load secret budget error:', e);
+            }
+
+            if (document.getElementById('budgetInputFlight')) document.getElementById('budgetInputFlight').value = budget.flight;
+            if (document.getElementById('budgetInputAllowance')) document.getElementById('budgetInputAllowance').value = budget.allowance;
+            if (document.getElementById('budgetInputHotel')) document.getElementById('budgetInputHotel').value = budget.hotel;
+            if (document.getElementById('budgetInputComponents')) document.getElementById('budgetInputComponents').value = budget.components;
+            if (document.getElementById('budgetInputTransport')) document.getElementById('budgetInputTransport').value = budget.transport;
+
+            calculateSecretBudgetTotal();
+
+            const toggle = document.getElementById('secretFixingToggle');
+            if (toggle) toggle.checked = isKutaFixed;
+        }
+
+        function saveSecretBudgetConfig() {
+            const budget = {
+                flight: Number(document.getElementById('budgetInputFlight').value) || 0,
+                allowance: Number(document.getElementById('budgetInputAllowance').value) || 0,
+                hotel: Number(document.getElementById('budgetInputHotel').value) || 0,
+                components: Number(document.getElementById('budgetInputComponents').value) || 0,
+                transport: Number(document.getElementById('budgetInputTransport').value) || 0
+            };
+            localStorage.setItem('noc_rab_budget', JSON.stringify(budget));
+            appendLog('ok', `💾 Konfigurasi Anggaran RAB Talangan disimpan: Total Rp ${(budget.flight + budget.allowance + budget.hotel + budget.components + budget.transport).toLocaleString('id-ID')}. Tersinkron ke docs/rab-print.html`);
+            alert('✅ Konfigurasi Anggaran & Status Simulasi berhasil disimpan ke sistem!');
+        }
+
+        function resetSecretBudgetDefault() {
+            const defaultBudget = { flight: 3450000, allowance: 1800000, hotel: 1700000, components: 550000, transport: 300000 };
+            localStorage.setItem('noc_rab_budget', JSON.stringify(defaultBudget));
+            loadSecretBudgetInputs();
+            appendLog('info', '↺ Konfigurasi Anggaran RAB dikembalikan ke nilai default (Rp 7.800.000).');
+        }
+
+        function openSecretBudgetModal() {
+            loadSecretBudgetInputs();
+            const modal = document.getElementById('secretBudgetModal');
+            if (modal) modal.style.display = 'flex';
+        }
+
+        function closeSecretBudgetModal() {
+            const modal = document.getElementById('secretBudgetModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // Window hotkey listener for Ctrl + Shift + B
+        window.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && (e.key === 'B' || e.key === 'b')) {
+                e.preventDefault();
+                openSecretBudgetModal();
+            }
+        });
+
+        // ==========================================
+        // 10. Terminal Serial Flasher Interaktif (Kabel FTDI Simulator)
+        // ==========================================
+        let isFtdiAttached = false;
+        let isFlashingBusy = false;
+
+        function attachFtdiCable() {
+            const consoleBox = document.getElementById('diagConsole');
+            const badge = document.getElementById('ftdiStatusBadge');
+            const btn = document.getElementById('btnAttachFtdi');
+            const uartStatus = document.getElementById('diagStatusUart');
+            const uartItem = document.getElementById('diagItemUart');
+
+            isFtdiAttached = true;
+            if (badge) {
+                badge.textContent = '🔌 FTDI: TERHUBUNG (COM4)';
+                badge.style.color = '#34d399';
+                badge.style.background = 'rgba(16, 185, 129, 0.15)';
+                badge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+            }
+            if (btn) {
+                btn.textContent = '✓ FTDI Connected (COM4)';
+                btn.style.color = '#34d399';
+                btn.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+            }
+            if (uartStatus) {
+                uartStatus.innerHTML = 'CONNECTED &bull; FT232R UART @ 115200 BAUD';
+                uartStatus.style.color = '#34d399';
+                if (uartItem) uartItem.classList.remove('fault');
+            }
+
+            if (consoleBox) {
+                consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[FTDI] Hardware UART attached: FTDI FT232R USB UART (VID:0403, PID:6001, SNR:FT829KTA).</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#34d399;">[FTDI] Serial port COM4 opened at 115200 8-N-1. RTS/DTR flow control asserted.</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#fbbf24;">[FTDI] Bootloader trigger: GPIO0 pulled LOW, EN pulsing... ESP32 in UART Download Mode.</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            }
+            appendLog('info', '🔌 Kabel USB-UART FTDI dicolokkan ke port serial ESP32-KTA-03 (COM4).');
+        }
+
+        function runChipIdQuery() {
+            const consoleBox = document.getElementById('diagConsole');
+            if (!consoleBox) return;
+
+            if (!isFtdiAttached) {
+                consoleBox.innerHTML += `<br><span style="color:#ef4444;">[ERROR] Port serial tidak terdeteksi. Silakan pasang kabel FTDI terlebih dahulu!</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+                return;
+            }
+
+            consoleBox.innerHTML += `<br><span style="color:#cbd5e1;">luthfi@unsri-flasher:~$ esptool.py chip_id</span>`;
+            consoleBox.innerHTML += `<br><span style="color:#94a3b8;">esptool.py v4.7.0 &bull; Connecting to COM4.....</span>`;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+
+            setTimeout(() => {
+                consoleBox.innerHTML += `<br><span style="color:#34d399;">Chip is ESP32-D0WDQ6 (revision v1.0) &bull; Crystal: 40MHz</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#38bdf8;">Features: WiFi, BT, Dual Core 240MHz, VRef calibration in efuse</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#38bdf8;">MAC: 24:6F:28:B4:9C:18 | Flash: 4MB (DIO 40MHz) | Manufacturer: 0xC8</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            }, 600);
+        }
+
+        function runSerialFlashFirmware() {
+            const consoleBox = document.getElementById('diagConsole');
+            const progressCont = document.getElementById('flasherProgressContainer');
+            const progressFill = document.getElementById('flasherProgressFill');
+            const progressPct = document.getElementById('flasherProgressPct');
+            const progressStatus = document.getElementById('flasherProgressStatus');
+            if (!consoleBox) return;
+
+            if (!isFtdiAttached) {
+                consoleBox.innerHTML += `<br><span style="color:#ef4444;">[ERROR] Target MCU tidak merespons. Pasang kabel FTDI terlebih dahulu!</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+                return;
+            }
+
+            if (isFlashingBusy) return;
+            isFlashingBusy = true;
+
+            consoleBox.innerHTML += `<br><span style="color:#cbd5e1;">luthfi@unsri-flasher:~$ esptool.py --port COM4 --baud 921600 write_flash -z 0x10000 firmware_scada_kuta_v2.4.bin</span>`;
+            consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[FLASH] Erasing flash sector (this may take a few seconds)...</span>`;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+
+            if (progressCont) progressCont.style.display = 'block';
+            if (progressFill) progressFill.style.width = '0%';
+            if (progressPct) progressPct.textContent = '0%';
+            if (progressStatus) progressStatus.textContent = 'Erasing sector at 0x10000...';
+
+            let currentPct = 0;
+            const flashInterval = setInterval(() => {
+                currentPct += 20;
+                if (currentPct <= 100) {
+                    if (progressFill) progressFill.style.width = currentPct + '%';
+                    if (progressPct) progressPct.textContent = currentPct + '%';
+                    const addr = '0x' + (0x10000 + currentPct * 640).toString(16).toUpperCase();
+                    if (progressStatus) progressStatus.textContent = `Writing at ${addr}... (${currentPct}%)`;
+                    consoleBox.innerHTML += `<br><span style="color:#94a3b8;">Writing at ${addr}... (${currentPct}%) [Compressed 32000 bytes]</span>`;
+                    consoleBox.scrollTop = consoleBox.scrollHeight;
+                }
+
+                if (currentPct >= 100) {
+                    clearInterval(flashInterval);
+                    setTimeout(() => {
+                        consoleBox.innerHTML += `<br><span style="color:#34d399;">[VERIFY] Hash of data verified (SHA-256: 4f9b2c... OK).</span>`;
+                        consoleBox.innerHTML += `<br><span style="color:#34d399;">[SUCCESS] Flashing complete! EEPROM Integrity Restored.</span>`;
+                        consoleBox.innerHTML += `<br><span style="color:#fbbf24;">[NOTE] Lakukan penggantian sekring fisik F1 untuk menaikkan kembali tegangan gardu.</span>`;
+                        consoleBox.scrollTop = consoleBox.scrollHeight;
+
+                        const eepromStatus = document.getElementById('diagStatusEeprom');
+                        const eepromItem = document.getElementById('diagItemEeprom');
+                        if (eepromStatus) {
+                            eepromStatus.innerHTML = 'CRC32 OK &bull; FLASH AES-256 SIGNED';
+                            eepromStatus.style.color = '#34d399';
+                            if (eepromItem) eepromItem.classList.remove('fault');
+                        }
+
+                        isFlashingBusy = false;
+                        if (progressStatus) progressStatus.textContent = 'Flashing Complete (100%)';
+                        appendLog('ok', '🚀 Firmware SCADA v2.4 berhasil di-flash ke ESP32-KTA-03 via port UART.');
+                    }, 400);
+                }
+            }, 300);
+        }
+
+        function executePhysicalRepair() {
+            const consoleBox = document.getElementById('diagConsole');
+            if (!consoleBox) return;
+
+            consoleBox.innerHTML += `<br><span style="color:#cbd5e1;">luthfi@unsri-flasher:~$ sudo ./repair_hardware_kuta.sh</span>`;
+            consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[REPAIR] Mengganti sekring F1 (500mA Fast-Blow 20kV Isolator)... OK.</span>`;
+            consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[REPAIR] Membersihkan kristal aerosol garam dengan Isopropyl Alcohol 99%... OK.</span>`;
+            consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[REPAIR] Pelapisan PCB dengan Conformal Coating Silicone Spray... OK.</span>`;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+
+            setTimeout(() => {
+                toggleFixingMode(true);
+                consoleBox.innerHTML += `<br><span style="color:#34d399; font-weight:bold;">[SUCCESS] Hard reboot via RTS pin: Relai 220V engage! Tegangan gardu: 221.4V.</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#34d399;">[SCADA] Node ESP32-KTA-03 kembali online ke kluster telemetri Bali.</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            }, 800);
+        }
+
+        function executeCliCommand(customCmd) {
+            const input = document.getElementById('diagCliInput');
+            const consoleBox = document.getElementById('diagConsole');
+            if (!consoleBox) return;
+
+            const cmd = (customCmd || (input ? input.value : '')).trim();
+            if (input) input.value = '';
+            if (!cmd) return;
+
+            consoleBox.innerHTML += `<br><span style="color:#cbd5e1;">luthfi@unsri-flasher:~$ ${cmd}</span>`;
+
+            const lower = cmd.toLowerCase();
+            if (lower === 'help') {
+                consoleBox.innerHTML += `<br><span style="color:#38bdf8;">Perintah yang tersedia:</span>
+                <br>&bull; <strong style="color:#ffffff;">attach</strong> / <strong style="color:#ffffff;">ftdi</strong> : Colok kabel serial FTDI
+                <br>&bull; <strong style="color:#ffffff;">chip_id</strong> / <strong style="color:#ffffff;">esptool.py chip_id</strong> : Cek identitas chip ESP32
+                <br>&bull; <strong style="color:#ffffff;">flash</strong> / <strong style="color:#ffffff;">write_flash</strong> : Flash firmware SCADA v2.4
+                <br>&bull; <strong style="color:#ffffff;">repair</strong> / <strong style="color:#ffffff;">fix</strong> : Ganti sekring & pulihkan Gardu Kuta
+                <br>&bull; <strong style="color:#ffffff;">reboot</strong> : Reset MCU via RTS pin
+                <br>&bull; <strong style="color:#ffffff;">status</strong> : Tampilkan status relai & tegangan
+                <br>&bull; <strong style="color:#ffffff;">clear</strong> : Bersihkan layar terminal`;
+            } else if (lower === 'clear') {
+                consoleBox.innerHTML = `[DIAG-INIT] Console connected to DCC SCADA Serial Bus.<br>[DIAG-READY] Terminal cleared. Type 'help' for commands.`;
+            } else if (lower === 'attach' || lower === 'ftdi') {
+                attachFtdiCable();
+            } else if (lower.includes('chip_id') || lower === 'esptool' || lower === 'esptool.py') {
+                runChipIdQuery();
+            } else if (lower.includes('flash') || lower.includes('write_flash')) {
+                runSerialFlashFirmware();
+            } else if (lower === 'repair' || lower === 'fix') {
+                executePhysicalRepair();
+            } else if (lower === 'reboot') {
+                consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[RTS] Hard resetting MCU via FTDI RTS pin...</span>`;
+                setTimeout(() => {
+                    consoleBox.innerHTML += `<br><span style="color:#34d399;">[BOOT] rst:0x1 (POWERON_RESET), boot:0x13 (SPI_FAST_FLASH_BOOT)</span>`;
+                    consoleBox.innerHTML += `<br><span style="color:#34d399;">[BOOT] Node ESP32-KTA-03 Booting SCADA Mesh v2.4... OK.</span>`;
+                    consoleBox.scrollTop = consoleBox.scrollHeight;
+                }, 500);
+            } else if (lower === 'status') {
+                const volt = isKutaFixed ? '221.4 V (OPTIMAL)' : '0.0 V (FLATLINE / HARDWARE LOCK)';
+                consoleBox.innerHTML += `<br><span style="color:#38bdf8;">NODE: ESP32-KTA-03 | VOLTAGE: ${volt} | FTDI: ${isFtdiAttached ? 'CONNECTED' : 'DISCONNECTED'}</span>`;
+            } else {
+                consoleBox.innerHTML += `<br><span style="color:#ef4444;">Command not found: '${cmd}'. Ketik 'help' untuk daftar perintah.</span>`;
+            }
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+        }
+
         function updateLiveTimestamps() {
             const now = new Date();
             const pad = (n) => n.toString().padStart(2, '0');
@@ -3594,12 +4545,14 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
             }
         }
 
-        // Initialize chart, CCTV & chat state once DOM ready
+        // Initialize chart, CCTV, chat state, HT radio & recovery mode once DOM ready
         window.addEventListener('DOMContentLoaded', () => {
             updateLiveTimestamps();
             initVoltageChart();
             initCCTVSimulation();
             loadChatState();
+            updateHtRadioUI();
+            applyFixingModeState();
         });
     </script>
 
@@ -3824,7 +4777,7 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
 
     <!-- Option 4: Hardware Diagnostics & Firmware Flasher Modal -->
     <div id="hardwareDiagModal" class="diag-modal-overlay">
-        <div class="diag-modal-card">
+        <div class="diag-modal-card" style="max-width: 720px;">
             <div class="diag-modal-header">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span>🔧</span>
@@ -3834,43 +4787,76 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
             </div>
 
             <div class="diag-body">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 6px;">
                     <span style="font-family: 'Fira Code', monospace; font-size: 11px; color: #94a3b8;">TARGET MCU: ESP32-WROOM-32D (MAC: 24:6F:28:B4:9C:18)</span>
-                    <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #ef4444; font-weight: 700; background: rgba(239,68,68,0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.4);">HARDWARE LOCK: ACTIVE</span>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <span id="ftdiStatusBadge" style="font-family: 'Fira Code', monospace; font-size: 10px; color: #f87171; background: rgba(239,68,68,0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.4);">
+                            🔌 FTDI: TERPUTUS
+                        </span>
+                        <span id="hwLockBadge" style="font-family: 'Fira Code', monospace; font-size: 10px; color: #ef4444; font-weight: 700; background: rgba(239,68,68,0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.4);">
+                            HARDWARE LOCK: ACTIVE
+                        </span>
+                    </div>
                 </div>
 
                 <div class="diag-grid">
-                    <div class="diag-item fault">
+                    <div class="diag-item fault" id="diagItemPower">
                         <div class="diag-item-name">PIN 3V3 (MAIN POWER RAIL)</div>
-                        <div class="diag-item-status" style="color: #ef4444;">0.04 V &bull; SHORT TO GND (SALT RESIDUE)</div>
+                        <div class="diag-item-status" id="diagStatusPower" style="color: #ef4444;">0.04 V &bull; SHORT TO GND (SALT RESIDUE)</div>
                     </div>
-                    <div class="diag-item fault">
+                    <div class="diag-item fault" id="diagItemFuse">
                         <div class="diag-item-name">SEKRING FUSE F1 (500mA FAST-BLOW)</div>
-                        <div class="diag-item-status" style="color: #ef4444;">BLOWN / OPEN-CIRCUIT (TRIPPED)</div>
+                        <div class="diag-item-status" id="diagStatusFuse" style="color: #ef4444;">BLOWN / OPEN-CIRCUIT (TRIPPED)</div>
                     </div>
-                    <div class="diag-item fault">
+                    <div class="diag-item fault" id="diagItemBus">
                         <div class="diag-item-name">RS-485 MODBUS BUS (A-B LINE)</div>
-                        <div class="diag-item-status" style="color: #ef4444;">0.00 V &bull; NO PACKET TRAFFIC</div>
+                        <div class="diag-item-status" id="diagStatusBus" style="color: #ef4444;">0.00 V &bull; NO PACKET TRAFFIC</div>
                     </div>
-                    <div class="diag-item">
+                    <div class="diag-item" id="diagItemOpto">
                         <div class="diag-item-name">OPTOCOUPLER ISOLASI TEGANGAN TINGGI</div>
-                        <div class="diag-item-status" style="color: #fbbf24;">INTERLOCKED &bull; 20kV PROTECTION SAFE</div>
+                        <div class="diag-item-status" id="diagStatusOpto" style="color: #fbbf24;">INTERLOCKED &bull; 20kV PROTECTION SAFE</div>
                     </div>
-                    <div class="diag-item fault">
+                    <div class="diag-item fault" id="diagItemEeprom">
                         <div class="diag-item-name">INTEGRITAS FIRMWARE EEPROM</div>
-                        <div class="diag-item-status" style="color: #ef4444;">CRC32 MISMATCH &bull; 0xDEADBEEF</div>
+                        <div class="diag-item-status" id="diagStatusEeprom" style="color: #ef4444;">CRC32 MISMATCH &bull; 0xDEADBEEF</div>
                     </div>
-                    <div class="diag-item fault">
+                    <div class="diag-item fault" id="diagItemUart">
                         <div class="diag-item-name">PORT SERIAL UART (GPIO 1 &amp; GPIO 3)</div>
-                        <div class="diag-item-status" style="color: #ef4444;">DISCONNECTED &bull; WAJIB KABEL FISIK FTDI</div>
+                        <div class="diag-item-status" id="diagStatusUart" style="color: #ef4444;">DISCONNECTED &bull; WAJIB KABEL FISIK FTDI</div>
                     </div>
                 </div>
 
                 <!-- Self-Test & Flashing Log Terminal in Modal -->
-                <div style="background: #050811; border: 1px solid #1e293b; border-radius: 6px; padding: 10px 12px; font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8; height: 110px; overflow-y: auto; margin-bottom: 14px;" id="diagConsole">
-                    [DIAG-INIT] Console connected to DCC SCADA Bus.<br>
+                <div style="background: #020617; border: 1px solid #1e293b; border-radius: 6px; padding: 10px 12px; font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8; height: 130px; overflow-y: auto;" id="diagConsole">
+                    [DIAG-INIT] Console connected to DCC SCADA Serial Bus.<br>
                     [DIAG-WARN] Node ESP32-KTA-03 unresponsive on physical bus.<br>
-                    [DIAG-INFO] Ready to perform diagnostics or firmware flash test.
+                    [DIAG-INFO] Plug in physical FTDI USB-UART cable to bypass hardware lock and flash firmware.
+                </div>
+
+                <!-- Interactive Command Line Interface (CLI) -->
+                <div class="cli-input-line">
+                    <span class="cli-prompt">luthfi@unsri-flasher:~$ </span>
+                    <input type="text" id="diagCliInput" class="diag-cli-input" placeholder="Ketik perintah (help, chip_id, flash, repair, reboot, clear)..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')executeCliCommand()">
+                    <button type="button" class="cli-send-btn" onclick="executeCliCommand()" title="Jalankan perintah">⏎ Run</button>
+                </div>
+
+                <!-- Quick Command Shortcuts Toolbar -->
+                <div class="flasher-quick-bar">
+                    <button type="button" class="quick-cmd-btn" id="btnAttachFtdi" onclick="attachFtdiCable()">🔌 1. Colok Kabel FTDI</button>
+                    <button type="button" class="quick-cmd-btn" onclick="runChipIdQuery()">⚡ 2. Cek Chip ID (esptool)</button>
+                    <button type="button" class="quick-cmd-btn" onclick="runSerialFlashFirmware()">🚀 3. Flash Firmware AES-256</button>
+                    <button type="button" class="quick-cmd-btn success" onclick="executePhysicalRepair()">🔧 4. Ganti Sekring &amp; Pulihkan Gardu</button>
+                </div>
+
+                <!-- Flashing Animation Progress Bar -->
+                <div id="flasherProgressContainer" style="display: none; margin-bottom: 12px;">
+                    <div style="display: flex; justify-content: space-between; font-family: 'Fira Code', monospace; font-size: 10px; color: #38bdf8; margin-bottom: 3px;">
+                        <span id="flasherProgressStatus">Writing flash to 0x10000...</span>
+                        <span id="flasherProgressPct">0%</span>
+                    </div>
+                    <div class="flasher-progress-wrap">
+                        <div id="flasherProgressFill" class="flasher-progress-fill"></div>
+                    </div>
                 </div>
 
                 <!-- OTA Flash Alert Box (Shown on OTA attempt) -->
@@ -3885,10 +4871,91 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                             ⚡ Jalankan Self-Test Sirkuit
                         </button>
                         <button type="button" class="terminal-btn" id="btnOtaFlash" onclick="attemptOtaFlash()" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.4);">
-                            📡 Coba Flash Firmware Jarak Jauh (OTA)
+                            📡 Coba Flash Jarak Jauh (OTA)
                         </button>
                     </div>
                     <button type="button" class="terminal-btn" onclick="closeHardwareDiagnosticsModal()">
+                        Tutup
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 2: Secret Budget Configuration & Recovery Simulation Modal -->
+    <div id="secretBudgetModal" class="secret-modal-overlay">
+        <div class="secret-modal-card">
+            <div class="secret-modal-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>🔒</span>
+                    <span>PANEL RAHASIA ANGGARAN &amp; SIMULASI RECOVERY (Ctrl+Shift+B)</span>
+                </div>
+                <button type="button" onclick="closeSecretBudgetModal()" style="background:none; border:none; color:#ffffff; font-size:16px; cursor:pointer;">✕</button>
+            </div>
+
+            <div class="secret-modal-body">
+                <div style="font-size: 11.5px; color: #94a3b8; margin-bottom: 16px; line-height: 1.5; border-bottom: 1px solid #1e293b; padding-bottom: 10px;">
+                    Panel konfigurasi rahasia internal NOC untuk mengatur rincian biaya operasional dokumen cetak <strong>RAB Talangan Dinas</strong> (otomatis disinkronkan ke <code>docs/rab-print.html</code>) serta saklar pengaktifan <strong>Simulasi Pemulihan (Fixing Mode)</strong> Gardu Kuta Beach.
+                </div>
+
+                <!-- 5 Form Inputs for Budget Items -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <div class="secret-field-group">
+                        <label class="secret-field-label">1. Tiket Pesawat PP Palembang - Denpasar (Rp):</label>
+                        <input type="number" id="budgetInputFlight" class="secret-field-input" value="3450000" oninput="calculateSecretBudgetTotal()">
+                    </div>
+                    <div class="secret-field-group">
+                        <label class="secret-field-label">2. Uang Harian &amp; Saku Dinas (4 Hari) (Rp):</label>
+                        <input type="number" id="budgetInputAllowance" class="secret-field-input" value="1800000" oninput="calculateSecretBudgetTotal()">
+                    </div>
+                    <div class="secret-field-group">
+                        <label class="secret-field-label">3. Akomodasi Hotel Dekat Kuta (4 Malam) (Rp):</label>
+                        <input type="number" id="budgetInputHotel" class="secret-field-input" value="1700000" oninput="calculateSecretBudgetTotal()">
+                    </div>
+                    <div class="secret-field-group">
+                        <label class="secret-field-label">4. Komponen &amp; Kit Flasher UART (Rp):</label>
+                        <input type="number" id="budgetInputComponents" class="secret-field-input" value="550000" oninput="calculateSecretBudgetTotal()">
+                    </div>
+                    <div class="secret-field-group" style="grid-column: span 2;">
+                        <label class="secret-field-label">5. Transportasi Lokal &amp; Logistik Bandara PP (Rp):</label>
+                        <input type="number" id="budgetInputTransport" class="secret-field-input" value="300000" oninput="calculateSecretBudgetTotal()">
+                    </div>
+                </div>
+
+                <!-- Total & Terbilang Preview -->
+                <div class="secret-total-box">
+                    <div>
+                        <div style="font-size: 11px; color: #94a3b8; font-weight: 600;">TOTAL ESTIMASI TALANGAN (REIMBURSEMENT):</div>
+                        <div id="secretTerbilangText" style="font-size: 10px; color: #67e8f9; font-style: italic; margin-top: 2px;">Terbilang: Tujuh Juta Delapan Ratus Ribu Rupiah</div>
+                    </div>
+                    <div id="secretTotalPreview" class="secret-total-val">Rp 7.800.000</div>
+                </div>
+
+                <!-- Fixing Mode Toggle Card -->
+                <div class="secret-toggle-card">
+                    <div class="secret-toggle-info">
+                        <h4>⚡ Mode Simulasi Pemulihan (Fixing Mode)</h4>
+                        <p>Pulihkan Gardu Kuta Beach dari 0.0V ke 221.4V, nyalakan CCTV online, dan ubah status 15 node menjadi optimal.</p>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="secretFixingToggle" style="width: 20px; height: 20px; accent-color: #10b981; cursor: pointer;" onchange="toggleFixingModeFromCheckbox(this.checked)">
+                    </div>
+                </div>
+
+                <!-- Modal Actions -->
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; border-top: 1px solid #1e293b; padding-top: 14px;">
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button type="button" class="terminal-btn" onclick="saveSecretBudgetConfig()" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee; border-color: rgba(6, 182, 212, 0.4);">
+                            💾 Simpan Konfigurasi
+                        </button>
+                        <a href="docs/rab-print.html" target="_blank" class="terminal-btn" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: rgba(16, 185, 129, 0.4); text-decoration: none;">
+                            📄 Cetak RAB Talangan (PDF)
+                        </a>
+                        <button type="button" class="terminal-btn" onclick="resetSecretBudgetDefault()" style="color: #94a3b8;">
+                            ↺ Reset Default
+                        </button>
+                    </div>
+                    <button type="button" class="terminal-btn" onclick="closeSecretBudgetModal()">
                         Tutup
                     </button>
                 </div>

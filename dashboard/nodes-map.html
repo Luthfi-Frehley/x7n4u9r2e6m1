@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Peta Geospasial Node IoT Bali - PLN x UNSRI</title>
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noodp, noydir">
+    <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, max-snippet:0">
+    <!-- Security Session Guard: Cegah bypass F12 / Direct URL -->
+    <script>
+        (function() {
+            try {
+                const s = JSON.parse(sessionStorage.getItem('scada_auth_session') || '{}');
+                if (!s || !s.auth || s.token !== 'NOC-UNSRI-SECURE-L2') {
+                    window.location.replace('../index.html');
+                }
+            } catch(e) {
+                window.location.replace('../index.html');
+            }
+        })();
+    </script>
+    <title>Peta Geospasial Node IoT Nasional &amp; Bali - PLN x UNSRI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -374,8 +389,8 @@
                 <img src="../images/Logo_PLN.png" alt="PLN" style="width: 22px; height: 22px; object-fit: contain;">
             </div>
             <div class="brand-text">
-                <h1>Peta Geospasial Node IoT Regional Bali</h1>
-                <p>Pemantauan Trafo & Gateway Lapangan Secara Spasial</p>
+                <h1>Peta Geospasial Grid IoT Nasional - PLN x UNSRI</h1>
+                <p>Pemantauan Trafo &amp; Gateway Lapangan Se-Indonesia (Fokus Anomali: Sektor Bali)</p>
             </div>
         </div>
 
@@ -428,42 +443,61 @@
         <!-- Quick Action / Active Alert HUD -->
         <div class="incident-quick-action">
             <div class="incident-badge">
-                ⚠️ ANOMALI TERDETEKSI
+                ⚠️ ANOMALI TERDETEKSI (SEKTOR BALI)
             </div>
             <div class="incident-header">ESP32-KTA-03 (Kuta Beach)</div>
             <div class="incident-details">
                 Status: CRITICAL TIMEOUT (>300s)<br>
-                Lokasi: Gardu Distribusi Kuta<br>
-                Signal Loss: 100% (No Telemetry)<br>
-                Relai Trip: Manual Reset Wajib
+                Tegangan: <strong>0.0 Volt (Drop Total)</strong><br>
+                Lokasi: Gardu Distribusi Kuta Beach<br>
+                Relai Trip: <strong>Wajib Flashing Fisik di Bali</strong>
             </div>
-            <button class="btn-jump-incident" onclick="focusOnIncident()">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
-                </svg>
-                Zoom ke Node Kuta (Alert)
-            </button>
-            <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: #2563eb; color: #fff; padding: 7px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace; margin-top: 6px;">
-                Unduh SPPD Perjalanan Dinas (.PDF)
-            </a>
+
+            <!-- Viewport Presets -->
+            <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 8px;">
+                <button class="btn-jump-incident" onclick="focusOnIncident()">
+                    🔴 Zoom ke Insiden Kuta Bali (Alert)
+                </button>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
+                    <button type="button" onclick="viewIndonesia()" style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; color: #94a3b8; font-size: 10px; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-family: 'Fira Code', monospace; display: flex; align-items: center; justify-content: center; gap: 4px;">
+                        🇮🇩 Peta Nasional
+                    </button>
+                    <button type="button" onclick="viewPalembang()" style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; font-size: 10px; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-family: 'Fira Code', monospace; display: flex; align-items: center; justify-content: center; gap: 4px;">
+                        🎓 Unsri HQ
+                    </button>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 8px;">
+                <a href="../docs/sppd-print.html" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: #2563eb; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 10.5px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">
+                    📄 Buka SPPD Dinas (PDF)
+                </a>
+                <a href="../docs/rab-print.html" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: rgba(245, 158, 11, 0.2); border: 1px solid #f59e0b; color: #fbbf24; padding: 6px 10px; border-radius: 6px; font-size: 10.5px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">
+                    💰 Buka RAB Talangan Biaya (PDF)
+                </a>
+            </div>
         </div>
 
         <!-- Legend HUD -->
         <div class="map-hud-legend">
             <div class="legend-title">
-                <span>STATUS NODE TELEMETRI</span>
-                <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #38bdf8;">BALI SECTOR</span>
+                <span>GRID IOT SCADA NASIONAL</span>
+                <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #38bdf8;">PLN x UNSRI</span>
             </div>
             <div class="legend-item">
                 <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 8px #10b981;"></span>
-                <span>Online & Sinkron (3 Node Aktif)</span>
+                <span>Normal &amp; Sinkron (7 Gardu Regional)</span>
             </div>
             <div class="legend-item">
                 <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block; box-shadow: 0 0 8px #ef4444;"></span>
-                <span style="color: #f87171; font-weight: 600;">Down / Terputus (1 Node Alert - Kuta)</span>
+                <span style="color: #f87171; font-weight: 600;">Kritis Drop 0.0V (1 Node - Gardu Kuta)</span>
             </div>
-            <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid #1f2937; font-size: 10.5px; color: #64748b;">
-                Peta Leaflet.js • Sinkronisasi Koordinat Real-Time GPS
+            <div class="legend-item">
+                <span style="width: 16px; height: 2px; background: #f59e0b; display: inline-block; border-top: 2px dashed #f59e0b;"></span>
+                <span style="color: #fbbf24; font-size: 10.5px;">Rute Penugasan Udara (PLM ✈️ DPS)</span>
+            </div>
+            <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #1f2937; font-size: 10px; color: #64748b;">
+                Peta Leaflet.js • Sinkronisasi Koordinat GPS Se-Indonesia
             </div>
         </div>
 
@@ -471,19 +505,17 @@
 
     <!-- Leaflet Script -->
     <script>
-        // Inisialisasi Peta Leaflet dengan fokus Pulau Bali
+        // Inisialisasi Peta Leaflet dengan cakupan luas seluruh Indonesia
         const map = L.map('map-container', {
             zoomControl: false
-        }).setView([-8.68, 115.20], 11);
+        }).setView([-2.5, 117.5], 5);
 
         // Tambah zoom control di pojok kiri atas
         L.control.zoom({ position: 'topleft' }).addTo(map);
 
         // ==========================================
-        // Definisi Tile Layer (100% Gratis & Tanpa API Key)
+        // Definisi Tile Layer
         // ==========================================
-        
-        // 1. Esri Dark Tactical Gray (Elegan, NOC Cyber, Tanpa Watermark)
         const darkGrayBase = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
             attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
             maxZoom: 16
@@ -493,23 +525,19 @@
         });
         const darkNocGroup = L.layerGroup([darkGrayBase, darkGrayRef]);
 
-        // 2. Esri World Imagery (Citra Satelit Resolusi Tinggi Asli)
         const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
             attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics',
             maxZoom: 18
         });
 
-        // 3. OpenStreetMap Dark Filter (Fallback Bebas)
         const osmDark = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors',
             className: 'osm-dark-tiles',
             maxZoom: 19
         });
 
-        // Set layer default ke Dark Tactical Gray
         darkNocGroup.addTo(map);
 
-        // Layer Switcher Control di Pojok Kanan Bawah
         const baseMaps = {
             "🌌 Dark NOC Tactical": darkNocGroup,
             "🛰️ Citra Satelit (High-Res)": satelliteLayer,
@@ -517,7 +545,7 @@
         };
         L.control.layers(baseMaps, null, { position: 'bottomright' }).addTo(map);
 
-        // Icon Pabrik: Hijau (Normal)
+        // Marker Icons
         const greenIcon = L.divIcon({
             className: 'beacon-marker',
             html: '<div class="beacon-green-ring"></div><div class="beacon-green"></div>',
@@ -526,20 +554,119 @@
             popupAnchor: [0, -12]
         });
 
-        // Icon Pabrik: MERAH KEDAP-KEDIP (ALERT GANGGUAN DI KUTA)
         const redPulsingIcon = L.divIcon({
             className: 'beacon-marker',
             html: '<div class="beacon-red-ring"></div><div class="beacon-red"></div>',
-            iconSize: [24, 24],
-            iconAnchor: [12, 12],
-            popupAnchor: [0, -12]
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
+            popupAnchor: [0, -14]
         });
 
         // ==========================================
-        // Definisi Node Lokasi
+        // Definisi Node Lokasi Seluruh Indonesia
         // ==========================================
         
-        // 1. Denpasar / Udayana (Gateway Utama)
+        // 1. PALEMBANG (LAB IOT TEKNIK ELEKTRO UNSRI / GI BUKIT BESAR) - HQ
+        const plmMarker = L.marker([-2.9856, 104.7317], { icon: greenIcon }).addTo(map);
+        plmMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4 style="color: #34d399;">🎓 [HQ PUSAT] Lab IoT Universitas Sriwijaya</h4>
+                <table class="node-popup-table">
+                    <tr><td>Stasiun</td><td>: GI Bukit Besar Palembang</td></tr>
+                    <tr><td>Node ID</td><td>: <strong>ESP32-PLM-HQ01</strong></td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">OPTIMAL (SINKRON)</span></td></tr>
+                    <tr><td>Tegangan</td><td>: 221.2 V &bull; 50.01 Hz</td></tr>
+                    <tr><td>Peneliti</td><td>: <strong>Luthfi Hibatullah</strong></td></tr>
+                    <tr><td>Penugasan</td><td>: 🛫 Siap Terbang ke Bali (SPPD #042)</td></tr>
+                </table>
+            </div>
+        `);
+
+        // 2. JAKARTA (GI GAMBIR - UID JAYA)
+        const jktMarker = L.marker([-6.1754, 106.8272], { icon: greenIcon }).addTo(map);
+        jktMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Gardu Induk Gambir (Jakarta)</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-JKT-01</td></tr>
+                    <tr><td>Regional</td><td>: PLN UID Distribusi Jakarta Raya</td></tr>
+                    <tr><td>Tegangan</td><td>: 220.8 V &bull; 50.00 Hz</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Normal Operating</span></td></tr>
+                </table>
+            </div>
+        `);
+
+        // 3. BANDUNG (GI DAGO - UID JABAR)
+        const bdgMarker = L.marker([-6.8850, 107.6133], { icon: greenIcon }).addTo(map);
+        bdgMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Gardu Induk Dago (Bandung)</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-BDG-02</td></tr>
+                    <tr><td>Regional</td><td>: PLN UID Jawa Barat</td></tr>
+                    <tr><td>Tegangan</td><td>: 219.6 V &bull; 49.99 Hz</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Normal Operating</span></td></tr>
+                </table>
+            </div>
+        `);
+
+        // 4. SURABAYA (GI WARU - UID JATIM)
+        const sbyMarker = L.marker([-7.3524, 112.7291], { icon: greenIcon }).addTo(map);
+        sbyMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Gardu Induk Waru (Surabaya)</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-SBY-03</td></tr>
+                    <tr><td>Regional</td><td>: PLN UID Jawa Timur</td></tr>
+                    <tr><td>Tegangan</td><td>: 220.5 V &bull; 50.02 Hz</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Normal Operating</span></td></tr>
+                </table>
+            </div>
+        `);
+
+        // 5. MEDAN (GI SIMPANG TIGA - UID SUMUT)
+        const mdnMarker = L.marker([3.5952, 98.6722], { icon: greenIcon }).addTo(map);
+        mdnMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Gardu Induk Simpang Tiga (Medan)</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-MDN-01</td></tr>
+                    <tr><td>Regional</td><td>: PLN UID Sumatera Utara</td></tr>
+                    <tr><td>Tegangan</td><td>: 221.0 V &bull; 50.01 Hz</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Normal Operating</span></td></tr>
+                </table>
+            </div>
+        `);
+
+        // 6. BALIKPAPAN (GI KARANG JOANG - IKN TRANSMISI)
+        const bpnMarker = L.marker([-1.1718, 116.8920], { icon: greenIcon }).addTo(map);
+        bpnMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Gardu Induk Karang Joang (Balikpapan - IKN)</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-IKN-01</td></tr>
+                    <tr><td>Regional</td><td>: PLN UID Kalimantan Timur</td></tr>
+                    <tr><td>Tegangan</td><td>: 220.4 V &bull; 50.00 Hz</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Interkoneksi Normal</span></td></tr>
+                </table>
+            </div>
+        `);
+
+        // 7. MAKASSAR (GI PANAKKUKANG - UID SULSELRABAR)
+        const upgMarker = L.marker([-5.1477, 119.4327], { icon: greenIcon }).addTo(map);
+        upgMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Gardu Induk Panakkukang (Makassar)</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-MKS-01</td></tr>
+                    <tr><td>Regional</td><td>: PLN UID Sulselrabar</td></tr>
+                    <tr><td>Tegangan</td><td>: 220.2 V &bull; 50.01 Hz</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Normal Operating</span></td></tr>
+                </table>
+            </div>
+        `);
+
+        // 8. DENPASAR / UDAYANA (Gateway Regional Bali)
         const dpsMarker = L.marker([-8.6705, 115.2126], { icon: greenIcon }).addTo(map);
         dpsMarker.bindPopup(`
             <div class="node-popup-card">
@@ -548,70 +675,92 @@
                     <tr><td>Node ID</td><td>: ESP32-DPS-01</td></tr>
                     <tr><td>Hardware</td><td>: ESP32-WROOM-32U</td></tr>
                     <tr><td>IP Gateway</td><td>: 10.24.112.10</td></tr>
-                    <tr><td>Latensi</td><td>: <span style="color:#34d399;">11 ms (Optimal)</span></td></tr>
-                    <tr><td>Tegangan Bus</td><td>: 12.6 V</td></tr>
-                    <tr><td>Suhu Chip</td><td>: 33.4 °C</td></tr>
-                    <tr><td>Otorisasi</td><td>: Lab IoT Unsri x PLN</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">11 ms (Optimal)</span></td></tr>
                 </table>
             </div>
         `);
 
-        // 2. Jimbaran (Substation Trafo Distribusi)
+        // 9. JIMBARAN (Substation Trafo Distribusi)
         const jbrMarker = L.marker([-8.7892, 115.1627], { icon: greenIcon }).addTo(map);
         jbrMarker.bindPopup(`
             <div class="node-popup-card">
                 <h4>[ONLINE] Substation Trafo Jimbaran 02</h4>
                 <table class="node-popup-table">
                     <tr><td>Node ID</td><td>: ESP32-JBR-02</td></tr>
-                    <tr><td>IP Sensor</td><td>: 10.24.112.18</td></tr>
-                    <tr><td>Protokol</td><td>: MQTT over TLS</td></tr>
-                    <tr><td>Latensi</td><td>: <span style="color:#34d399;">16 ms</span></td></tr>
-                    <tr><td>Suhu Trafo</td><td>: 36.2 °C</td></tr>
-                    <tr><td>Status</td><td>: Repeater Cadangan Siap</td></tr>
+                    <tr><td>Tegangan</td><td>: 220.1 V &bull; Trafo 20kV Aman</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Optimal</span></td></tr>
                 </table>
             </div>
         `);
 
-        // 3. KUTA (NODE DOWN - KEDAP-KEDIP MERAH)
-        const ktaMarker = L.marker([-8.7214, 115.1695], { icon: redPulsingIcon }).addTo(map);
-        ktaMarker.bindPopup(`
-            <div class="node-popup-card">
-                <h4 style="color:#f87171;">⚠️ [CRITICAL ALERT] Node Kuta Beach</h4>
-                <table class="node-popup-table">
-                    <tr><td>Node ID</td><td>: <strong>ESP32-KTA-03</strong></td></tr>
-                    <tr><td>Status</td><td>: <strong style="color:#ef4444;">DOWN (TIMEOUT)</strong></td></tr>
-                    <tr><td>Packet Loss</td><td>: <strong style="color:#ef4444;">100%</strong></td></tr>
-                    <tr><td>Terakhir Dilihat</td><td>: 5 Menit Lalu</td></tr>
-                    <tr><td>Anomali</td><td>: Daya Feeder Gardu Hilang</td></tr>
-                    <tr><td>Tindakan</td><td>: Dispatch Tim Lapangan PLN</td></tr>
-                </table>
-            </div>
-        `);
-
-        // 4. Sanur (Node Pesisir Pantai Sanur)
+        // 10. SANUR (Node Pesisir Pantai Sanur)
         const snrMarker = L.marker([-8.6882, 115.2631], { icon: greenIcon }).addTo(map);
         snrMarker.bindPopup(`
             <div class="node-popup-card">
                 <h4>[ONLINE] Node Pesisir Sanur</h4>
                 <table class="node-popup-table">
                     <tr><td>Node ID</td><td>: ESP32-SNR-04</td></tr>
-                    <tr><td>IP Sensor</td><td>: 10.24.112.22</td></tr>
-                    <tr><td>Latensi</td><td>: <span style="color:#34d399;">13 ms</span></td></tr>
-                    <tr><td>Suhu Trafo</td><td>: 34.0 °C</td></tr>
-                    <tr><td>Status</td><td>: Stabil</td></tr>
+                    <tr><td>Status</td><td>: <span style="color:#34d399;">Stabil</span></td></tr>
                 </table>
             </div>
         `);
 
-        // Fungsi Tombol "Zoom ke Node Kuta"
+        // 11. KUTA BEACH - SATU-SATUNYA NODE MERAH (TITIK TARGET PENUGASAN DINAS)
+        const ktaMarker = L.marker([-8.7214, 115.1695], { icon: redPulsingIcon }).addTo(map);
+        ktaMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4 style="color:#f87171;">⛔ [CRITICAL FAILURE] Gardu Distribusi Kuta</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: <strong>ESP32-KTA-03</strong></td></tr>
+                    <tr><td>Status Tegangan</td><td>: <strong style="color:#ef4444;">0.0 Volt (DROP TOTAL)</strong></td></tr>
+                    <tr><td>Penyebab</td><td>: Korosi Uap Garam Laut CX &bull; Sekring F1 Trip</td></tr>
+                    <tr><td>Enkripsi SCADA</td><td>: AES-256 (Terkunci Fisik)</td></tr>
+                    <tr><td>Tindakan Dinas</td><td>: <strong style="color:#f59e0b;">Penugasan Luthfi Hibatullah (Palembang ✈️ Bali)</strong></td></tr>
+                    <tr><td>Dokumen</td><td>: SPK #042 &bull; SPPD #042 &bull; RAB #042</td></tr>
+                </table>
+            </div>
+        `);
+
+        // ==========================================
+        // Rute Penerbangan Resmi Palembang ✈️ Bali
+        // ==========================================
+        const flightPathCoords = [
+            [-2.9856, 104.7317], // Palembang (PLM)
+            [-6.1256, 106.6559], // Jakarta (CGK Transit)
+            [-8.7482, 115.1672]  // Denpasar Bali (DPS)
+        ];
+
+        const flightPath = L.polyline(flightPathCoords, {
+            color: '#f59e0b',
+            weight: 2.5,
+            dashArray: '8, 8',
+            opacity: 0.85
+        }).addTo(map);
+
+        flightPath.bindPopup(`
+            <div style="font-family: 'Fira Code', monospace; font-size: 11px; padding: 4px;">
+                <strong style="color: #fbbf24;">🛫 RUTE PENUGASAN UDARA RESMI (SPPD #042)</strong><br>
+                Rute: Palembang (PLM) &rarr; Transit CGK &rarr; Denpasar Bali (DPS)<br>
+                Personel: <strong>Luthfi Hibatullah (NIM: 03041182530001)</strong><br>
+                Misi: Investigasi Hardware &amp; Flashing Fisik Gardu Kuta
+            </div>
+        `);
+
+        // ==========================================
+        // Navigasi Viewport
+        // ==========================================
+        function viewIndonesia() {
+            map.flyTo([-2.5, 117.5], 5, { animate: true, duration: 1.5 });
+        }
+
+        function viewPalembang() {
+            map.flyTo([-2.9856, 104.7317], 13, { animate: true, duration: 1.5 });
+            setTimeout(() => { plmMarker.openPopup(); }, 1600);
+        }
+
         function focusOnIncident() {
-            map.flyTo([-8.7214, 115.1695], 14, {
-                animate: true,
-                duration: 1.5
-            });
-            setTimeout(() => {
-                ktaMarker.openPopup();
-            }, 1600);
+            map.flyTo([-8.7214, 115.1695], 13, { animate: true, duration: 1.5 });
+            setTimeout(() => { ktaMarker.openPopup(); }, 1600);
         }
     </script>
 </body>
