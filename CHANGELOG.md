@@ -23,3 +23,4 @@ Semua perubahan dan riwayat rilis protokol sistem telemetri dicatat dalam dokume
 ### Rilis Perdana
 - Inisialisasi arsitektur telemetri node ESP32 cluster Denpasar.
 - Protokol pertukaran paket MQTT broker port 8883.
+

@@ -16,3 +16,4 @@ function generateTelemetryFrame(nodeId, lat, lng) {
 }
 
 module.exports = { generateTelemetryFrame };
+

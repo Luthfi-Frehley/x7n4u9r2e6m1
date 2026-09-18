@@ -25,3 +25,4 @@ Terjadi anomali pemutusan daya pada feeder sekunder 220V akibat cuaca pesisir pa
 ### Rencana Mitigasi
 1. Dispatch teknisi PLN Unit Pelaksana Pelayanan Pelanggan (UP3) Bali Selatan ke titik koordinat node `[-8.7214, 115.1695]`.
 2. Penggantian modul isolator tegangan dan pemulihan catu daya gardu trafo.
+

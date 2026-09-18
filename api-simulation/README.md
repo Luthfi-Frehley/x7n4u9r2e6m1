@@ -6,3 +6,4 @@ Folder ini menyediakan data mock dan jembatan simulasi telemetri untuk demonstra
 - `endpoints.json`: Daftar rute dan spesifikasi API gateway.
 - `mqtt-bridge.js`: Skrip bridge untuk update timestamp berkala.
 - `data-generator.js`: Generator payload telemetri acak.
+

@@ -21,3 +21,4 @@ Dokumen ini mendefinisikan struktur paket data transmisi serial dan nirkabel unt
 - `0xE1`: AC Voltage Out of Bounds (< 198V / > 242V)
 - `0xE2`: Over-Temperature Protection Tripped (> 65°C)
 - `0xEF`: Loss of Primary AC Feeder (Running on LiFePO4 Reserve)
+

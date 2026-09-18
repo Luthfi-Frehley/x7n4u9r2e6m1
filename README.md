@@ -65,3 +65,4 @@ Repositori ini siap dihosting secara gratis dan instan di **GitHub Pages**:
 3. Di bagian **Build and deployment**, pilih **GitHub Actions** atau **Deploy from a branch (`main` / `/root`)**.
 4. Website akan langsung aktif di `https://<username>.github.io/<repo-name>/`.
 5. *(Opsional)* Hubungkan custom domain Anda melalui menu **Custom domain** (misal: `iot.domainlu.com`).
+
