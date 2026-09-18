@@ -561,6 +561,339 @@
             margin-right: 8px;
         }
 
+        /* Export Action Buttons */
+        .btn-export-report {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-export-report:hover {
+            background: rgba(16, 185, 129, 0.3);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-export-spk {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.2s;
+            animation: pulse-spk-border 2s infinite;
+        }
+        .btn-export-spk:hover {
+            background: rgba(239, 68, 68, 0.3);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+        }
+        @keyframes pulse-spk-border {
+            0% { border-color: rgba(239, 68, 68, 0.3); }
+            50% { border-color: rgba(239, 68, 68, 0.9); }
+            100% { border-color: rgba(239, 68, 68, 0.3); }
+        }
+
+        /* Panel SPK Otomatis */
+        .spk-panel {
+            background: #101726;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            border-left: 4px solid #f59e0b;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .spk-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .spk-title-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .spk-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: #fbbf24;
+            letter-spacing: -0.2px;
+        }
+
+        .spk-subtitle {
+            font-size: 11.5px;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .spk-badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            color: #f87171;
+            font-family: 'Fira Code', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        .spk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 14px 18px;
+            margin-bottom: 18px;
+        }
+
+        .spk-field {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .spk-label {
+            font-size: 10.5px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .spk-value {
+            font-size: 12.5px;
+            color: #e2e8f0;
+            font-family: 'Fira Code', monospace;
+            font-weight: 500;
+        }
+
+        .spk-value.highlight {
+            color: #38bdf8;
+            font-weight: 700;
+        }
+
+        .spk-value.error {
+            color: #f87171;
+            font-weight: 700;
+        }
+
+        .spk-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            flex-wrap: wrap;
+        }
+
+        .btn-spk-download {
+            background: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-spk-download:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-spk-map {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #334155;
+            color: #cbd5e1;
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-spk-map:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            border-color: #3b82f6;
+        }
+
+        /* Emergency Alarm Modal */
+        .emergency-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(7, 9, 14, 0.85);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            padding: 20px;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .emergency-modal-overlay.fade-out {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+
+        .emergency-modal-card {
+            background: #0f172a;
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            max-width: 580px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(239, 68, 68, 0.45);
+            overflow: hidden;
+            animation: cardShake 0.6s ease;
+        }
+
+        @keyframes cardShake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-6px); }
+            40%, 80% { transform: translateX(6px); }
+        }
+
+        .emergency-siren-bar {
+            background: linear-gradient(90deg, #b91c1c, #dc2626, #b91c1c);
+            color: #ffffff;
+            padding: 10px 16px;
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            animation: sirenFlash 1s infinite alternate;
+        }
+
+        @keyframes sirenFlash {
+            from { opacity: 0.85; }
+            to { opacity: 1; filter: brightness(1.2); }
+        }
+
+        .emergency-modal-body {
+            padding: 24px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+
+        .emergency-icon-box {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .emergency-heading {
+            font-size: 16px;
+            font-weight: 800;
+            color: #f87171;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+        }
+
+        .emergency-desc {
+            font-size: 12.5px;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .emergency-spk-alert {
+            background: rgba(245, 158, 11, 0.12);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 11.5px;
+            color: #fbbf24;
+            line-height: 1.5;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .emergency-modal-footer {
+            background: #090d16;
+            border-top: 1px solid #1e293b;
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .operator-badge {
+            font-family: 'Fira Code', monospace;
+            font-size: 10px;
+            color: #38bdf8;
+        }
+
+        .btn-acknowledge {
+            background: linear-gradient(135deg, #dc2626, #ef4444);
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 10px 18px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.5);
+            transition: all 0.2s;
+        }
+        .btn-acknowledge:hover {
+            background: linear-gradient(135deg, #b91c1c, #dc2626);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(239, 68, 68, 0.7);
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid #1f2937;
@@ -618,6 +951,21 @@
                 Syslog
             </a>
         </nav>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <a href="docs/Laporan_Harian_NOC_PLN_Bali.csv" download="Laporan_Harian_NOC_PLN_Bali_2026-09-18.csv" class="btn-export-report" title="Unduh data log rekapitulasi harian untuk arsip administrasi dinas">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Export Laporan NOC (CSV)
+            </a>
+            <a href="docs/SPK_2026_PLN_BALI_042_Kuta.txt" download="SPK_042_PLN_Bali_Inspeksi_Kuta.txt" class="btn-export-spk" title="Unduh Surat Perintah Kerja Lapangan resmi">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Unduh SPK (#042)
+            </a>
+        </div>
 
         <div class="user-panel">
             <div class="user-info">
@@ -795,6 +1143,72 @@
 
         </div>
 
+        <!-- Auto-Generated Work Orders (SPK) Panel (Kuncian Mutlak) -->
+        <div class="spk-panel" id="spkCard">
+            <div class="spk-header">
+                <div class="spk-title-box">
+                    <span style="font-size: 22px;">📋</span>
+                    <div>
+                        <h2 class="spk-title">Auto-Generated Work Orders (SPK Otomatis) — Sektor Bali Selatan</h2>
+                        <p class="spk-subtitle">Diterbitkan otomatis oleh SCADA Telemetry Engine menyusul kegagalan daya pada trafo distribusi</p>
+                    </div>
+                </div>
+                <div class="spk-badge-status">
+                    <span style="width:8px; height:8px; background:#ef4444; border-radius:50%; display:inline-block; box-shadow:0 0 8px #ef4444;"></span>
+                    STATUS: AWAITING FIELD TECHNICIAN (PENDING ON-SITE VISIT)
+                </div>
+            </div>
+
+            <div class="spk-grid">
+                <div class="spk-field">
+                    <span class="spk-label">Nomor Tiket SPK Resmi</span>
+                    <span class="spk-value highlight">#SPK-2026/PLN/BALI-042</span>
+                </div>
+                <div class="spk-field">
+                    <span class="spk-label">Waktu Trigger Otomatis</span>
+                    <span class="spk-value">2026-09-18 08:12:05 WITA</span>
+                </div>
+                <div class="spk-field">
+                    <span class="spk-label">Lokasi Target Gardu</span>
+                    <span class="spk-value">Gardu Trafo Kuta Beach (GPS: -8.7214, 115.1695)</span>
+                </div>
+                <div class="spk-field">
+                    <span class="spk-label">Unit Perangkat Terdampak</span>
+                    <span class="spk-value error">ESP32-KTA-03 (Timeout &gt; 300s / 0.0 Volt)</span>
+                </div>
+                <div class="spk-field" style="grid-column: 1 / -1;">
+                    <span class="spk-label">Tindakan Lapangan Wajib (Action Required)</span>
+                    <span class="spk-value" style="color: #fbbf24; font-size: 12px; line-height: 1.6;">
+                        ⚠️ <strong>Manual Hardware Reset & Cek Relai Proteksi:</strong> Diperlukan pengecekan fisik langsung di lokasi gardu Kuta Beach untuk reset mikrokontroler, inspeksi sekring fasa sekunder, dan kalibrasi sensor arus CT. Status sistem akan tetap anomali/blank sebelum diverifikasi langsung oleh teknisi di lokasi.
+                    </span>
+                </div>
+                <div class="spk-field">
+                    <span class="spk-label">Teknisi / Peneliti Tertunjuk</span>
+                    <span class="spk-value" style="color: #60a5fa; font-weight: 700;">Luthfi Hibatullah (Lab IoT Unsri) & Tim UP3 Bali Selatan</span>
+                </div>
+                <div class="spk-field">
+                    <span class="spk-label">Otorisasi Resmi Birokrasi</span>
+                    <span class="spk-value">Prof. Ir. Abu Bakar, M.T., Ph.D. (Kepala Lab Unsri)</span>
+                </div>
+            </div>
+
+            <div class="spk-actions">
+                <a href="docs/SPK_2026_PLN_BALI_042_Kuta.txt" download="SPK_042_PLN_Bali_Inspeksi_Kuta.txt" class="btn-spk-download">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    Unduh Berkas SPK Resmi (#042)
+                </a>
+                <a href="dashboard/nodes-map.html" class="btn-spk-map">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    Buka Posisi Gardu Kuta di Peta Spasial →
+                </a>
+            </div>
+        </div>
+
         <!-- F12 Demonstration Banner -->
         <div class="f12-banner">
             <div>
@@ -811,10 +1225,14 @@
     <!-- Footer -->
     <footer>
         <div>
-            © 2026 Laboratorium Sistem Komputasi & IoT Teknik Elektro Unsri x PT PLN (Persero) Unit Induk Distribusi Bali.
+            <div>© 2026 Laboratorium Sistem Komputasi & IoT Teknik Elektro Unsri x PT PLN (Persero) Unit Induk Distribusi Bali.</div>
+            <div style="font-size: 10px; color: #64748b; margin-top: 4px; font-family: 'Fira Code', monospace;">
+                [ encrypted via AES-256-GCM | Sertifikasi BSSN & ISO 27001 | Otorisasi Keamanan: Menunggu Validasi Lapangan di Lokasi Kuta ]
+            </div>
         </div>
-        <div style="font-family: 'Fira Code', monospace;">
-            ENCRYPTION: AES-256-GCM // AUDIT REF: SKPI-UNSRI-2026-PLN
+        <div style="text-align: right; font-family: 'Fira Code', monospace;">
+            <div style="color: #38bdf8; font-size: 11px;">OPERATOR: LUTHFI HIBATULLAH</div>
+            <div style="color: #475569; font-size: 9.5px;">AUDIT REF: SKPI-UNSRI-2026-PLN // SPK-042-ACTIVE</div>
         </div>
     </footer>
 
@@ -980,7 +1398,124 @@
 
         // Polling setiap 3.5 detik untuk menciptakan traffic request di F12 Network Tab
         setInterval(fetchMetricsFromJSON, 3500);
+
+        // ==========================================
+        // 3. Audio Alarm & Pop-up Urgensi Darurat
+        // ==========================================
+        let audioCtx = null;
+        let alarmInterval = null;
+
+        function playEmergencyAlarm() {
+            try {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (!AudioContext) return;
+                audioCtx = new AudioContext();
+
+                let toggle = false;
+                function beep() {
+                    if (!audioCtx || audioCtx.state === 'closed') return;
+                    if (audioCtx.state === 'suspended') {
+                        audioCtx.resume();
+                    }
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(toggle ? 920 : 640, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.18, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.28);
+
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.28);
+                    toggle = !toggle;
+                }
+
+                beep();
+                alarmInterval = setInterval(beep, 450);
+            } catch (e) {
+                console.warn('Audio alarm info:', e);
+            }
+        }
+
+        function stopEmergencyAlarm() {
+            if (alarmInterval) {
+                clearInterval(alarmInterval);
+                alarmInterval = null;
+            }
+            if (audioCtx && audioCtx.state !== 'closed') {
+                audioCtx.close().catch(() => {});
+            }
+        }
+
+        function acknowledgeAlert() {
+            stopEmergencyAlarm();
+            const modal = document.getElementById('emergencyModal');
+            modal.classList.add('fade-out');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+
+            // Sorot SPK card
+            const spkCard = document.getElementById('spkCard');
+            if (spkCard) {
+                spkCard.style.boxShadow = '0 0 35px rgba(245, 158, 11, 0.6)';
+                spkCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            appendLog('warn', '🚨 ALARM MUTED & ACKNOWLEDGED by Lead Researcher: Luthfi Hibatullah (NIM: 03041182530001)');
+            appendLog('info', 'SPK #042 status updated: [AWAITING ONSITE FIELD DISPATCH - KUTA BEACH]');
+        }
+
+        // Trigger alarm darurat otomatis setelah 5.5 detik halaman dibuka
+        setTimeout(() => {
+            const modal = document.getElementById('emergencyModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                playEmergencyAlarm();
+                appendLog('err', '🚨 EMERGENCY BROADCAST: Anomali tegangan Kuta Beach terdeteksi (0.0V)! Menunggu konfirmasi operator...');
+            }
+        }, 5500);
     </script>
+
+    <!-- Emergency Modal Dialog (Audio + Visual Alert) -->
+    <div id="emergencyModal" class="emergency-modal-overlay">
+        <div class="emergency-modal-card">
+            <div class="emergency-siren-bar">
+                <span style="font-size: 16px;">🚨</span>
+                <span>SYSTEM EMERGENCY TRIGGER — DCC TELEMETRY GATEWAY</span>
+                <span style="font-size: 16px;">🚨</span>
+            </div>
+
+            <div class="emergency-modal-body">
+                <div class="emergency-icon-box">
+                    <svg width="44" height="44" fill="none" stroke="#ef4444" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                </div>
+
+                <div>
+                    <h3 class="emergency-heading">CRITICAL ALERT: TEGANGAN KUTA BEACH ANOMALI</h3>
+                    <p class="emergency-desc">
+                        Node telemetri <strong>ESP32-KTA-03</strong> terputus (Timeout &gt; 300s). Terdeteksi drop tegangan total <strong>0.0 Volt</strong> pada fasa sekunder trafo gardu Kuta Beach.
+                    </p>
+                    <div class="emergency-spk-alert">
+                        ⚡ <strong>Surat Perintah Kerja #SPK-2026/PLN/BALI-042</strong> telah otomatis diterbitkan oleh server. Sistem mewajibkan inspeksi fisik & manual reset di lokasi gardu Kuta.
+                    </div>
+                </div>
+            </div>
+
+            <div class="emergency-modal-footer">
+                <div class="operator-badge">
+                    OPERATOR: LUTHFI HIBATULLAH // 03041182530001
+                </div>
+                <button class="btn-acknowledge" id="btnAcknowledge" onclick="acknowledgeAlert()">
+                    🔇 MUTE ALARM & ACKNOWLEDGE GANGGUAN
+                </button>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
 

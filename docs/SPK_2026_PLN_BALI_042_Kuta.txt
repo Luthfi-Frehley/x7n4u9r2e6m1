@@ -1,0 +1,51 @@
+========================================================================================================
+PT PLN (PERSERO) UNIT INDUK DISTRIBUSI BALI
+BIDANG DISTRIBUSI & SISTEM PENGATUR DISTRIBUSI (DCC)
+Jalan Letda Tantular No. 1, Renon, Denpasar - Bali
+========================================================================================================
+
+SURAT PERINTAH KERJA (SPK) OTOMATIS
+Nomor: SPK-2026/PLN/BALI-042/DCC
+Klasifikasi : SEGERA / CRITICAL DISPATCH
+Perihal     : Perintah Pemeriksaan Fisik & Reset Hardware Node Sensor IoT Trafo Kuta Beach
+
+DASAR PENERBITAN:
+1. Trigger otomatis alert Telemetry Gateway Unsri-PLN (Server Udayana).
+2. Kegagalan komunikasi data (Heartbeat Timeout > 300s) pada Node ESP32-KTA-03.
+3. Terdeteksi drop tegangan nol (0.0 V) pada gardu distribusi sektor Kuta Selatan.
+
+DIPERINTAHKAN KEPADA:
+1. Nama    : Luthfi Hibatullah
+   NIM     : 03041182530001
+   Instansi: Laboratorium Sistem Komputasi & IoT Teknik Elektro Universitas Sriwijaya
+   Jabatan : Peneliti Utama & Perancang Perangkat Keras Telemetri
+
+2. Tim Reaksi Cepat Pemeliharaan Gardu PLN UP3 Bali Selatan (Denpasar)
+
+UNTUK:
+1. Melakukan kunjungan fisik langsung (On-Site Field Visit) ke lokasi Gardu Trafo Kuta Beach
+   Koordinat Geospasial GPS: Latitude -8.7214, Longitude 115.1695.
+2. Melakukan manual hardware reset pada enclosure mikrokontroler ESP32-WROOM-32U.
+3. Memeriksa relai proteksi beban lebih, sekring fasa sekunder, dan baterai cadangan LiFePO4.
+4. Melakukan kalibrasi ulang modul sensor arus CT dan transmisi radio LoRa/WiFi di tempat.
+5. Memastikan telemetri tersinkronisasi kembali ke Pusat Pemantauan NOC sebelum sesi evaluasi kompetisi.
+
+CATATAN KHUSUS BIROKRASI:
+Pekerjaan ini bersifat krusial dan mendesak. Sistem pemantauan pusat akan mempertahankan
+status [ALERT / GANGGUAN TERBUKA] hingga dilakukan verifikasi fisik langsung di lokasi.
+
+Dikeluarkan di: Denpasar
+Pada tanggal  : 18 September 2026, Pukul 08:12 WIB
+
+Mengetahui / Menyetujui:
+Pembimbing Akademik & Kepala Lab IoT Unsri,
+
+Prof. Ir. Abu Bakar, M.T., Ph.D.
+NIP. 196803151992031002
+
+Menyetujui Pihak PT PLN (Persero) UID Bali:
+Senior Manager Distribusi & DCC Bali,
+
+Ir. Nyoman Arya, M.Eng.
+NIP. 197508212000031001
+========================================================================================================
