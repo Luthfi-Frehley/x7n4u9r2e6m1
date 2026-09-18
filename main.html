@@ -55,44 +55,61 @@
                 radial-gradient(circle at 90% 90%, rgba(6, 182, 212, 0.06) 0%, transparent 40%);
         }
 
-        /* Top Navbar */
+        /* Top Navbar - Clean, Compact & Responsive */
         .navbar {
-            background: rgba(17, 24, 39, 0.95);
+            background: rgba(17, 24, 39, 0.96);
             border-bottom: 1px solid #1f2937;
-            padding: 12px 24px;
+            padding: 8px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: sticky;
             top: 0;
-            z-index: 50;
-            backdrop-filter: blur(10px);
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            gap: 10px;
+            box-sizing: border-box;
+            width: 100%;
         }
 
         .brand-section {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 10px;
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .brand-logos {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .brand-text {
+            flex-shrink: 0;
+            white-space: nowrap;
         }
 
         .brand-text h1 {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #ffffff;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            white-space: nowrap;
+            margin: 0;
+            line-height: 1.2;
         }
 
         .brand-text p {
-            font-size: 11px;
+            font-size: 10.5px;
             color: var(--text-muted);
+            white-space: nowrap;
+            margin: 2px 0 0 0;
+            line-height: 1.2;
         }
 
         .badge-live {
@@ -102,17 +119,17 @@
             background: rgba(16, 185, 129, 0.15);
             color: #34d399;
             border: 1px solid rgba(16, 185, 129, 0.3);
-            font-size: 10px;
+            font-size: 9.5px;
             font-family: 'Fira Code', monospace;
-            padding: 2px 7px;
+            padding: 1px 6px;
             border-radius: 9999px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .badge-live::before {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 5px;
+            height: 5px;
             background-color: #10b981;
             border-radius: 50%;
             animation: pulse-live 1.5s infinite;
@@ -127,22 +144,20 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 10px;
-            gap: 8px;
+            gap: 5px;
             flex-wrap: nowrap;
+            flex-shrink: 0;
         }
 
         .nav-item {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             text-decoration: none;
             color: #9ca3af;
-            font-size: 12.5px;
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 500;
-            padding: 8px 14px;
-            padding: 7px 11px;
+            padding: 6px 10px;
             border-radius: 6px;
             transition: all 0.2s;
             border: 1px solid transparent;
@@ -152,7 +167,7 @@
 
         .nav-item:hover {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .nav-item.active {
@@ -165,26 +180,29 @@
         .user-panel {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding-left: 14px;
+            gap: 9px;
+            padding-left: 9px;
             border-left: 1px solid #374151;
             flex-shrink: 0;
         }
 
         .user-info {
             text-align: right;
+            white-space: nowrap;
         }
 
         .user-name {
-            font-size: 12px;
+            font-size: 11.5px;
             font-weight: 600;
             color: #e5e7eb;
+            line-height: 1.2;
         }
 
         .user-role {
-            font-size: 10px;
+            font-size: 9.5px;
             color: #9ca3af;
             font-family: 'Fira Code', monospace;
+            line-height: 1.2;
         }
 
         .btn-logout {
@@ -192,17 +210,74 @@
             color: #f87171;
             border: 1px solid rgba(239, 68, 68, 0.3);
             border-radius: 6px;
-            padding: 6px 10px;
+            padding: 5px 9px;
             font-size: 11px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .btn-logout:hover {
             background: rgba(239, 68, 68, 0.25);
             color: #ffffff;
+        }
+
+        /* Responsive Breakpoints so navbar NEVER breaks, wraps or clips */
+        @media (max-width: 1440px) {
+            .brand-text p {
+                display: none !important;
+            }
+            .nav-item {
+                padding: 5px 8px;
+                font-size: 11px;
+                gap: 4px;
+            }
+            .nav-links {
+                gap: 4px;
+            }
+        }
+        @media (max-width: 1260px) {
+            .navbar {
+                padding: 7px 12px;
+                gap: 6px;
+            }
+            .brand-text h1 {
+                font-size: 13px;
+            }
+            .user-info .user-role {
+                display: none !important;
+            }
+            .btn-ht-radio {
+                padding: 5px 8px !important;
+                font-size: 10px !important;
+            }
+            .btn-nav-dropdown {
+                padding: 5px 8px !important;
+                font-size: 10.5px !important;
+            }
+            .nav-item {
+                padding: 4px 6px;
+                font-size: 10.5px;
+            }
+            .nav-item svg {
+                width: 12px;
+                height: 12px;
+            }
+        }
+        @media (max-width: 1080px) {
+            .nav-item span {
+                font-size: 10px;
+            }
+            .user-panel {
+                padding-left: 6px;
+                gap: 5px;
+            }
+            .btn-logout {
+                padding: 4px 6px;
+                font-size: 10px;
+            }
         }
 
         /* Sub-Header Notice / System Bar */
@@ -1889,23 +1964,16 @@
         .btn-ht-radio {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            background: rgba(245, 158, 11, 0.15);
-            color: #fbbf24;
-            border: 1px solid rgba(245, 158, 11, 0.4);
-            padding: 6px 10px;
-            gap: 7px;
+            gap: 6px;
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.35));
             color: #34d399;
             border: 1px solid rgba(16, 185, 129, 0.65);
-            padding: 7px 12px;
+            padding: 6px 11px;
             border-radius: 6px;
             font-size: 11px;
-            font-weight: 700;
             font-weight: 800;
             cursor: pointer;
             font-family: 'Fira Code', monospace;
-            transition: all 0.2s;
             transition: all 0.2s ease;
             box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
             white-space: nowrap !important;
@@ -1914,17 +1982,14 @@
         }
         .btn-ht-radio:hover {
             transform: translateY(-1px);
-            background: rgba(245, 158, 11, 0.25);
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(5, 150, 105, 0.5));
             color: #ffffff;
             border-color: #10b981;
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
         }
         .btn-ht-radio.muted {
-            background: rgba(100, 116, 139, 0.15);
             background: rgba(51, 65, 85, 0.35);
             color: #94a3b8;
-            border-color: rgba(100, 116, 139, 0.4);
             border-color: rgba(100, 116, 139, 0.45);
             box-shadow: none;
         }
@@ -2737,58 +2802,58 @@
     <header class="navbar">
         <div class="brand-section">
             <div class="brand-logos">
-                <img src="images/Lambang_Universitas_Sriwijaya.png" alt="UNSRI" style="width: 28px; height: 28px; object-fit: contain;">
-                <img src="images/Logo_PLN.png" alt="PLN" style="width: 24px; height: 24px; object-fit: contain;">
+                <img src="images/Lambang_Universitas_Sriwijaya.png" alt="UNSRI" style="width: 26px; height: 26px; object-fit: contain;">
+                <img src="images/Logo_PLN.png" alt="PLN" style="width: 22px; height: 22px; object-fit: contain;">
             </div>
             <div class="brand-text">
                 <h1>
-                    NOC Telemetri Node IoT Regional Bali
-                    <span class="badge-live">LIVE TELEMETRY</span>
+                    NOC Telemetri Bali
+                    <span class="badge-live">LIVE</span>
                 </h1>
-                <p>Kolaborasi Riset Terapan: PT PLN (Persero) UID Bali &amp; Lab Teknik Elektro Unsri</p>
+                <p>PT PLN (Persero) UID Bali &amp; Lab IoT Unsri</p>
             </div>
         </div>
 
         <nav class="nav-links">
             <a href="main.html" class="nav-item active">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
-                Dashboard
+                <span>Dashboard</span>
             </a>
             <a href="dashboard/nodes-map.html" class="nav-item">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                 </svg>
-                Peta Node Bali
+                <span>Peta Bali</span>
             </a>
             <a href="dashboard/incidents.html" class="nav-item">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
-                Log Insiden
+                <span>Log Insiden</span>
             </a>
             <a href="dashboard/server-logs.html" class="nav-item">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
-                Syslog
+                <span>Syslog</span>
             </a>
-            <a href="javascript:void(0)" onclick="openHardwareDiagnosticsModal()" class="nav-item" style="color: #c084fc; border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.08);">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="javascript:void(0)" onclick="openHardwareDiagnosticsModal()" class="nav-item" style="color: #c084fc; border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.08);" title="Hardware Diagnostics & Probe Test">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                 </svg>
-                Hardware Diag
+                <span>Hardware Diag</span>
             </a>
-            <a href="javascript:void(0)" onclick="openWhyNoRemoteModal()" class="nav-item nav-item-skakmat" title="Audit Forensik: Mengapa TIDAK BISA Remote dari Laptop?">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <a href="javascript:void(0)" onclick="openWhyNoRemoteModal()" class="nav-item" style="color: #fca5a5; border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.1);" title="Audit Forensik: Mengapa TIDAK BISA Remote dari Laptop?">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
-                ⛔ Kenapa Ga Remote?
+                <span>Audit Forensik</span>
             </a>
         </nav>
 
-        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+        <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
             <!-- PROMINENT RADIO HT BUTTON -->
             <button type="button" id="btnToggleHtRadio" class="btn-ht-radio" onclick="toggleHtRadio()" title="Radio HT Komunikasi Lapangan PLN (Klik untuk Mute / Unmute)">
                 <span class="ht-signal-pulse"></span>
@@ -2799,7 +2864,7 @@
             <!-- DOKUMEN DINAS DROPDOWN (Consolidated SPK, SPPD, RAB, Export CSV) -->
             <div class="nav-dropdown" id="docDropdown">
                 <button type="button" class="btn-nav-dropdown" id="btnDocDropdown" onclick="toggleDocDropdown(event)" title="Buka Dokumen SPK, SPPD, RAB &amp; Rekap">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
                     <span>Dokumen Dinas</span>
@@ -2839,9 +2904,9 @@
             </div>
 
             <!-- Single Clean User Panel -->
-            <div class="user-panel" style="margin-left: 4px;">
+            <div class="user-panel">
                 <div class="user-info">
-                    <div class="user-name">Luthfi Hibatullah</div>
+                    <div class="user-name">Luthfi H.</div>
                     <div class="user-role">NIM: 03041182530001</div>
                 </div>
                 <a href="index.html" class="btn-logout" title="Kunci dan keluar ke portal login">
@@ -6377,12 +6442,19 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
             if (!cachedVoices || cachedVoices.length === 0) {
                 if ('speechSynthesis' in window) cachedVoices = window.speechSynthesis.getVoices() || [];
             }
+            // 1. Prioritize Indonesian TTS voice
             const idVoices = cachedVoices.filter(v => v.lang.startsWith('id') || v.lang.includes('ID') || v.lang.toLowerCase().includes('indonesia'));
             if (idVoices.length > 1) {
                 if (role === 'lh') return idVoices[0];
                 return idVoices[1 % idVoices.length];
             }
             if (idVoices.length === 1) return idVoices[0];
+
+            // 2. Resilient fallback: Any voice installed on user OS to guarantee audio always speaks
+            if (cachedVoices.length > 0) {
+                if (role === 'lh') return cachedVoices[0];
+                return cachedVoices[Math.min(1, cachedVoices.length - 1)];
+            }
             return null;
         }
 
@@ -6405,8 +6477,14 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
             }
         }
 
-        function startCallAudioPlayback() {
+        async function startCallAudioPlayback() {
             const ctx = initCallAudioContext();
+            if (ctx && ctx.state === 'suspended') {
+                try { await ctx.resume(); } catch(e) {}
+            }
+            if ('speechSynthesis' in window && window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+            }
             isCallAudioPlaying = true;
             callAudioSeconds = 0;
             currentDialogueIdx = 0;
@@ -6571,28 +6649,43 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                 window.speechSynthesis.cancel();
 
                 const utterance = new SpeechSynthesisUtterance(item.text);
-                utterance.lang = 'id-ID';
+                const voice = getIndonesianVoice(item.role);
+                if (voice) {
+                    utterance.voice = voice;
+                    utterance.lang = voice.lang;
+                } else {
+                    utterance.lang = 'id-ID';
+                }
                 utterance.pitch = item.pitch || 1.0;
                 utterance.rate = item.rate || 1.0;
                 utterance.volume = 1.0;
 
-                const voice = getIndonesianVoice(item.role);
-                if (voice) utterance.voice = voice;
-
-                utterance.onend = () => {
+                let dialogueStepTimer = null;
+                const proceedNext = (delayMs) => {
+                    if (dialogueStepTimer) clearTimeout(dialogueStepTimer);
                     if (!isCallAudioPlaying) return;
                     setTimeout(() => {
                         speakDialogueStep(index + 1);
-                    }, 550);
+                    }, delayMs);
+                };
+
+                utterance.onend = () => {
+                    proceedNext(550);
                 };
 
                 utterance.onerror = (err) => {
                     console.warn('Utterance error or interrupt:', err);
-                    if (!isCallAudioPlaying) return;
-                    setTimeout(() => {
-                        speakDialogueStep(index + 1);
-                    }, 1800);
+                    proceedNext(1200);
                 };
+
+                // Watchdog: Chrome occasionally freezes speech on long sentences; auto-advance if no event after calculated duration
+                const maxExpectedDuration = Math.max(3500, item.text.length * 110);
+                dialogueStepTimer = setTimeout(() => {
+                    if (isCallAudioPlaying && currentDialogueIdx === index) {
+                        console.warn('Speech watchdog auto-advanced line:', index);
+                        speakDialogueStep(index + 1);
+                    }
+                }, maxExpectedDuration);
 
                 window.speechSynthesis.speak(utterance);
             } else {
