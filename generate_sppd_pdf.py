@@ -1,4 +1,6 @@
 import os
+import sys
+from datetime import datetime, timedelta
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.platypus import (
@@ -7,7 +9,31 @@ from reportlab.platypus import (
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
 
-def generate_sppd_pdf():
+ROMAN_MONTHS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
+INDO_MONTHS = [
+    '', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+]
+
+def generate_sppd_pdf(target_date=None):
+    if target_date is None:
+        target_date = datetime.now()
+    elif isinstance(target_date, str):
+        target_date = datetime.strptime(target_date, '%Y-%m-%d')
+
+    day = target_date.day
+    month_idx = target_date.month
+    year = target_date.year
+    month_name = INDO_MONTHS[month_idx]
+    roman_month = ROMAN_MONTHS[month_idx]
+    formatted_date = f"{day} {month_name} {year}"
+
+    depart_date = target_date + timedelta(days=2)
+    return_date = depart_date + timedelta(days=3)
+
+    formatted_depart = f"{depart_date.day} {INDO_MONTHS[depart_date.month]} {depart_date.year}"
+    formatted_return = f"{return_date.day} {INDO_MONTHS[return_date.month]} {return_date.year}"
+
     pdf_path = os.path.join(os.path.dirname(__file__), 'docs', 'SPPD_2026_PLN_BALI_Luthfi.pdf')
     os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
 
@@ -136,7 +162,7 @@ def generate_sppd_pdf():
     # 2. TITLE
     story.append(Paragraph("SURAT PERINTAH PERJALANAN DINAS (SPPD)", style_title))
     story.append(Spacer(1, 2))
-    story.append(Paragraph("Nomor: SPPD-018/PLN-UID-BALI/TE-UNSRI/IX/2026", style_nomor))
+    story.append(Paragraph(f"Nomor: SPPD-018/PLN-UID-BALI/TE-UNSRI/{roman_month}/{year}", style_nomor))
     story.append(Spacer(1, 8))
 
     # 3. TABEL FORMAT SPPD STANDAR KEDINASAN / BUMN
@@ -174,7 +200,7 @@ def generate_sppd_pdf():
         [
             Paragraph("7.", style_tbl_no),
             Paragraph("a. Lamanya Perjalanan Dinas<br/>b. Tanggal Berangkat<br/>c. Tanggal Harus Kembali", style_tbl_field),
-            Paragraph("a. 4 (Empat) Hari Kalender<br/>b. 21 September 2026<br/>c. 24 September 2026", style_tbl_val)
+            Paragraph(f"a. 4 (Empat) Hari Kalender<br/>b. {formatted_depart}<br/>c. {formatted_return}", style_tbl_val)
         ],
         [
             Paragraph("8.", style_tbl_no),
@@ -203,7 +229,7 @@ def generate_sppd_pdf():
     story.append(Spacer(1, 12))
 
     # 4. TANDA TANGAN KEDINASAN DUA PIHAK
-    tgl_par = Paragraph("Dikeluarkan di : Palembang &amp; Denpasar<br/>Pada tanggal  : 18 September 2026", ParagraphStyle('TglDinas', parent=styles['Normal'], fontName='Helvetica', fontSize=7.5, alignment=TA_RIGHT, textColor=colors.HexColor('#475569')))
+    tgl_par = Paragraph(f"Dikeluarkan di : Palembang &amp; Denpasar<br/>Pada tanggal  : {formatted_date}", ParagraphStyle('TglDinas', parent=styles['Normal'], fontName='Helvetica', fontSize=7.5, alignment=TA_RIGHT, textColor=colors.HexColor('#475569')))
     story.append(tgl_par)
     story.append(Spacer(1, 6))
 
@@ -246,5 +272,7 @@ def generate_sppd_pdf():
     print(f"SPPD PDF generated successfully: {pdf_path}")
 
 if __name__ == '__main__':
-    generate_sppd_pdf()
+    target = sys.argv[1] if len(sys.argv) > 1 else None
+    generate_sppd_pdf(target)
+
 

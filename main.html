@@ -1730,17 +1730,17 @@
                 </svg>
                 Export Laporan NOC (CSV)
             </a>
-            <a href="docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" class="btn-export-spk" title="Unduh Surat Perintah Kerja Lapangan resmi (PDF Ber-KOP)">
+            <a href="docs/spk-print.html" target="_blank" class="btn-export-spk" title="Buka & Cetak Dokumen SPK Lapangan Resmi (Tanggal Dinamis)">
                 <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
-                Unduh Dokumen SPK (PDF)
+                Cetak / Unduh Dokumen SPK (PDF)
             </a>
-            <a href="docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" class="btn-export-sppd" title="Surat Perintah Perjalanan Dinas Resmi (SPPD) Palembang -> Bali">
+            <a href="docs/sppd-print.html" target="_blank" class="btn-export-sppd" title="Buka & Cetak Surat Perintah Perjalanan Dinas Resmi (SPPD - Tanggal Dinamis)">
                 <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                 </svg>
-                Unduh SPPD Dinas (PDF)
+                Cetak / Unduh SPPD Dinas (PDF)
             </a>
         </div>
 
@@ -2093,7 +2093,7 @@
                 </div>
                 <div class="spk-field">
                     <span class="spk-label">Waktu Trigger Otomatis</span>
-                    <span class="spk-value">2026-09-18 08:12:05 WITA</span>
+                    <span class="spk-value" id="spkTriggerTimestamp">2026-09-18 08:12:05 WITA</span>
                 </div>
                 <div class="spk-field">
                     <span class="spk-label">Lokasi Target Gardu</span>
@@ -2137,17 +2137,17 @@
             </div>
 
             <div class="spk-actions">
-                <a href="docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" class="btn-spk-download">
+                <a href="docs/spk-print.html" target="_blank" class="btn-spk-download">
                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
-                    Unduh Dokumen SPK Resmi (.PDF Ber-KOP)
+                    Buka &amp; Cetak Dokumen SPK (PDF Dinamis)
                 </a>
-                <a href="docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" class="btn-spk-sppd">
+                <a href="docs/sppd-print.html" target="_blank" class="btn-spk-sppd">
                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                     </svg>
-                    Unduh SPPD Dinas Bali (.PDF)
+                    Buka &amp; Cetak SPPD Dinas Bali (PDF Dinamis)
                 </a>
                 <a href="dashboard/nodes-map.html" class="btn-spk-map">
                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -3014,8 +3014,25 @@
             }, 1600);
         }
 
+        function updateLiveTimestamps() {
+            const now = new Date();
+            const pad = (n) => n.toString().padStart(2, '0');
+            const dateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+
+            const triggerEl = document.getElementById('spkTriggerTimestamp');
+            if (triggerEl) {
+                triggerEl.textContent = `${dateStr} 08:12:05 WITA`;
+            }
+
+            const csvBtn = document.querySelector('.btn-export-report');
+            if (csvBtn) {
+                csvBtn.setAttribute('download', `Laporan_Harian_NOC_PLN_Bali_${dateStr}.csv`);
+            }
+        }
+
         // Initialize chart & CCTV once DOM ready
         window.addEventListener('DOMContentLoaded', () => {
+            updateLiveTimestamps();
             initVoltageChart();
             initCCTVSimulation();
         });
@@ -3088,17 +3105,17 @@
                 </div>
             </div>
             <div class="scada-reboot-footer">
-                <a href="docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" class="btn-spk-sppd" style="background:#2563eb; color:#ffffff;">
+                <a href="docs/sppd-print.html" target="_blank" class="btn-spk-sppd" style="background:#2563eb; color:#ffffff;">
                     <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                     </svg>
-                    Unduh SPPD Dinas Bali (PDF)
+                    Buka &amp; Cetak SPPD Dinas (PDF Dinamis)
                 </a>
-                <a href="docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" class="btn-spk-download" style="background: rgba(255,255,255,0.08); border: 1px solid #475569;">
+                <a href="docs/spk-print.html" target="_blank" class="btn-spk-download" style="background: rgba(255,255,255,0.08); border: 1px solid #475569;">
                     <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
-                    Unduh Dokumen SPK #042 (PDF)
+                    Buka &amp; Cetak Dokumen SPK #042 (PDF Dinamis)
                 </a>
                 <button type="button" class="terminal-btn" onclick="closeRebootModal()" style="padding: 9px 16px; font-size: 11.5px; background: rgba(255,255,255,0.1);">
                     Tutup &amp; Catat di Syslog
@@ -3184,11 +3201,11 @@
 
             <div style="background: #090d16; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
                 <div style="display: flex; gap: 8px;">
-                    <a href="docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" class="btn-spk-sppd" style="font-size: 11px; padding: 6px 12px;">
-                        📄 Unduh SPPD Dinas (PDF)
+                    <a href="docs/sppd-print.html" target="_blank" class="btn-spk-sppd" style="font-size: 11px; padding: 6px 12px;">
+                        📄 Buka &amp; Cetak SPPD Dinas (PDF)
                     </a>
-                    <a href="docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" class="btn-spk-download" style="font-size: 11px; padding: 6px 12px;">
-                        📋 Unduh SPK #042 (PDF)
+                    <a href="docs/spk-print.html" target="_blank" class="btn-spk-download" style="font-size: 11px; padding: 6px 12px;">
+                        📋 Buka &amp; Cetak SPK #042 (PDF)
                     </a>
                 </div>
                 <button type="button" class="terminal-btn" onclick="closeDisposisiModal()" style="font-size: 11px; padding: 6px 14px;">

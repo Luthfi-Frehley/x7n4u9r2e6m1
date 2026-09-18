@@ -1,4 +1,6 @@
 import os
+import sys
+from datetime import datetime, timedelta
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
 from reportlab.platypus import (
@@ -7,7 +9,25 @@ from reportlab.platypus import (
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT, TA_JUSTIFY
 
-def generate_spk_pdf():
+ROMAN_MONTHS = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
+INDO_MONTHS = [
+    '', 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+]
+
+def generate_spk_pdf(target_date=None):
+    if target_date is None:
+        target_date = datetime.now()
+    elif isinstance(target_date, str):
+        target_date = datetime.strptime(target_date, '%Y-%m-%d')
+
+    day = target_date.day
+    month_idx = target_date.month
+    year = target_date.year
+    month_name = INDO_MONTHS[month_idx]
+    roman_month = ROMAN_MONTHS[month_idx]
+    formatted_date = f"{day} {month_name} {year}"
+
     pdf_path = os.path.join(os.path.dirname(__file__), 'docs', 'SPK_2026_PLN_BALI_042_Kuta.pdf')
     os.makedirs(os.path.dirname(pdf_path), exist_ok=True)
     
@@ -147,13 +167,13 @@ def generate_spk_pdf():
     # 2. JUDUL SURAT
     story.append(Paragraph("SURAT PERINTAH KERJA (SPK) &amp; SURAT PENUGASAN LAPANGAN", style_title))
     story.append(Spacer(1, 2))
-    story.append(Paragraph("Nomor: SPK-042/PLN-UID-BALI/TE-UNSRI/IX/2026", style_nomor))
+    story.append(Paragraph(f"Nomor: SPK-042/PLN-UID-BALI/TE-UNSRI/{roman_month}/{year}", style_nomor))
     story.append(Spacer(1, 10))
 
     # 3. DASAR PENUGASAN
-    dasar_text = """
+    dasar_text = f"""
     <b>MENIMBANG &amp; MEMPERHATIKAN:</b><br/>
-    1. Laporan telemetri darurat SCADA Gateway Unsri-PLN tertanggal 18 September 2026 Pukul 08:12:02 WITA mengenai hilangnya transmisi data (<i>Timeout &gt; 300 detik</i>) dan drop tegangan nol (0.0 Volt) pada <b>Node Sensor ESP32-KTA-03</b> di Gardu Trafo Distribusi Kuta Beach.<br/>
+    1. Laporan telemetri darurat SCADA Gateway Unsri-PLN tertanggal {formatted_date} Pukul 08:12:02 WITA mengenai hilangnya transmisi data (<i>Timeout &gt; 300 detik</i>) dan drop tegangan nol (0.0 Volt) pada <b>Node Sensor ESP32-KTA-03</b> di Gardu Trafo Distribusi Kuta Beach.<br/>
     2. Perjanjian Kerja Sama Riset Terapan Implementasi Smart Grid IoT antara PT PLN (Persero) Unit Induk Distribusi Bali dan Laboratorium Sistem Komputasi &amp; IoT Teknik Elektro Universitas Sriwijaya.<br/>
     3. Urgensi validasi perangkat fisik lapangan menjelang evaluasi dan audit keandalan sistem telemetri jaringan ketenagalistrikan nasional.
     """
@@ -195,7 +215,7 @@ def generate_spk_pdf():
     story.append(Spacer(1, 16))
 
     # 6. TANDA TANGAN & PENGESAHAN (DUAL STAMP)
-    tgl_text = "Ditetapkan di : Denpasar &amp; Palembang<br/>Pada Tanggal : 18 September 2026"
+    tgl_text = f"Ditetapkan di : Denpasar &amp; Palembang<br/>Pada Tanggal : {formatted_date}"
     story.append(Paragraph(tgl_text, ParagraphStyle('Tgl', parent=styles['Normal'], fontName='Helvetica', fontSize=8, alignment=TA_RIGHT, textColor=colors.HexColor('#475569'))))
     story.append(Spacer(1, 10))
 
@@ -239,5 +259,6 @@ def generate_spk_pdf():
     print(f"PDF Generated successfully: {pdf_path}")
 
 if __name__ == '__main__':
-    generate_spk_pdf()
+    target = sys.argv[1] if len(sys.argv) > 1 else None
+    generate_spk_pdf(target)
 
