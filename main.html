@@ -2132,6 +2132,441 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        /* ===================================================
+           SKAKMAT FORENSIC & CALL TRANSCRIPT STYLES
+           =================================================== */
+        .btn-why-no-remote {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.22), rgba(185, 28, 28, 0.35));
+            border: 1px solid rgba(239, 68, 68, 0.6);
+            color: #fca5a5;
+            padding: 9px 14px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+        }
+        .btn-why-no-remote:hover {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(185, 28, 28, 0.5));
+            color: #ffffff;
+            border-color: #ef4444;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+        }
+
+        .btn-dossier {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.18), rgba(14, 116, 144, 0.3));
+            border: 1px solid rgba(6, 182, 212, 0.5);
+            color: #67e8f9;
+            padding: 9px 14px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(6, 182, 212, 0.15);
+        }
+        .btn-dossier:hover {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.3), rgba(14, 116, 144, 0.45));
+            color: #ffffff;
+            border-color: #06b6d4;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(6, 182, 212, 0.3);
+        }
+
+        .btn-call-transcript {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.18), rgba(4, 120, 87, 0.3));
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #6ee7b7;
+            padding: 9px 14px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+        }
+        .btn-call-transcript:hover {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(4, 120, 87, 0.45));
+            color: #ffffff;
+            border-color: #10b981;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+        }
+
+        .nav-item-skakmat {
+            color: #fca5a5 !important;
+            border-color: rgba(239, 68, 68, 0.4) !important;
+            background: rgba(239, 68, 68, 0.12) !important;
+            animation: pulseSubtle 2.5s infinite;
+        }
+        .nav-item-skakmat:hover {
+            background: rgba(239, 68, 68, 0.25) !important;
+            color: #ffffff !important;
+        }
+        @keyframes pulseSubtle {
+            0%, 100% { border-color: rgba(239, 68, 68, 0.4); }
+            50% { border-color: rgba(239, 68, 68, 0.85); box-shadow: 0 0 10px rgba(239, 68, 68, 0.3); }
+        }
+
+        /* Generic Modal Overlay & Card for Forensics */
+        .forensic-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(3, 7, 18, 0.88);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .forensic-modal-card {
+            background: #0b1120;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 860px;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.9), 0 0 40px rgba(14, 165, 233, 0.1);
+            overflow: hidden;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.96) translateY(10px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .forensic-modal-header {
+            padding: 14px 20px;
+            background: #0f172a;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .forensic-modal-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .forensic-modal-footer {
+            padding: 12px 20px;
+            background: #090d16;
+            border-top: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        /* 4 Pillars Matrix Grid */
+        .pillar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 14px;
+            margin-bottom: 18px;
+        }
+
+        .pillar-card {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 14px;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .pillar-card:hover {
+            border-color: #38bdf8;
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 4px 16px rgba(56, 189, 248, 0.08);
+        }
+
+        .pillar-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 9.5px;
+            font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .pillar-badge.red { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); }
+        .pillar-badge.amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .pillar-badge.cyan { background: rgba(6, 182, 212, 0.15); color: #67e8f9; border: 1px solid rgba(6, 182, 212, 0.4); }
+        .pillar-badge.purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+        .pillar-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pillar-text {
+            font-size: 11.5px;
+            color: #94a3b8;
+            line-height: 1.55;
+        }
+        .pillar-text strong {
+            color: #f8fafc;
+        }
+
+        /* Socket & Ping Probe Console */
+        .probe-box {
+            background: #020617;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 14px;
+        }
+        .probe-console-log {
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            color: #94a3b8;
+            background: #030712;
+            border: 1px solid #111827;
+            border-radius: 6px;
+            padding: 12px;
+            min-height: 140px;
+            max-height: 180px;
+            overflow-y: auto;
+            line-height: 1.6;
+            margin-top: 10px;
+            white-space: pre-wrap;
+        }
+
+        /* Visual PCB Mockup */
+        .pcb-inspection-container {
+            background: radial-gradient(circle at 50% 50%, #064e3b 0%, #022c22 45%, #051614 100%);
+            border: 2px solid #047857;
+            border-radius: 10px;
+            padding: 18px;
+            position: relative;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8), 0 8px 25px rgba(4, 120, 87, 0.2);
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .pcb-grid-traces {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(16, 185, 129, 0.08) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+            background-size: 20px 20px;
+            pointer-events: none;
+        }
+
+        .pcb-component-layout {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 140px 1fr 1fr;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .pcb-mcu-chip {
+            background: #111827;
+            border: 2px solid #374151;
+            border-radius: 6px;
+            padding: 10px 8px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            position: relative;
+        }
+        .pcb-mcu-chip::before, .pcb-mcu-chip::after {
+            content: '';
+            position: absolute;
+            left: -6px;
+            right: -6px;
+            height: 2px;
+            background: repeating-linear-gradient(90deg, #9ca3af, #9ca3af 3px, transparent 3px, transparent 6px);
+        }
+        .pcb-mcu-chip::before { top: 6px; }
+        .pcb-mcu-chip::after { bottom: 6px; }
+
+        .pcb-fuse-box {
+            background: rgba(15, 23, 42, 0.85);
+            border: 2px dashed #ef4444;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .pcb-salt-crust-zone {
+            background: rgba(248, 250, 252, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 8px;
+            padding: 12px;
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+
+        .crust-indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 0 6px #ffffff;
+            display: inline-block;
+            margin-right: 4px;
+            animation: saltGlow 1.5s infinite alternate;
+        }
+        @keyframes saltGlow {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; transform: scale(1.15); }
+        }
+
+        /* Multimeter Test Sheet Table */
+        .fluke-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5px;
+            margin-top: 10px;
+        }
+        .fluke-table th {
+            background: #0f172a;
+            padding: 8px 12px;
+            color: #94a3b8;
+            font-family: 'Fira Code', monospace;
+            font-size: 10.5px;
+            border-bottom: 1px solid #1e293b;
+            text-align: left;
+        }
+        .fluke-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #1e293b;
+            color: #cbd5e1;
+        }
+        .fluke-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Audio Waveform Animation */
+        .waveform-anim {
+            display: inline-flex;
+            align-items: center;
+            gap: 2.5px;
+            height: 18px;
+            padding: 0 4px;
+        }
+        .waveform-bar {
+            width: 3px;
+            background: #10b981;
+            border-radius: 2px;
+            height: 4px;
+            transition: height 0.1s;
+        }
+        .waveform-anim.active .waveform-bar {
+            animation: waveBounce 0.8s infinite ease-in-out alternate;
+        }
+        .waveform-anim.active .waveform-bar:nth-child(1) { animation-delay: 0.1s; }
+        .waveform-anim.active .waveform-bar:nth-child(2) { animation-delay: 0.3s; }
+        .waveform-anim.active .waveform-bar:nth-child(3) { animation-delay: 0.2s; }
+        .waveform-anim.active .waveform-bar:nth-child(4) { animation-delay: 0.5s; }
+        .waveform-anim.active .waveform-bar:nth-child(5) { animation-delay: 0.15s; }
+        .waveform-anim.active .waveform-bar:nth-child(6) { animation-delay: 0.4s; }
+        .waveform-anim.active .waveform-bar:nth-child(7) { animation-delay: 0.25s; }
+        .waveform-anim.active .waveform-bar:nth-child(8) { animation-delay: 0.35s; }
+
+        @keyframes waveBounce {
+            0% { height: 3px; }
+            100% { height: 18px; }
+        }
+
+        /* Call Tabs */
+        .call-tab-btn {
+            background: transparent;
+            border: 1px solid #334155;
+            color: #94a3b8;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .call-tab-btn.active {
+            background: rgba(16, 185, 129, 0.15);
+            border-color: #10b981;
+            color: #34d399;
+        }
+
+        /* Call Transcript Dialogue Bubbles */
+        .call-bubble-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+            align-items: flex-start;
+        }
+        .call-avatar {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+        .call-bubble-content {
+            flex: 1;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+        .call-bubble-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+        .call-bubble-speaker {
+            font-size: 11.5px;
+            font-weight: 700;
+        }
+        .call-bubble-time {
+            font-size: 10px;
+            color: #64748b;
+            font-family: 'Fira Code', monospace;
+        }
+        .call-bubble-text {
+            font-size: 12px;
+            line-height: 1.55;
+            color: #cbd5e1;
+        }
     </style>
 </head>
 <body>
@@ -2182,6 +2617,12 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                 </svg>
                 Hardware Diagnostics
+            </a>
+            <a href="javascript:void(0)" onclick="openWhyNoRemoteModal()" class="nav-item nav-item-skakmat" title="Audit Forensik: Mengapa TIDAK BISA Remote dari Laptop?">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                ⛔ Kenapa Ga Remote Laptop?
             </a>
         </nav>
 
@@ -2609,6 +3050,24 @@
             </div>
 
             <div class="spk-actions">
+                <button type="button" class="btn-why-no-remote" onclick="openWhyNoRemoteModal()" title="Lihat 4 Bukti Ilmiah & Uji Probe: Mengapa Tidak Bisa Remote Laptop?">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                    </svg>
+                    ⛔ Mengapa TIDAK BISA Remote Laptop? (Bukti Ilmiah)
+                </button>
+                <button type="button" class="btn-dossier" onclick="openInvestigationDossierModal()" title="Buka Berkas Investigasi Lapangan & Bukti Fisik Modul ESP32 Kuta">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    🔬 Berkas Investigasi &amp; Bukti Kerusakan Fisik
+                </button>
+                <button type="button" class="btn-call-transcript" onclick="openCallTranscriptModal()" title="Buka Rekaman & Transkrip Panggilan Telepon Prof Abu & Pak Nyoman">
+                    <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                    </svg>
+                    📞 Transkrip Panggilan Telepon Dinas
+                </button>
                 <a href="docs/spk-print.html" target="_blank" class="btn-spk-download">
                     <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
@@ -4623,6 +5082,9 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
                 </div>
             </div>
             <div class="scada-reboot-footer">
+                <button type="button" class="btn-why-no-remote" onclick="closeRebootModal(); openWhyNoRemoteModal();" style="margin-right: auto; font-size: 11px;">
+                    ❓ Mengapa Tidak Bisa Remote dari Laptop? Lihat Bukti Ilmiah Forensik
+                </button>
                 <a href="docs/sppd-print.html" target="_blank" class="btn-spk-sppd" style="background:#2563eb; color:#ffffff;">
                     <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
@@ -4764,6 +5226,9 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                     <a href="docs/spk-print.html" target="_blank" class="btn-spk-download" style="font-size: 11px; padding: 6px 12px;">
                         📋 Buka &amp; Cetak SPK #042 (PDF)
                     </a>
+                    <button type="button" class="btn-call-transcript" onclick="closeDisposisiModal(); openCallTranscriptModal();" style="font-size: 11px; padding: 5px 12px;">
+                        📞 Transkrip Telepon Pak Abu &amp; Pak Nyoman
+                    </button>
                     <button type="button" onclick="resetChatSimulation()" style="background: none; border: none; color: #64748b; font-size: 10px; cursor: pointer; text-decoration: underline; font-family: 'Fira Code', monospace;">
                         ↺ Reset Chat
                     </button>
@@ -4963,6 +5428,863 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
         </div>
     </div>
 
+    <!-- ===================================================
+         MODAL 1: MENGAPA TIDAK BISA REMOTE LAPTOP? (SKAKMAT)
+         =================================================== -->
+    <div id="whyNoRemoteModal" class="forensic-modal-overlay">
+        <div class="forensic-modal-card">
+            <div class="forensic-modal-header" style="background: linear-gradient(90deg, #1e1b4b 0%, #0f172a 100%); border-bottom: 1px solid rgba(239, 68, 68, 0.4);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; border-radius: 6px; padding: 4px 8px; font-size: 16px;">⛔</div>
+                    <div>
+                        <div style="font-size: 13.5px; font-weight: 800; color: #ffffff; letter-spacing: 0.3px;">
+                            AUDIT TEKNIS &amp; FORENSIK: MENGAPA TIDAK BISA DIRESTART / DIPERBAIKI DARI LAPTOP?
+                        </div>
+                        <div style="font-size: 10px; color: #94a3b8; font-family: 'Fira Code', monospace;">
+                            DOKUMEN KLARIFIKASI ILMIAH &bull; LAB IOT UNSRI × DIVISI DISTRIBUSI PLN UID BALI &bull; NODE: ESP32-KTA-03
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="closeWhyNoRemoteModal()" style="background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer; padding: 4px 8px;">✕</button>
+            </div>
+
+            <div class="forensic-modal-body">
+                <!-- Executive Summary Callout -->
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 12px 16px; border-radius: 0 6px 6px 0; margin-bottom: 16px;">
+                    <div style="font-size: 12px; font-weight: 700; color: #fca5a5; margin-bottom: 4px;">
+                        PERTANYAAN UMUM: "Emang ga bisa ya diremote atau diselesaikan dari laptop aja? Kenapa orangnya harus terbang ke Bali?"
+                    </div>
+                    <div style="font-size: 11.5px; color: #cbd5e1; line-height: 1.55;">
+                        <strong>JAWABAN REKAYASA &amp; KELISTRIKAN: SECARA FISIKA DAN ELEKTRONIKA 100% MUSTAHIL.</strong> Modul di Gardu Kuta Beach bukan sekadar mengalami crash software biasa, melainkan mengalami <em>hardware power isolation trip</em>, kerusakan fisik sekring kaca F1, deposisi kerak aerosol garam laut yang konduktif, dan penguncian strapping bootloader chip. Sinyal radio elektromagnetik nirkabel tidak dapat mengalirkan daya listrik atau menggerakkan partikel fisik.
+                    </div>
+                </div>
+
+                <!-- 4 Pillars Grid -->
+                <div class="pillar-grid">
+                    <!-- Pillar 1 -->
+                    <div class="pillar-card" style="border-top: 2px solid #ef4444;">
+                        <span class="pillar-badge red">HUKUM FISIKA &amp; KELISTRIKAN #1</span>
+                        <div class="pillar-title">⚡ VCC = 0.0V &bull; Sekring F1 Putus Total</div>
+                        <div class="pillar-text">
+                            Sekring kaca proteksi <strong>F1 (500mA Fast-Blow)</strong> telah putus permanen akibat lonjakan arus mikro. Jalur daya DC ke mikrokontroler ESP32 dan modem Quectel EC25 LTE berada pada tegangan <strong>0.00 Volt</strong> (mati total).
+                            <br><br>
+                            <strong>Hukum Termodinamika &amp; Ohm:</strong> Tanpa tegangan listrik, seluruh sirkuit RF dan penerima baseband 4G/Wi-Fi mati. Tidak ada gelombang elektromagnetik jarak jauh di dunia yang bisa membangunkan CPU tanpa suplai arus fisik.
+                        </div>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="pillar-card" style="border-top: 2px solid #f59e0b;">
+                        <span class="pillar-badge amber">BOOTLOADER STRAPPING PIN #2</span>
+                        <div class="pillar-title">🔒 Jumper Fisik GPIO0 ke GND (Hardware Mode)</div>
+                        <div class="pillar-text">
+                            Partisi flash EEPROM korup (<em>CRC32 Mismatch 0xDEADBEEF</em>), menyebabkan FreeRTOS kernel panic. Port Over-The-Air (OTA Port 3232) otomatis tertutup permanen oleh bootloader Espressif.
+                            <br><br>
+                            <strong>Spesifikasi Datasheet Espressif:</strong> Untuk memaksa chip masuk mode ROM bootloader download, pin fisik <strong>GPIO0 WAJIB dijumper/di-ground ke GND</strong> sambil menekan tombol fisik <strong>RST/EN</strong>. Tindakan penekanan mekanik fisik ini mustahil dilakukan lewat software laptop.
+                        </div>
+                    </div>
+
+                    <!-- Pillar 3 -->
+                    <div class="pillar-card" style="border-top: 2px solid #06b6d4;">
+                        <span class="pillar-badge cyan">KOROSI KIMIAWI &amp; AEROSOL #3</span>
+                        <div class="pillar-title">🌊 Kerak Aerosol Garam Laut Pantai Kuta</div>
+                        <div class="pillar-text">
+                            Gardu Kuta terletak 85 meter dari bibir pantai. Angin laut membawa aerosol kristal garam (<strong>NaCl + MgCl2</strong>) yang menumpuk di celah kaki IC SMD pitch 0.5mm, membentuk jembatan elektrolit konduktif mikro (resistansi bocor 4.2 Ohm).
+                            <br><br>
+                            <strong>Intervensi Fisik Wajib:</strong> Kerak garam harus dibersihkan langsung di gardu menggunakan <em>Isopropyl Alcohol (IPA) 99%</em>, sekring F1 diganti unit baru, dan disemprot ulang lapisan pelindung <em>conformal coating</em> anti-uap laut.
+                        </div>
+                    </div>
+
+                    <!-- Pillar 4 -->
+                    <div class="pillar-card" style="border-top: 2px solid #c084fc;">
+                        <span class="pillar-badge purple">ARSITEKTUR RISET &amp; KRIPTOGRAFI #4</span>
+                        <div class="pillar-title">🛡️ Firmware Kustom Unsri &amp; Kunci AES-256</div>
+                        <div class="pillar-text">
+                            Modul SCADA ini adalah <strong>prototipe riset kustom</strong> yang dirancang dan dikembangkan langsung oleh Luthfi Hibatullah di Lab IoT Unsri, bukan perangkat komersial pabrikan biasa.
+                            <br><br>
+                            <strong>Keamanan Kriptografi:</strong> Firmware diamankan dengan AES-256 Secure Boot. Teknisi PLN Bali tidak memiliki source code, compiler toolchain, maupun private key enkripsi. Teknisi PLN dilarang membongkar demi mencegah korsleting trafo distribusi 20kV.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Socket & Ping Probe Simulator -->
+                <div class="probe-box">
+                    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                        <div>
+                            <div style="font-size: 12px; font-weight: 700; color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                                <span>🧪</span> SIMULATOR UJI SAMBUNGAN JARAK JAUH DARI LAPTOP (LIVE TCP/IP &amp; PROBE)
+                            </div>
+                            <div style="font-size: 10.5px; color: #94a3b8;">
+                                Uji langsung apakah laptop di Palembang/kantor bisa menghubungi modul Kuta (10.24.112.28) lewat jaringan publik/VPN
+                            </div>
+                        </div>
+                        <button type="button" class="terminal-btn" id="btnRunProbe" onclick="runRemoteProbeTest()" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border-color: rgba(239, 68, 68, 0.5); font-size: 11px;">
+                            ▶ Jalankan Uji Probe Jarak Jauh
+                        </button>
+                    </div>
+
+                    <div id="probeConsoleOutput" class="probe-console-log">Klik tombol [Jalankan Uji Probe Jarak Jauh] di atas untuk mensimulasikan percobaan koneksi SSH, MQTT TLS, Ping ICMP, dan kueri voltase hardware dari laptop...</div>
+                </div>
+            </div>
+
+            <div class="forensic-modal-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <button type="button" class="btn-dossier" onclick="closeWhyNoRemoteModal(); openInvestigationDossierModal();" style="font-size: 11px; padding: 7px 12px;">
+                        🔬 Lihat Berkas Investigasi &amp; Foto Fisik Modul
+                    </button>
+                    <button type="button" class="btn-call-transcript" onclick="closeWhyNoRemoteModal(); openCallTranscriptModal();" style="font-size: 11px; padding: 7px 12px;">
+                        📞 Buka Transkrip Panggilan Dinas
+                    </button>
+                </div>
+                <button type="button" class="terminal-btn" onclick="closeWhyNoRemoteModal()" style="font-size: 11px; padding: 7px 16px;">
+                    Tutup Audit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         MODAL 2: BERKAS INVESTIGASI LAPANGAN & BUKTI FISIK MODUL
+         =================================================== -->
+    <div id="investigationDossierModal" class="forensic-modal-overlay">
+        <div class="forensic-modal-card" style="max-width: 880px;">
+            <div class="forensic-modal-header" style="background: linear-gradient(90deg, #0e7490 0%, #0f172a 100%); border-bottom: 1px solid rgba(6, 182, 212, 0.4);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="background: rgba(6, 182, 212, 0.2); border: 1px solid #06b6d4; border-radius: 6px; padding: 4px 8px; font-size: 16px;">🔬</div>
+                    <div>
+                        <div style="font-size: 13.5px; font-weight: 800; color: #ffffff; letter-spacing: 0.3px;">
+                            BERKAS INVESTIGASI LAPANGAN // BUKTI FISIK KERUSAKAN MODUL KUTA BEACH
+                        </div>
+                        <div style="font-size: 10px; color: #94a3b8; font-family: 'Fira Code', monospace;">
+                            KORPS TEKNISI DISTRIBUSI PLN UID BALI &bull; REF NO: BUKTI-LAP-042/KTA/IX/2026 &bull; FLUKE 87V CALIBRATED
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="closeInvestigationDossierModal()" style="background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer; padding: 4px 8px;">✕</button>
+            </div>
+
+            <div class="forensic-modal-body">
+                <!-- Visual PCB Mockup Display -->
+                <div class="pcb-inspection-container">
+                    <div class="pcb-grid-traces"></div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 3; margin-bottom: 12px; border-bottom: 1px solid rgba(16, 185, 129, 0.3); padding-bottom: 6px;">
+                        <span style="font-family: 'Fira Code', monospace; font-size: 11px; color: #6ee7b7; font-weight: 700;">
+                            PCB MOCKUP INSPECTION: UNSRI-SCADA-ESP32-REV3 (NODE KUTA)
+                        </span>
+                        <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #f87171; background: rgba(239, 68, 68, 0.2); padding: 2px 6px; border-radius: 4px; border: 1px solid #ef4444;">
+                            ⚠️ STATUS: POWER CRITICAL FAILURE
+                        </span>
+                    </div>
+
+                    <div class="pcb-component-layout">
+                        <!-- ESP32 Module -->
+                        <div class="pcb-mcu-chip">
+                            <div style="font-size: 9px; color: #9ca3af; font-family: 'Fira Code', monospace;">ESPRESSIF</div>
+                            <div style="font-size: 12px; font-weight: 800; color: #ffffff; margin: 4px 0;">ESP32-WROOM</div>
+                            <div style="font-size: 8.5px; color: #ef4444; font-family: 'Fira Code', monospace; font-weight: 700;">VCC: 0.00V [DEAD]</div>
+                            <div style="margin-top: 6px; font-size: 8px; color: #64748b;">MAC: 24:6F:28:B4:9C:18</div>
+                        </div>
+
+                        <!-- Blown Fuse Box -->
+                        <div class="pcb-fuse-box">
+                            <div style="font-size: 10px; font-weight: 700; color: #f87171; margin-bottom: 4px; font-family: 'Fira Code', monospace;">
+                                SEKRING F1 (500mA)
+                            </div>
+                            <div style="background: rgba(0,0,0,0.5); border-radius: 4px; padding: 6px; border: 1px solid #ef4444; margin-bottom: 4px;">
+                                <span style="color: #ef4444; font-size: 18px;">💥</span>
+                                <div style="font-size: 10px; font-weight: 800; color: #ffffff;">PUTUS TOTAL (OPEN)</div>
+                                <div style="font-size: 9px; color: #fca5a5; font-family: 'Fira Code', monospace;">Filamen meleleh / hangus</div>
+                            </div>
+                            <span style="font-size: 9px; color: #cbd5e1;">Wajib ganti tabung sekring fisik</span>
+                        </div>
+
+                        <!-- Salt Residue Crust Zone -->
+                        <div class="pcb-salt-crust-zone">
+                            <div style="font-size: 10px; font-weight: 700; color: #e2e8f0; margin-bottom: 4px; font-family: 'Fira Code', monospace;">
+                                <span class="crust-indicator-dot"></span>ZONA KERAK GARAM LAUT
+                            </div>
+                            <div style="font-size: 10.5px; color: #cbd5e1; line-height: 1.4;">
+                                Deposisi kristal <strong>NaCl</strong> aerosol pantai Kuta menempel di celah pin IC SMD.
+                            </div>
+                            <div style="font-size: 9.5px; color: #fef08a; font-family: 'Fira Code', monospace; margin-top: 4px;">
+                                Hambatan bocor: 4.2 Ω ke GND (Korslet)
+                            </div>
+                            <div style="font-size: 9px; color: #94a3b8; margin-top: 3px;">
+                                Butuh pembersihan fisik Isopropyl Alcohol 99%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fluke 87V Measurement Table -->
+                <div style="background: #0b1329; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                        <div style="font-size: 12px; font-weight: 700; color: #38bdf8; display: flex; align-items: center; gap: 6px;">
+                            <span>📊</span> HASIL PENGUKURAN MULTIMETER DIGITAL FLUKE 87V TRUE RMS (TIM PLN BALI)
+                        </div>
+                        <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8;">Kalibrasi Akreditasi KAN: OK</span>
+                    </div>
+                    <table class="fluke-table">
+                        <thead>
+                            <tr>
+                                <th>TITIK UJI (TEST POINT)</th>
+                                <th>NILAI TERUKUR</th>
+                                <th>AMBANG NORMAL</th>
+                                <th>STATUS KELAIKAN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>TP_VIN</code> (Output Step-Down Trafo 20kV)</td>
+                                <td style="color: #34d399; font-weight: 700; font-family: 'Fira Code', monospace;">12.04 VDC</td>
+                                <td>11.50 - 12.50 VDC</td>
+                                <td><span style="color: #34d399; font-weight: 700;">🟢 NORMAL (Jalur Utama OK)</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>FUSE_F1</code> (Sekring Proteksi Board IoT)</td>
+                                <td style="color: #ef4444; font-weight: 700; font-family: 'Fira Code', monospace;">OPEN-CIRCUIT (∞ Ω)</td>
+                                <td>&lt; 0.50 Ω</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">🔴 BLOWN (Sekring Meleleh/Putus)</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>TP_3V3</code> (VCC Mikrokontroler ESP32)</td>
+                                <td style="color: #ef4444; font-weight: 700; font-family: 'Fira Code', monospace;">0.00 VDC</td>
+                                <td>3.28 - 3.32 VDC</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">🔴 NO POWER (CPU Mati Total)</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>IMP_3V3_GND</code> (Impedansi Bus 3.3V ke Ground)</td>
+                                <td style="color: #ef4444; font-weight: 700; font-family: 'Fira Code', monospace;">4.2 Ω</td>
+                                <td>&gt; 45.0 kΩ</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">🔴 SHORTED (Korslet Akibat Kerak Garam)</span></td>
+                            </tr>
+                            <tr>
+                                <td><code>MODEM_PWR_LED</code> (Indikator LTE Quectel EC25)</td>
+                                <td style="color: #94a3b8; font-weight: 700; font-family: 'Fira Code', monospace;">OFF (0 mA)</td>
+                                <td>BLINKING / 150 mA</td>
+                                <td><span style="color: #ef4444; font-weight: 700;">🔴 OFFLINE (Transmiter Nirkabel Mati)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Blackbox EEPROM Crash Dump -->
+                <div style="background: #020617; border: 1px solid #1e293b; border-radius: 8px; padding: 12px; font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8;">
+                    <div style="color: #f59e0b; font-weight: 700; margin-bottom: 6px; font-size: 11px;">
+                        📟 SNAPSHOT BLACKBOX MEMORI EEPROM (DETIK TERAKHIR SEBELUM LISTRIK HILANG):
+                    </div>
+                    <div style="line-height: 1.55; color: #cbd5e1;">
+                        [03:14:21.012 UTC] [ENV_SENSOR] Humidity: 94.2% RH | Wind Vector: 28 knots West (Sea Spray Inflow)<br>
+                        [03:14:22.441 UTC] [WARN] Current draw surge on 3V3 rail: 480mA (Threshold: 350mA)<br>
+                        [03:14:22.890 UTC] [CRITICAL] Parasitic bridge detected at PIN_14 &amp; PIN_15 (Conductive Saline Layer)<br>
+                        [03:14:23.104 UTC] [EMERGENCY] FUSE_TRIP: Current exceeds 1.84A! Fuse wire thermally fractured.<br>
+                        [03:14:23.109 UTC] [BROWNOUT] VDD rail collapsed to 0.000V. CPU Clock Halted. FreeRTOS dead.<br>
+                        [03:14:23.110 UTC] [TELEMETRY_END] Connection with Gateway broker dropped.
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-modal-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <button type="button" class="btn-why-no-remote" onclick="closeInvestigationDossierModal(); openWhyNoRemoteModal();" style="font-size: 11px; padding: 7px 12px;">
+                        ⛔ Mengapa Tidak Bisa Remote Laptop?
+                    </button>
+                    <button type="button" class="btn-call-transcript" onclick="closeInvestigationDossierModal(); openCallTranscriptModal();" style="font-size: 11px; padding: 7px 12px;">
+                        📞 Buka Transkrip Panggilan Dinas
+                    </button>
+                </div>
+                <button type="button" class="terminal-btn" onclick="closeInvestigationDossierModal()" style="font-size: 11px; padding: 7px 16px;">
+                    Tutup Berkas
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================
+         MODAL 3: REKAMAN & TRANSKRIP PANGGILAN TELEPON DINAS
+         =================================================== -->
+    <div id="callTranscriptModal" class="forensic-modal-overlay">
+        <div class="forensic-modal-card" style="max-width: 860px;">
+            <div class="forensic-modal-header" style="background: linear-gradient(90deg, #065f46 0%, #0f172a 100%); border-bottom: 1px solid rgba(16, 185, 129, 0.4);">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="background: rgba(16, 185, 129, 0.2); border: 1px solid #10b981; border-radius: 6px; padding: 4px 8px; font-size: 16px;">📞</div>
+                    <div>
+                        <div style="font-size: 13.5px; font-weight: 800; color: #ffffff; letter-spacing: 0.3px;">
+                            REKAMAN &amp; TRANSKRIP AUDIO PANGGILAN DINAS LAPANGAN
+                        </div>
+                        <div style="font-size: 10px; color: #94a3b8; font-family: 'Fira Code', monospace;">
+                            ARSIP RESMI DISPATCH SUARA PABX &bull; LAB IOT ELEKTRO UNSRI × PT PLN (PERSERO) UID BALI
+                        </div>
+                    </div>
+                </div>
+                <button type="button" onclick="closeCallTranscriptModal()" style="background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer; padding: 4px 8px;">✕</button>
+            </div>
+
+            <div class="forensic-modal-body">
+                <!-- Call Selector Tabs -->
+                <div style="display: flex; gap: 10px; margin-bottom: 16px; border-bottom: 1px solid #1e293b; padding-bottom: 10px; flex-wrap: wrap;">
+                    <button type="button" class="call-tab-btn active" id="tabCall1" onclick="switchCallTab(1)">
+                        📞 Panggilan 1: Prof. Abu Bakar → Luthfi (09:15 WITA)
+                    </button>
+                    <button type="button" class="call-tab-btn" id="tabCall2" onclick="switchCallTab(2)">
+                        📞 Panggilan 2: Luthfi → Ir. Nyoman Arya (09:32 WITA)
+                    </button>
+                </div>
+
+                <!-- Call Audio Player Simulator Card -->
+                <div style="background: #020617; border: 1px solid #1e293b; border-radius: 8px; padding: 14px; margin-bottom: 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <button type="button" id="btnPlayCallAudio" onclick="toggleCallAudioPlayback()" class="terminal-btn" style="background: #10b981; color: #022c22; font-weight: 800; padding: 9px 18px; border-radius: 6px; font-size: 12px; display: flex; align-items: center; gap: 6px;">
+                            <span id="callPlayIcon">▶</span>
+                            <span id="callPlayText">Putar Simulasi Audio</span>
+                        </button>
+                        <div>
+                            <div id="callAudioTitle" style="font-size: 12px; font-weight: 700; color: #ffffff;">
+                                PABX RECORDING #CALL-01 &bull; Prof. Abu Bakar → Luthfi
+                            </div>
+                            <div style="font-size: 10px; color: #94a3b8; font-family: 'Fira Code', monospace; margin-top: 2px;">
+                                FORMAT: Web Audio Telephony Filter (300Hz - 3.4kHz Bandpass)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Waveform Animation Bars -->
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div class="waveform-anim" id="callWaveform">
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                            <div class="waveform-bar"></div>
+                        </div>
+                        <span id="callAudioTimer" style="font-family: 'Fira Code', monospace; font-size: 11px; color: #34d399; font-weight: 700; min-width: 45px;">
+                            00:00
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Call Content 1: Prof Abu -> Luthfi -->
+                <div id="callContent1" style="display: block;">
+                    <div style="background: rgba(59, 130, 246, 0.08); border-left: 3px solid #3b82f6; padding: 8px 12px; border-radius: 0 4px 4px 0; margin-bottom: 14px; font-size: 11px; color: #93c5fd;">
+                        <strong>METADATA TELEKONFERENSI:</strong> Sambungan telepon langsung dari Kepala Laboratorium Sistem Komputasi &amp; IoT Unsri (Prof. Ir. Abu Bakar) kepada Peneliti Perancang (Luthfi Hibatullah) perihal anomali Gardu Kuta Beach.
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #1e3a8a; color: #93c5fd;">AB</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.Sc., Ph.D.</span>
+                                <span class="call-bubble-time">09:15:04 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Luthfi, kamu lagi bisa bicara sebentar?”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah (Lead Hardware &amp; Firmware)</span>
+                                <span class="call-bubble-time">09:15:10 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Bisa, Prof. Ada apa?”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #1e3a8a; color: #93c5fd;">AB</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.Sc., Ph.D.</span>
+                                <span class="call-bubble-time">09:15:18 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Saya baru dapat laporan dari Pak Nyoman di Bali. Ada gangguan di sistem kelistrikan area Pantai Kuta. Trafo utama di lokasi mengalami masalah dan beberapa perangkat monitoring ikut terdampak.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah</span>
+                                <span class="call-bubble-time">09:15:35 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Masalahnya di bagian trafonya langsung, Prof, atau di sistem monitoringnya?”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #1e3a8a; color: #93c5fd;">AB</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.Sc., Ph.D.</span>
+                                <span class="call-bubble-time">09:15:42 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Itu yang masih mereka cek. Tapi dari laporan awal, telemetri dan perangkat monitoring ikut mati. Pak Nyoman minta bantuan langsung dari kamu karena sistem yang terpasang itu bukan sistem standar.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah</span>
+                                <span class="call-bubble-time">09:16:02 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Berarti kemungkinan perlu saya cek dari sisi firmware dan modul komunikasinya juga, Prof?”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #1e3a8a; color: #93c5fd;">AB</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.Sc., Ph.D.</span>
+                                <span class="call-bubble-time">09:16:15 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Iya. Coba kamu hubungi Pak Nyoman langsung. Dia bisa jelaskan kondisi di lapangan lebih lengkap.”</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call Content 2: Luthfi -> Pak Nyoman -->
+                <div id="callContent2" style="display: none;">
+                    <div style="background: rgba(6, 182, 212, 0.08); border-left: 3px solid #06b6d4; padding: 8px 12px; border-radius: 0 4px 4px 0; margin-bottom: 14px; font-size: 11px; color: #a5f3fc;">
+                        <strong>METADATA PANGGILAN LAPANGAN:</strong> Sambungan tindak lanjut Luthfi Hibatullah kepada Senior Manager Distribusi PLN UID Bali (Ir. I Nyoman Arya) mengonfirmasi kegagalan daya modul dan persetujuan penugasan on-site Bali.
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah</span>
+                                <span class="call-bubble-time">09:32:02 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Selamat siang, Pak Nyoman. Saya Luthfi. Tadi Prof Abu menghubungi saya terkait kondisi di Pantai Kuta.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #0e7490; color: #67e8f9;">NA</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #38bdf8;">Ir. I Nyoman Arya, M.T. (Senior Manager PLN Bali)</span>
+                                <span class="call-bubble-time">09:32:10 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Halo, Luthfi. Akhirnya nyambung juga. Begini, unit monitoring di Kuta offline total. Awalnya kami kira masalah jaringan, tapi setelah tim lapangan cek, perangkatnya sama sekali tidak merespons.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah</span>
+                                <span class="call-bubble-time">09:32:28 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Indikator fisiknya bagaimana, Pak? Masih ada LED yang menyala atau mati total?”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #0e7490; color: #67e8f9;">NA</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
+                                <span class="call-bubble-time">09:32:35 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Mati total. Tidak ada daya yang masuk ke modul. Kami sudah coba restart trafo dan ganti jalur daya sementara, tapi telemetri tetap tidak terbaca.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah</span>
+                                <span class="call-bubble-time">09:32:55 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Kalau dari hasil pengecekan sebelumnya, ada kemungkinan korsleting atau proteksi internal modulnya aktif, Pak?”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #0e7490; color: #67e8f9;">NA</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
+                                <span class="call-bubble-time">09:33:04 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Bisa jadi. Lokasinya pas di dekat pantai, jadi pengaruh korosi garam laut juga sangat tinggi. Tim di sini sudah coba ganti sekring trafo, tapi untuk unit kontrolnya kami tidak berani sentuh karena konfigurasinya custom.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah</span>
+                                <span class="call-bubble-time">09:33:30 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Iya, Pak. Firmware-nya memang ada proteksi khusus dan bootloader-nya tidak bisa diakses sembarangan. Kalau modulnya mati total, kemungkinan proteksi hardware-nya kena juga.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #0e7490; color: #67e8f9;">NA</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
+                                <span class="call-bubble-time">09:33:48 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Nah, itu dia. Makanya kami butuh kamu langsung ke sini. Kami tidak bisa ambil risiko coba-coba, apalagi ini area padat wisata. Bisa kamu berangkat ke Bali secepatnya?”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #065f46; color: #6ee7b7;">LH</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #34d399;">Luthfi Hibatullah</span>
+                                <span class="call-bubble-time">09:34:05 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Bisa, Pak. Saya siapkan dulu peralatan flash, modul cadangan, sama backup firmware-nya dari lab.”</div>
+                        </div>
+                    </div>
+
+                    <div class="call-bubble-row">
+                        <div class="call-avatar" style="background: #0e7490; color: #67e8f9;">NA</div>
+                        <div class="call-bubble-content">
+                            <div class="call-bubble-header">
+                                <span class="call-bubble-speaker" style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
+                                <span class="call-bubble-time">09:34:15 WITA</span>
+                            </div>
+                            <div class="call-bubble-text">“Bagus. Langsung kabari kalau sudah di bandara. Tim kami akan jemput langsung di Ngurah Rai.”</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-modal-footer">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <button type="button" class="btn-why-no-remote" onclick="closeCallTranscriptModal(); openWhyNoRemoteModal();" style="font-size: 11px; padding: 7px 12px;">
+                        ⛔ Mengapa Tidak Bisa Remote Laptop?
+                    </button>
+                    <button type="button" class="btn-dossier" onclick="closeCallTranscriptModal(); openInvestigationDossierModal();" style="font-size: 11px; padding: 7px 12px;">
+                        🔬 Berkas Investigasi Fisik Modul
+                    </button>
+                </div>
+                <button type="button" class="terminal-btn" onclick="closeCallTranscriptModal()" style="font-size: 11px; padding: 7px 16px;">
+                    Tutup Transkrip
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script handlers for 3 Skakmat Modals & Telecom Web Audio -->
+    <script>
+        // ==========================================
+        // SKAKMAT FORENSIC & CALL TRANSCRIPT HANDLERS
+        // ==========================================
+        function openWhyNoRemoteModal() {
+            const modal = document.getElementById('whyNoRemoteModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                playHtRadioChirp();
+            }
+        }
+        function closeWhyNoRemoteModal() {
+            const modal = document.getElementById('whyNoRemoteModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function openInvestigationDossierModal() {
+            const modal = document.getElementById('investigationDossierModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                playHtRadioChirp();
+            }
+        }
+        function closeInvestigationDossierModal() {
+            const modal = document.getElementById('investigationDossierModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function openCallTranscriptModal() {
+            const modal = document.getElementById('callTranscriptModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                playHtRadioChirp();
+            }
+        }
+        function closeCallTranscriptModal() {
+            const modal = document.getElementById('callTranscriptModal');
+            if (modal) {
+                modal.style.display = 'none';
+                stopCallAudioPlayback();
+            }
+        }
+
+        // Live Socket & Ping Probe Test Simulator
+        let isProbeRunning = false;
+        function runRemoteProbeTest() {
+            if (isProbeRunning) return;
+            isProbeRunning = true;
+            const logBox = document.getElementById('probeConsoleOutput');
+            const btn = document.getElementById('btnRunProbe');
+            if (btn) btn.disabled = true;
+
+            const steps = [
+                { delay: 100, text: "[INIT] Menginisiasi socket diagnostic daemon dari workstation Luthfi (IP: 192.168.1.105)..." },
+                { delay: 700, text: "[ROUTE] Menembus VPN Gateway Unsri 10.24.112.5 -> Rute Bali Grid 10.24.112.28..." },
+                { delay: 1300, text: "[TCP SYN] Mengirim paket TCP SYN ke port 8883 (MQTT TLS Broker ESP32-KTA-03)..." },
+                { delay: 2000, text: "[TIMEOUT] SYN-ACK TIDAK DITERIMA setelah 3000ms. (ERR_CONNECTION_TIMED_OUT)" },
+                { delay: 2600, text: "[ICMP PING] Mengirim 4 paket ICMP Echo Request ke 10.24.112.28...\n  Paket 1: RTO (Request timed out)\n  Paket 2: RTO (Request timed out)\n  Paket 3: RTO (Request timed out)\n  Paket 4: RTO (Request timed out)\n  Statistik Ping: Dikirim = 4, Diterima = 0, Hilang = 4 (100% loss)." },
+                { delay: 3300, text: "[MODBUS HW QUERY] Meminta status rel tegangan DC lewat sub-stasiun terdekat (GI Kuta)..." },
+                { delay: 4000, text: "[TELEMETRY RETURN] TEGANGAN REL VCC: 0.00 VDC | ARUS BEBAN: 0.00 mA | STATUS: FUSE BLOWN (OPEN-CIRCUIT)" },
+                { delay: 4600, text: "[BOOTLOADER OTA PROBE] Mengontak Espressif OTA Flash Daemon (Port 3232)..." },
+                { delay: 5200, text: "[REJECTED] ERR_SOCKET_CLOSED: Hardware CPU mati total tanpa daya listrik." },
+                { delay: 5800, text: "\n===========================================================\n[KESIMPULAN AUDIT FORENSIK ILMIAH]:\n1. Secara hukum fisika, sirkuit mati (0.0V) mustahil dinyalakan lewat internet nirkabel.\n2. Pin fisik GPIO0 harus dijumper ke GND menggunakan obeng/kabel jumper di lokasi.\n3. Sekring fisik F1 harus diganti baru dan kerak garam laut harus dibersihkan dengan alkohol 99%.\nSTATUS: KEHADIRAN FISIK LUTHFI DI BALI MUTLAK 100% DIPERLUKAN (TIDAK BISA DARI LAPTOP).\n===========================================================" }
+            ];
+
+            logBox.innerText = "";
+            let currentIdx = 0;
+
+            function runNextStep() {
+                if (currentIdx < steps.length) {
+                    const s = steps[currentIdx];
+                    setTimeout(() => {
+                        logBox.innerText += (currentIdx > 0 ? "\n" : "") + s.text;
+                        logBox.scrollTop = logBox.scrollHeight;
+                        currentIdx++;
+                        runNextStep();
+                    }, s.delay);
+                } else {
+                    isProbeRunning = false;
+                    if (btn) btn.disabled = false;
+                }
+            }
+            runNextStep();
+        }
+
+        // Switch Call Tabs (Call 1 vs Call 2)
+        let activeCallTab = 1;
+        function switchCallTab(tabIndex) {
+            stopCallAudioPlayback();
+            activeCallTab = tabIndex;
+            const tab1 = document.getElementById('tabCall1');
+            const tab2 = document.getElementById('tabCall2');
+            const c1 = document.getElementById('callContent1');
+            const c2 = document.getElementById('callContent2');
+            const audioTitle = document.getElementById('callAudioTitle');
+
+            if (tabIndex === 1) {
+                if (tab1) tab1.classList.add('active');
+                if (tab2) tab2.classList.remove('active');
+                if (c1) c1.style.display = 'block';
+                if (c2) c2.style.display = 'none';
+                if (audioTitle) audioTitle.innerText = "PABX RECORDING #CALL-01 • Prof. Abu Bakar → Luthfi (09:15 WITA)";
+            } else {
+                if (tab1) tab1.classList.remove('active');
+                if (tab2) tab2.classList.add('active');
+                if (c1) c1.style.display = 'none';
+                if (c2) c2.style.display = 'block';
+                if (audioTitle) audioTitle.innerText = "PABX RECORDING #CALL-02 • Luthfi → Ir. Nyoman Arya (09:32 WITA)";
+            }
+        }
+
+        // Web Audio API Telecom Simulator
+        let callAudioCtx = null;
+        let callAudioTimerInterval = null;
+        let callAudioSeconds = 0;
+        let isCallAudioPlaying = false;
+        let ringOsc1 = null;
+        let ringOsc2 = null;
+        let noiseNode = null;
+
+        function initCallAudioContext() {
+            if (!callAudioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    callAudioCtx = new AudioContext();
+                }
+            }
+            if (callAudioCtx && callAudioCtx.state === 'suspended') {
+                callAudioCtx.resume();
+            }
+        }
+
+        function toggleCallAudioPlayback() {
+            if (isCallAudioPlaying) {
+                stopCallAudioPlayback();
+            } else {
+                startCallAudioPlayback();
+            }
+        }
+
+        function startCallAudioPlayback() {
+            initCallAudioContext();
+            isCallAudioPlaying = true;
+            callAudioSeconds = 0;
+
+            const btnIcon = document.getElementById('callPlayIcon');
+            const btnText = document.getElementById('callPlayText');
+            const waveform = document.getElementById('callWaveform');
+            if (btnIcon) btnIcon.innerText = "⏹";
+            if (btnText) btnText.innerText = "Hentikan Pemutaran";
+            if (waveform) waveform.classList.add('active');
+
+            // Timer update
+            const timerEl = document.getElementById('callAudioTimer');
+            if (callAudioTimerInterval) clearInterval(callAudioTimerInterval);
+            callAudioTimerInterval = setInterval(() => {
+                callAudioSeconds++;
+                const mins = String(Math.floor(callAudioSeconds / 60)).padStart(2, '0');
+                const secs = String(callAudioSeconds % 60).padStart(2, '0');
+                if (timerEl) timerEl.innerText = `${mins}:${secs}`;
+                
+                // Auto stop after duration (Call 1: 102s, Call 2: 138s)
+                const maxDur = activeCallTab === 1 ? 102 : 138;
+                if (callAudioSeconds >= maxDur) {
+                    stopCallAudioPlayback();
+                }
+            }, 1000);
+
+            // Synthesize realistic telecom audio (Ringback + Pick up + Telecom bandpass line hum)
+            playTelecomAudioSequence();
+        }
+
+        function playTelecomAudioSequence() {
+            if (!callAudioCtx) return;
+
+            try {
+                const now = callAudioCtx.currentTime;
+
+                // Step 1: North American / Indonesian PABX dual tone ringback: 440Hz + 480Hz for 1.8s
+                const gainRing = callAudioCtx.createGain();
+                gainRing.gain.setValueAtTime(0.08, now);
+                gainRing.gain.setValueAtTime(0.08, now + 1.8);
+                gainRing.gain.exponentialRampToValueAtTime(0.0001, now + 1.85);
+
+                const osc1 = callAudioCtx.createOscillator();
+                const osc2 = callAudioCtx.createOscillator();
+                osc1.type = 'sine';
+                osc2.type = 'sine';
+                osc1.frequency.setValueAtTime(440, now);
+                osc2.frequency.setValueAtTime(480, now);
+
+                osc1.connect(gainRing);
+                osc2.connect(gainRing);
+                gainRing.connect(callAudioCtx.destination);
+
+                osc1.start(now);
+                osc2.start(now);
+                osc1.stop(now + 1.9);
+                osc2.stop(now + 1.9);
+
+                // Step 2: Receiver Pickup "Click" at 2.0s
+                const clickOsc = callAudioCtx.createOscillator();
+                const clickGain = callAudioCtx.createGain();
+                clickOsc.type = 'triangle';
+                clickOsc.frequency.setValueAtTime(80, now + 2.0);
+                clickGain.gain.setValueAtTime(0.2, now + 2.0);
+                clickGain.gain.exponentialRampToValueAtTime(0.001, now + 2.08);
+                clickOsc.connect(clickGain);
+                clickGain.connect(callAudioCtx.destination);
+                clickOsc.start(now + 2.0);
+                clickOsc.stop(now + 2.1);
+
+                // Step 3: Telecom transmission hum / line ambiance through bandpass filter (300Hz - 3400Hz)
+                const bufferSize = callAudioCtx.sampleRate * 2;
+                const noiseBuffer = callAudioCtx.createBuffer(1, bufferSize, callAudioCtx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+
+                const whiteNoise = callAudioCtx.createBufferSource();
+                whiteNoise.buffer = noiseBuffer;
+                whiteNoise.loop = true;
+
+                // Bandpass filter standard telephone: 300Hz to 3400Hz
+                const bpf = callAudioCtx.createBiquadFilter();
+                bpf.type = 'bandpass';
+                bpf.frequency.setValueAtTime(1200, now + 2.1);
+                bpf.Q.setValueAtTime(1.2, now + 2.1);
+
+                const lineGain = callAudioCtx.createGain();
+                lineGain.gain.setValueAtTime(0.0001, now);
+                lineGain.gain.setValueAtTime(0.012, now + 2.15); // gentle line hiss
+
+                whiteNoise.connect(bpf);
+                bpf.connect(lineGain);
+                lineGain.connect(callAudioCtx.destination);
+
+                whiteNoise.start(now + 2.1);
+                noiseNode = { source: whiteNoise, gain: lineGain };
+
+            } catch (e) {
+                console.warn("Telecom audio synthesis:", e);
+            }
+        }
+
+        function stopCallAudioPlayback() {
+            isCallAudioPlaying = false;
+            if (callAudioTimerInterval) {
+                clearInterval(callAudioTimerInterval);
+                callAudioTimerInterval = null;
+            }
+
+            const btnIcon = document.getElementById('callPlayIcon');
+            const btnText = document.getElementById('callPlayText');
+            const waveform = document.getElementById('callWaveform');
+            if (btnIcon) btnIcon.innerText = "▶";
+            if (btnText) btnText.innerText = "Putar Simulasi Audio";
+            if (waveform) waveform.classList.remove('active');
+
+            if (noiseNode) {
+                try {
+                    noiseNode.source.stop();
+                } catch(e) {}
+                noiseNode = null;
+            }
+        }
+
+        // Close on ESC or overlay click
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeWhyNoRemoteModal();
+                closeInvestigationDossierModal();
+                closeCallTranscriptModal();
+            }
+        });
+
+        document.getElementById('whyNoRemoteModal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'whyNoRemoteModal') closeWhyNoRemoteModal();
+        });
+        document.getElementById('investigationDossierModal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'investigationDossierModal') closeInvestigationDossierModal();
+        });
+        document.getElementById('callTranscriptModal')?.addEventListener('click', (e) => {
+            if (e.target.id === 'callTranscriptModal') closeCallTranscriptModal();
+        });
+
+        // URL hash listener to auto-open modals when navigated from other pages
+        function handleUrlHash() {
+            const hash = window.location.hash.toLowerCase();
+            if (hash === '#why-no-remote' || hash === '#why-remote') {
+                openWhyNoRemoteModal();
+            } else if (hash === '#dossier' || hash === '#investigation') {
+                openInvestigationDossierModal();
+            } else if (hash === '#call-transcript' || hash === '#transcripts') {
+                openCallTranscriptModal();
+            }
+        }
+        window.addEventListener('DOMContentLoaded', handleUrlHash);
+        window.addEventListener('hashchange', handleUrlHash);
+    </script>
 </body>
 </html>
 

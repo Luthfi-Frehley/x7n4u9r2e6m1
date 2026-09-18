@@ -200,6 +200,128 @@
             border: 1px solid #1e293b;
             font-size: 11px;
         }
+
+        .forensic-dossier-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 68, 68, 0.1);
+            margin-top: 24px;
+        }
+        .forensic-dossier-header {
+            background: linear-gradient(90deg, #1e1b4b 0%, #0f172a 100%);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .forensic-dossier-body {
+            padding: 20px;
+        }
+        .pillar-mini-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .pillar-mini-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 14px;
+        }
+        .pillar-mini-badge {
+            display: inline-block;
+            font-family: 'Fira Code', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+        }
+        .pillar-mini-badge.red { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .pillar-mini-badge.amber { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .pillar-mini-badge.cyan { background: rgba(6, 182, 212, 0.15); color: #67e8f9; border: 1px solid rgba(6, 182, 212, 0.3); }
+        .pillar-mini-badge.purple { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.3); }
+        .pillar-mini-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+        .pillar-mini-desc {
+            font-size: 11px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        .forensic-actions-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            border-top: 1px solid #1e293b;
+            padding-top: 16px;
+        }
+        .btn-forensic-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .btn-forensic-action.btn-red {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #fca5a5;
+        }
+        .btn-forensic-action.btn-red:hover {
+            background: rgba(239, 68, 68, 0.3);
+            color: #ffffff;
+        }
+        .btn-forensic-action.btn-cyan {
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.5);
+            color: #67e8f9;
+        }
+        .btn-forensic-action.btn-cyan:hover {
+            background: rgba(6, 182, 212, 0.3);
+            color: #ffffff;
+        }
+        .btn-forensic-action.btn-emerald {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #6ee7b7;
+        }
+        .btn-forensic-action.btn-emerald:hover {
+            background: rgba(16, 185, 129, 0.3);
+            color: #ffffff;
+        }
+        .btn-forensic-action.btn-amber {
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.5);
+            color: #fcd34d;
+        }
+        .btn-forensic-action.btn-amber:hover {
+            background: rgba(245, 158, 11, 0.3);
+            color: #ffffff;
+        }
+        .btn-forensic-action.btn-blue {
+            background: rgba(59, 130, 246, 0.15);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: #93c5fd;
+        }
+        .btn-forensic-action.btn-blue:hover {
+            background: rgba(59, 130, 246, 0.3);
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -223,8 +345,9 @@
             <a href="server-logs.html" class="nav-item">Syslog</a>
         </nav>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <a href="../docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Unduh SPK #042</a>
-            <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="background: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Unduh SPPD Dinas</a>
+            <a href="../docs/spk-print.html" target="_blank" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Cetak SPK #042</a>
+            <a href="../docs/sppd-print.html" target="_blank" style="background: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Cetak SPPD Dinas</a>
+            <a href="../docs/rab-print.html" target="_blank" style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Cetak RAB Talangan</a>
         </div>
     </header>
 
@@ -291,6 +414,88 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+
+        <!-- Forensic Technical Dossier Card for #INC-2026-0918 -->
+        <div class="forensic-dossier-card">
+            <div class="forensic-dossier-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; border-radius: 6px; padding: 6px 10px; font-size: 18px;">
+                        ⚡
+                    </div>
+                    <div>
+                        <h3 style="font-size: 15px; font-weight: 800; color: #ffffff;">
+                            AUDIT FORENSIK KETEKNIKAN: TIKET #INC-2026-0918 (GARDU KUTA BEACH)
+                        </h3>
+                        <p style="font-size: 11px; color: #94a3b8; font-family: 'Fira Code', monospace; margin-top: 2px;">
+                            KLARIFIKASI REKAYASA SISTEM &bull; MENGAPA WAJIB PENUGASAN FISIK ON-SITE &amp; MUSTAHIL DARI LAPTOP
+                        </p>
+                    </div>
+                </div>
+                <span style="font-family: 'Fira Code', monospace; font-size: 11px; color: #f87171; background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); padding: 4px 10px; border-radius: 6px; font-weight: 700;">
+                    STATUS: HARDWARE LOCKOUT (0.0 V)
+                </span>
+            </div>
+
+            <div class="forensic-dossier-body">
+                <div style="background: rgba(239, 68, 68, 0.08); border-left: 4px solid #ef4444; padding: 12px 16px; border-radius: 0 6px 6px 0; margin-bottom: 18px; font-size: 12px; color: #cbd5e1; line-height: 1.55;">
+                    <strong style="color: #fca5a5;">HASIL PENYELIDIKAN RESMI LAB UNSRI &amp; TIM TEKNISI PLN UID BALI:</strong><br>
+                    Terdapat anomali total pada Node ESP32-KTA-03 di Gardu Distribusi Kuta Beach. Menjawab pertanyaan mendasar: <em>"Kenapa tidak bisa diperbaiki atau direstart lewat laptop saja?"</em> &mdash; Secara ilmu kelistrikan, sirkuit proteksi interlock telah trip, sekring kaca F1 putus, mikrokontroler kehilangan tegangan (0.0V), dan akumulasi kerak garam laut menyebabkan korsleting pada kaki IC. <strong>Kehadiran fisik teknisi perancang dengan kabel FTDI dan suku cadang di lokasi adalah satu-satunya solusi teknis yang valid.</strong>
+                </div>
+
+                <div class="pillar-mini-grid">
+                    <div class="pillar-mini-card" style="border-left: 3px solid #ef4444;">
+                        <div class="pillar-mini-badge red">1. HUKUM KELISTRIKAN (VCC = 0.0V)</div>
+                        <div class="pillar-mini-title">Sekring F1 Putus &amp; Sirkuit Mati Daya</div>
+                        <div class="pillar-mini-desc">
+                            Sekring kaca 500mA Fast-Blow putus total. Jalur VCC ke ESP32 &amp; modem Quectel EC25 4G bertegangan 0.00V. Sinyal nirkabel mustahil menghidupkan sirkuit yang kehilangan pasokan arus fisik.
+                        </div>
+                    </div>
+
+                    <div class="pillar-mini-card" style="border-left: 3px solid #f59e0b;">
+                        <div class="pillar-mini-badge amber">2. BOOTLOADER STRAPPING PINS</div>
+                        <div class="pillar-mini-title">Jumper GPIO0 ke GND Wajib Mekanik</div>
+                        <div class="pillar-mini-desc">
+                            Partisi flash EEPROM korup (CRC32 mismatch), OTA Port 3232 tertutup kernel panic. Mengacu datasheet Espressif, pin fisik GPIO0 harus dijumper ke ground secara mekanik sambil menekan tombol RST board.
+                        </div>
+                    </div>
+
+                    <div class="pillar-mini-card" style="border-left: 3px solid #06b6d4;">
+                        <div class="pillar-mini-badge cyan">3. KOROSI AEROSOL PANTAI KUTA</div>
+                        <div class="pillar-mini-title">Kerak Garam NaCl Hubung Singkat</div>
+                        <div class="pillar-mini-desc">
+                            Jarak 85m dari pantai menyebabkan uap garam laut menempel pada pin IC SMD (resistansi bocor 4.2 Ohm). Butuh pembersihan kimiawi dengan Isopropyl Alcohol 99%, penggantian sekring, dan pelapis isolator.
+                        </div>
+                    </div>
+
+                    <div class="pillar-mini-card" style="border-left: 3px solid #c084fc;">
+                        <div class="pillar-mini-badge purple">4. ARSITEKTUR RISET &amp; KRIPTOGRAFI</div>
+                        <div class="pillar-mini-title">Prototipe Riset &amp; Bootloader AES-256</div>
+                        <div class="pillar-mini-desc">
+                            Hardware kustom hasil riset Luthfi di Lab IoT Unsri. Kunci kriptografi AES-256 &amp; toolchain compiler hanya dimiliki Luthfi. Teknisi PLN dilarang membongkar demi keselamatan trafo 20kV.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Toolbar Linking to Main Dashboard Modals & Docs -->
+                <div class="forensic-actions-row">
+                    <a href="../main.html#why-no-remote" class="btn-forensic-action btn-red">
+                        <span>⛔</span> Buka Audit Forensik di Dashboard Utama →
+                    </a>
+                    <a href="../main.html#dossier" class="btn-forensic-action btn-cyan">
+                        <span>🔬</span> Buka Berkas Investigasi &amp; Foto Modul →
+                    </a>
+                    <a href="../main.html#call-transcript" class="btn-forensic-action btn-emerald">
+                        <span>📞</span> Buka Rekaman &amp; Transkrip Telepon Dinas →
+                    </a>
+                    <a href="../docs/rab-print.html" target="_blank" class="btn-forensic-action btn-amber">
+                        <span>📄</span> Cetak RAB Talangan (PDF)
+                    </a>
+                    <a href="../docs/spk-print.html" target="_blank" class="btn-forensic-action btn-blue">
+                        <span>📋</span> Cetak Dokumen SPK #042 (PDF)
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
