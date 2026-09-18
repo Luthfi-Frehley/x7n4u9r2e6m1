@@ -831,6 +831,73 @@
             line-height: 1.35;
         }
 
+        /* CCTV Time Mode Selector Buttons */
+        .btn-time-mode {
+            background: rgba(15, 23, 42, 0.85);
+            border: 1px solid #334155;
+            color: #94a3b8;
+            font-family: 'Fira Code', monospace;
+            font-size: 9px;
+            padding: 2px 7px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-time-mode:hover {
+            border-color: #38bdf8;
+            color: #ffffff;
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .btn-time-mode.active {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: #38bdf8;
+            color: #38bdf8;
+            font-weight: 700;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.3);
+        }
+
+        /* CCTV Buffering Overlay */
+        .cctv-buffering-overlay {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(4, 7, 14, 0.88);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            backdrop-filter: blur(4px);
+        }
+
+        .cctv-spinner {
+            width: 24px;
+            height: 24px;
+            border: 2.5px solid rgba(56, 189, 248, 0.2);
+            border-top-color: #38bdf8;
+            border-radius: 50%;
+            animation: spin-cctv 0.65s linear infinite;
+            margin-bottom: 7px;
+        }
+
+        @keyframes spin-cctv {
+            to { transform: rotate(360deg); }
+        }
+
+        .cctv-buffer-text {
+            font-family: 'Fira Code', monospace;
+            font-size: 9px;
+            color: #38bdf8;
+            letter-spacing: 0.5px;
+            font-weight: 700;
+            text-align: center;
+            padding: 0 10px;
+        }
+
         /* Remote Reboot Section */
         .remote-reboot-section {
             margin-top: 14px;
@@ -1576,26 +1643,41 @@
 
             <!-- CCTV Telemetry Surveillance (Simulated Video Feeds) -->
             <div class="cctv-panel">
-                <div class="panel-header" style="padding: 0 0 10px 0; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+                <div class="panel-header" style="padding: 0 0 8px 0; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
                     <h2>
                         <svg width="15" height="15" fill="none" stroke="#38bdf8" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
                         </svg>
                         Feed Visual CCTV Gardu Distribusi
                     </h2>
-                    <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8;">RTSP OVER TLS-1.3</span>
+                    
+                    <!-- Time-of-Day Simulation Mode Selector -->
+                    <div style="display: flex; align-items: center; gap: 4px;">
+                        <button type="button" class="btn-time-mode active" id="btnModeAuto" onclick="setTimeMode('auto')" title="Otomatis mengikuti jam WITA lokal saat ini">AUTO (WITA)</button>
+                        <button type="button" class="btn-time-mode" id="btnModePagi" onclick="setTimeMode('pagi')" title="Mode Pagi (06:00 - 11:00 WITA)">Pagi</button>
+                        <button type="button" class="btn-time-mode" id="btnModeSiang" onclick="setTimeMode('siang')" title="Mode Siang (11:00 - 15:30 WITA)">Siang</button>
+                        <button type="button" class="btn-time-mode" id="btnModeSore" onclick="setTimeMode('sore')" title="Mode Sore (15:30 - 18:30 WITA)">Sore</button>
+                        <button type="button" class="btn-time-mode" id="btnModeMalam" onclick="setTimeMode('malam')" title="Mode Malam (18:30 - 06:00 WITA)">Malam</button>
+                    </div>
                 </div>
 
-                <!-- Feed 1: Denpasar (Online) -->
+                <!-- Feed 1: Denpasar (Online with Dynamic Time of Day & Buffering Transition) -->
                 <div class="cctv-screen-box">
                     <div class="cctv-screen-header">
                         <span style="color: #cbd5e1; font-weight: 600;">CAM-DPS-01 // GARDU INDUK DENPASAR</span>
-                        <span style="color: #34d399; font-weight: 700;">● LIVE [30 FPS]</span>
+                        <span id="cctvDpsStatus" style="color: #34d399; font-weight: 700;">● LIVE [30 FPS]</span>
                     </div>
                     <canvas id="cctvDenpasar" class="cctv-canvas"></canvas>
+                    
+                    <!-- Buffering Overlay when switching / during day-night transition -->
+                    <div id="cctvBufferOverlay" class="cctv-buffering-overlay">
+                        <div class="cctv-spinner"></div>
+                        <div id="cctvBufferText" class="cctv-buffer-text">SWITCHING OPTICAL IR-CUT FILTER...</div>
+                    </div>
+
                     <div class="cctv-hud-overlay">
-                        <span id="cctvDpsTime">REC ● 2026-09-18 08:15:32 WITA</span>
-                        <span>IR-OPTIC [NORMAL]</span>
+                        <span id="cctvDpsTime">REC ● 2026-09-18 11:15:32 WITA</span>
+                        <span id="cctvOpticMode">DAY-OPTIC [NORMAL]</span>
                     </div>
                 </div>
 
@@ -2138,50 +2220,154 @@
         }
 
         // ==========================================
-        // 5. CCTV Simulation (Denpasar Online, Kuta Static Noise)
+        // 5. CCTV Simulation (Denpasar 4-Time Dynamic Feed, Kuta Static Noise)
         // ==========================================
+        const cctvImages = {
+            pagi: new Image(),
+            siang: new Image(),
+            sore: new Image(),
+            malam: new Image()
+        };
+        const cctvLoaded = { pagi: false, siang: false, sore: false, malam: false };
+
+        cctvImages.pagi.onload = () => { cctvLoaded.pagi = true; };
+        cctvImages.siang.onload = () => { cctvLoaded.siang = true; };
+        cctvImages.sore.onload = () => { cctvLoaded.sore = true; };
+        cctvImages.malam.onload = () => { cctvLoaded.malam = true; };
+
+        cctvImages.pagi.src = 'images/cctv_gardu_pagi.jpg';
+        cctvImages.siang.src = 'images/cctv_gardu_siang.jpg';
+        cctvImages.sore.src = 'images/cctv_gardu_sore.jpg';
+        cctvImages.malam.src = 'images/cctv_gardu_malam.jpg';
+
+        let activeTimeMode = 'auto'; // 'auto', 'pagi', 'siang', 'sore', 'malam'
+        let currentEffectivePeriod = 'siang';
+        let isCctvBuffering = false;
+
+        function getBaliCurrentPeriod() {
+            // Bali is WITA (UTC+8)
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const baliDate = new Date(utc + (3600000 * 8));
+            const hours = baliDate.getHours();
+            const minutes = baliDate.getMinutes();
+            const totalMinutes = hours * 60 + minutes;
+
+            // 06:00 (360m) s.d 10:59 (659m) -> Pagi
+            // 11:00 (660m) s.d 15:29 (929m) -> Siang
+            // 15:30 (930m) s.d 18:29 (1109m) -> Sore
+            // 18:30 (1110m) s.d 05:59 (359m) -> Malam
+            if (totalMinutes >= 360 && totalMinutes < 660) {
+                return 'pagi';
+            } else if (totalMinutes >= 660 && totalMinutes < 930) {
+                return 'siang';
+            } else if (totalMinutes >= 930 && totalMinutes < 1110) {
+                return 'sore';
+            } else {
+                return 'malam';
+            }
+        }
+
+        function setTimeMode(mode) {
+            activeTimeMode = mode;
+            ['btnModeAuto', 'btnModePagi', 'btnModeSiang', 'btnModeSore', 'btnModeMalam'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) btn.classList.remove('active');
+            });
+            if (mode === 'auto') {
+                document.getElementById('btnModeAuto').classList.add('active');
+            } else {
+                const capitalized = mode.charAt(0).toUpperCase() + mode.slice(1);
+                const targetBtn = document.getElementById('btnMode' + capitalized);
+                if (targetBtn) targetBtn.classList.add('active');
+            }
+
+            const targetPeriod = (mode === 'auto') ? getBaliCurrentPeriod() : mode;
+            triggerCctvTransition(targetPeriod);
+        }
+
+        function triggerCctvTransition(targetPeriod) {
+            if (currentEffectivePeriod === targetPeriod && !isCctvBuffering) return;
+
+            isCctvBuffering = true;
+            const bufferOverlay = document.getElementById('cctvBufferOverlay');
+            const bufferText = document.getElementById('cctvBufferText');
+            if (bufferOverlay) {
+                bufferOverlay.style.display = 'flex';
+                if (targetPeriod === 'malam') {
+                    bufferText.innerText = 'SWITCHING OPTICAL IR-CUT: ENGAGING NIGHT-VISION (IR)...';
+                } else if (currentEffectivePeriod === 'malam') {
+                    bufferText.innerText = 'SWITCHING OPTICAL IR-CUT: ENGAGING DAYLIGHT OPTICS...';
+                } else {
+                    bufferText.innerText = `ADJUSTING EXPOSURE & SHUTTER: MODE [${targetPeriod.toUpperCase()}]...`;
+                }
+            }
+
+            setTimeout(() => {
+                currentEffectivePeriod = targetPeriod;
+                if (bufferOverlay) bufferOverlay.style.display = 'none';
+                isCctvBuffering = false;
+            }, 1200); // 1.2 detik transisi realistis
+        }
+
         function initCCTVSimulation() {
+            // Set initial period based on current WITA
+            currentEffectivePeriod = getBaliCurrentPeriod();
+
             // Screen 1: Denpasar Online Feed
             const dpsCanvas = document.getElementById('cctvDenpasar');
             const dpsTime = document.getElementById('cctvDpsTime');
+            const dpsOpticMode = document.getElementById('cctvOpticMode');
             let dpsSweepY = 0;
             let dpsLedBlink = 0;
-
-            const cctvImg = new Image();
-            cctvImg.src = 'images/cctv_gardu_denpasar.jpg';
-            let imgLoaded = false;
-            cctvImg.onload = () => { imgLoaded = true; };
 
             if (dpsCanvas) {
                 const ctx = dpsCanvas.getContext('2d');
                 function drawDpsFeed() {
                     const w = dpsCanvas.width = dpsCanvas.clientWidth || 300;
-                    const h = dpsCanvas.height = dpsCanvas.clientHeight || 140;
+                    const h = dpsCanvas.height = dpsCanvas.clientHeight || 165;
 
-                    if (imgLoaded) {
-                        // Draw real high-voltage transformer CCTV image
-                        ctx.drawImage(cctvImg, 0, 0, w, h);
+                    // If auto mode, periodically verify WITA clock
+                    if (activeTimeMode === 'auto' && !isCctvBuffering) {
+                        const autoPeriod = getBaliCurrentPeriod();
+                        if (autoPeriod !== currentEffectivePeriod) {
+                            triggerCctvTransition(autoPeriod);
+                        }
+                    }
 
-                        // Night-vision tactical tint
-                        ctx.fillStyle = 'rgba(6, 78, 59, 0.14)';
-                        ctx.fillRect(0, 0, w, h);
+                    const activeImg = cctvImages[currentEffectivePeriod];
+                    const isLoaded = cctvLoaded[currentEffectivePeriod];
 
-                        // CCTV scanlines
-                        ctx.fillStyle = 'rgba(0, 0, 0, 0.22)';
-                        for (let y = 0; y < h; y += 3) {
-                            ctx.fillRect(0, y, w, 1);
+                    if (isLoaded) {
+                        ctx.drawImage(activeImg, 0, 0, w, h);
+
+                        // Mode-specific optical tinting & grading
+                        if (currentEffectivePeriod === 'malam') {
+                            // Night-vision tactical tint
+                            ctx.fillStyle = 'rgba(6, 78, 59, 0.16)';
+                            ctx.fillRect(0, 0, w, h);
+
+                            // Blinking power indicator LED on transformer
+                            dpsLedBlink = (dpsLedBlink + 1) % 60;
+                            if (dpsLedBlink < 38) {
+                                ctx.fillStyle = '#34d399';
+                                ctx.shadowColor = '#10b981';
+                                ctx.shadowBlur = 7;
+                                ctx.beginPath();
+                                ctx.arc(w * 0.54, h * 0.76, 2.5, 0, Math.PI * 2);
+                                ctx.fill();
+                                ctx.shadowBlur = 0;
+                            }
+                        } else if (currentEffectivePeriod === 'sore') {
+                            // Subtle warm dusk glow
+                            ctx.fillStyle = 'rgba(245, 158, 11, 0.08)';
+                            ctx.fillRect(0, 0, w, h);
                         }
 
-                        // Blinking power indicator LED on transformer
-                        dpsLedBlink = (dpsLedBlink + 1) % 60;
-                        if (dpsLedBlink < 38) {
-                            ctx.fillStyle = '#34d399';
-                            ctx.shadowColor = '#10b981';
-                            ctx.shadowBlur = 6;
-                            ctx.beginPath();
-                            ctx.arc(w * 0.54, h * 0.76, 2.5, 0, Math.PI * 2);
-                            ctx.fill();
-                            ctx.shadowBlur = 0;
+                        // Fine CCTV scanlines
+                        ctx.fillStyle = 'rgba(0, 0, 0, 0.18)';
+                        for (let y = 0; y < h; y += 3) {
+                            ctx.fillRect(0, y, w, 1);
                         }
                     } else {
                         // Fallback tactical wireframe
@@ -2194,7 +2380,7 @@
                     }
 
                     // Tactical crosshair
-                    ctx.strokeStyle = 'rgba(52, 211, 153, 0.45)';
+                    ctx.strokeStyle = (currentEffectivePeriod === 'malam') ? 'rgba(52, 211, 153, 0.5)' : 'rgba(56, 189, 248, 0.5)';
                     ctx.lineWidth = 1;
                     ctx.strokeRect(w/2 - 14, h/2 - 14, 28, 28);
                     ctx.beginPath();
@@ -2202,19 +2388,39 @@
                     ctx.moveTo(w/2 - 8, h/2); ctx.lineTo(w/2 + 8, h/2);
                     ctx.stroke();
 
-                    // Security sweep line
+                    // Security laser sweep line
                     dpsSweepY = (dpsSweepY + 1.2) % h;
-                    ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
+                    ctx.strokeStyle = (currentEffectivePeriod === 'malam') ? 'rgba(16, 185, 129, 0.45)' : 'rgba(56, 189, 248, 0.35)';
                     ctx.lineWidth = 1.5;
                     ctx.beginPath();
                     ctx.moveTo(0, dpsSweepY); ctx.lineTo(w, dpsSweepY);
                     ctx.stroke();
 
-                    // Live clock
+                    // Live clock update in WITA (UTC+8)
+                    const now = new Date();
+                    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+                    const baliDate = new Date(utc + (3600000 * 8));
+                    const pad = (n) => n.toString().padStart(2, '0');
+                    const timeStr = `${baliDate.getFullYear()}-${pad(baliDate.getMonth()+1)}-${pad(baliDate.getDate())} ${pad(baliDate.getHours())}:${pad(baliDate.getMinutes())}:${pad(baliDate.getSeconds())}`;
+
                     if (dpsTime) {
-                        const now = new Date();
-                        const pad = (n) => n.toString().padStart(2, '0');
-                        dpsTime.innerText = `REC ● 2026-09-18 ${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())} WITA`;
+                        dpsTime.innerText = `REC ● ${timeStr} WITA`;
+                    }
+
+                    if (dpsOpticMode) {
+                        if (currentEffectivePeriod === 'malam') {
+                            dpsOpticMode.innerText = 'IR-NIGHT-VISION [ON]';
+                            dpsOpticMode.style.color = '#34d399';
+                        } else if (currentEffectivePeriod === 'sore') {
+                            dpsOpticMode.innerText = 'DUSK-OPTIC [AUTO-GAIN]';
+                            dpsOpticMode.style.color = '#fbbf24';
+                        } else if (currentEffectivePeriod === 'pagi') {
+                            dpsOpticMode.innerText = 'DAY-OPTIC [SUNRISE]';
+                            dpsOpticMode.style.color = '#93c5fd';
+                        } else {
+                            dpsOpticMode.innerText = 'DAY-OPTIC [1/2000s]';
+                            dpsOpticMode.style.color = '#38bdf8';
+                        }
                     }
 
                     requestAnimationFrame(drawDpsFeed);
