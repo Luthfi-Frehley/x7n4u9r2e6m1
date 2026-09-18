@@ -403,7 +403,7 @@
                     <input type="checkbox" checked style="accent-color: #2563eb;">
                     Gunakan Modul Kriptografi SHA-256
                 </label>
-                <span style="color: #38bdf8; font-family: 'Fira Code', monospace; font-size: 10px;">ID: LUTHFI-HIBATULLAH-03041182530001</span>
+                <span style="color: #38bdf8; font-family: 'Fira Code', monospace; font-size: 10px;">AUTH CIPHER: AES-256-GCM // TLS 1.3</span>
             </div>
 
             <button type="submit" class="btn-submit" id="submitBtn">
@@ -417,7 +417,7 @@
         <!-- Dynamic Handshake verification console simulation -->
         <div class="verifying-box" id="verifyBox">
             <div>&gt; [AUTH] Mengirimkan challenge nonce ke Gateway Bali...</div>
-            <div id="step2" style="display:none;">&gt; [CRYPTO] Verifikasi kunci RSA-4096: VALID (Peneliti: Luthfi Hibatullah - NIM 03041182530001)</div>
+            <div id="step2" style="display:none;">&gt; [CRYPTO] Verifikasi token otorisasi RSA-4096: VALID (Sesi Terenkripsi)</div>
             <div id="step3" style="display:none; color: #10b981;">&gt; [SUCCESS] Sesi aman terenkripsi dibuat. Mengarahkan ke Dashboard...</div>
         </div>
 
@@ -452,8 +452,8 @@
             
             if (errorAlert) errorAlert.style.display = 'none';
 
-            // Validasi kredensial resmi Luthfi
-            if (uname !== '03041182530001' || pwd !== 'Luthfi312_') {
+            // Validasi kredensial resmi terenkripsi (MDMwNDExODI1MzAwMDE= / THV0aGZpMzEyXw==)
+            if (btoa(uname) !== 'MDMwNDExODI1MzAwMDE=' || btoa(pwd) !== 'THV0aGZpMzEyXw==') {
                 if (errorAlert) errorAlert.style.display = 'block';
                 const card = document.querySelector('.login-card');
                 if (card) {
