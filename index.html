@@ -382,7 +382,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
                         </svg>
                     </span>
-                    <input type="text" id="username" value="03041182530001" placeholder="Masukkan NIM / NIP resmi..." required>
+                    <input type="text" id="username" placeholder="Masukkan NIM / NIP resmi..." autocomplete="off" required>
                 </div>
             </div>
 
@@ -394,7 +394,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
                         </svg>
                     </span>
-                    <input type="password" id="password" value="Luthfi312_" placeholder="Masukkan kata sandi akses..." required>
+                    <input type="password" id="password" placeholder="Masukkan kata sandi akses..." autocomplete="new-password" required>
                 </div>
             </div>
 
@@ -421,6 +421,11 @@
             <div id="step3" style="display:none; color: #10b981;">&gt; [SUCCESS] Sesi aman terenkripsi dibuat. Mengarahkan ke Dashboard...</div>
         </div>
 
+        <!-- Login Error Alert -->
+        <div id="loginErrorAlert" style="display: none; margin-top: 14px; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 6px; padding: 11px 13px; font-size: 11px; color: #fca5a5; font-family: 'Fira Code', monospace; line-height: 1.5;">
+            ⛔ <strong>OTORISASI DITOLAK:</strong> NIM atau Kunci Sandi salah. Akses ditolak oleh Gateway Keamanan PLN x UNSRI.
+        </div>
+
         <div class="footer-note">
             Peringatan: Seluruh aktivitas telemetri dan kontrol saklar gardu dicatat dalam Audit Trail Pusat Data PLN & Lab Unsri. Penyalahgunaan wewenang akan diproses sesuai UU ITE.
         </div>
@@ -437,6 +442,7 @@
         const verifyBox = document.getElementById('verifyBox');
         const step2 = document.getElementById('step2');
         const step3 = document.getElementById('step3');
+        const errorAlert = document.getElementById('loginErrorAlert');
 
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
@@ -444,6 +450,20 @@
             const uname = document.getElementById('username').value.trim();
             const pwd = document.getElementById('password').value;
             
+            if (errorAlert) errorAlert.style.display = 'none';
+
+            // Validasi kredensial resmi Luthfi
+            if (uname !== '03041182530001' || pwd !== 'Luthfi312_') {
+                if (errorAlert) errorAlert.style.display = 'block';
+                const card = document.querySelector('.login-card');
+                if (card) {
+                    card.style.animation = 'none';
+                    void card.offsetWidth;
+                    card.style.animation = 'shake 0.4s ease';
+                }
+                return;
+            }
+
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
             submitBtn.innerHTML = `
@@ -469,9 +489,16 @@
             }, 1000);
         });
 
-        // Keyframe animation untuk spinner
+        // Keyframe animation untuk spinner & shake
         const style = document.createElement('style');
-        style.innerHTML = `@keyframes spin { 100% { transform: rotate(360deg); } }`;
+        style.innerHTML = `
+            @keyframes spin { 100% { transform: rotate(360deg); } }
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-6px); }
+                40%, 80% { transform: translateX(6px); }
+            }
+        `;
         document.head.appendChild(style);
     </script>
 </body>
