@@ -332,6 +332,36 @@
             color: #94a3b8;
             width: 100px;
         }
+
+        /* Styling Dark Mode Layer Control */
+        .leaflet-control-layers {
+            background: rgba(17, 24, 39, 0.95) !important;
+            border: 1px solid rgba(59, 130, 246, 0.3) !important;
+            border-radius: 8px !important;
+            color: #f3f4f6 !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 11.5px !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5) !important;
+            padding: 8px 12px !important;
+        }
+
+        .leaflet-control-layers-base label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            margin-bottom: 5px;
+            color: #cbd5e1 !important;
+        }
+
+        .leaflet-control-layers-base label:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Filter Dark untuk Tile OpenStreetMap */
+        .osm-dark-tiles {
+            filter: invert(100%) hue-rotate(180deg) brightness(85%) contrast(90%);
+        }
     </style>
 </head>
 <body>
@@ -438,12 +468,49 @@
         // Tambah zoom control di pojok kiri atas
         L.control.zoom({ position: 'topleft' }).addTo(map);
 
-        // Tile layer dark CartoDB DarkMatter (tampilan hacker/NOC elegan)
-        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-            subdomains: 'abcd',
+        // ==========================================
+        // Definisi Tile Layer (100% Gratis & Tanpa API Key)
+        // ==========================================
+        
+        // 1. Esri Dark Tactical Gray (Elegan, NOC Cyber, Tanpa Watermark)
+        const darkGrayBase = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+            maxZoom: 16
+        });
+        const darkGrayRef = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
+            maxZoom: 16,
+            pane: 'labelsPane'
+        });
+        const darkNocGroup = L.layerGroup([darkGrayBase, darkGrayRef]);
+
+        // 2. Esri World Imagery (Citra Satelit Resolusi Tinggi Asli)
+        const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics',
+            maxZoom: 18
+        });
+
+        // 3. OpenStreetMap Dark Filter (Fallback Bebas)
+        const osmDark = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors',
+            className: 'osm-dark-tiles',
             maxZoom: 19
-        }).addTo(map);
+        });
+
+        // Set layer default ke Dark Tactical Gray
+        darkNocGroup.addTo(map);
+
+        // Buat pane terpisah untuk label agar tetap di atas
+        map.createPane('labelsPane');
+        map.getPane('labelsPane').style.zIndex = 450;
+        map.getPane('labelsPane').style.pointerEvents = 'none';
+
+        // Layer Switcher Control di Pojok Kanan Bawah
+        const baseMaps = {
+            "🌌 Dark NOC Tactical": darkNocGroup,
+            "🛰️ Citra Satelit (High-Res)": satelliteLayer,
+            "🗺️ OpenStreetMap Dark": osmDark
+        };
+        L.control.layers(baseMaps, null, { position: 'bottomright' }).addTo(map);
 
         // Icon Pabrik: Hijau (Normal)
         const greenIcon = L.divIcon({
