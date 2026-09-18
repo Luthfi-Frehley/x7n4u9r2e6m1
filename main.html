@@ -2744,66 +2744,50 @@
                 <h1>
                     NOC Telemetri Node IoT Regional Bali
                     <span class="badge-live">LIVE TELEMETRY</span>
-                    NOC Telemetri Bali
-                    <span class="badge-live">LIVE</span>
                 </h1>
-                <p>Kolaborasi Riset Terapan: PT PLN (Persero) UID Bali & Lab Teknik Elektro Unsri</p>
-                <p>PLN UID Bali × Lab IoT Unsri</p>
+                <p>Kolaborasi Riset Terapan: PT PLN (Persero) UID Bali &amp; Lab Teknik Elektro Unsri</p>
             </div>
         </div>
 
         <nav class="nav-links">
             <a href="main.html" class="nav-item active">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
                 Dashboard
             </a>
             <a href="dashboard/nodes-map.html" class="nav-item">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                 </svg>
                 Peta Node Bali
-                Peta Nasional
             </a>
             <a href="dashboard/incidents.html" class="nav-item">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
                 Log Insiden
             </a>
             <a href="dashboard/server-logs.html" class="nav-item">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 Syslog
             </a>
             <a href="javascript:void(0)" onclick="openHardwareDiagnosticsModal()" class="nav-item" style="color: #c084fc; border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.08);">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                 </svg>
-                Hardware Diagnostics
                 Hardware Diag
             </a>
             <a href="javascript:void(0)" onclick="openWhyNoRemoteModal()" class="nav-item nav-item-skakmat" title="Audit Forensik: Mengapa TIDAK BISA Remote dari Laptop?">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
-                ⛔ Kenapa Ga Remote Laptop?
-                Audit Forensik
+                ⛔ Kenapa Ga Remote?
             </a>
         </nav>
 
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <button type="button" id="btnToggleHtRadio" class="btn-ht-radio" onclick="toggleHtRadio()" title="Mode Radio HT Komunikasi Lapangan PLN (Audio Web API)">
-                <span id="htRadioIcon">📻</span>
-                <span id="htRadioText">HT: ON</span>
         <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
             <!-- PROMINENT RADIO HT BUTTON -->
             <button type="button" id="btnToggleHtRadio" class="btn-ht-radio" onclick="toggleHtRadio()" title="Radio HT Komunikasi Lapangan PLN (Klik untuk Mute / Unmute)">
@@ -2811,39 +2795,10 @@
                 <span id="htRadioIcon" style="font-size: 13px;">📻</span>
                 <span id="htRadioText">RADIO HT: AKTIF</span>
             </button>
-            <a href="docs/Laporan_Harian_NOC_PLN_Bali.csv" download="Laporan_Harian_NOC_PLN_Bali_2026-09-18.csv" class="btn-export-report" title="Unduh data log rekapitulasi harian untuk arsip administrasi dinas">
-                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Export CSV
-            </a>
-            <a href="docs/spk-print.html" target="_blank" class="btn-export-spk" title="Buka & Cetak Dokumen SPK Lapangan Resmi (Tanggal Dinamis)">
-                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Cetak SPK (PDF)
-            </a>
-            <a href="docs/sppd-print.html" target="_blank" class="btn-export-sppd" title="Buka & Cetak Surat Perintah Perjalanan Dinas Resmi (SPPD - Tanggal Dinamis)">
-                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                </svg>
-                Cetak SPPD (PDF)
-            </a>
-            <a href="docs/rab-print.html" target="_blank" class="btn-export-rab" title="Buka & Cetak Dokumen Rencana Anggaran Biaya Talangan Operasional (RAB - Tanggal Dinamis)">
-                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                </svg>
-                Cetak RAB (PDF)
-            </a>
-        </div>
 
-        <div class="user-panel">
-            <div class="user-info">
-                <div class="user-name">Luthfi Hibatullah</div>
-                <div class="user-role">NIM: 03041182530001 // LAB-UNSRI</div>
-            <!-- DOKUMEN DINAS DROPDOWN -->
+            <!-- DOKUMEN DINAS DROPDOWN (Consolidated SPK, SPPD, RAB, Export CSV) -->
             <div class="nav-dropdown" id="docDropdown">
-                <button type="button" class="btn-nav-dropdown" id="btnDocDropdown" onclick="toggleDocDropdown(event)" title="Buka Dokumen SPK, SPPD, RAB & Rekap">
+                <button type="button" class="btn-nav-dropdown" id="btnDocDropdown" onclick="toggleDocDropdown(event)" title="Buka Dokumen SPK, SPPD, RAB &amp; Rekap">
                     <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                     </svg>
@@ -2882,11 +2837,9 @@
                     </a>
                 </div>
             </div>
-            <a href="index.html" class="btn-logout" title="Kunci dan keluar ke portal login">
-                Kunci Portal
-            </a>
 
-            <div class="user-panel">
+            <!-- Single Clean User Panel -->
+            <div class="user-panel" style="margin-left: 4px;">
                 <div class="user-info">
                     <div class="user-name">Luthfi Hibatullah</div>
                     <div class="user-role">NIM: 03041182530001</div>
