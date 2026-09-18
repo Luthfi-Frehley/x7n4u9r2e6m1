@@ -625,10 +625,10 @@
             </div>
             <div class="brand-text">
                 <h1>
-                    Peta Node Bali
+                    Peta Node SCADA Nasional
                     <span class="badge-live">LIVE</span>
                 </h1>
-                <p>PT PLN UID Bali &amp; Lab IoT Unsri &bull; 24 Online / 1 Critical</p>
+                <p>PT PLN (Persero) &amp; Lab IoT Unsri &bull; 24 Online / 1 Kritis</p>
             </div>
         </div>
 
@@ -643,7 +643,7 @@
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                 </svg>
-                Peta Bali
+                Peta Nasional
             </a>
             <a href="incidents.html" class="nav-item">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -730,12 +730,12 @@
                 <button class="btn-jump-incident" onclick="focusOnIncident()">
                     🔴 Zoom ke Insiden Kuta Bali (Alert)
                 </button>
-                <button type="button" onclick="viewBali()" style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.5); color: #34d399; font-size: 10.5px; font-weight: 700; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-family: 'Fira Code', monospace; display: flex; align-items: center; justify-content: center; gap: 4px;">
-                    🏝️ Seluruh Bali (25 Node)
+                <button type="button" onclick="viewIndonesia()" style="background: rgba(16, 185, 129, 0.2); border: 1px solid rgba(16, 185, 129, 0.5); color: #34d399; font-size: 10.5px; font-weight: 700; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-family: 'Fira Code', monospace; display: flex; align-items: center; justify-content: center; gap: 4px;">
+                    🇮🇩 Seluruh Indonesia (25 Node)
                 </button>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px;">
-                    <button type="button" onclick="viewIndonesia()" style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; color: #94a3b8; font-size: 10px; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-family: 'Fira Code', monospace; display: flex; align-items: center; justify-content: center; gap: 4px;">
-                        🇮🇩 Peta Nasional
+                    <button type="button" onclick="viewBali()" style="background: rgba(15, 23, 42, 0.9); border: 1px solid #334155; color: #94a3b8; font-size: 10px; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-family: 'Fira Code', monospace; display: flex; align-items: center; justify-content: center; gap: 4px;">
+                        🏝️ Sektor Bali
                     </button>
                     <button type="button" onclick="viewPalembang()" style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; font-size: 10px; padding: 6px 8px; border-radius: 5px; cursor: pointer; font-family: 'Fira Code', monospace; display: flex; align-items: center; justify-content: center; gap: 4px;">
                         🎓 Unsri HQ
@@ -756,12 +756,12 @@
         <!-- Legend HUD -->
         <div class="map-hud-legend">
             <div class="legend-title">
-                <span>GRID IOT SCADA BALI REGIONAL</span>
+                <span>GRID IOT SCADA PLN NASIONAL</span>
                 <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #38bdf8;">PLN x UNSRI</span>
             </div>
             <div class="legend-item">
                 <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 8px #10b981;"></span>
-                <span>Normal &amp; Sinkron (24 Node Regional Bali)</span>
+                <span>Normal &amp; Sinkron (24 Node Nasional)</span>
             </div>
             <div class="legend-item">
                 <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block; box-shadow: 0 0 8px #ef4444;"></span>
@@ -772,7 +772,7 @@
                 <span style="color: #fbbf24; font-size: 10.5px;">Rute Penugasan Udara (PLM ✈️ DPS)</span>
             </div>
             <div style="margin-top: 8px; padding-top: 8px; border-top: 1px solid #1f2937; font-size: 10px; color: #64748b;">
-                Peta Spasial Leaflet.js • 25 Node ESP32 Tersebar di Pulau Bali
+                Peta Spasial Leaflet.js • 25 Node ESP32 Tersebar di Seluruh Pulau Indonesia
             </div>
         </div>
 
@@ -780,10 +780,10 @@
 
     <!-- Leaflet Script -->
     <script>
-        // Inisialisasi Peta Leaflet dengan fokus utama ke Pulau Bali (25 Node)
+        // Inisialisasi Peta Leaflet berpusat di Peta Indonesia (25 Node Tersebar Nasional)
         const map = L.map('map-container', {
             zoomControl: false
-        }).setView([-8.45, 115.18], 10);
+        }).setView([-2.2, 118.0], 5);
 
         // Tambah zoom control di pojok kiri atas
         L.control.zoom({ position: 'topleft' }).addTo(map);
@@ -838,296 +838,326 @@
         });
 
         // ==========================================
-        // 25 Node Telemetri ESP32 Regional Bali
+        // 25 Node Telemetri ESP32 Grid SCADA Nasional
+        // (Tersebar di Seluruh Pulau Indonesia: Sumatera, Jawa, Bali, NTB, NTT, Kalimantan, Sulawesi, Maluku, Papua)
         // ==========================================
-        const baliNodes = [
+        const nationalNodes = [
+            // 1. BALI - TARGET INSIDEN KRITIS (PENUGASAN DINAS KE TKP)
             {
                 id: "ESP32-KTA-03",
                 name: "Gardu Distribusi Kuta Beach",
-                region: "Kuta, Badung",
+                region: "Kuta, Badung, Bali",
                 lat: -8.7214,
                 lng: 115.1695,
                 status: "CRITICAL_DOWN",
                 voltage: "0.0 V (DROP TOTAL)",
                 freq: "0.00 Hz",
                 isIncident: true,
-                desc: "Korosi Uap Garam Laut CX &bull; Sekring F1 Trip. Enkripsi SCADA AES-256 Terkunci Fisik. Wajib penugasan Luthfi Hibatullah (Palembang ✈️ Bali)."
+                desc: "Korosi Uap Garam Laut CX &bull; Sekring F1 Trip. Enkripsi SCADA AES-256 Terkunci Fisik. Wajib penugasan dinas Luthfi Hibatullah (Palembang ✈️ Bali)."
             },
+            // 2. SUMATERA - MARKAS RISET LAB UNSRI HQ
             {
-                id: "ESP32-DPS-01",
-                name: "Gateway Denpasar Kota (Udayana)",
-                region: "Denpasar",
-                lat: -8.6500,
-                lng: 115.2167,
+                id: "ESP32-PLM-HQ01",
+                name: "HQ Riset IoT Unsri (GI Bukit Besar)",
+                region: "Palembang, Sumatera Selatan",
+                lat: -2.9856,
+                lng: 104.7317,
                 status: "ONLINE",
-                voltage: "220.8 V",
+                voltage: "221.2 V",
                 freq: "50.01 Hz",
-                desc: "Gateway Komunikasi Regional Denpasar. Hardware ESP32-WROOM-32U."
+                desc: "Markas Komando &amp; Lab Sentral Riset IoT Universitas Sriwijaya (Pos Luthfi Hibatullah). Penugasan: 🛫 Siap Terbang ke Bali (SPPD #042)."
             },
+            // 3. SUMATERA - BANDA ACEH
             {
-                id: "ESP32-DPS-02",
-                name: "Gardu Distribusi Renon UID Bali",
-                region: "Denpasar",
-                lat: -8.6705,
-                lng: 115.2280,
+                id: "ESP32-ACH-01",
+                name: "Gardu Induk Banda Aceh",
+                region: "Banda Aceh, Aceh",
+                lat: 5.5483,
+                lng: 95.3238,
+                status: "ONLINE",
+                voltage: "220.6 V",
+                freq: "50.00 Hz",
+                desc: "Interkoneksi Transmisi Grid Ujung Barat Sumatera (PLN UID Aceh)."
+            },
+            // 4. SUMATERA - MEDAN
+            {
+                id: "ESP32-MDN-02",
+                name: "Gardu Induk Simpang Tiga",
+                region: "Medan, Sumatera Utara",
+                lat: 3.5952,
+                lng: 98.6722,
                 status: "ONLINE",
                 voltage: "221.0 V",
-                freq: "50.00 Hz",
-                desc: "Substation Kantor Pusat PLN UID Bali Renon."
+                freq: "50.01 Hz",
+                desc: "Sentral Telemetri Beban Grid Industri Sumatera Utara (PLN UID Sumut)."
             },
+            // 5. SUMATERA - PEKANBARU
             {
-                id: "ESP32-SNR-04",
-                name: "Node Pesisir Pantai Sanur",
-                region: "Sanur, Denpasar",
-                lat: -8.6882,
-                lng: 115.2631,
+                id: "ESP32-PKU-03",
+                name: "Substation Tenayan Raya",
+                region: "Pekanbaru, Riau",
+                lat: 0.5333,
+                lng: 101.4500,
                 status: "ONLINE",
                 voltage: "220.4 V",
-                freq: "50.02 Hz",
-                desc: "Monitoring Trafo Distribusi Pesisir Pantai Sanur."
+                freq: "49.99 Hz",
+                desc: "Monitoring Beban Gardu Interkoneksi Kawasan Industri Tenayan Riau."
             },
+            // 6. SUMATERA - PADANG
             {
-                id: "ESP32-SMY-05",
-                name: "Node Gardu Seminyak Sunset",
-                region: "Seminyak, Badung",
-                lat: -8.6913,
-                lng: 115.1682,
+                id: "ESP32-PDG-04",
+                name: "Gardu Induk Pauh Limo",
+                region: "Padang, Sumatera Barat",
+                lat: -0.9471,
+                lng: 100.4172,
+                status: "ONLINE",
+                voltage: "220.3 V",
+                freq: "50.00 Hz",
+                desc: "Substation Utama Jaringan Sumatera Barat (PLN UID Sumbar)."
+            },
+            // 7. SUMATERA - BANDAR LAMPUNG
+            {
+                id: "ESP32-LMP-05",
+                name: "Gardu Induk Tarahan",
+                region: "Bandar Lampung, Lampung",
+                lat: -5.4500,
+                lng: 105.2667,
+                status: "ONLINE",
+                voltage: "220.7 V",
+                freq: "50.02 Hz",
+                desc: "Pintu Masuk Transmisi Tol Listrik Sumatera - Jawa (PLN UID Lampung)."
+            },
+            // 8. JAWA - JAKARTA
+            {
+                id: "ESP32-JKT-06",
+                name: "Gardu Induk Gambir (UID Disjaya)",
+                region: "Gambir, DKI Jakarta",
+                lat: -6.1754,
+                lng: 106.8272,
+                status: "ONLINE",
+                voltage: "220.8 V",
+                freq: "50.00 Hz",
+                desc: "Monitoring SCADA Beban Jaringan Ring 1 Ibukota Jakarta (PLN UID Disjaya)."
+            },
+            // 9. JAWA - BANDUNG
+            {
+                id: "ESP32-BDG-07",
+                name: "Gardu Induk Dago Atas",
+                region: "Bandung, Jawa Barat",
+                lat: -6.8850,
+                lng: 107.6133,
                 status: "ONLINE",
                 voltage: "219.8 V",
-                freq: "50.00 Hz",
-                desc: "Gardu Jaringan Komersial &amp; Pariwisata Seminyak."
+                freq: "50.01 Hz",
+                desc: "Gardu Transmisi Pegunungan &amp; Kawasan Riset (PLN UID Jawa Barat)."
             },
+            // 10. JAWA - SEMARANG
             {
-                id: "ESP32-CGU-06",
-                name: "Substation Canggu Echo Beach",
-                region: "Canggu, Badung",
-                lat: -8.6530,
-                lng: 115.1310,
+                id: "ESP32-SMG-08",
+                name: "Substation Krapyak",
+                region: "Semarang, Jawa Tengah",
+                lat: -6.9932,
+                lng: 110.3705,
+                status: "ONLINE",
+                voltage: "220.5 V",
+                freq: "50.00 Hz",
+                desc: "Sentral Interkoneksi Transmisi Grid Pantura (PLN UID Jateng &amp; DIY)."
+            },
+            // 11. JAWA - YOGYAKARTA
+            {
+                id: "ESP32-YGY-09",
+                name: "Gardu Induk Gejayan",
+                region: "Sleman, D.I. Yogyakarta",
+                lat: -7.7700,
+                lng: 110.3900,
                 status: "ONLINE",
                 voltage: "220.2 V",
                 freq: "49.99 Hz",
-                desc: "Trafo Distribusi Wilayah Canggu &amp; Pererenan."
+                desc: "Trafo Distribusi Kawasan Kampus &amp; Pariwisata DIY."
             },
+            // 12. JAWA - SURABAYA
             {
-                id: "ESP32-JBR-07",
-                name: "Substation Trafo Jimbaran 02",
-                region: "Jimbaran, Badung",
-                lat: -8.7692,
-                lng: 115.1627,
-                status: "ONLINE",
-                voltage: "220.6 V",
-                freq: "50.01 Hz",
-                desc: "Substation Trafo 20kV Jalur Kawasan Jimbaran."
-            },
-            {
-                id: "ESP32-NSD-08",
-                name: "Node ITDC Nusa Dua Resort",
-                region: "Nusa Dua, Badung",
-                lat: -8.7980,
-                lng: 115.2240,
-                status: "ONLINE",
-                voltage: "221.4 V",
-                freq: "50.00 Hz",
-                desc: "Trafo Utama Kawasan Khusus ITDC Nusa Dua."
-            },
-            {
-                id: "ESP32-ULW-09",
-                name: "Node Tebing Uluwatu Substation",
-                region: "Uluwatu, Badung",
-                lat: -8.8280,
-                lng: 115.1050,
-                status: "ONLINE",
-                voltage: "219.7 V",
-                freq: "50.01 Hz",
-                desc: "Gardu Pesisir Selatan Bali Tebing Pura Uluwatu."
-            },
-            {
-                id: "ESP32-BNO-10",
-                name: "Gardu Dermaga Pelabuhan Benoa",
-                region: "Denpasar Selatan",
-                lat: -8.7520,
-                lng: 115.2150,
-                status: "ONLINE",
-                voltage: "220.5 V",
-                freq: "50.00 Hz",
-                desc: "Kelistrikan Dermaga Petikemas &amp; Maritim Pelabuhan Benoa."
-            },
-            {
-                id: "ESP32-MGW-11",
-                name: "Node Hub Terminal Mengwi",
-                region: "Mengwi, Badung",
-                lat: -8.5450,
-                lng: 115.1720,
+                id: "ESP32-SBY-10",
+                name: "Gardu Induk Waru",
+                region: "Surabaya, Jawa Timur",
+                lat: -7.3524,
+                lng: 112.7291,
                 status: "ONLINE",
                 voltage: "220.9 V",
-                freq: "50.02 Hz",
-                desc: "Titik Hub Jaringan Jalur Tengah Badung Mengwi."
-            },
-            {
-                id: "ESP32-UBD-12",
-                name: "Node Wisata Ubud Monkey Forest",
-                region: "Ubud, Gianyar",
-                lat: -8.5130,
-                lng: 115.2600,
-                status: "ONLINE",
-                voltage: "221.1 V",
                 freq: "50.01 Hz",
-                desc: "Trafo Distribusi Wisata Budaya Ubud Gianyar."
+                desc: "Sentral Hub Beban Industri &amp; Pelabuhan Jawa Timur (PLN UID Jatim)."
             },
+            // 13. JAWA - BANYUWANGI
             {
-                id: "ESP32-GNR-13",
-                name: "Substation Gianyar Kota",
-                region: "Gianyar",
-                lat: -8.5410,
-                lng: 115.3260,
+                id: "ESP32-BWX-11",
+                name: "Terminasi Kabel Laut Ketapang",
+                region: "Banyuwangi, Jawa Timur",
+                lat: -8.1500,
+                lng: 114.3900,
                 status: "ONLINE",
-                voltage: "220.3 V",
-                freq: "50.00 Hz",
-                desc: "Gardu Induk Distribusi Pusat Kota Gianyar."
-            },
-            {
-                id: "ESP32-TBN-14",
-                name: "Gardu Induk Tabanan Kota",
-                region: "Tabanan",
-                lat: -8.5380,
-                lng: 115.1240,
-                status: "ONLINE",
-                voltage: "220.0 V",
-                freq: "50.01 Hz",
-                desc: "Interkoneksi Jalur Barat Distribusi Tabanan."
-            },
-            {
-                id: "ESP32-TNL-15",
-                name: "Node Pesisir Tanah Lot",
-                region: "Kediri, Tabanan",
-                lat: -8.6210,
-                lng: 115.0860,
-                status: "ONLINE",
-                voltage: "219.9 V",
-                freq: "49.99 Hz",
-                desc: "Monitoring Trafo Area Wisata Bahari Tanah Lot."
-            },
-            {
-                id: "ESP32-BDG-16",
-                name: "Node Dataran Tinggi Bedugul Beratan",
-                region: "Baturiti, Tabanan",
-                lat: -8.2750,
-                lng: 115.1650,
-                status: "ONLINE",
-                voltage: "220.7 V",
-                freq: "50.00 Hz",
-                desc: "Trafo Distribusi Pegunungan Danau Beratan Bedugul."
-            },
-            {
-                id: "ESP32-SJR-17",
-                name: "Node Distribusi Singaraja Kota",
-                region: "Buleleng",
-                lat: -8.1120,
-                lng: 115.0880,
-                status: "ONLINE",
-                voltage: "220.4 V",
+                voltage: "221.3 V",
                 freq: "50.02 Hz",
-                desc: "Sentral Distribusi Daya Kawasan Bali Utara Singaraja."
+                desc: "Gardu Titik Injeksi Saluran Kabel Laut Transmisi Jawa - Bali (SKLT)."
             },
+            // 14. BALI - DENPASAR UID BALI
             {
-                id: "ESP32-LVN-18",
-                name: "Substation Pantai Lovina",
-                region: "Lovina, Buleleng",
-                lat: -8.1580,
-                lng: 115.0250,
+                id: "ESP32-DPS-12",
+                name: "Sentral UID Bali Renon",
+                region: "Denpasar, Bali",
+                lat: -8.6705,
+                lng: 115.2280,
+                status: "ONLINE",
+                voltage: "220.6 V",
+                freq: "50.00 Hz",
+                desc: "Kantor Pusat Distribusi PLN UID Bali Renon (Pos Pak Nyoman)."
+            },
+            // 15. NUSA TENGGARA - LOMBOK (MATARAM)
+            {
+                id: "ESP32-MTR-13",
+                name: "Gardu Induk Ampenan",
+                region: "Mataram, Lombok, NTB",
+                lat: -8.5833,
+                lng: 116.1167,
                 status: "ONLINE",
                 voltage: "220.1 V",
                 freq: "50.01 Hz",
-                desc: "Trafo Wisata Pesisir Pantai Lovina Bali Utara."
+                desc: "Monitoring Sistem Grid Interkoneksi Pulau Lombok (PLN UID NTB)."
             },
+            // 16. NUSA TENGGARA - KUPANG (TIMOR)
             {
-                id: "ESP32-KTM-19",
-                name: "Node Kaldera Kintamani Batur",
-                region: "Kintamani, Bangli",
-                lat: -8.2430,
-                lng: 115.3550,
+                id: "ESP32-KPG-14",
+                name: "Gardu Induk Maulafa",
+                region: "Kupang, NTT",
+                lat: -10.1772,
+                lng: 123.6070,
                 status: "ONLINE",
-                voltage: "221.2 V",
-                freq: "50.00 Hz",
-                desc: "Monitoring Daya Geotermal &amp; Kaldera Danau Batur."
-            },
-            {
-                id: "ESP32-BGL-20",
-                name: "Substation Bangli Kota",
-                region: "Bangli",
-                lat: -8.4550,
-                lng: 115.3550,
-                status: "ONLINE",
-                voltage: "220.5 V",
-                freq: "50.01 Hz",
-                desc: "Gardu Distribusi Regional Dataran Tengah Bangli."
-            },
-            {
-                id: "ESP32-KLK-21",
-                name: "Gardu Distribusi Klungkung Semarapura",
-                region: "Klungkung",
-                lat: -8.5350,
-                lng: 115.4040,
-                status: "ONLINE",
-                voltage: "220.8 V",
-                freq: "50.00 Hz",
-                desc: "Substation Induk Distribusi Semarapura Klungkung."
-            },
-            {
-                id: "ESP32-PDB-22",
-                name: "Node Dermaga Pelabuhan Padangbai",
-                region: "Karangasem",
-                lat: -8.5300,
-                lng: 115.5080,
-                status: "ONLINE",
-                voltage: "219.9 V",
+                voltage: "219.7 V",
                 freq: "49.98 Hz",
-                desc: "Kelistrikan Penyeberangan Feri Bali - Lombok Padangbai."
+                desc: "Sentral Distribusi Daya Kepulauan Nusa Tenggara Timur (PLN UID NTT)."
             },
+            // 17. KALIMANTAN - PONTIANAK
             {
-                id: "ESP32-KAS-23",
-                name: "Substation Amlapura Karangasem",
-                region: "Karangasem",
-                lat: -8.4480,
-                lng: 115.6120,
-                status: "ONLINE",
-                voltage: "220.3 V",
-                freq: "50.01 Hz",
-                desc: "Gardu Distribusi Sentral Bali Timur Amlapura."
-            },
-            {
-                id: "ESP32-NGR-24",
-                name: "Gardu Induk Negara Jembrana",
-                region: "Negara, Jembrana",
-                lat: -8.3580,
-                lng: 114.6250,
+                id: "ESP32-PTK-15",
+                name: "Substation Siantan",
+                region: "Pontianak, Kalimantan Barat",
+                lat: -0.0263,
+                lng: 109.3425,
                 status: "ONLINE",
                 voltage: "220.4 V",
                 freq: "50.00 Hz",
-                desc: "Interkoneksi Transmisi Bali Barat Wilayah Jembrana."
+                desc: "Gardu Induk Interkoneksi Garis Khatulistiwa (PLN UID Kalbar)."
             },
+            // 18. KALIMANTAN - BANJARMASIN
             {
-                id: "ESP32-GLM-25",
-                name: "Interkoneksi Kabel Laut Gilimanuk",
-                region: "Gilimanuk, Jembrana",
-                lat: -8.1630,
-                lng: 114.4380,
+                id: "ESP32-BJM-16",
+                name: "Gardu Induk Trisakti",
+                region: "Banjarmasin, Kalimantan Selatan",
+                lat: -3.3194,
+                lng: 114.5908,
                 status: "ONLINE",
-                voltage: "221.5 V",
+                voltage: "220.3 V",
+                freq: "50.01 Hz",
+                desc: "Sentral Beban Pelabuhan Logistik Kalselteng (PLN UID Kalselteng)."
+            },
+            // 19. KALIMANTAN - BALIKPAPAN / IKN
+            {
+                id: "ESP32-IKN-17",
+                name: "Gardu Karang Joang (Transmisi IKN)",
+                region: "Balikpapan, Kalimantan Timur",
+                lat: -1.1718,
+                lng: 116.8920,
+                status: "ONLINE",
+                voltage: "221.1 V",
+                freq: "50.00 Hz",
+                desc: "Interkoneksi Utama Pasokan Listrik IKN Nusantara &amp; Balikpapan (PLN UID Kaltimra)."
+            },
+            // 20. KALIMANTAN - TARAKAN
+            {
+                id: "ESP32-TRK-18",
+                name: "Substation Kampung Enam",
+                region: "Tarakan, Kalimantan Utara",
+                lat: 3.3000,
+                lng: 117.6333,
+                status: "ONLINE",
+                voltage: "220.0 V",
                 freq: "50.02 Hz",
-                desc: "Gardu Titik Terminasi Saluran Kabel Laut Jawa - Bali (SKLT)."
+                desc: "Monitoring Isolated Grid Wilayah Perbatasan Utara Kalimantan (PLN Tarakan)."
+            },
+            // 21. SULAWESI - MAKASSAR
+            {
+                id: "ESP32-MKS-19",
+                name: "Gardu Induk Panakkukang",
+                region: "Makassar, Sulawesi Selatan",
+                lat: -5.1477,
+                lng: 119.4327,
+                status: "ONLINE",
+                voltage: "220.5 V",
+                freq: "50.01 Hz",
+                desc: "Sentral Interkoneksi Sistem Kelistrikan Sulselrabar (PLN UID Sulselrabar)."
+            },
+            // 22. SULAWESI - PALU
+            {
+                id: "ESP32-PLU-20",
+                name: "Substation Silae",
+                region: "Palu, Sulawesi Tengah",
+                lat: -0.8917,
+                lng: 119.8707,
+                status: "ONLINE",
+                voltage: "219.9 V",
+                freq: "50.00 Hz",
+                desc: "Monitoring Gardu Distribusi Beban Teluk Palu &amp; Donggala."
+            },
+            // 23. SULAWESI - MANADO
+            {
+                id: "ESP32-MND-21",
+                name: "Gardu Induk Teling",
+                region: "Manado, Sulawesi Utara",
+                lat: 1.4748,
+                lng: 124.8421,
+                status: "ONLINE",
+                voltage: "220.7 V",
+                freq: "50.02 Hz",
+                desc: "Interkoneksi Sistem Transmisi Minahasa - Kotamobagu (PLN UID Suluttenggo)."
+            },
+            // 24. MALUKU - AMBON
+            {
+                id: "ESP32-AMB-22",
+                name: "Substation Hative Besar",
+                region: "Ambon, Maluku",
+                lat: -3.6958,
+                lng: 128.1831,
+                status: "ONLINE",
+                voltage: "220.2 V",
+                freq: "49.99 Hz",
+                desc: "Sentral Distribusi Daya Kepulauan Maluku (PLN UID Maluku &amp; Malut)."
+            },
+            // 25. PAPUA - JAYAPURA
+            {
+                id: "ESP32-JYP-23",
+                name: "Gardu Induk Skyline Kotaraja",
+                region: "Jayapura, Papua",
+                lat: -2.5916,
+                lng: 140.6690,
+                status: "ONLINE",
+                voltage: "220.8 V",
+                freq: "50.01 Hz",
+                desc: "Gardu Induk Utama Grid Transmisi Ujung Timur Indonesia (PLN UID Papua)."
             }
         ];
 
         let ktaMarker = null;
+        let plmMarker = null;
         const nodeMarkers = [];
 
-        baliNodes.forEach(node => {
+        nationalNodes.forEach(node => {
             const iconToUse = node.isIncident ? redPulsingIcon : greenIcon;
             const marker = L.marker([node.lat, node.lng], { icon: iconToUse }).addTo(map);
 
             if (node.isIncident) {
                 ktaMarker = marker;
+            }
+            if (node.id === "ESP32-PLM-HQ01") {
+                plmMarker = marker;
             }
             nodeMarkers.push(marker);
 
@@ -1147,24 +1177,6 @@
             `;
             marker.bindPopup(popupContent);
         });
-
-        // ==========================================
-        // Markas Riset UNSRI Palembang (HQ Pusat)
-        // ==========================================
-        const plmMarker = L.marker([-2.9856, 104.7317], { icon: greenIcon }).addTo(map);
-        plmMarker.bindPopup(`
-            <div class="node-popup-card">
-                <h4 style="color: #34d399;">🎓 [HQ PUSAT] Lab IoT Universitas Sriwijaya</h4>
-                <table class="node-popup-table">
-                    <tr><td>Stasiun</td><td>: GI Bukit Besar Palembang</td></tr>
-                    <tr><td>Node ID</td><td>: <strong>ESP32-PLM-HQ01</strong></td></tr>
-                    <tr><td>Status</td><td>: <span style="color:#34d399;">OPTIMAL (SINKRON)</span></td></tr>
-                    <tr><td>Tegangan</td><td>: 221.2 V &bull; 50.01 Hz</td></tr>
-                    <tr><td>Peneliti</td><td>: <strong>Luthfi Hibatullah</strong></td></tr>
-                    <tr><td>Penugasan</td><td>: 🛫 Siap Terbang ke Bali (SPPD #042)</td></tr>
-                </table>
-            </div>
-        `);
 
         // ==========================================
         // Rute Penerbangan Resmi Palembang ✈️ Bali
@@ -1195,20 +1207,22 @@
         // Navigasi Viewport
         // ==========================================
         function viewBali() {
-            map.flyTo([-8.45, 115.18], 10, { animate: true, duration: 1.2 });
+            map.flyTo([-8.6, 115.2], 10, { animate: true, duration: 1.2 });
         }
 
         function viewIndonesia() {
-            map.flyTo([-2.5, 117.5], 5, { animate: true, duration: 1.5 });
+            map.flyTo([-2.2, 118.0], 5, { animate: true, duration: 1.5 });
         }
 
         function viewPalembang() {
             map.flyTo([-2.9856, 104.7317], 13, { animate: true, duration: 1.5 });
-            setTimeout(() => { plmMarker.openPopup(); }, 1600);
+            if (plmMarker) {
+                setTimeout(() => { plmMarker.openPopup(); }, 1600);
+            }
         }
 
         function focusOnIncident() {
-            map.flyTo([-8.7214, 115.1695], 14, { animate: true, duration: 1.5 });
+            map.flyTo([-8.7214, 115.1695], 15, { animate: true, duration: 1.5 });
             if (ktaMarker) {
                 setTimeout(() => { ktaMarker.openPopup(); }, 1600);
             }
