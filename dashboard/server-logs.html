@@ -67,6 +67,9 @@
             white-space: nowrap;
             margin: 0;
             line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .brand-text p {
@@ -75,6 +78,35 @@
             white-space: nowrap;
             margin: 2px 0 0 0;
             line-height: 1.2;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-size: 9.5px;
+            font-family: 'Fira Code', monospace;
+            padding: 1px 6px;
+            border-radius: 9999px;
+            font-weight: 700;
+        }
+
+        .badge-live::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background-color: #10b981;
+            border-radius: 50%;
+            animation: pulse-live 1.5s infinite;
+        }
+
+        @keyframes pulse-live {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         .nav-links {
@@ -324,8 +356,11 @@
                 <img src="../images/Logo_PLN.png" alt="PLN" style="width: 22px; height: 22px; object-fit: contain;">
             </div>
             <div class="brand-text">
-                <h1>Sistem Audit & Log Server (Syslog)</h1>
-                <p>Jurnal Aktivitas Daemon Telemetri Gateway Regional Bali</p>
+                <h1>
+                    Syslog Server Bali
+                    <span class="badge-live">LIVE</span>
+                </h1>
+                <p>PT PLN UID Bali &amp; Lab IoT Unsri</p>
             </div>
         </div>
 
@@ -411,7 +446,7 @@
             <div class="line-info">[2026-09-18 07:00:04] mqtt-daemon[4092]: Listening for incoming telemetry packets on tcp://0.0.0.0:8883 (TLS 1.3)</div>
             <div class="line-ok">[2026-09-18 07:00:05] mqtt-daemon[4092]: Synchronized clock via NTP unsri-ntp.unsri.ac.id (Offset: +0.0012s)</div>
             <div class="line-info">[2026-09-18 07:15:20] auth[4120]: Accepted publickey for researcher luthfi_hibatullah (NIM: 03041182530001) from 10.24.112.5 port 54112 ssh2: RSA SHA256:Xf9A2...</div>
-            <div class="line-ok">[2026-09-18 07:30:00] audit[4092]: Cluster heartbeat verified: 15 nodes registered</div>
+            <div class="line-ok">[2026-09-18 07:30:00] audit[4092]: Cluster heartbeat verified: 25 nodes registered</div>
             <div class="line-info">[2026-09-18 08:00:12] mqtt-daemon[4092]: Node ESP32-DPS-01 ping acknowledgment received (11ms)</div>
             <div class="line-info">[2026-09-18 08:05:44] mqtt-daemon[4092]: Node ESP32-JBR-02 telemetry packet received (RMS Voltage: 220.4V, Load: 412.8A)</div>
             <div class="line-warn">[2026-09-18 08:10:02] mqtt-daemon[4092]: WARNING: Heartbeat frame missed from node ESP32-KTA-03 (Attempt 1/3)</div>

@@ -78,6 +78,9 @@
             white-space: nowrap;
             margin: 0;
             line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .brand-text p {
@@ -86,6 +89,35 @@
             white-space: nowrap;
             margin: 2px 0 0 0;
             line-height: 1.2;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-size: 9.5px;
+            font-family: 'Fira Code', monospace;
+            padding: 1px 6px;
+            border-radius: 9999px;
+            font-weight: 700;
+        }
+
+        .badge-live::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            background-color: #10b981;
+            border-radius: 50%;
+            animation: pulse-live 1.5s infinite;
+        }
+
+        @keyframes pulse-live {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1.1); box-shadow: 0 0 0 5px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         .nav-links {
@@ -531,8 +563,11 @@
                 <img src="../images/Logo_PLN.png" alt="PLN" style="width: 22px; height: 22px; object-fit: contain;">
             </div>
             <div class="brand-text">
-                <h1>Log Insiden & Gangguan Jaringan IoT</h1>
-                <p>Integrasi PLN UID Bali x Laboratorium Komputasi & IoT Teknik Elektro Unsri</p>
+                <h1>
+                    Log Insiden Bali
+                    <span class="badge-live">LIVE</span>
+                </h1>
+                <p>PT PLN UID Bali &amp; Lab IoT Unsri</p>
             </div>
         </div>
 

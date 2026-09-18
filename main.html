@@ -2127,7 +2127,7 @@
             background: #0b1120;
             border: 2px solid #06b6d4;
             border-radius: 12px;
-            max-width: 680px;
+            max-width: 740px;
             width: 100%;
             box-shadow: 0 0 50px rgba(6, 182, 212, 0.35);
             overflow: hidden;
@@ -2148,7 +2148,7 @@
 
         .secret-modal-body {
             padding: 20px;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
         }
 
@@ -3023,8 +3023,8 @@
                     <span class="metric-icon">📡</span>
                 </div>
                 <div class="metric-value">
-                    <span id="metric-active-nodes" style="color: #f87171;">14</span>
-                    <span class="metric-unit">/ 15 Online</span>
+                    <span id="metric-active-nodes" style="color: #f87171;">24</span>
+                    <span class="metric-unit">/ 25 Online</span>
                 </div>
                 <div class="metric-sub">
                     <span style="color: #f87171; font-weight:600;">1 Node Anomali</span>
@@ -4577,7 +4577,7 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
         }
 
         function runHardwareSelfTest() {
-            const consoleBox = document.getElementById('diagConsole');
+            const consoleBox = document.getElementById('diagPublicConsole') || document.getElementById('diagConsole');
             const btn = document.getElementById('btnSelfTest');
             if (!consoleBox) return;
 
@@ -4604,7 +4604,7 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
         }
 
         function attemptOtaFlash() {
-            const consoleBox = document.getElementById('diagConsole');
+            const consoleBox = document.getElementById('diagPublicConsole') || document.getElementById('diagConsole');
             const alertBox = document.getElementById('otaErrorAlert');
             const btn = document.getElementById('btnOtaFlash');
             if (!consoleBox) return;
@@ -4791,13 +4791,13 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
             const activeCard = activeNodesEl ? activeNodesEl.closest('.metric-card') : null;
             if (activeNodesEl && activeCard) {
                 if (isKutaFixed) {
-                    activeNodesEl.textContent = '15';
+                    activeNodesEl.textContent = '25';
                     activeNodesEl.style.color = '#34d399';
                     activeCard.classList.remove('critical');
                     activeCard.classList.add('success');
                     const subSpan = activeCard.querySelector('.metric-sub span:first-child');
                     if (subSpan) {
-                        subSpan.textContent = 'Seluruh Node Stabil';
+                        subSpan.textContent = 'Seluruh 25 Node Stabil';
                         subSpan.style.color = '#34d399';
                     }
                     const pill = activeCard.querySelector('.status-pill');
@@ -4806,7 +4806,7 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
                         pill.textContent = 'OPTIMAL';
                     }
                 } else {
-                    activeNodesEl.textContent = '14';
+                    activeNodesEl.textContent = '24';
                     activeNodesEl.style.color = '#f87171';
                     activeCard.classList.remove('success');
                     activeCard.classList.add('critical');
@@ -4971,7 +4971,7 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
             }
 
             if (isKutaFixed) {
-                appendLog('ok', '⚡ [RECOVERY] Perbaikan Gardu Kuta Beach berhasil! Tegangan fasa kembali normal 221.4V. Seluruh 15 node online.');
+                appendLog('ok', '⚡ [RECOVERY] Perbaikan Gardu Kuta Beach berhasil! Tegangan fasa kembali normal 221.4V. Seluruh 25 node online.');
             } else {
                 appendLog('err', '🚨 [FAULT] Mode simulasi pemulihan dinonaktifkan. Gardu Kuta Beach kembali ke status gangguan (0.0V Flatline).');
             }
@@ -5075,6 +5075,8 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
 
         function openSecretBudgetModal() {
             loadSecretBudgetInputs();
+            const toggle = document.getElementById('secretFixingToggle');
+            if (toggle) toggle.checked = isKutaFixed;
             const modal = document.getElementById('secretBudgetModal');
             if (modal) modal.style.display = 'flex';
         }
@@ -5084,11 +5086,16 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
             if (modal) modal.style.display = 'none';
         }
 
-        // Window hotkey listener for Ctrl + Shift + B
+        // Window hotkey listener for Shift + Ctrl + B / Ctrl + Shift + B
         window.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.shiftKey && (e.key === 'B' || e.key === 'b')) {
+            if (e.ctrlKey && e.shiftKey && (e.key === 'B' || e.key === 'b' || e.code === 'KeyB')) {
                 e.preventDefault();
-                openSecretBudgetModal();
+                const modal = document.getElementById('secretBudgetModal');
+                if (modal && modal.style.display === 'flex') {
+                    closeSecretBudgetModal();
+                } else {
+                    openSecretBudgetModal();
+                }
             }
         });
 
@@ -5100,7 +5107,7 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
 
         function attachFtdiCable() {
             const consoleBox = document.getElementById('diagConsole');
-            const badge = document.getElementById('ftdiStatusBadge');
+            const badge = document.getElementById('secretFtdiBadge') || document.getElementById('ftdiStatusBadge');
             const btn = document.getElementById('btnAttachFtdi');
             const uartStatus = document.getElementById('diagStatusUart');
             const uartItem = document.getElementById('diagItemUart');
@@ -5584,43 +5591,41 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                     </div>
                 </div>
 
-                <!-- Self-Test & Flashing Log Terminal in Modal -->
-                <div style="background: #020617; border: 1px solid #1e293b; border-radius: 6px; padding: 10px 12px; font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8; height: 130px; overflow-y: auto;" id="diagConsole">
-                    [DIAG-INIT] Console connected to DCC SCADA Serial Bus.<br>
-                    [DIAG-WARN] Node ESP32-KTA-03 unresponsive on physical bus.<br>
-                    [DIAG-INFO] Plug in physical FTDI USB-UART cable to bypass hardware lock and flash firmware.
-                </div>
-
-                <!-- Interactive Command Line Interface (CLI) -->
-                <div class="cli-input-line">
-                    <span class="cli-prompt">luthfi@unsri-flasher:~$ </span>
-                    <input type="text" id="diagCliInput" class="diag-cli-input" placeholder="Ketik perintah (help, chip_id, flash, repair, reboot, clear)..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')executeCliCommand()">
-                    <button type="button" class="cli-send-btn" onclick="executeCliCommand()" title="Jalankan perintah">⏎ Run</button>
-                </div>
-
-                <!-- Quick Command Shortcuts Toolbar -->
-                <div class="flasher-quick-bar">
-                    <button type="button" class="quick-cmd-btn" id="btnAttachFtdi" onclick="attachFtdiCable()">🔌 1. Colok Kabel FTDI</button>
-                    <button type="button" class="quick-cmd-btn" onclick="runChipIdQuery()">⚡ 2. Cek Chip ID (esptool)</button>
-                    <button type="button" class="quick-cmd-btn" onclick="runSerialFlashFirmware()">🚀 3. Flash Firmware AES-256</button>
-                    <button type="button" class="quick-cmd-btn success" onclick="executePhysicalRepair()">🔧 4. Ganti Sekring &amp; Pulihkan Gardu</button>
-                </div>
-
-                <!-- Flashing Animation Progress Bar -->
-                <div id="flasherProgressContainer" style="display: none; margin-bottom: 12px;">
-                    <div style="display: flex; justify-content: space-between; font-family: 'Fira Code', monospace; font-size: 10px; color: #38bdf8; margin-bottom: 3px;">
-                        <span id="flasherProgressStatus">Writing flash to 0x10000...</span>
-                        <span id="flasherProgressPct">0%</span>
-                    </div>
-                    <div class="flasher-progress-wrap">
-                        <div id="flasherProgressFill" class="flasher-progress-fill"></div>
-                    </div>
+                <!-- Public Self-Test & Diagnostic Terminal -->
+                <div style="background: #020617; border: 1px solid #1e293b; border-radius: 6px; padding: 10px 12px; font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8; height: 110px; overflow-y: auto; margin-bottom: 12px;" id="diagPublicConsole">
+                    [DIAG-INIT] Console terhubung ke DCC SCADA Bus Bali.<br>
+                    [DIAG-WARN] Node ESP32-KTA-03 (Kuta Beach) tidak merespons denyut heartbeat (Timeout &gt; 300s).<br>
+                    [DIAG-INFO] Klik "Jalankan Self-Test Sirkuit" untuk menguji resistansi pin mikrokontroler.
                 </div>
 
                 <!-- OTA Flash Alert Box (Shown on OTA attempt) -->
-                <div id="otaErrorAlert" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 6px; padding: 10px 14px; font-size: 11px; color: #fca5a5; line-height: 1.5; margin-bottom: 14px;">
+                <div id="otaErrorAlert" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 6px; padding: 10px 14px; font-size: 11px; color: #fca5a5; line-height: 1.5; margin-bottom: 12px;">
                     <strong style="color: #ffffff; display: block; margin-bottom: 4px;">⛔ OTA FLASHING DITOLAK (SCADA ERROR 0x7E - HARDWARE LOCK):</strong>
                     Port serial fisik terkunci akibat putusnya sekring F1. Protokol keselamatan melarang pengunggahan firmware jarak jauh tanpa keberadaan fisik di lokasi. <strong style="color: #fef08a;">Teknisi perancang (Luthfi Hibatullah) wajib hadir di Gardu Kuta Beach</strong> dan mencolokkan kabel USB-UART FTDI secara langsung ke pin TX/RX board mikrokontroler.
+                </div>
+
+                <!-- Security / Physical Repair Locked Notice (Redirects to Secret Panel) -->
+                <div style="background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(239, 68, 68, 0.35); border-radius: 8px; padding: 12px 14px; margin-bottom: 14px;">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 22px; line-height: 1;">🔒</span>
+                        <div style="flex: 1;">
+                            <div style="font-size: 12px; font-weight: 700; color: #f87171; font-family: 'Fira Code', monospace; margin-bottom: 4px;">
+                                KONSOL PERBAIKAN &amp; FLASHING FISIK TERKUNCI (HARDWARE LOCK)
+                            </div>
+                            <p style="font-size: 11px; color: #cbd5e1; line-height: 1.45; margin: 0 0 8px 0;">
+                                Tindakan perbaikan fisik (penggantian sekring F1 &amp; flashing serial FTDI) <strong>tidak dapat dieksekusi secara publik / remote</strong> demi keselamatan gardu 20kV.
+                                Sesuai SOP, teknisi wajib memegang dokumen <strong>SPK, SPPD, dan RAB</strong> untuk eksekusi di Bali, atau menggunakan otorisasi teknisi internal.
+                            </p>
+                            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                                <span style="font-size: 10px; color: #94a3b8; font-family: 'Fira Code', monospace;">
+                                    Shortcut Otorisasi: <kbd style="background:#1e293b; color:#38bdf8; padding:2px 6px; border-radius:4px; border:1px solid #334155;">Shift + Ctrl + B</kbd>
+                                </span>
+                                <button type="button" class="terminal-btn" onclick="closeHardwareDiagnosticsModal(); openSecretBudgetModal();" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5; border-color: rgba(239, 68, 68, 0.5); font-weight: 600; font-size: 10.5px;">
+                                    🔑 Buka Konsol Perbaikan (Shift+Ctrl+B) &rarr;
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
@@ -5646,18 +5651,23 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
             <div class="secret-modal-header">
                 <div style="display: flex; align-items: center; gap: 8px;">
                     <span>🔒</span>
-                    <span>PANEL RAHASIA ANGGARAN &amp; SIMULASI RECOVERY (Ctrl+Shift+B)</span>
+                    <span>PANEL RAHASIA ANGGARAN &amp; KONSOL RECOVERY FISIK (Shift+Ctrl+B)</span>
                 </div>
                 <button type="button" onclick="closeSecretBudgetModal()" style="background:none; border:none; color:#ffffff; font-size:16px; cursor:pointer;">✕</button>
             </div>
 
             <div class="secret-modal-body">
-                <div style="font-size: 11.5px; color: #94a3b8; margin-bottom: 16px; line-height: 1.5; border-bottom: 1px solid #1e293b; padding-bottom: 10px;">
-                    Panel konfigurasi rahasia internal NOC untuk mengatur rincian biaya operasional dokumen cetak <strong>RAB Talangan Dinas</strong> (otomatis disinkronkan ke <code>docs/rab-print.html</code>) serta saklar pengaktifan <strong>Simulasi Pemulihan (Fixing Mode)</strong> Gardu Kuta Beach.
+                <div style="font-size: 11.5px; color: #94a3b8; margin-bottom: 14px; line-height: 1.5; border-bottom: 1px solid #1e293b; padding-bottom: 10px;">
+                    Panel konfigurasi rahasia internal NOC untuk mengatur rincian biaya operasional dokumen cetak <strong>RAB Talangan Dinas</strong> (disinkronkan ke <code>docs/rab-print.html</code>) serta <strong>Konsol Flasher FTDI Simulator</strong> untuk pemulihan darurat Gardu Kuta Beach.
+                </div>
+
+                <!-- Bagian 1: Rincian Anggaran Dinas -->
+                <div style="font-family: 'Fira Code', monospace; font-size: 11px; font-weight: 700; color: #38bdf8; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                    <span>💰</span> RINCIAN ANGGARAN OPERASIONAL &amp; TIKET DINAS BALI:
                 </div>
 
                 <!-- 5 Form Inputs for Budget Items -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                     <div class="secret-field-group">
                         <label class="secret-field-label">1. Tiket Pesawat PP Palembang - Denpasar (Rp):</label>
                         <input type="number" id="budgetInputFlight" class="secret-field-input" value="3450000" oninput="calculateSecretBudgetTotal()">
@@ -5681,7 +5691,7 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                 </div>
 
                 <!-- Total & Terbilang Preview -->
-                <div class="secret-total-box">
+                <div class="secret-total-box" style="margin: 10px 0 14px 0;">
                     <div>
                         <div style="font-size: 11px; color: #94a3b8; font-weight: 600;">TOTAL ESTIMASI TALANGAN (REIMBURSEMENT):</div>
                         <div id="secretTerbilangText" style="font-size: 10px; color: #67e8f9; font-style: italic; margin-top: 2px;">Terbilang: Tujuh Juta Delapan Ratus Ribu Rupiah</div>
@@ -5689,14 +5699,59 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                     <div id="secretTotalPreview" class="secret-total-val">Rp 7.800.000</div>
                 </div>
 
+                <!-- Bagian 2: Konsol Flasher FTDI & Perbaikan Fisik Gardu Kuta -->
+                <div style="border-top: 1px solid #1e293b; padding-top: 14px; margin-top: 6px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                        <div style="font-family: 'Fira Code', monospace; font-size: 11.5px; font-weight: 700; color: #34d399; display: flex; align-items: center; gap: 6px;">
+                            <span>🔧</span> KONSOL FLASHER FTDI &amp; PERBAIKAN FISIK GARDU KUTA
+                        </div>
+                        <span id="secretFtdiBadge" style="font-family: 'Fira Code', monospace; font-size: 9.5px; color: #38bdf8; background: rgba(56, 189, 248, 0.12); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(56, 189, 248, 0.3);">
+                            PORT: COM4 (115200 BAUD)
+                        </span>
+                    </div>
+
+                    <!-- Terminal Output Box -->
+                    <div style="background: #020617; border: 1px solid #1e293b; border-radius: 6px; padding: 10px 12px; font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8; height: 120px; overflow-y: auto; margin-bottom: 8px;" id="diagConsole">
+                        [DIAG-INIT] Serial flasher console siap di COM4.<br>
+                        [DIAG-WARN] Node ESP32-KTA-03 membutuhkan bypass kabel serial FTDI fisik.<br>
+                        [DIAG-INFO] Gunakan tombol langkah 1 s.d 4 di bawah atau ketik perintah di CLI.
+                    </div>
+
+                    <!-- Interactive Command Line Interface (CLI) -->
+                    <div class="cli-input-line" style="margin-bottom: 8px;">
+                        <span class="cli-prompt">luthfi@unsri-flasher:~$ </span>
+                        <input type="text" id="diagCliInput" class="diag-cli-input" placeholder="Ketik perintah (help, chip_id, flash, repair, reboot, clear)..." autocomplete="off" spellcheck="false" onkeydown="if(event.key==='Enter')executeCliCommand()">
+                        <button type="button" class="cli-send-btn" onclick="executeCliCommand()" title="Jalankan perintah">⏎ Run</button>
+                    </div>
+
+                    <!-- Quick Command Shortcuts Toolbar (The 4 Repair Buttons!) -->
+                    <div class="flasher-quick-bar" style="margin-bottom: 10px;">
+                        <button type="button" class="quick-cmd-btn" id="btnAttachFtdi" onclick="attachFtdiCable()">🔌 1. Colok Kabel FTDI</button>
+                        <button type="button" class="quick-cmd-btn" onclick="runChipIdQuery()">⚡ 2. Cek Chip ID (esptool)</button>
+                        <button type="button" class="quick-cmd-btn" onclick="runSerialFlashFirmware()">🚀 3. Flash Firmware AES-256</button>
+                        <button type="button" class="quick-cmd-btn success" onclick="executePhysicalRepair()">🔧 4. Ganti Sekring &amp; Pulihkan Gardu</button>
+                    </div>
+
+                    <!-- Flashing Animation Progress Bar -->
+                    <div id="flasherProgressContainer" style="display: none; margin-bottom: 10px;">
+                        <div style="display: flex; justify-content: space-between; font-family: 'Fira Code', monospace; font-size: 10px; color: #38bdf8; margin-bottom: 3px;">
+                            <span id="flasherProgressStatus">Writing flash to 0x10000...</span>
+                            <span id="flasherProgressPct">0%</span>
+                        </div>
+                        <div class="flasher-progress-wrap">
+                            <div id="flasherProgressFill" class="flasher-progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Fixing Mode Toggle Card -->
                 <div class="secret-toggle-card">
                     <div class="secret-toggle-info">
-                        <h4>⚡ Mode Simulasi Pemulihan (Fixing Mode)</h4>
-                        <p>Pulihkan Gardu Kuta Beach dari 0.0V ke 221.4V, nyalakan CCTV online, dan ubah status 15 node menjadi optimal.</p>
+                        <h4>⚡ Saklar Status Pemulihan Gardu Kuta (Fixing Mode)</h4>
+                        <p>Pulihkan Gardu Kuta Beach dari 0.0V ke 221.4V, nyalakan CCTV online, dan ubah status seluruh 25 node menjadi optimal.</p>
                     </div>
                     <div>
-                        <input type="checkbox" id="secretFixingToggle" style="width: 20px; height: 20px; accent-color: #10b981; cursor: pointer;" onchange="toggleFixingModeFromCheckbox(this.checked)">
+                        <input type="checkbox" id="secretFixingToggle" style="width: 22px; height: 22px; accent-color: #10b981; cursor: pointer;" onchange="toggleFixingModeFromCheckbox(this.checked)">
                     </div>
                 </div>
 
@@ -5704,7 +5759,7 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; border-top: 1px solid #1e293b; padding-top: 14px;">
                     <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                         <button type="button" class="terminal-btn" onclick="saveSecretBudgetConfig()" style="background: rgba(6, 182, 212, 0.2); color: #22d3ee; border-color: rgba(6, 182, 212, 0.4);">
-                            💾 Simpan Konfigurasi
+                            💾 Simpan Anggaran
                         </button>
                         <a href="docs/rab-print.html" target="_blank" class="terminal-btn" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: rgba(16, 185, 129, 0.4); text-decoration: none;">
                             📄 Cetak RAB Talangan (PDF)
