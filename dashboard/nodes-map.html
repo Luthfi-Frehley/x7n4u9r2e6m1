@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Geospasial Node IoT Bali - PLN x UNSRI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet.js CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: #111827;
+            --card-border: #1f2937;
+            --primary: #3b82f6;
+            --accent-cyan: #06b6d4;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* Top Navbar */
+        .navbar {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom: 1px solid #1f2937;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-logos {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-text h1 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #9ca3af;
+            font-size: 12.5px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item.active {
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+            font-weight: 600;
+        }
+
+        /* Map Container */
+        #map-container {
+            flex: 1;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: #07090e;
+        }
+
+        /* Floating HUD overlays on map */
+        .map-hud-legend {
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+            background: rgba(17, 24, 39, 0.9);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 8px;
+            padding: 14px 18px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            max-width: 320px;
+        }
+
+        .legend-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11.5px;
+            margin-bottom: 8px;
+            color: #94a3b8;
+        }
+
+        .legend-item:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Target Incident Action Panel */
+        .incident-quick-action {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(17, 24, 39, 0.92);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            border-radius: 8px;
+            padding: 14px 18px;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
+            width: 320px;
+        }
+
+        .incident-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            font-family: 'Fira Code', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            margin-bottom: 8px;
+        }
+
+        .incident-header {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .incident-details {
+            font-size: 11.5px;
+            color: #cbd5e1;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .btn-jump-incident {
+            width: 100%;
+            background: #ef4444;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 11.5px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: background 0.2s;
+        }
+
+        .btn-jump-incident:hover {
+            background: #dc2626;
+        }
+
+        /* Marker Styles */
+        .beacon-marker {
+            position: relative;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Green Pulse */
+        .beacon-green {
+            width: 14px;
+            height: 14px;
+            background-color: #10b981;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        .beacon-green-ring {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #10b981;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: pulse-green-ring 2s infinite ease-out;
+        }
+
+        @keyframes pulse-green-ring {
+            0% { transform: scale(0.6); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        /* RED PULSE ALERT (Kedap-Kedip Merah) */
+        .beacon-red {
+            width: 16px;
+            height: 16px;
+            background-color: #ef4444;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            box-shadow: 0 0 15px #ef4444;
+            animation: blink-red-dot 0.8s infinite alternate;
+        }
+
+        .beacon-red-ring {
+            width: 24px;
+            height: 24px;
+            border: 3px solid #ef4444;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: pulse-red-ring 1s infinite ease-out;
+        }
+
+        @keyframes blink-red-dot {
+            0% { transform: scale(0.9); opacity: 0.6; filter: drop-shadow(0 0 4px #ef4444); }
+            100% { transform: scale(1.2); opacity: 1; filter: drop-shadow(0 0 16px #ef4444); }
+        }
+
+        @keyframes pulse-red-ring {
+            0% { transform: scale(0.6); opacity: 1; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+
+        /* Custom Leaflet Popups */
+        .leaflet-popup-content-wrapper {
+            background: #111827 !important;
+            color: #f3f4f6 !important;
+            border: 1px solid #374151 !important;
+            border-radius: 8px !important;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7) !important;
+        }
+
+        .leaflet-popup-tip {
+            background: #111827 !important;
+        }
+
+        .node-popup-card h4 {
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #60a5fa;
+            border-bottom: 1px solid #1f2937;
+            padding-bottom: 4px;
+        }
+
+        .node-popup-table {
+            width: 100%;
+            font-family: 'Fira Code', monospace;
+            font-size: 11px;
+            color: #cbd5e1;
+        }
+
+        .node-popup-table td {
+            padding: 3px 0;
+        }
+
+        .node-popup-table td:first-child {
+            color: #94a3b8;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navbar -->
+    <header class="navbar">
+        <div class="brand-section">
+            <div class="brand-logos">
+                <!-- Unsri Emblem SVG -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L3 6V12C3 17.52 6.84 22.74 12 24C17.16 22.74 21 17.52 21 12V6L12 2Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.8"/>
+                    <circle cx="12" cy="12" r="4" fill="#F59E0B"/>
+                </svg>
+                <!-- PLN Bolt Emblem SVG -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="3" width="20" height="18" rx="4" fill="#0284C7" fill-opacity="0.2" stroke="#38BDF8" stroke-width="1.6"/>
+                    <path d="M13 3L6 14H12L11 21L18 10H12L13 3Z" fill="#EAB308" stroke="#EAB308" stroke-width="1.2" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <h1>Peta Geospasial Node IoT Regional Bali</h1>
+                <p>Pemantauan Trafo & Gateway Lapangan Secara Spasial</p>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../main.html" class="nav-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                </svg>
+                Dashboard
+            </a>
+            <a href="nodes-map.html" class="nav-item active">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                </svg>
+                Peta Node Bali
+            </a>
+            <a href="incidents.html" class="nav-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                Log Insiden
+            </a>
+            <a href="server-logs.html" class="nav-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                </svg>
+                Syslog
+            </a>
+        </nav>
+    </header>
+
+    <!-- Map Canvas Container -->
+    <div id="map-container">
+
+        <!-- Quick Action / Active Alert HUD -->
+        <div class="incident-quick-action">
+            <div class="incident-badge">
+                ⚠️ ANOMALI TERDETEKSI
+            </div>
+            <div class="incident-header">ESP32-KTA-03 (Kuta Beach)</div>
+            <div class="incident-details">
+                Status: CRITICAL TIMEOUT (>300s)<br>
+                Lokasi: Gardu Distribusi Kuta<br>
+                Signal Loss: 100% (No Telemetry)
+            </div>
+            <button class="btn-jump-incident" onclick="focusOnIncident()">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
+                </svg>
+                Zoom ke Node Kuta (Alert)
+            </button>
+        </div>
+
+        <!-- Legend HUD -->
+        <div class="map-hud-legend">
+            <div class="legend-title">
+                <span>STATUS NODE TELEMETRI</span>
+                <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #38bdf8;">BALI SECTOR</span>
+            </div>
+            <div class="legend-item">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #10b981; display: inline-block; box-shadow: 0 0 8px #10b981;"></span>
+                <span>Online & Sinkron (3 Node Aktif)</span>
+            </div>
+            <div class="legend-item">
+                <span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block; box-shadow: 0 0 8px #ef4444;"></span>
+                <span style="color: #f87171; font-weight: 600;">Down / Terputus (1 Node Alert - Kuta)</span>
+            </div>
+            <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid #1f2937; font-size: 10.5px; color: #64748b;">
+                Peta Leaflet.js • Sinkronisasi Koordinat Real-Time GPS
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Leaflet Script -->
+    <script>
+        // Inisialisasi Peta Leaflet dengan fokus Pulau Bali
+        const map = L.map('map-container', {
+            zoomControl: false
+        }).setView([-8.68, 115.20], 11);
+
+        // Tambah zoom control di pojok kiri atas
+        L.control.zoom({ position: 'topleft' }).addTo(map);
+
+        // Tile layer dark CartoDB DarkMatter (tampilan hacker/NOC elegan)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Icon Pabrik: Hijau (Normal)
+        const greenIcon = L.divIcon({
+            className: 'beacon-marker',
+            html: '<div class="beacon-green-ring"></div><div class="beacon-green"></div>',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [0, -12]
+        });
+
+        // Icon Pabrik: MERAH KEDAP-KEDIP (ALERT GANGGUAN DI KUTA)
+        const redPulsingIcon = L.divIcon({
+            className: 'beacon-marker',
+            html: '<div class="beacon-red-ring"></div><div class="beacon-red"></div>',
+            iconSize: [24, 24],
+            iconAnchor: [12, 12],
+            popupAnchor: [0, -12]
+        });
+
+        // ==========================================
+        // Definisi Node Lokasi
+        // ==========================================
+        
+        // 1. Denpasar / Udayana (Gateway Utama)
+        const dpsMarker = L.marker([-8.6705, 115.2126], { icon: greenIcon }).addTo(map);
+        dpsMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Gateway Denpasar (Udayana)</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-DPS-01</td></tr>
+                    <tr><td>Hardware</td><td>: ESP32-WROOM-32U</td></tr>
+                    <tr><td>IP Gateway</td><td>: 10.24.112.10</td></tr>
+                    <tr><td>Latensi</td><td>: <span style="color:#34d399;">11 ms (Optimal)</span></td></tr>
+                    <tr><td>Tegangan Bus</td><td>: 12.6 V</td></tr>
+                    <tr><td>Suhu Chip</td><td>: 33.4 °C</td></tr>
+                    <tr><td>Otorisasi</td><td>: Lab IoT Unsri x PLN</td></tr>
+                </table>
+            </div>
+        `);
+
+        // 2. Jimbaran (Substation Trafo Distribusi)
+        const jbrMarker = L.marker([-8.7892, 115.1627], { icon: greenIcon }).addTo(map);
+        jbrMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Substation Trafo Jimbaran 02</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-JBR-02</td></tr>
+                    <tr><td>IP Sensor</td><td>: 10.24.112.18</td></tr>
+                    <tr><td>Protokol</td><td>: MQTT over TLS</td></tr>
+                    <tr><td>Latensi</td><td>: <span style="color:#34d399;">16 ms</span></td></tr>
+                    <tr><td>Suhu Trafo</td><td>: 36.2 °C</td></tr>
+                    <tr><td>Status</td><td>: Repeater Cadangan Siap</td></tr>
+                </table>
+            </div>
+        `);
+
+        // 3. KUTA (NODE DOWN - KEDAP-KEDIP MERAH)
+        const ktaMarker = L.marker([-8.7214, 115.1695], { icon: redPulsingIcon }).addTo(map);
+        ktaMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4 style="color:#f87171;">⚠️ [CRITICAL ALERT] Node Kuta Beach</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: <strong>ESP32-KTA-03</strong></td></tr>
+                    <tr><td>Status</td><td>: <strong style="color:#ef4444;">DOWN (TIMEOUT)</strong></td></tr>
+                    <tr><td>Packet Loss</td><td>: <strong style="color:#ef4444;">100%</strong></td></tr>
+                    <tr><td>Terakhir Dilihat</td><td>: 5 Menit Lalu</td></tr>
+                    <tr><td>Anomali</td><td>: Daya Feeder Gardu Hilang</td></tr>
+                    <tr><td>Tindakan</td><td>: Dispatch Tim Lapangan PLN</td></tr>
+                </table>
+            </div>
+        `);
+
+        // 4. Sanur (Node Pesisir Pantai Sanur)
+        const snrMarker = L.marker([-8.6882, 115.2631], { icon: greenIcon }).addTo(map);
+        snrMarker.bindPopup(`
+            <div class="node-popup-card">
+                <h4>[ONLINE] Node Pesisir Sanur</h4>
+                <table class="node-popup-table">
+                    <tr><td>Node ID</td><td>: ESP32-SNR-04</td></tr>
+                    <tr><td>IP Sensor</td><td>: 10.24.112.22</td></tr>
+                    <tr><td>Latensi</td><td>: <span style="color:#34d399;">13 ms</span></td></tr>
+                    <tr><td>Suhu Trafo</td><td>: 34.0 °C</td></tr>
+                    <tr><td>Status</td><td>: Stabil</td></tr>
+                </table>
+            </div>
+        `);
+
+        // Fungsi Tombol "Zoom ke Node Kuta"
+        function focusOnIncident() {
+            map.flyTo([-8.7214, 115.1695], 14, {
+                animate: true,
+                duration: 1.5
+            });
+            setTimeout(() => {
+                ktaMarker.openPopup();
+            }, 1600);
+        }
+    </script>
+</body>
+</html>
+

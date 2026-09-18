@@ -1,0 +1,35 @@
+================================================================================
+STANDAR OPERASIONAL PROSEDUR (SOP) INSTALLASI PERANGKAT NODE TELEMETRI IOT
+PT PLN (PERSERO) UID BALI × LAB KOMPUTASI & IOT TEKNIK ELEKTRO UNSRI
+Dokumen No: SOP/PLN-UNSRI/IOT-BALI/2026/09
+================================================================================
+
+1. TUJUAN
+   Memastikan prosedur pemasangan node sensor telemetri ESP32 pada gardu distribusi
+   20kV dan tiang trafo sekunder memenuhi standar keselamatan ketenagalistrikan (K3)
+   serta akurasi transmisi data radio.
+
+2. PERALATAN DAN APD
+   - Helm safety kelistrikan (Standar SNI/ANSI Z89.1)
+   - Sarung tangan isolasi tegangan tinggi (Kelas 00 - 500V)
+   - Box enclosure panel tahan cuaca IP66 (UV resistant)
+   - Modul ESP32-WROOM-32U dengan antena eksternal 5dBi
+   - Sensor arus CT Non-Invasive SCT-013-000 & Transformator tegangan ZMPT101B
+   - Catu daya DC 12V industri (DIN-Rail) & Baterai cadangan LiFePO4
+
+3. TAHAPAN PEMASANGAN
+   3.1. Hubungi Pusat Pengatur Distribusi (DCC) Bali untuk izin kerja gardu.
+   3.2. Pasang modul CT pada kabel fasa sekunder (R-S-T) trafo gardu.
+   3.3. Pasang enclosure node pada ketinggian minimal 3.5 meter dari permukaan tanah.
+   3.4. Arahkan antena LoRa/WiFi ke koordinat Gateway Sektor (Udayana / Jimbaran).
+   3.5. Nyalakan saklar catu daya internal. Perhatikan LED indikator status:
+        - LED Biru Berkedip: Mencari jaringan WiFi/LoRa Mesh
+        - LED Hijau Solid   : Terhubung ke Broker MQTT (broker.unsri-pln.ac.id)
+   3.6. Lakukan ping test dari konsol teknisi mobile: ping 10.24.112.x.
+   3.7. Pastikan data koordinat GPS node terdaftar di sistem NOC Web Dashboard.
+
+4. PENANGGUNG JAWAB LAPANGAN
+   - Koordinator Lapangan : Ir. Nyoman Arya (PLN UP3 Bali Selatan)
+   - Supervisi Telemetri : Luthfi (Lab IoT Teknik Elektro Unsri)
+   - Otorisasi Sistem    : Prof. Ir. Abu Bakar, M.T., Ph.D.
+================================================================================

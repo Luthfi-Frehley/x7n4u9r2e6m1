@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Insiden & Anomali Grid - PLN x UNSRI IoT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0b0f19;
+            --card-bg: #111827;
+            --card-border: #1f2937;
+            --primary: #3b82f6;
+            --accent-green: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .navbar {
+            background: rgba(17, 24, 39, 0.95);
+            border-bottom: 1px solid #1f2937;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .brand-logos {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-text h1 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #9ca3af;
+            font-size: 12.5px;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 6px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .nav-item:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-item.active {
+            color: #60a5fa;
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
+            font-weight: 600;
+        }
+
+        .container {
+            flex: 1;
+            padding: 24px;
+            max-width: 1300px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+        }
+
+        .page-header h2 {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .page-header p {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .table-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th {
+            background: #0f172a;
+            padding: 14px 18px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #94a3b8;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        td {
+            padding: 14px 18px;
+            font-size: 12px;
+            border-bottom: 1px solid #1f2937;
+            color: #cbd5e1;
+        }
+
+        tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-family: 'Fira Code', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+        }
+
+        .badge-crit {
+            background: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+
+        .badge-resolved {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .badge-investigating {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .code-snippet {
+            font-family: 'Fira Code', monospace;
+            color: #38bdf8;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #1e293b;
+            font-size: 11px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="brand-section">
+            <div class="brand-logos">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L3 6V12C3 17.52 6.84 22.74 12 24C17.16 22.74 21 17.52 21 12V6L12 2Z" fill="#F59E0B" fill-opacity="0.2" stroke="#F59E0B" stroke-width="1.8"/>
+                    <circle cx="12" cy="12" r="4" fill="#F59E0B"/>
+                </svg>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="3" width="20" height="18" rx="4" fill="#0284C7" fill-opacity="0.2" stroke="#38BDF8" stroke-width="1.6"/>
+                    <path d="M13 3L6 14H12L11 21L18 10H12L13 3Z" fill="#EAB308" stroke="#EAB308" stroke-width="1.2" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <h1>Log Insiden & Gangguan Jaringan IoT</h1>
+                <p>Integrasi PLN UID Bali x Laboratorium Komputasi & IoT Teknik Elektro Unsri</p>
+            </div>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../main.html" class="nav-item">Dashboard</a>
+            <a href="nodes-map.html" class="nav-item">Peta Node Bali</a>
+            <a href="incidents.html" class="nav-item active">Log Insiden</a>
+            <a href="server-logs.html" class="nav-item">Syslog</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="page-header">
+            <div>
+                <h2>Daftar Tiket Gangguan & Anomali Sistem</h2>
+                <p>Pemantauan insiden telemetri radio, kegagalan daya trafo, dan interupsi gateway</p>
+            </div>
+            <a href="nodes-map.html" style="background:#2563eb; color:white; padding:8px 14px; border-radius:6px; font-size:12px; font-weight:700; text-decoration:none;">
+                Lihat di Peta Spasial →
+            </a>
+        </div>
+
+        <div class="table-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Tiket</th>
+                        <th>Waktu Kejadian</th>
+                        <th>Node Perangkat</th>
+                        <th>Klasifikasi</th>
+                        <th>Status</th>
+                        <th>Teknisi / Penanggung Jawab</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="code-snippet">#INC-2026-0918</span></td>
+                        <td>2026-09-18 08:12 WIB</td>
+                        <td><strong>ESP32-KTA-03</strong> (Kuta Beach)</td>
+                        <td>Heartbeat Timeout (>300s) / Zero Voltage</td>
+                        <td><span class="badge-status badge-crit">🔴 CRITICAL / IN-PROGRESS</span></td>
+                        <td>Tim Reaksi Cepat PLN Denpasar Selatan</td>
+                    </tr>
+                    <tr>
+                        <td><span class="code-snippet">#INC-2026-0915</span></td>
+                        <td>2026-09-15 14:30 WIB</td>
+                        <td><strong>ESP32-JBR-02</strong> (Jimbaran)</td>
+                        <td>Suhu Trafo Melebihi Ambang Batas 45°C</td>
+                        <td><span class="badge-status badge-resolved">🟢 RESOLVED</span></td>
+                        <td>Sistem Pendingin Otomatis Diaktifkan</td>
+                    </tr>
+                    <tr>
+                        <td><span class="code-snippet">#INC-2026-0910</span></td>
+                        <td>2026-09-10 22:15 WIB</td>
+                        <td><strong>GW-UDAYANA-01</strong> (Denpasar)</td>
+                        <td>Rotasi Kunci Enkripsi TLS Handshake Delay</td>
+                        <td><span class="badge-status badge-resolved">🟢 RESOLVED</span></td>
+                        <td>Lab Unsri (Prof. Abu Bakar)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="code-snippet">#INC-2026-0904</span></td>
+                        <td>2026-09-04 03:00 WIB</td>
+                        <td><strong>ESP32-SNR-04</strong> (Sanur)</td>
+                        <td>Interferensi Frekuensi LoRa 915 MHz</td>
+                        <td><span class="badge-status badge-resolved">🟢 RESOLVED</span></td>
+                        <td>Penyesuaian Channel Radio Frekuensi</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

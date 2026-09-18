@@ -1,0 +1,33 @@
+{
+  "api_version": "v2.4",
+  "base_url": "https://telemetry-gateway.unsri-pln.ac.id/api/v2",
+  "auth_type": "Bearer JWT / Hardware Token",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/telemetry/metrics",
+      "description": "Mengambil status beban grid, suhu CPU server gateway, dan kesehatan node IoT",
+      "cache_ttl_sec": 2,
+      "source_file": "metrics.json"
+    },
+    {
+      "method": "GET",
+      "path": "/nodes/geographic",
+      "description": "Mengambil koordinat geolokasi dan status operasional node di pulau Bali",
+      "cache_ttl_sec": 5,
+      "source_file": "nodes-map.html"
+    },
+    {
+      "method": "GET",
+      "path": "/incidents/active",
+      "description": "Daftar tiket gangguan gardu dan anomali sinyal radio telemetri",
+      "source_file": "incidents.html"
+    },
+    {
+      "method": "POST",
+      "path": "/gateway/failover",
+      "description": "Trigger failover manual transmisi data ke repeater cadangan Jimbaran"
+    }
+  ]
+}
+

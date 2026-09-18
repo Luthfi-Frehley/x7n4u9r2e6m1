@@ -1,0 +1,32 @@
+{
+  "system": {
+    "project_name": "Sistem Monitoring Node IoT Regional Bali",
+    "collaboration": "PT PLN (Persero) Unit Induk Distribusi Bali x Lab Komputasi & IoT Teknik Elektro Universitas Sriwijaya",
+    "protocol_version": "MQTT-v3.1.1 / TLS-1.3",
+    "gateway_id": "GW-UNSRI-BALI-01",
+    "firmware_rev": "v2.8.4-rel",
+    "server_time": "2026-09-18T08:15:32.409Z",
+    "uptime_seconds": 1849204,
+    "security_level": "RESTRICTED-INTERNAL-L2"
+  },
+  "grid_metrics": {
+    "frequency_hz": 50.02,
+    "voltage_rms_v": 220.4,
+    "current_load_a": 412.8,
+    "power_factor": 0.98,
+    "grid_stability": "OPTIMAL",
+    "harmonic_distortion_thd": "1.42%"
+  },
+  "server_health": {
+    "cpu_usage_percent": 38.6,
+    "memory_used_mb": 4128,
+    "memory_total_mb": 16384,
+    "core_temperature_c": 44.8,
+    "network_latency_ms": 14,
+    "mqtt_throughput_msg_per_sec": 384,
+    "active_nodes_count": 14,
+    "total_nodes_count": 15,
+    "down_nodes_count": 1
+  }
+}
+
