@@ -22,7 +22,11 @@ Terjadi anomali pemutusan daya pada feeder sekunder 220V akibat cuaca pesisir pa
 
 ---
 
-### Rencana Mitigasi
-1. Dispatch teknisi PLN Unit Pelaksana Pelayanan Pelanggan (UP3) Bali Selatan ke titik koordinat node `[-8.7214, 115.1695]`.
-2. Penggantian modul isolator tegangan dan pemulihan catu daya gardu trafo.
+### Rencana Mitigasi & Tindakan Pemulihan
+1. **Percobaan Remote Reboot (08:14:22 WIB)**:
+   - Status: **GAGAL / DITOLAK SISTEM (Error Code: `0xEF-HARDWARE-LOCK`)**.
+   - Analisis: Relai proteksi fisik gardu berada pada kondisi trip terbuka (*open-circuit*), memutuskan suplai daya DC mikrokontroler. Mekanisme interlock keselamatan melarang digital override jarak jauh.
+2. **Penugasan Lapangan Fisik (Mandatory On-Site Intervention)**:
+   - Diterbitkan **SPK Nomor: #SPK-2026/PLN/BALI-042** dan **SPPD Nomor: SPPD-018/PLN-UID-BALI/TE-UNSRI/IX/2026**.
+   - Peneliti tertunjuk (**Luthfi Hibatullah**) bersama tim UP3 Bali Selatan diberangkatkan ke titik koordinat Gardu Kuta Beach `[-8.7214, 115.1695]` untuk cold-reset manual, kalibrasi sensor PZEM-004T, dan inspeksi pengaman trafo 20kV.
 

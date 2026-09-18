@@ -138,6 +138,10 @@
             <a href="incidents.html" class="nav-item">Log Insiden</a>
             <a href="server-logs.html" class="nav-item active">Syslog</a>
         </nav>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <a href="../docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Unduh SPK #042</a>
+            <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="background: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Unduh SPPD Dinas</a>
+        </div>
     </header>
 
     <div class="container">
@@ -164,8 +168,11 @@
             <div class="line-warn">[2026-09-18 08:11:02] mqtt-daemon[4092]: WARNING: Heartbeat frame missed from node ESP32-KTA-03 (Attempt 2/3)</div>
             <div class="line-err">[2026-09-18 08:12:02] alert-mgr[4092]: ALERT [CRITICAL]: Node ESP32-KTA-03 unreachable > 300s. Packet loss: 100%</div>
             <div class="line-err">[2026-09-18 08:12:03] alert-mgr[4092]: Generated incident ticket #INC-2026-0918. Notification dispatched to PLN Rapid Response</div>
-            <div class="line-info">[2026-09-18 08:12:05] routing-daemon[4092]: Re-routing south sector sensor traffic through secondary mesh: Node Jimbaran (ESP32-JBR-02)</div>
-            <div class="line-ok">[2026-09-18 08:12:06] routing-daemon[4092]: Mesh reroute successful. Network degradation limited to 6.2%</div>
+            <div class="line-info">[2026-09-18 08:12:05] spk-generator[4092]: Auto-issued Work Order #SPK-2026/PLN/BALI-042 (Target: Gardu Trafo Kuta Beach)</div>
+            <div class="line-warn">[2026-09-18 08:12:06] sppd-daemon[4092]: Assigned Investigator: Luthfi Hibatullah (NIM: 03041182530001) [Doc: SPPD-018]</div>
+            <div class="line-err">[2026-09-18 08:12:07] scada-interlock[4092]: Remote reboot rejected (0xEF-HARDWARE-LOCK). Safety relay open circuit. On-site reset mandatory.</div>
+            <div class="line-info">[2026-09-18 08:12:08] routing-daemon[4092]: Re-routing south sector sensor traffic through secondary mesh: Node Jimbaran (ESP32-JBR-02)</div>
+            <div class="line-ok">[2026-09-18 08:12:09] routing-daemon[4092]: Mesh reroute successful. Network degradation limited to 6.2%</div>
             <div class="line-info">[2026-09-18 08:15:00] metrics-engine[4092]: Snapshot persisted to /api-simulation/metrics.json (Cache TTL: 2s)</div>
             <div class="line-ok">[2026-09-18 08:15:32] status-reporter[4092]: Grid frequency locked: 50.02 Hz. System operating in nominal failover mode.</div>
         </div>

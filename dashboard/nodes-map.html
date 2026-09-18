@@ -405,6 +405,21 @@
                 Syslog
             </a>
         </nav>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <a href="../docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;" title="Unduh Surat Perintah Kerja Lapangan (PDF)">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Unduh SPK (PDF)
+            </a>
+            <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;" title="Unduh SPPD Penugasan Palembang -> Bali (PDF)">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                Unduh SPPD Dinas (PDF)
+            </a>
+        </div>
     </header>
 
     <!-- Map Canvas Container -->
@@ -419,7 +434,8 @@
             <div class="incident-details">
                 Status: CRITICAL TIMEOUT (>300s)<br>
                 Lokasi: Gardu Distribusi Kuta<br>
-                Signal Loss: 100% (No Telemetry)
+                Signal Loss: 100% (No Telemetry)<br>
+                Relai Trip: Manual Reset Wajib
             </div>
             <button class="btn-jump-incident" onclick="focusOnIncident()">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -427,6 +443,9 @@
                 </svg>
                 Zoom ke Node Kuta (Alert)
             </button>
+            <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: #2563eb; color: #fff; padding: 7px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace; margin-top: 6px;">
+                Unduh SPPD Perjalanan Dinas (.PDF)
+            </a>
         </div>
 
         <!-- Legend HUD -->

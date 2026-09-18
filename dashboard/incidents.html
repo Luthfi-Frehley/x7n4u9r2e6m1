@@ -222,6 +222,10 @@
             <a href="incidents.html" class="nav-item active">Log Insiden</a>
             <a href="server-logs.html" class="nav-item">Syslog</a>
         </nav>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <a href="../docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" style="background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Unduh SPK #042</a>
+            <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="background: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;">Unduh SPPD Dinas</a>
+        </div>
     </header>
 
     <div class="container">
@@ -230,9 +234,14 @@
                 <h2>Daftar Tiket Gangguan & Anomali Sistem</h2>
                 <p>Pemantauan insiden telemetri radio, kegagalan daya trafo, dan interupsi gateway</p>
             </div>
-            <a href="nodes-map.html" style="background:#2563eb; color:white; padding:8px 14px; border-radius:6px; font-size:12px; font-weight:700; text-decoration:none;">
-                Lihat di Peta Spasial →
-            </a>
+            <div style="display: flex; gap: 10px;">
+                <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="background: #2563eb; color: white; padding: 8px 14px; border-radius: 6px; font-size: 11.5px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                    Unduh SPPD Dinas Bali (PDF)
+                </a>
+                <a href="nodes-map.html" style="background: rgba(255,255,255,0.08); border: 1px solid #334155; color: white; padding: 8px 14px; border-radius: 6px; font-size: 11.5px; font-weight: 700; text-decoration: none;">
+                    Lihat di Peta Spasial →
+                </a>
+            </div>
         </div>
 
         <div class="table-card">
@@ -248,13 +257,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><span class="code-snippet">#INC-2026-0918</span></td>
-                        <td>2026-09-18 08:12 WIB</td>
-                        <td><strong>ESP32-KTA-03</strong> (Kuta Beach)</td>
-                        <td>Heartbeat Timeout (>300s) / Zero Voltage</td>
-                        <td><span class="badge-status badge-crit">🔴 CRITICAL / IN-PROGRESS</span></td>
-                        <td>Tim Reaksi Cepat PLN Denpasar Selatan</td>
+                    <tr style="background: rgba(239, 68, 68, 0.06);">
+                        <td><span class="code-snippet">#INC-2026-0918</span><br><span style="font-size:9.5px; color:#fbbf24; font-family:'Fira Code', monospace;">(SPK #042)</span></td>
+                        <td>2026-09-18 08:12 WITA</td>
+                        <td><strong>ESP32-KTA-03</strong> (Gardu Kuta Beach)</td>
+                        <td>Zero Voltage (0.0 V) / Hardware Interlock Lockout</td>
+                        <td><span class="badge-status badge-crit">🔴 PENDING ON-SITE VISIT</span></td>
+                        <td><strong>Luthfi Hibatullah</strong> (Lead Hardware Unsri) & Tim PLN UID Bali</td>
                     </tr>
                     <tr>
                         <td><span class="code-snippet">#INC-2026-0915</span></td>

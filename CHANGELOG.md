@@ -2,6 +2,14 @@
 
 Semua perubahan dan riwayat rilis protokol sistem telemetri dicatat dalam dokumen ini.
 
+## [2.9.0-rel] - 2026-09-18
+### Ditambahkan
+- Modul Oscillogram Tegangan Fasa Real-Time (Chart.js) dengan deteksi anomali drop 0.0V (flatline) pada Gardu Kuta Beach.
+- Dual-channel CCTV Telemetry Surveillance (Feed LIVE Denpasar & Animated Static Noise / Feed Loss Kuta Beach).
+- Fitur SCADA Remote Reboot Failure Simulation (`0xEF-HARDWARE-LOCK`) dengan interlock safety modal dialog.
+- Penerbitan dan integrasi dokumen resmi Surat Perintah Perjalanan Dinas (SPPD) Nomor `SPPD-018/PLN-UID-BALI/TE-UNSRI/IX/2026` (PDF).
+- Tombol unduh berkas SPK dan SPPD resmi pada seluruh antarmuka (Dashboard, Peta Node, Log Insiden, dan Syslog).
+
 ## [2.8.4-rel] - 2026-09-18
 ### Ditambahkan
 - Modul peta geospasial interaktif Leaflet.js dengan basemap CartoDB DarkMatter.
