@@ -127,6 +127,7 @@
         .nav-links {
             display: flex;
             align-items: center;
+            gap: 10px;
             gap: 8px;
             flex-wrap: nowrap;
         }
@@ -137,8 +138,10 @@
             gap: 6px;
             text-decoration: none;
             color: #9ca3af;
+            font-size: 12.5px;
             font-size: 12px;
             font-weight: 500;
+            padding: 8px 14px;
             padding: 7px 11px;
             border-radius: 6px;
             transition: all 0.2s;
@@ -1886,6 +1889,11 @@
         .btn-ht-radio {
             display: inline-flex;
             align-items: center;
+            gap: 5px;
+            background: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 6px 10px;
             gap: 7px;
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.35));
             color: #34d399;
@@ -1893,9 +1901,11 @@
             padding: 7px 12px;
             border-radius: 6px;
             font-size: 11px;
+            font-weight: 700;
             font-weight: 800;
             cursor: pointer;
             font-family: 'Fira Code', monospace;
+            transition: all 0.2s;
             transition: all 0.2s ease;
             box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
             white-space: nowrap !important;
@@ -1904,14 +1914,17 @@
         }
         .btn-ht-radio:hover {
             transform: translateY(-1px);
+            background: rgba(245, 158, 11, 0.25);
             background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(5, 150, 105, 0.5));
             color: #ffffff;
             border-color: #10b981;
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
         }
         .btn-ht-radio.muted {
+            background: rgba(100, 116, 139, 0.15);
             background: rgba(51, 65, 85, 0.35);
             color: #94a3b8;
+            border-color: rgba(100, 116, 139, 0.4);
             border-color: rgba(100, 116, 139, 0.45);
             box-shadow: none;
         }
@@ -2692,6 +2705,30 @@
             line-height: 1.55;
             color: #cbd5e1;
         }
+        .call-bubble-row {
+            transition: all 0.25s ease;
+            border-radius: 8px;
+            padding: 4px;
+        }
+        .call-bubble-row.speaking {
+            background: rgba(16, 185, 129, 0.08);
+        }
+        .call-bubble-row.speaking .call-bubble-content {
+            border-color: #10b981 !important;
+            background: rgba(6, 78, 59, 0.5) !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+            transform: translateX(4px);
+            transition: all 0.2s ease;
+        }
+        .call-bubble-row.speaking .call-avatar {
+            box-shadow: 0 0 15px #10b981;
+            transform: scale(1.12);
+            transition: all 0.2s ease;
+        }
+        .call-bubble-row.speaking .call-bubble-text {
+            color: #ffffff !important;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
@@ -2705,52 +2742,68 @@
             </div>
             <div class="brand-text">
                 <h1>
+                    NOC Telemetri Node IoT Regional Bali
+                    <span class="badge-live">LIVE TELEMETRY</span>
                     NOC Telemetri Bali
                     <span class="badge-live">LIVE</span>
                 </h1>
+                <p>Kolaborasi Riset Terapan: PT PLN (Persero) UID Bali & Lab Teknik Elektro Unsri</p>
                 <p>PLN UID Bali × Lab IoT Unsri</p>
             </div>
         </div>
 
         <nav class="nav-links">
             <a href="main.html" class="nav-item active">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
                 Dashboard
             </a>
             <a href="dashboard/nodes-map.html" class="nav-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                 </svg>
+                Peta Node Bali
                 Peta Nasional
             </a>
             <a href="dashboard/incidents.html" class="nav-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
                 Log Insiden
             </a>
             <a href="dashboard/server-logs.html" class="nav-item">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 Syslog
             </a>
             <a href="javascript:void(0)" onclick="openHardwareDiagnosticsModal()" class="nav-item" style="color: #c084fc; border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.08);">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
                 </svg>
+                Hardware Diagnostics
                 Hardware Diag
             </a>
             <a href="javascript:void(0)" onclick="openWhyNoRemoteModal()" class="nav-item nav-item-skakmat" title="Audit Forensik: Mengapa TIDAK BISA Remote dari Laptop?">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
+                ⛔ Kenapa Ga Remote Laptop?
                 Audit Forensik
             </a>
         </nav>
 
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <button type="button" id="btnToggleHtRadio" class="btn-ht-radio" onclick="toggleHtRadio()" title="Mode Radio HT Komunikasi Lapangan PLN (Audio Web API)">
+                <span id="htRadioIcon">📻</span>
+                <span id="htRadioText">HT: ON</span>
         <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
             <!-- PROMINENT RADIO HT BUTTON -->
             <button type="button" id="btnToggleHtRadio" class="btn-ht-radio" onclick="toggleHtRadio()" title="Radio HT Komunikasi Lapangan PLN (Klik untuk Mute / Unmute)">
@@ -2758,7 +2811,36 @@
                 <span id="htRadioIcon" style="font-size: 13px;">📻</span>
                 <span id="htRadioText">RADIO HT: AKTIF</span>
             </button>
+            <a href="docs/Laporan_Harian_NOC_PLN_Bali.csv" download="Laporan_Harian_NOC_PLN_Bali_2026-09-18.csv" class="btn-export-report" title="Unduh data log rekapitulasi harian untuk arsip administrasi dinas">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Export CSV
+            </a>
+            <a href="docs/spk-print.html" target="_blank" class="btn-export-spk" title="Buka & Cetak Dokumen SPK Lapangan Resmi (Tanggal Dinamis)">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Cetak SPK (PDF)
+            </a>
+            <a href="docs/sppd-print.html" target="_blank" class="btn-export-sppd" title="Buka & Cetak Surat Perintah Perjalanan Dinas Resmi (SPPD - Tanggal Dinamis)">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                Cetak SPPD (PDF)
+            </a>
+            <a href="docs/rab-print.html" target="_blank" class="btn-export-rab" title="Buka & Cetak Dokumen Rencana Anggaran Biaya Talangan Operasional (RAB - Tanggal Dinamis)">
+                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                </svg>
+                Cetak RAB (PDF)
+            </a>
+        </div>
 
+        <div class="user-panel">
+            <div class="user-info">
+                <div class="user-name">Luthfi Hibatullah</div>
+                <div class="user-role">NIM: 03041182530001 // LAB-UNSRI</div>
             <!-- DOKUMEN DINAS DROPDOWN -->
             <div class="nav-dropdown" id="docDropdown">
                 <button type="button" class="btn-nav-dropdown" id="btnDocDropdown" onclick="toggleDocDropdown(event)" title="Buka Dokumen SPK, SPPD, RAB & Rekap">
@@ -2800,6 +2882,9 @@
                     </a>
                 </div>
             </div>
+            <a href="index.html" class="btn-logout" title="Kunci dan keluar ke portal login">
+                Kunci Portal
+            </a>
 
             <div class="user-panel">
                 <div class="user-info">
@@ -4527,36 +4612,47 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
         // 7. Mode Radio HT PLN Lapangan & Audio Squelch
         // ==========================================
         let isHtRadioActive = localStorage.getItem('noc_ht_radio') !== 'false';
+        let htRadioAudioCtx = null;
+
+        function getHtRadioAudioContext() {
+            if (!htRadioAudioCtx) {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) htRadioAudioCtx = new AudioCtx();
+            }
+            if (htRadioAudioCtx && htRadioAudioCtx.state === 'suspended') {
+                htRadioAudioCtx.resume();
+            }
+            return htRadioAudioCtx;
+        }
 
         function playHtRadioSquelch(type = 'burst') {
             if (!isHtRadioActive) return;
             try {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (!AudioContext) return;
-                const ctx = new AudioContext();
-                if (ctx.state === 'suspended') ctx.resume();
-
+                const ctx = getHtRadioAudioContext();
+                if (!ctx) return;
                 const now = ctx.currentTime;
-                // White noise burst
-                const duration = (type === 'chirp') ? 0.08 : 0.14;
+
+                // Authentic walkie-talkie static burst
+                const duration = (type === 'chirp') ? 0.20 : 0.30;
                 const bufferSize = Math.floor(ctx.sampleRate * duration);
                 const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
                 const output = noiseBuffer.getChannelData(0);
                 for (let i = 0; i < bufferSize; i++) {
-                    output[i] = Math.random() * 2 - 1;
+                    output[i] = (Math.random() * 2 - 1) * 0.95;
                 }
 
                 const whiteNoise = ctx.createBufferSource();
                 whiteNoise.buffer = noiseBuffer;
 
-                // Bandpass filter to simulate walkie-talkie speaker (600Hz - 3200Hz)
+                // Bandpass filter to simulate HT radio speaker (900Hz - 2900Hz)
                 const filter = ctx.createBiquadFilter();
                 filter.type = 'bandpass';
                 filter.frequency.value = 1750;
                 filter.Q.value = 2.2;
 
                 const noiseGain = ctx.createGain();
-                noiseGain.gain.setValueAtTime(0.09, now);
+                // Punchy, clear audible volume: 0.35 (instead of 0.09)
+                noiseGain.gain.setValueAtTime(0.35, now);
                 noiseGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
                 whiteNoise.connect(filter);
@@ -4566,27 +4662,33 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
                 whiteNoise.start(now);
                 whiteNoise.stop(now + duration);
 
-                // Roger tone / radio chirp
+                // Motorola/Baofeng Dual-Tone Roger Beep: 1750Hz step to 1250Hz
+                const beepStart = now + duration * 0.5;
                 const osc = ctx.createOscillator();
                 const toneGain = ctx.createGain();
                 osc.type = 'sine';
-                osc.frequency.setValueAtTime(1480, now + duration * 0.6);
-                osc.frequency.setValueAtTime(1120, now + duration * 1.1);
-                toneGain.gain.setValueAtTime(0.04, now + duration * 0.6);
-                toneGain.gain.exponentialRampToValueAtTime(0.001, now + duration + 0.1);
+                osc.frequency.setValueAtTime(1750, beepStart);
+                osc.frequency.setValueAtTime(1250, beepStart + 0.07);
+
+                toneGain.gain.setValueAtTime(0.28, beepStart);
+                toneGain.gain.setValueAtTime(0.28, beepStart + 0.12);
+                toneGain.gain.exponentialRampToValueAtTime(0.001, beepStart + 0.16);
 
                 osc.connect(toneGain);
                 toneGain.connect(ctx.destination);
-                osc.start(now + duration * 0.6);
-                osc.stop(now + duration + 0.1);
 
-                setTimeout(() => {
-                    if (ctx.state !== 'closed') ctx.close().catch(() => {});
-                }, 400);
+                osc.start(beepStart);
+                osc.stop(beepStart + 0.17);
             } catch (e) {
                 console.warn('HT Radio Audio Warning:', e);
             }
         }
+
+        function playHtRadioChirp() {
+            playHtRadioSquelch('chirp');
+        }
+        window.playHtRadioChirp = playHtRadioChirp;
+        window.playHtRadioSquelch = playHtRadioSquelch;
 
         function toggleHtRadio() {
             isHtRadioActive = !isHtRadioActive;
@@ -4608,11 +4710,13 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
             if (isHtRadioActive) {
                 btn.classList.remove('muted');
                 if (icon) icon.textContent = '📻';
+                if (text) text.textContent = 'HT: ON';
                 if (text) text.textContent = 'RADIO HT: AKTIF';
                 btn.title = 'Mode Radio HT Lapangan PLN (Audio Aktif - Klik untuk Mute)';
             } else {
                 btn.classList.add('muted');
                 if (icon) icon.textContent = '🔇';
+                if (text) text.textContent = 'HT: MUTE';
                 if (text) text.textContent = 'RADIO HT: MUTE';
                 btn.title = 'Mode Radio HT Lapangan PLN (Audio Mute - Klik untuk Unmute)';
             }
@@ -5912,8 +6016,8 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                             <div id="callAudioTitle" style="font-size: 12px; font-weight: 700; color: #ffffff;">
                                 PABX RECORDING #CALL-01 &bull; Prof. Abu Bakar → Luthfi
                             </div>
-                            <div style="font-size: 10px; color: #94a3b8; font-family: 'Fira Code', monospace; margin-top: 2px;">
-                                FORMAT: Web Audio Telephony Filter (300Hz - 3.4kHz Bandpass)
+                            <div style="font-size: 10px; color: #34d399; font-family: 'Fira Code', monospace; margin-top: 2px;">
+                                🔊 SUARA AKTIF: Sambungan Telepon PABX &bull; Dialog Bersuara AI (id-ID) &bull; Highlight Teks Otomatis
                             </div>
                         </div>
                     </div>
@@ -5934,6 +6038,12 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                             00:00
                         </span>
                     </div>
+                </div>
+
+                <!-- User Audio Helper Notice -->
+                <div style="font-size: 10.5px; color: #94a3b8; margin: -10px 0 16px 4px; display: flex; align-items: center; gap: 6px;">
+                    <span style="color: #10b981; font-size: 12px;">💡</span>
+                    <span>Klik <strong>"Putar Simulasi Audio"</strong> untuk mendengarkan nada sambung telepon, bunyi angkat gagang, dan rekaman percakapan suara asli Prof. Abu &amp; Luthfi secara otomatis. Pastikan speaker aktif.</span>
                 </div>
 
                 <!-- Call Content 1: Prof Abu -> Luthfi -->
@@ -6266,25 +6376,72 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
             }
         }
 
-        // Web Audio API Telecom Simulator
+        // ==========================================
+        // TELECOM PABX AUDIO & DIALOGUE SPEECH SYNTHESIS
+        // ==========================================
+        const CALL_1_DIALOGUE = [
+            { speaker: 'Prof. Ir. Abu Bakar', role: 'ab', text: 'Luthfi, kamu lagi bisa bicara sebentar?', pitch: 0.82, rate: 0.95 },
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Bisa, Prof. Ada apa?', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Prof. Ir. Abu Bakar', role: 'ab', text: 'Saya baru dapat laporan dari Pak Nyoman di Bali. Ada gangguan di sistem kelistrikan area Pantai Kuta. Trafo utama di lokasi mengalami masalah dan beberapa perangkat monitoring ikut terdampak.', pitch: 0.82, rate: 0.95 },
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Masalahnya di bagian trafonya langsung, Prof, atau di sistem monitoringnya?', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Prof. Ir. Abu Bakar', role: 'ab', text: 'Itu yang masih mereka cek. Tapi dari laporan awal, telemetri dan perangkat monitoring ikut mati. Pak Nyoman minta bantuan langsung dari kamu karena sistem yang terpasang itu bukan sistem standar.', pitch: 0.82, rate: 0.95 },
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Berarti kemungkinan perlu saya cek dari sisi firmware dan modul komunikasinya juga, Prof?', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Prof. Ir. Abu Bakar', role: 'ab', text: 'Iya. Coba kamu hubungi Pak Nyoman langsung. Dia bisa jelaskan kondisi di lapangan lebih lengkap.', pitch: 0.82, rate: 0.95 }
+        ];
+
+        const CALL_2_DIALOGUE = [
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Selamat siang, Pak Nyoman. Saya Luthfi. Tadi Prof Abu menghubungi saya terkait kondisi di Pantai Kuta.', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Ir. I Nyoman Arya', role: 'na', text: 'Halo, Luthfi. Akhirnya nyambung juga. Begini, unit monitoring di Kuta offline total. Awalnya kami kira masalah jaringan, tapi setelah tim lapangan cek, perangkatnya sama sekali tidak merespons.', pitch: 0.85, rate: 0.98 },
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Indikator fisiknya bagaimana, Pak? Masih ada LED yang menyala atau mati total?', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Ir. I Nyoman Arya', role: 'na', text: 'Mati total. Tidak ada daya yang masuk ke modul. Kami sudah coba restart trafo dan ganti jalur daya sementara, tapi telemetri tetap tidak terbaca.', pitch: 0.85, rate: 0.98 },
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Kalau dari hasil pengecekan sebelumnya, ada kemungkinan korsleting atau proteksi internal modulnya aktif, Pak?', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Ir. I Nyoman Arya', role: 'na', text: 'Bisa jadi. Lokasinya pas di dekat pantai, jadi pengaruh korosi garam laut juga sangat tinggi. Tim di sini sudah coba ganti sekring trafo, tapi untuk unit kontrolnya kami tidak berani sentuh karena konfigurasinya custom.', pitch: 0.85, rate: 0.98 },
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Iya, Pak. Firmware-nya memang ada proteksi khusus dan bootloader-nya tidak bisa diakses sembarangan. Kalau modulnya mati total, kemungkinan proteksi hardware-nya kena juga.', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Ir. I Nyoman Arya', role: 'na', text: 'Nah, itu dia. Makanya kami butuh kamu langsung ke sini. Kami tidak bisa ambil risiko coba-coba, apalagi ini area padat wisata. Bisa kamu berangkat ke Bali secepatnya?', pitch: 0.85, rate: 0.98 },
+            { speaker: 'Luthfi Hibatullah', role: 'lh', text: 'Bisa, Pak. Saya siapkan dulu peralatan flash, modul cadangan, sama backup firmware-nya dari lab.', pitch: 1.15, rate: 1.05 },
+            { speaker: 'Ir. I Nyoman Arya', role: 'na', text: 'Bagus. Langsung kabari kalau sudah di bandara. Tim kami akan jemput langsung di Ngurah Rai.', pitch: 0.85, rate: 0.98 }
+        ];
+
         let callAudioCtx = null;
         let callAudioTimerInterval = null;
         let callAudioSeconds = 0;
         let isCallAudioPlaying = false;
-        let ringOsc1 = null;
-        let ringOsc2 = null;
         let noiseNode = null;
+        let currentDialogueIdx = 0;
+        let cachedVoices = [];
+
+        function initVoices() {
+            if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+                cachedVoices = window.speechSynthesis.getVoices() || [];
+                window.speechSynthesis.onvoiceschanged = () => {
+                    cachedVoices = window.speechSynthesis.getVoices() || [];
+                };
+            }
+        }
+        initVoices();
+
+        function getIndonesianVoice(role) {
+            if (!cachedVoices || cachedVoices.length === 0) {
+                if ('speechSynthesis' in window) cachedVoices = window.speechSynthesis.getVoices() || [];
+            }
+            const idVoices = cachedVoices.filter(v => v.lang.startsWith('id') || v.lang.includes('ID') || v.lang.toLowerCase().includes('indonesia'));
+            if (idVoices.length > 1) {
+                if (role === 'lh') return idVoices[0];
+                return idVoices[1 % idVoices.length];
+            }
+            if (idVoices.length === 1) return idVoices[0];
+            return null;
+        }
 
         function initCallAudioContext() {
             if (!callAudioCtx) {
-                const AudioContext = window.AudioContext || window.webkitAudioContext;
-                if (AudioContext) {
-                    callAudioCtx = new AudioContext();
-                }
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (AudioCtx) callAudioCtx = new AudioCtx();
             }
             if (callAudioCtx && callAudioCtx.state === 'suspended') {
                 callAudioCtx.resume();
             }
+            return callAudioCtx;
         }
 
         function toggleCallAudioPlayback() {
@@ -6296,9 +6453,10 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
         }
 
         function startCallAudioPlayback() {
-            initCallAudioContext();
+            const ctx = initCallAudioContext();
             isCallAudioPlaying = true;
             callAudioSeconds = 0;
+            currentDialogueIdx = 0;
 
             const btnIcon = document.getElementById('callPlayIcon');
             const btnText = document.getElementById('callPlayText');
@@ -6307,7 +6465,7 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
             if (btnText) btnText.innerText = "Hentikan Pemutaran";
             if (waveform) waveform.classList.add('active');
 
-            // Timer update
+            // Timer display
             const timerEl = document.getElementById('callAudioTimer');
             if (callAudioTimerInterval) clearInterval(callAudioTimerInterval);
             callAudioTimerInterval = setInterval(() => {
@@ -6315,94 +6473,188 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
                 const mins = String(Math.floor(callAudioSeconds / 60)).padStart(2, '0');
                 const secs = String(callAudioSeconds % 60).padStart(2, '0');
                 if (timerEl) timerEl.innerText = `${mins}:${secs}`;
-                
-                // Auto stop after duration (Call 1: 102s, Call 2: 138s)
-                const maxDur = activeCallTab === 1 ? 102 : 138;
-                if (callAudioSeconds >= maxDur) {
-                    stopCallAudioPlayback();
-                }
             }, 1000);
 
-            // Synthesize realistic telecom audio (Ringback + Pick up + Telecom bandpass line hum)
-            playTelecomAudioSequence();
+            // Step 1: Play realistic telephone dial/ringback tone, then connect and start speech!
+            playTelecomRingAndConnect(() => {
+                if (!isCallAudioPlaying) return;
+                speakDialogueStep(0);
+            });
         }
 
-        function playTelecomAudioSequence() {
-            if (!callAudioCtx) return;
+        function playTelecomRingAndConnect(onConnected) {
+            const ctx = initCallAudioContext();
+            if (!ctx) {
+                if (onConnected) onConnected();
+                return;
+            }
 
             try {
-                const now = callAudioCtx.currentTime;
+                const now = ctx.currentTime;
 
-                // Step 1: North American / Indonesian PABX dual tone ringback: 440Hz + 480Hz for 1.8s
-                const gainRing = callAudioCtx.createGain();
-                gainRing.gain.setValueAtTime(0.08, now);
-                gainRing.gain.setValueAtTime(0.08, now + 1.8);
-                gainRing.gain.exponentialRampToValueAtTime(0.0001, now + 1.85);
+                // 1. Dual-tone Indonesian/US telephone ringback (440Hz + 480Hz)
+                const ringGain = ctx.createGain();
+                ringGain.gain.setValueAtTime(0.24, now);
+                ringGain.gain.setValueAtTime(0.24, now + 1.4);
+                ringGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.45);
 
-                const osc1 = callAudioCtx.createOscillator();
-                const osc2 = callAudioCtx.createOscillator();
+                const osc1 = ctx.createOscillator();
+                const osc2 = ctx.createOscillator();
                 osc1.type = 'sine';
                 osc2.type = 'sine';
                 osc1.frequency.setValueAtTime(440, now);
                 osc2.frequency.setValueAtTime(480, now);
 
-                osc1.connect(gainRing);
-                osc2.connect(gainRing);
-                gainRing.connect(callAudioCtx.destination);
+                osc1.connect(ringGain);
+                osc2.connect(ringGain);
+                ringGain.connect(ctx.destination);
 
                 osc1.start(now);
                 osc2.start(now);
-                osc1.stop(now + 1.9);
-                osc2.stop(now + 1.9);
+                osc1.stop(now + 1.45);
+                osc2.stop(now + 1.45);
 
-                // Step 2: Receiver Pickup "Click" at 2.0s
-                const clickOsc = callAudioCtx.createOscillator();
-                const clickGain = callAudioCtx.createGain();
+                // 2. Telephone Pickup "KLAKK" at 1.65s
+                const clickOsc = ctx.createOscillator();
+                const clickGain = ctx.createGain();
                 clickOsc.type = 'triangle';
-                clickOsc.frequency.setValueAtTime(80, now + 2.0);
-                clickGain.gain.setValueAtTime(0.2, now + 2.0);
-                clickGain.gain.exponentialRampToValueAtTime(0.001, now + 2.08);
+                clickOsc.frequency.setValueAtTime(95, now + 1.65);
+                clickGain.gain.setValueAtTime(0.35, now + 1.65);
+                clickGain.gain.exponentialRampToValueAtTime(0.001, now + 1.75);
                 clickOsc.connect(clickGain);
-                clickGain.connect(callAudioCtx.destination);
-                clickOsc.start(now + 2.0);
-                clickOsc.stop(now + 2.1);
+                clickGain.connect(ctx.destination);
+                clickOsc.start(now + 1.65);
+                clickOsc.stop(now + 1.76);
 
-                // Step 3: Telecom transmission hum / line ambiance through bandpass filter (300Hz - 3400Hz)
-                const bufferSize = callAudioCtx.sampleRate * 2;
-                const noiseBuffer = callAudioCtx.createBuffer(1, bufferSize, callAudioCtx.sampleRate);
+                // 3. Telecom wire ambiance (subtle 300-3400Hz line presence)
+                const bufferSize = ctx.sampleRate * 2;
+                const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
                 const output = noiseBuffer.getChannelData(0);
                 for (let i = 0; i < bufferSize; i++) {
                     output[i] = Math.random() * 2 - 1;
                 }
-
-                const whiteNoise = callAudioCtx.createBufferSource();
+                const whiteNoise = ctx.createBufferSource();
                 whiteNoise.buffer = noiseBuffer;
                 whiteNoise.loop = true;
 
-                // Bandpass filter standard telephone: 300Hz to 3400Hz
-                const bpf = callAudioCtx.createBiquadFilter();
+                const bpf = ctx.createBiquadFilter();
                 bpf.type = 'bandpass';
-                bpf.frequency.setValueAtTime(1200, now + 2.1);
-                bpf.Q.setValueAtTime(1.2, now + 2.1);
+                bpf.frequency.setValueAtTime(1200, now + 1.75);
+                bpf.Q.setValueAtTime(1.2, now + 1.75);
 
-                const lineGain = callAudioCtx.createGain();
+                const lineGain = ctx.createGain();
                 lineGain.gain.setValueAtTime(0.0001, now);
-                lineGain.gain.setValueAtTime(0.012, now + 2.15); // gentle line hiss
+                lineGain.gain.setValueAtTime(0.015, now + 1.75);
 
                 whiteNoise.connect(bpf);
                 bpf.connect(lineGain);
-                lineGain.connect(callAudioCtx.destination);
+                lineGain.connect(ctx.destination);
 
-                whiteNoise.start(now + 2.1);
+                whiteNoise.start(now + 1.75);
                 noiseNode = { source: whiteNoise, gain: lineGain };
 
+                // Schedule speech start right after pickup click
+                setTimeout(() => {
+                    if (isCallAudioPlaying && onConnected) onConnected();
+                }, 1800);
+
             } catch (e) {
-                console.warn("Telecom audio synthesis:", e);
+                console.warn("Telecom ring audio synthesis error:", e);
+                if (onConnected) onConnected();
+            }
+        }
+
+        function playBeepTone() {
+            try {
+                const ctx = initCallAudioContext();
+                if (!ctx) return;
+                const now = ctx.currentTime;
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(880, now);
+                gain.gain.setValueAtTime(0.06, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(now);
+                osc.stop(now + 0.07);
+            } catch(e) {}
+        }
+
+        function speakDialogueStep(index) {
+            if (!isCallAudioPlaying) return;
+
+            const dialogueList = (activeCallTab === 1) ? CALL_1_DIALOGUE : CALL_2_DIALOGUE;
+            const containerId = (activeCallTab === 1) ? 'callContent1' : 'callContent2';
+            const container = document.getElementById(containerId);
+            const bubbleRows = container ? container.querySelectorAll('.call-bubble-row') : [];
+
+            if (index >= dialogueList.length) {
+                // Selesai seluruh dialog
+                setTimeout(() => {
+                    stopCallAudioPlayback();
+                }, 1500);
+                return;
+            }
+
+            currentDialogueIdx = index;
+
+            // Highlight visual bubble saat ini (karaoke-style active row)
+            bubbleRows.forEach((row, rIdx) => {
+                if (rIdx === index) {
+                    row.classList.add('speaking');
+                    row.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    row.classList.remove('speaking');
+                }
+            });
+
+            const item = dialogueList[index];
+            playBeepTone();
+
+            // Jalankan Web Speech API
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+
+                const utterance = new SpeechSynthesisUtterance(item.text);
+                utterance.lang = 'id-ID';
+                utterance.pitch = item.pitch || 1.0;
+                utterance.rate = item.rate || 1.0;
+                utterance.volume = 1.0;
+
+                const voice = getIndonesianVoice(item.role);
+                if (voice) utterance.voice = voice;
+
+                utterance.onend = () => {
+                    if (!isCallAudioPlaying) return;
+                    setTimeout(() => {
+                        speakDialogueStep(index + 1);
+                    }, 550);
+                };
+
+                utterance.onerror = (err) => {
+                    console.warn('Utterance error or interrupt:', err);
+                    if (!isCallAudioPlaying) return;
+                    setTimeout(() => {
+                        speakDialogueStep(index + 1);
+                    }, 1800);
+                };
+
+                window.speechSynthesis.speak(utterance);
+            } else {
+                // Fallback jika browser tidak punya Web Speech API
+                setTimeout(() => {
+                    if (isCallAudioPlaying) speakDialogueStep(index + 1);
+                }, 3800);
             }
         }
 
         function stopCallAudioPlayback() {
             isCallAudioPlaying = false;
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
             if (callAudioTimerInterval) {
                 clearInterval(callAudioTimerInterval);
                 callAudioTimerInterval = null;
@@ -6415,10 +6667,11 @@ Terima kasih, Mas. Ditunggu kabarnya.</div>
             if (btnText) btnText.innerText = "Putar Simulasi Audio";
             if (waveform) waveform.classList.remove('active');
 
+            // Hapus status highlight dari semua bubble
+            document.querySelectorAll('.call-bubble-row').forEach(b => b.classList.remove('speaking'));
+
             if (noiseNode) {
-                try {
-                    noiseNode.source.stop();
-                } catch(e) {}
+                try { noiseNode.source.stop(); } catch(e) {}
                 noiseNode = null;
             }
         }

@@ -968,32 +968,50 @@
 
             try {
                 const now = htAudioCtx.currentTime;
-                const bufferSize = htAudioCtx.sampleRate * (type === 'burst' ? 0.35 : 0.12);
-                const buffer = htAudioCtx.createBuffer(1, bufferSize, htAudioCtx.sampleRate);
-                const data = buffer.getChannelData(0);
+                const duration = (type === 'chirp') ? 0.20 : 0.30;
+                const bufferSize = Math.floor(htAudioCtx.sampleRate * duration);
+                const noiseBuffer = htAudioCtx.createBuffer(1, bufferSize, htAudioCtx.sampleRate);
+                const output = noiseBuffer.getChannelData(0);
                 for (let i = 0; i < bufferSize; i++) {
-                    data[i] = Math.random() * 2 - 1;
+                    output[i] = (Math.random() * 2 - 1) * 0.95;
                 }
 
-                const noise = htAudioCtx.createBufferSource();
-                noise.buffer = buffer;
+                const whiteNoise = htAudioCtx.createBufferSource();
+                whiteNoise.buffer = noiseBuffer;
 
-                const bpf = htAudioCtx.createBiquadFilter();
-                bpf.type = 'bandpass';
-                bpf.frequency.setValueAtTime(type === 'burst' ? 1500 : 2200, now);
-                bpf.Q.setValueAtTime(2.5, now);
+                const filter = htAudioCtx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.value = 1750;
+                filter.Q.value = 2.2;
 
-                const gain = htAudioCtx.createGain();
-                gain.gain.setValueAtTime(0.001, now);
-                gain.gain.exponentialRampToValueAtTime(0.04, now + 0.02);
-                gain.gain.exponentialRampToValueAtTime(0.0001, now + (type === 'burst' ? 0.34 : 0.11));
+                const noiseGain = htAudioCtx.createGain();
+                noiseGain.gain.setValueAtTime(0.35, now);
+                noiseGain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
-                noise.connect(bpf);
-                bpf.connect(gain);
-                gain.connect(htAudioCtx.destination);
+                whiteNoise.connect(filter);
+                filter.connect(noiseGain);
+                noiseGain.connect(htAudioCtx.destination);
 
-                noise.start(now);
-                noise.stop(now + (type === 'burst' ? 0.35 : 0.12));
+                whiteNoise.start(now);
+                whiteNoise.stop(now + duration);
+
+                // Motorola/Baofeng Dual-Tone Roger Beep: 1750Hz step to 1250Hz
+                const beepStart = now + duration * 0.5;
+                const osc = htAudioCtx.createOscillator();
+                const toneGain = htAudioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1750, beepStart);
+                osc.frequency.setValueAtTime(1250, beepStart + 0.07);
+
+                toneGain.gain.setValueAtTime(0.28, beepStart);
+                toneGain.gain.setValueAtTime(0.28, beepStart + 0.12);
+                toneGain.gain.exponentialRampToValueAtTime(0.001, beepStart + 0.16);
+
+                osc.connect(toneGain);
+                toneGain.connect(htAudioCtx.destination);
+
+                osc.start(beepStart);
+                osc.stop(beepStart + 0.17);
             } catch (e) {
                 console.warn('HT Radio Audio Warning:', e);
             }

@@ -748,27 +748,46 @@
                 initHtRadioAudio();
                 if (!htRadioAudioCtx) return;
                 const now = htRadioAudioCtx.currentTime;
-                const bufferSize = htRadioAudioCtx.sampleRate * (type === 'burst' ? 0.08 : 0.04);
-                const buffer = htRadioAudioCtx.createBuffer(1, bufferSize, htRadioAudioCtx.sampleRate);
-                const data = buffer.getChannelData(0);
+                const duration = (type === 'chirp') ? 0.20 : 0.30;
+                const bufferSize = Math.floor(htRadioAudioCtx.sampleRate * duration);
+                const noiseBuffer = htRadioAudioCtx.createBuffer(1, bufferSize, htRadioAudioCtx.sampleRate);
+                const data = noiseBuffer.getChannelData(0);
                 for (let i = 0; i < bufferSize; i++) {
-                    data[i] = Math.random() * 2 - 1;
+                    data[i] = (Math.random() * 2 - 1) * 0.95;
                 }
                 const noise = htRadioAudioCtx.createBufferSource();
-                noise.buffer = buffer;
+                noise.buffer = noiseBuffer;
                 const filter = htRadioAudioCtx.createBiquadFilter();
                 filter.type = 'bandpass';
-                filter.frequency.value = 1800;
-                filter.Q.value = 3.0;
+                filter.frequency.value = 1750;
+                filter.Q.value = 2.2;
 
                 const gain = htRadioAudioCtx.createGain();
-                gain.gain.setValueAtTime(0.04, now);
-                gain.gain.exponentialRampToValueAtTime(0.0001, now + (type === 'burst' ? 0.08 : 0.04));
+                gain.gain.setValueAtTime(0.35, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
                 noise.connect(filter);
                 filter.connect(gain);
                 gain.connect(htRadioAudioCtx.destination);
                 noise.start(now);
+                noise.stop(now + duration);
+
+                // Roger Beep
+                const beepStart = now + duration * 0.5;
+                const osc = htRadioAudioCtx.createOscillator();
+                const toneGain = htRadioAudioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1750, beepStart);
+                osc.frequency.setValueAtTime(1250, beepStart + 0.07);
+
+                toneGain.gain.setValueAtTime(0.28, beepStart);
+                toneGain.gain.setValueAtTime(0.28, beepStart + 0.12);
+                toneGain.gain.exponentialRampToValueAtTime(0.001, beepStart + 0.16);
+
+                osc.connect(toneGain);
+                toneGain.connect(htRadioAudioCtx.destination);
+                osc.start(beepStart);
+                osc.stop(beepStart + 0.17);
             } catch (e) {
                 // Audio policy ignore
             }
