@@ -898,6 +898,313 @@
             padding: 0 10px;
         }
 
+        /* Marine Salinity & Environmental Panel */
+        .environmental-panel {
+            background: #0d1527;
+            border: 1px solid rgba(6, 182, 212, 0.4);
+            border-left: 4px solid #06b6d4;
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        .env-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .env-title-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .env-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .env-badge-station {
+            font-family: 'Fira Code', monospace;
+            font-size: 10px;
+            color: #06b6d4;
+            background: rgba(6, 182, 212, 0.15);
+            border: 1px solid rgba(6, 182, 212, 0.35);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .env-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .env-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 12px 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .env-card.alert-border {
+            border-color: rgba(239, 68, 68, 0.5);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .env-label {
+            font-size: 10px;
+            color: #94a3b8;
+            font-family: 'Fira Code', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .env-val {
+            font-size: 20px;
+            font-weight: 800;
+            font-family: 'Fira Code', monospace;
+            margin-top: 4px;
+            color: #ffffff;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .env-unit {
+            font-size: 11px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .env-sub {
+            font-size: 10.5px;
+            color: #cbd5e1;
+            margin-top: 4px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .env-alert-box {
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 12px;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        /* Floating Disposisi Chat Widget */
+        .disposisi-fab {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            border: 1px solid rgba(56, 189, 248, 0.5);
+            padding: 11px 18px;
+            border-radius: 30px;
+            font-family: 'Fira Code', monospace;
+            font-size: 11.5px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(2, 132, 199, 0.5);
+            transition: all 0.2s;
+        }
+
+        .disposisi-fab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(2, 132, 199, 0.7);
+        }
+
+        .disposisi-dot-alert {
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #ef4444;
+            animation: pulse-live 1.2s infinite;
+        }
+
+        .disposisi-toast {
+            position: fixed;
+            bottom: 76px;
+            right: 24px;
+            z-index: 9998;
+            background: #0f172a;
+            border: 1px solid #38bdf8;
+            border-radius: 10px;
+            padding: 14px 16px;
+            max-width: 360px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7);
+            display: none;
+            animation: slideUpToast 0.35s ease-out;
+            cursor: pointer;
+        }
+
+        @keyframes slideUpToast {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .disposisi-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 8, 15, 0.85);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100002;
+            padding: 20px;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+
+        .disposisi-modal-card {
+            background: #0b111e;
+            border: 1px solid #38bdf8;
+            border-radius: 12px;
+            max-width: 560px;
+            width: 100%;
+            box-shadow: 0 0 45px rgba(56, 189, 248, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            max-height: 85vh;
+        }
+
+        .disposisi-header {
+            background: #0f172a;
+            padding: 12px 18px;
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .disposisi-chat-body {
+            padding: 18px;
+            overflow-y: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .chat-bubble {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            padding: 14px;
+        }
+
+        .chat-sender {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 11.5px;
+            font-weight: 700;
+        }
+
+        .chat-text {
+            font-size: 12px;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Hardware Diagnostics Modal */
+        .diag-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 8, 15, 0.88);
+            backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100001;
+            padding: 20px;
+            animation: modalFadeIn 0.25s ease-out;
+        }
+
+        .diag-modal-card {
+            background: #0c1220;
+            border: 2px solid #a855f7;
+            border-radius: 12px;
+            max-width: 660px;
+            width: 100%;
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.35);
+            overflow: hidden;
+        }
+
+        .diag-modal-header {
+            background: linear-gradient(90deg, #581c87, #6b21a8, #581c87);
+            color: #ffffff;
+            padding: 12px 18px;
+            font-family: 'Fira Code', monospace;
+            font-size: 12px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .diag-body {
+            padding: 20px;
+        }
+
+        .diag-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .diag-item {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            padding: 10px 12px;
+        }
+
+        .diag-item.fault {
+            border-color: rgba(239, 68, 68, 0.4);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .diag-item-name {
+            font-size: 10.5px;
+            color: #94a3b8;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .diag-item-status {
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Fira Code', monospace;
+            margin-top: 4px;
+        }
+
         /* Remote Reboot Section */
         .remote-reboot-section {
             margin-top: 14px;
@@ -1408,6 +1715,12 @@
                 </svg>
                 Syslog
             </a>
+            <a href="javascript:void(0)" onclick="openHardwareDiagnosticsModal()" class="nav-item" style="color: #c084fc; border-color: rgba(168, 85, 247, 0.35); background: rgba(168, 85, 247, 0.08);">
+                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path>
+                </svg>
+                Hardware Diagnostics
+            </a>
         </nav>
 
         <div style="display: flex; align-items: center; gap: 8px;">
@@ -1698,6 +2011,63 @@
                 </div>
             </div>
 
+        </div>
+
+        <!-- Option 3: Marine Salinity & Environmental Corrosion Index Panel -->
+        <div class="environmental-panel">
+            <div class="env-header">
+                <div class="env-title-box">
+                    <span style="font-size: 20px;">🌊</span>
+                    <div>
+                        <div class="env-title">Marine Salinity &amp; Environmental Corrosion Telemetry &mdash; Sektor Pesisir Kuta</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Data telemetri mikroklimat pesisir pantai &bull; Sensor IoT AWS Marine BMKG x PLN UID Bali (Station ID: KTA-MAR-01)</div>
+                    </div>
+                </div>
+                <span class="env-badge-station">JARAK DARI BIBIR PANTAI: 45 METER (ZONA AEROSOL TINGGI)</span>
+            </div>
+
+            <div class="env-grid">
+                <div class="env-card alert-border">
+                    <div class="env-label">Deposisi Uap Garam Laut (NaCl)</div>
+                    <div class="env-val" style="color: #f87171;">
+                        428.5 <span class="env-unit">mg/m²/hari</span>
+                    </div>
+                    <div class="env-sub" style="color: #ef4444; font-weight: 700;">● LEVEL CX (EXTREME CORROSION - ISO 9223)</div>
+                </div>
+
+                <div class="env-card alert-border">
+                    <div class="env-label">Kelembaban Relatif Udara (RH)</div>
+                    <div class="env-val" style="color: #fbbf24;">
+                        89.4 <span class="env-unit">% RH</span>
+                    </div>
+                    <div class="env-sub" style="color: #f59e0b;">● AMBANG KRITIS KONDENSASI SALIN</div>
+                </div>
+
+                <div class="env-card">
+                    <div class="env-label">Suhu Ambien Box Gardu (Internal)</div>
+                    <div class="env-val" style="color: #38bdf8;">
+                        51.8 <span class="env-unit">°C</span>
+                    </div>
+                    <div class="env-sub" style="color: #94a3b8;">Cooling Fan Aktif Maksimum (Overheat)</div>
+                </div>
+
+                <div class="env-card alert-border">
+                    <div class="env-label">Konduktivitas Lapisan Permukaan PCB</div>
+                    <div class="env-val" style="color: #f87171;">
+                        1,240 <span class="env-unit">µS/cm</span>
+                    </div>
+                    <div class="env-sub" style="color: #ef4444;">● SALT-INDUCED SURFACE FLASHOVER DETECTED</div>
+                </div>
+            </div>
+
+            <div class="env-alert-box">
+                <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; color: #f87171; margin-bottom: 6px; font-family: 'Fira Code', monospace;">
+                    <span>⚠️</span>
+                    <span>DIAGNOSA KOROSI SCADA TELEMETRI: PENYEBAB KEGAGALAN SISTEM DI GARDU KUTA</span>
+                </div>
+                Partikel garam aerosol laut (Sea-Salt Spray) berkonsentrasi tinggi menembus ventilasi mikro box gardu trafo Kuta Beach. Bersama kelembaban relatif 89.4%, terakumulasi lapisan garam konduktif pada board mikrokontroler <code>ESP32-KTA-03</code>, memicu <em>Surface Flashover</em> antara pin DC AUX 5V dan GND sehingga sekring proteksi F1 putus (Blown Fuse). 
+                <strong style="color: #ffffff;">Sistem terisolasi secara hardware (0.0V). Pemulihan HANYA DAPAT DILAKUKAN secara fisik di gardu Kuta</strong> untuk pergantian sekring, pembersihan kerak garam dengan isopropyl alcohol 99%, pelapisan conformal coating anti-salin, dan flashing ulang firmware via port UART oleh peneliti perancang.
+            </div>
         </div>
 
         <!-- Auto-Generated Work Orders (SPK) Panel (Kuncian Mutlak) -->
@@ -2554,6 +2924,96 @@
             appendLog('info', 'Reboot exception dialog dismissed. SPK #042 remains active.');
         }
 
+        // ==========================================
+        // Disposisi & Hardware Diagnostics Logic
+        // ==========================================
+        function openDisposisiModal() {
+            const modal = document.getElementById('disposisiModal');
+            const toast = document.getElementById('disposisiToast');
+            if (toast) toast.style.display = 'none';
+            if (modal) {
+                modal.style.display = 'flex';
+                appendLog('info', 'Operator membuka Disposisi Penugasan Lapangan Kuta.');
+            }
+        }
+
+        function closeDisposisiModal() {
+            const modal = document.getElementById('disposisiModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        // Show toast notification after 6.5 seconds
+        setTimeout(() => {
+            const toast = document.getElementById('disposisiToast');
+            const modal = document.getElementById('disposisiModal');
+            if (toast && (!modal || modal.style.display !== 'flex')) {
+                toast.style.display = 'block';
+            }
+        }, 6500);
+
+        function openHardwareDiagnosticsModal() {
+            const modal = document.getElementById('hardwareDiagModal');
+            if (modal) {
+                modal.style.display = 'flex';
+                appendLog('info', 'Membuka Hardware Diagnostics Console ESP32-KTA-03.');
+            }
+        }
+
+        function closeHardwareDiagnosticsModal() {
+            const modal = document.getElementById('hardwareDiagModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        function runHardwareSelfTest() {
+            const consoleBox = document.getElementById('diagConsole');
+            const btn = document.getElementById('btnSelfTest');
+            if (!consoleBox) return;
+
+            btn.disabled = true;
+            btn.innerText = 'Scanning Pins...';
+
+            consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[SELF-TEST] Memulai pemindaian resistansi pin GPIO...</span>`;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+
+            setTimeout(() => {
+                consoleBox.innerHTML += `<br><span style="color:#f59e0b;">[CHECK] Pin 3V3 VCC to GND resistance: 1.2 Ohm (ANOMALI SHORT)</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#f59e0b;">[CHECK] Fuse F1 Continuity: OPEN-CIRCUIT (PUTUS)</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+            }, 1200);
+
+            setTimeout(() => {
+                consoleBox.innerHTML += `<br><span style="color:#ef4444;">[FAIL] HASIL SELF-TEST: KERUSAKAN FISIK TERVERIFIKASI.</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#ef4444;">[ACTION] Intervensi fisik di Gardu Kuta Beach mutlak diperlukan.</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+                btn.disabled = false;
+                btn.innerText = '⚡ Jalankan Self-Test Sirkuit';
+                appendLog('err', 'Hardware self-test ESP32-KTA-03 gagal: Terdeteksi short-circuit akibat kristal uap garam.');
+            }, 2500);
+        }
+
+        function attemptOtaFlash() {
+            const consoleBox = document.getElementById('diagConsole');
+            const alertBox = document.getElementById('otaErrorAlert');
+            const btn = document.getElementById('btnOtaFlash');
+            if (!consoleBox) return;
+
+            btn.disabled = true;
+            btn.innerText = 'Connecting OTA Socket...';
+
+            consoleBox.innerHTML += `<br><span style="color:#38bdf8;">[OTA] Membuka port 3232 (ESP-OTA Protocol)...</span>`;
+            consoleBox.scrollTop = consoleBox.scrollHeight;
+
+            setTimeout(() => {
+                consoleBox.innerHTML += `<br><span style="color:#ef4444;">[OTA-ERR] Handshake failed! Remote target power rail is 0.0V.</span>`;
+                consoleBox.innerHTML += `<br><span style="color:#ef4444;">[OTA-ERR] SCADA INTERLOCK: Flashing jarak jauh ditolak (Err: 0x7E).</span>`;
+                consoleBox.scrollTop = consoleBox.scrollHeight;
+                if (alertBox) alertBox.style.display = 'block';
+                btn.disabled = false;
+                btn.innerText = '📡 Coba Flash Firmware Jarak Jauh (OTA)';
+                appendLog('err', 'OTA Flash ditolak: Node Kuta terkunci secara elektrik. Diperlukan kabel serial FTDI fisik.');
+            }, 1600);
+        }
+
         // Initialize chart & CCTV once DOM ready
         window.addEventListener('DOMContentLoaded', () => {
             initVoltageChart();
@@ -2643,6 +3103,171 @@
                 <button type="button" class="terminal-btn" onclick="closeRebootModal()" style="padding: 9px 16px; font-size: 11.5px; background: rgba(255,255,255,0.1);">
                     Tutup &amp; Catat di Syslog
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Disposisi WhatsApp/Chat FAB Button -->
+    <div class="disposisi-fab" id="disposisiFab" onclick="openDisposisiModal()" title="Buka Riwayat Disposisi & Instruksi Penugasan Lapangan">
+        <span class="disposisi-dot-alert"></span>
+        <span>💬 DISPOSISI MENDESAK (2)</span>
+    </div>
+
+    <!-- Floating Disposisi Toast Notification (Auto Popup) -->
+    <div class="disposisi-toast" id="disposisiToast" onclick="openDisposisiModal()">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+            <div style="display: flex; align-items: center; gap: 6px; font-family: 'Fira Code', monospace; font-size: 11px; color: #38bdf8; font-weight: 700;">
+                <span class="disposisi-dot-alert"></span>
+                DISPOSISI BARU DITERIMA
+            </div>
+            <span style="font-size: 10px; color: #64748b;">Baru saja</span>
+        </div>
+        <div style="font-size: 12px; color: #f1f5f9; line-height: 1.5; font-weight: 600;">
+            Prof. Ir. Abu Bakar &amp; Ir. I Nyoman Arya (PLN Bali)
+        </div>
+        <div style="font-size: 11px; color: #94a3b8; margin-top: 4px; line-height: 1.4;">
+            "Mas Luthfi, mohon segera koordinasikan keberangkatan fisik ke Gardu Kuta. Kami butuh kehadiran langsung..."
+        </div>
+        <div style="font-size: 10px; color: #38bdf8; margin-top: 8px; font-family: 'Fira Code', monospace; text-align: right;">
+            Klik untuk membaca pesan selengkapnya →
+        </div>
+    </div>
+
+    <!-- Disposisi Modal Dialog -->
+    <div id="disposisiModal" class="disposisi-modal-overlay">
+        <div class="disposisi-modal-card">
+            <div class="disposisi-header">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 10px; height: 10px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e;"></div>
+                    <div>
+                        <div style="font-size: 13px; font-weight: 800; color: #ffffff;">DISPOSISI &amp; LOG INSTRUKSI LAPANGAN KUTA</div>
+                        <div style="font-size: 10px; color: #94a3b8; font-family: 'Fira Code', monospace;">GROUP: TIM KOORDINASI TEKNIS PLN BALI &mdash; LAB ELEKTRO UNSRI</div>
+                    </div>
+                </div>
+                <button type="button" onclick="closeDisposisiModal()" style="background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer; padding: 4px 8px;">✕</button>
+            </div>
+
+            <div class="disposisi-chat-body">
+                <!-- Message 1: Prof Abu Bakar -->
+                <div class="chat-bubble">
+                    <div class="chat-sender">
+                        <span style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.T., Ph.D.</span>
+                        <span style="font-size: 10px; color: #64748b; font-family: 'Fira Code', monospace;">10:24 WITA &bull; Kepala Lab IoT Unsri</span>
+                    </div>
+                    <div class="chat-text">
+                        Luthfi, status Node Kuta (<code>ESP32-KTA-03</code>) drop total 0.0 Volt dan kamera pengawas ikut offline. Pihak manajemen UP3 Bali Selatan barusan kontak saya. Karena seluruh firmware enkripsi AES-256 dan modul SCADA ini kamu yang buat rancang bangunnya, pihak PLN meminta kamu harus turun langsung ke lapangan untuk investigasi dan flashing fisik di gardu Kuta.
+                    </div>
+                </div>
+
+                <!-- Message 2: Ir. I Nyoman Arya (PLN Bali) -->
+                <div class="chat-bubble" style="border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.06);">
+                    <div class="chat-sender">
+                        <span style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
+                        <span style="font-size: 10px; color: #06b6d4; font-family: 'Fira Code', monospace;">10:48 WITA &bull; Senior Manager Distribusi PLN UID Bali</span>
+                    </div>
+                    <div class="chat-text">
+                        Selamat pagi Prof Abu dan Mas Luthfi. Tim teknisi piket kami di Gardu Kuta sudah cek fisik kubikel 20kV, trafo utama aman tapi box telemetri IoT mati total akibat korosi uap garam laut pantai Kuta. Tim kami tidak punya source code dan tool debugging untuk bypass enkripsinya. Surat Perintah Kerja (<strong>#SPK-042</strong>) dan <strong>SPPD Resmi Dinas</strong> sudah kami terbitkan atas nama Mas Luthfi Hibatullah. Kami harapkan Mas Luthfi bisa segera terbang dari Palembang ke Bali secepatnya membawa laptop &amp; alat flashing UART. Untuk biaya tiket pesawat dan operasional awal mohon dikoordinasikan secara mandiri terlebih dahulu, nanti seluruh biaya akan diproses klaim reimbursement setelah pekerjaan selesai di kantor PLN UID Bali.
+                    </div>
+                </div>
+
+                <!-- Message 3: Luthfi Hibatullah -->
+                <div class="chat-bubble" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); margin-left: 20px;">
+                    <div class="chat-sender">
+                        <span style="color: #34d399;">Luthfi Hibatullah (Peneliti / Operator)</span>
+                        <span style="font-size: 10px; color: #10b981; font-family: 'Fira Code', monospace;">11:05 WITA &bull; NIM: 03041182530001</span>
+                    </div>
+                    <div class="chat-text">
+                        Siap Prof Abu dan Pak Nyoman Arya. Saya sudah unduh log telemetri dan SPK-nya. Perlengkapan flasher FTDI USB-UART, modul ESP32 spare, dan multimeter sudah saya siapkan di tas kerja. Hari ini saya segera koordinasikan pengajuan modal dana operasional tiket dan keberangkatan kepada orang tua saya agar bisa langsung berangkat dari Palembang ke Bandara I Gusti Ngurah Rai secepatnya. Sampai ketemu di Bali, Pak.
+                    </div>
+                </div>
+            </div>
+
+            <div style="background: #090d16; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; gap: 8px;">
+                    <a href="docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" class="btn-spk-sppd" style="font-size: 11px; padding: 6px 12px;">
+                        📄 Unduh SPPD Dinas (PDF)
+                    </a>
+                    <a href="docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" class="btn-spk-download" style="font-size: 11px; padding: 6px 12px;">
+                        📋 Unduh SPK #042 (PDF)
+                    </a>
+                </div>
+                <button type="button" class="terminal-btn" onclick="closeDisposisiModal()" style="font-size: 11px; padding: 6px 14px;">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Option 4: Hardware Diagnostics & Firmware Flasher Modal -->
+    <div id="hardwareDiagModal" class="diag-modal-overlay">
+        <div class="diag-modal-card">
+            <div class="diag-modal-header">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span>🔧</span>
+                    <span>HARDWARE DIAGNOSTICS &amp; SERIAL FLASHER CONSOLE &mdash; NODE KUTA</span>
+                </div>
+                <button type="button" onclick="closeHardwareDiagnosticsModal()" style="background:none; border:none; color:#ffffff; font-size:16px; cursor:pointer;">✕</button>
+            </div>
+
+            <div class="diag-body">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                    <span style="font-family: 'Fira Code', monospace; font-size: 11px; color: #94a3b8;">TARGET MCU: ESP32-WROOM-32D (MAC: 24:6F:28:B4:9C:18)</span>
+                    <span style="font-family: 'Fira Code', monospace; font-size: 10px; color: #ef4444; font-weight: 700; background: rgba(239,68,68,0.15); padding: 2px 8px; border-radius: 4px; border: 1px solid rgba(239,68,68,0.4);">HARDWARE LOCK: ACTIVE</span>
+                </div>
+
+                <div class="diag-grid">
+                    <div class="diag-item fault">
+                        <div class="diag-item-name">PIN 3V3 (MAIN POWER RAIL)</div>
+                        <div class="diag-item-status" style="color: #ef4444;">0.04 V &bull; SHORT TO GND (SALT RESIDUE)</div>
+                    </div>
+                    <div class="diag-item fault">
+                        <div class="diag-item-name">SEKRING FUSE F1 (500mA FAST-BLOW)</div>
+                        <div class="diag-item-status" style="color: #ef4444;">BLOWN / OPEN-CIRCUIT (TRIPPED)</div>
+                    </div>
+                    <div class="diag-item fault">
+                        <div class="diag-item-name">RS-485 MODBUS BUS (A-B LINE)</div>
+                        <div class="diag-item-status" style="color: #ef4444;">0.00 V &bull; NO PACKET TRAFFIC</div>
+                    </div>
+                    <div class="diag-item">
+                        <div class="diag-item-name">OPTOCOUPLER ISOLASI TEGANGAN TINGGI</div>
+                        <div class="diag-item-status" style="color: #fbbf24;">INTERLOCKED &bull; 20kV PROTECTION SAFE</div>
+                    </div>
+                    <div class="diag-item fault">
+                        <div class="diag-item-name">INTEGRITAS FIRMWARE EEPROM</div>
+                        <div class="diag-item-status" style="color: #ef4444;">CRC32 MISMATCH &bull; 0xDEADBEEF</div>
+                    </div>
+                    <div class="diag-item fault">
+                        <div class="diag-item-name">PORT SERIAL UART (GPIO 1 &amp; GPIO 3)</div>
+                        <div class="diag-item-status" style="color: #ef4444;">DISCONNECTED &bull; WAJIB KABEL FISIK FTDI</div>
+                    </div>
+                </div>
+
+                <!-- Self-Test & Flashing Log Terminal in Modal -->
+                <div style="background: #050811; border: 1px solid #1e293b; border-radius: 6px; padding: 10px 12px; font-family: 'Fira Code', monospace; font-size: 10px; color: #94a3b8; height: 110px; overflow-y: auto; margin-bottom: 14px;" id="diagConsole">
+                    [DIAG-INIT] Console connected to DCC SCADA Bus.<br>
+                    [DIAG-WARN] Node ESP32-KTA-03 unresponsive on physical bus.<br>
+                    [DIAG-INFO] Ready to perform diagnostics or firmware flash test.
+                </div>
+
+                <!-- OTA Flash Alert Box (Shown on OTA attempt) -->
+                <div id="otaErrorAlert" style="display: none; background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; border-radius: 6px; padding: 10px 14px; font-size: 11px; color: #fca5a5; line-height: 1.5; margin-bottom: 14px;">
+                    <strong style="color: #ffffff; display: block; margin-bottom: 4px;">⛔ OTA FLASHING DITOLAK (SCADA ERROR 0x7E - HARDWARE LOCK):</strong>
+                    Port serial fisik terkunci akibat putusnya sekring F1. Protokol keselamatan melarang pengunggahan firmware jarak jauh tanpa keberadaan fisik di lokasi. <strong style="color: #fef08a;">Teknisi perancang (Luthfi Hibatullah) wajib hadir di Gardu Kuta Beach</strong> dan mencolokkan kabel USB-UART FTDI secara langsung ke pin TX/RX board mikrokontroler.
+                </div>
+
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                    <div style="display: flex; gap: 8px;">
+                        <button type="button" class="terminal-btn" id="btnSelfTest" onclick="runHardwareSelfTest()" style="background: rgba(59, 130, 246, 0.2); color: #60a5fa; border-color: rgba(59, 130, 246, 0.4);">
+                            ⚡ Jalankan Self-Test Sirkuit
+                        </button>
+                        <button type="button" class="terminal-btn" id="btnOtaFlash" onclick="attemptOtaFlash()" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.4);">
+                            📡 Coba Flash Firmware Jarak Jauh (OTA)
+                        </button>
+                    </div>
+                    <button type="button" class="terminal-btn" onclick="closeHardwareDiagnosticsModal()">
+                        Tutup
+                    </button>
+                </div>
             </div>
         </div>
     </div>
