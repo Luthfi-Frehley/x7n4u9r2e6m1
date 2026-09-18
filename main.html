@@ -1081,13 +1081,13 @@
             background: #0b111e;
             border: 1px solid #38bdf8;
             border-radius: 12px;
-            max-width: 560px;
+            max-width: 620px;
             width: 100%;
             box-shadow: 0 0 45px rgba(56, 189, 248, 0.3);
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            max-height: 85vh;
+            max-height: 88vh;
         }
 
         .disposisi-header {
@@ -1113,13 +1113,35 @@
             border: 1px solid #1e293b;
             border-radius: 8px;
             padding: 14px;
+            animation: fadeInMsg 0.3s ease-out;
+        }
+
+        @keyframes fadeInMsg {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .chat-bubble.bubble-prof {
+            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .chat-bubble.bubble-pln {
+            border-color: rgba(6, 182, 212, 0.4);
+            background: rgba(6, 182, 212, 0.05);
+        }
+
+        .chat-bubble.bubble-luthfi {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.06);
+            margin-left: 24px;
         }
 
         .chat-sender {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-size: 11.5px;
             font-weight: 700;
         }
@@ -1127,8 +1149,169 @@
         .chat-text {
             font-size: 12px;
             color: #cbd5e1;
-            line-height: 1.6;
+            line-height: 1.65;
+            white-space: pre-line;
         }
+
+        /* Typing Indicator Bubble */
+        .typing-bubble {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px dashed rgba(56, 189, 248, 0.4);
+            border-radius: 8px;
+            padding: 10px 14px;
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            animation: pulse-border 1.5s infinite;
+        }
+
+        .typing-sender-text {
+            font-size: 11px;
+            color: #38bdf8;
+            font-family: 'Fira Code', monospace;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .typing-dots {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .typing-dots span {
+            width: 5px;
+            height: 5px;
+            background: #38bdf8;
+            border-radius: 50%;
+            animation: typingBounce 1.2s infinite ease-in-out;
+        }
+
+        .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+            40% { transform: translateY(-4px); opacity: 1; }
+        }
+
+        /* Interactive Chat Reply Area */
+        .chat-reply-section {
+            background: #090d16;
+            border-top: 1px solid #1e293b;
+            padding: 12px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .quick-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-quick-fill {
+            background: rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.4);
+            color: #60a5fa;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.2s;
+        }
+
+        .btn-quick-fill:hover {
+            background: rgba(37, 99, 235, 0.3);
+            color: #ffffff;
+        }
+
+        .chat-input-row {
+            display: flex;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .chat-textarea {
+            flex: 1;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: #f1f5f9;
+            font-family: inherit;
+            font-size: 11.5px;
+            line-height: 1.5;
+            padding: 8px 12px;
+            resize: vertical;
+            min-height: 52px;
+            max-height: 120px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .chat-textarea:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 8px rgba(56, 189, 248, 0.2);
+        }
+
+        .btn-send-reply {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+            height: 38px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-send-reply:hover:not(:disabled) {
+            background: linear-gradient(135deg, #047857, #059669);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-send-reply:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            filter: grayscale(0.5);
+        }
+
+        .chat-status-indicator {
+            font-size: 10.5px;
+            color: #94a3b8;
+            font-family: 'Fira Code', monospace;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 6px;
+        }
+
+        .btn-fast-forward {
+            background: none;
+            border: none;
+            color: #64748b;
+            font-size: 10px;
+            font-family: 'Fira Code', monospace;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .btn-fast-forward:hover { color: #38bdf8; }
 
         /* Hardware Diagnostics Modal */
         .diag-modal-overlay {
@@ -2927,12 +3110,378 @@
         // ==========================================
         // Disposisi & Hardware Diagnostics Logic
         // ==========================================
+        const LUTHFI_REPLY_TEMPLATE = `Siap Prof. Abu dan Pak Nyoman.
+
+Log telemetri dan SPK sudah saya download. Peralatan juga sudah saya siapkan, termasuk FTDI USB-UART, modul ESP32 spare, multimeter, dan perlengkapan pendukung lainnya.
+
+Hari ini saya koordinasikan dulu pengajuan dana operasional dan keberangkatan dengan orang tua saya. Kalau sudah beres, saya langsung berangkat dari Palembang ke Bandara I Gusti Ngurah Rai.
+
+Sampai ketemu di Bali, Pak. 🫡`;
+
+        const PROF_ABU_FOLLOWUP = `Bagus, Luthfi. Segera bicarakan baik-baik dengan orang tua ya. Tunjukkan dokumen SPPD dan SPK dari PLN agar orang tua paham ini penugasan resmi institusi.
+
+Jaga kesehatan dan utamakan standar K3 keselamatan kerja di gardu nanti. Kabari kalau tiket sudah terbeli.`;
+
+        const PAK_NYOMAN_FOLLOWUP = `Terima kasih atas respons cepatnya, Mas Luthfi.
+
+Tim teknisi UP3 Bali Selatan sudah saya instruksikan untuk standby dan siap menjemput Mas Luthfi saat mendarat di Bandara Ngurah Rai.
+
+Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengkapan berkas administrasi reimbursement di kantor UID nanti. Hati-hati di perjalanan, kami tunggu kedatangannya di Bali.`;
+
+        let chatTimer1 = null;
+        let chatTimer2 = null;
+        let chatTimer3 = null;
+        let chatTimer4 = null;
+        let currentChatStage = 0;
+
+        function playChatTone(type) {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+
+                if (type === 'send') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, ctx.currentTime);
+                    osc.frequency.setValueAtTime(660, ctx.currentTime + 0.06);
+                    gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.2);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.2);
+                } else if (type === 'receive') {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
+                    osc.frequency.setValueAtTime(880, ctx.currentTime + 0.08); // A5
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start();
+                    osc.stop(ctx.currentTime + 0.35);
+                }
+            } catch(e) {}
+        }
+
+        function getChatTimestamp(offsetMinutes = 0) {
+            const now = new Date();
+            const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+            const witaDate = new Date(utc + (3600000 * 8) + (offsetMinutes * 60000));
+            const pad = (n) => n.toString().padStart(2, '0');
+            return `${pad(witaDate.getHours())}:${pad(witaDate.getMinutes())} WITA`;
+        }
+
+        function insertLuthfiTemplate() {
+            const textarea = document.getElementById('replyTextarea');
+            if (textarea) {
+                textarea.value = LUTHFI_REPLY_TEMPLATE;
+                textarea.focus();
+            }
+        }
+
+        function submitLuthfiReply() {
+            const textarea = document.getElementById('replyTextarea');
+            const text = textarea ? textarea.value.trim() : '';
+            if (!text) {
+                if (textarea) textarea.focus();
+                return;
+            }
+
+            const container = document.getElementById('dynamicChatContainer');
+            const sendBtn = document.getElementById('btnSendReply');
+            const statusText = document.getElementById('chatStatusText');
+            const timeStr = getChatTimestamp();
+
+            // Append Luthfi message bubble
+            const bubble = document.createElement('div');
+            bubble.className = 'chat-bubble bubble-luthfi';
+            bubble.innerHTML = `
+                <div class="chat-sender">
+                    <span style="color: #34d399;">Luthfi Hibatullah (Peneliti / Operator)</span>
+                    <span style="font-size: 10px; color: #10b981; font-family: 'Fira Code', monospace;">${timeStr} &bull; NIM: 03041182530001</span>
+                </div>
+                <div class="chat-text">${escapeHtml(text)}</div>
+            `;
+            container.appendChild(bubble);
+
+            // Audio & UI
+            playChatTone('send');
+            textarea.value = '';
+            textarea.disabled = true;
+            sendBtn.disabled = true;
+
+            currentChatStage = 1;
+            saveChatState(text, timeStr, 1);
+
+            statusText.innerHTML = `<span>⏳ Pesan terkirim (${timeStr}). Menunggu tanggapan...</span> <button type="button" class="btn-fast-forward" onclick="fastForwardChat()" title="Klik untuk langsung memicu balasan tanpa menunggu delay">[⏩ Percepat Balasan]</button>`;
+
+            appendLog('ok', 'Disposisi terkirim: Luthfi mengonfirmasi persiapan alat & koordinasi modal keberangkatan.');
+            scrollChatToBottom();
+
+            scheduleFollowups(1);
+        }
+
+        function scheduleFollowups(fromStage = 1) {
+            clearChatTimers();
+
+            const typingBubble = document.getElementById('typingIndicatorBubble');
+            const typingLabel = document.getElementById('typingSenderLabel');
+
+            if (fromStage === 1) {
+                // 15s: Prof Abu starts typing
+                chatTimer1 = setTimeout(() => {
+                    if (typingBubble && typingLabel) {
+                        typingLabel.innerText = 'Prof. Ir. Abu Bakar, M.T., Ph.D. sedang mengetik';
+                        typingBubble.style.display = 'flex';
+                        scrollChatToBottom();
+                    }
+                }, 14000);
+
+                // 55s (~1 min total): Prof Abu sends response
+                chatTimer2 = setTimeout(() => {
+                    deliverProfAbuReply();
+                }, 55000);
+            }
+
+            if (fromStage <= 2) {
+                // 75s: Pak Nyoman starts typing
+                chatTimer3 = setTimeout(() => {
+                    if (typingBubble && typingLabel) {
+                        typingLabel.innerText = 'Ir. I Nyoman Arya, M.T. sedang mengetik';
+                        typingBubble.style.display = 'flex';
+                        scrollChatToBottom();
+                    }
+                }, 75000);
+
+                // 115s (~2 min total): Pak Nyoman sends response
+                chatTimer4 = setTimeout(() => {
+                    deliverPakNyomanReply();
+                }, 115000);
+            }
+        }
+
+        function deliverProfAbuReply() {
+            const typingBubble = document.getElementById('typingIndicatorBubble');
+            const container = document.getElementById('dynamicChatContainer');
+            const statusText = document.getElementById('chatStatusText');
+            if (typingBubble) typingBubble.style.display = 'none';
+
+            if (document.getElementById('msgProfFollowup')) return;
+
+            const timeStr = getChatTimestamp(1);
+            const profBubble = document.createElement('div');
+            profBubble.id = 'msgProfFollowup';
+            profBubble.className = 'chat-bubble bubble-prof';
+            profBubble.innerHTML = `
+                <div class="chat-sender">
+                    <span style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.T., Ph.D.</span>
+                    <span style="font-size: 10px; color: #64748b; font-family: 'Fira Code', monospace;">${timeStr} &bull; Kepala Lab IoT Unsri</span>
+                </div>
+                <div class="chat-text">${PROF_ABU_FOLLOWUP}</div>
+            `;
+            container.appendChild(profBubble);
+            playChatTone('receive');
+            scrollChatToBottom();
+
+            currentChatStage = 2;
+            updateSavedStage(2);
+            if (statusText) {
+                statusText.innerHTML = `<span>⏳ Respons Prof. Abu diterima. Menunggu Pak Nyoman...</span> <button type="button" class="btn-fast-forward" onclick="fastForwardChat()">[⏩ Percepat Balasan]</button>`;
+            }
+            appendLog('info', 'Disposisi masuk: Prof. Abu Bakar menyetujui keberangkatan dan mengingatkan K3.');
+        }
+
+        function deliverPakNyomanReply() {
+            const typingBubble = document.getElementById('typingIndicatorBubble');
+            const container = document.getElementById('dynamicChatContainer');
+            const statusText = document.getElementById('chatStatusText');
+            if (typingBubble) typingBubble.style.display = 'none';
+
+            if (document.getElementById('msgNyomanFollowup')) return;
+
+            const timeStr = getChatTimestamp(2);
+            const nyomanBubble = document.createElement('div');
+            nyomanBubble.id = 'msgNyomanFollowup';
+            nyomanBubble.className = 'chat-bubble bubble-pln';
+            nyomanBubble.innerHTML = `
+                <div class="chat-sender">
+                    <span style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
+                    <span style="font-size: 10px; color: #06b6d4; font-family: 'Fira Code', monospace;">${timeStr} &bull; Senior Manager Distribusi PLN UID Bali</span>
+                </div>
+                <div class="chat-text">${PAK_NYOMAN_FOLLOWUP}</div>
+            `;
+            container.appendChild(nyomanBubble);
+            playChatTone('receive');
+            scrollChatToBottom();
+
+            currentChatStage = 3;
+            updateSavedStage(3);
+            if (statusText) {
+                statusText.innerHTML = `<span style="color: #22c55e; font-weight: 700;">✓ Semua pihak telah merespons. Koordinasi keberangkatan lengkap.</span>`;
+            }
+            appendLog('ok', 'Disposisi masuk: Ir. I Nyoman Arya (PLN) menyiapkan tim penjemputan Bandara Ngurah Rai.');
+        }
+
+        function fastForwardChat() {
+            clearChatTimers();
+            if (currentChatStage < 2) {
+                deliverProfAbuReply();
+                setTimeout(() => {
+                    const typingBubble = document.getElementById('typingIndicatorBubble');
+                    const typingLabel = document.getElementById('typingSenderLabel');
+                    if (typingBubble && typingLabel) {
+                        typingLabel.innerText = 'Ir. I Nyoman Arya, M.T. sedang mengetik';
+                        typingBubble.style.display = 'flex';
+                        scrollChatToBottom();
+                    }
+                    setTimeout(() => {
+                        deliverPakNyomanReply();
+                    }, 2200);
+                }, 1000);
+            } else if (currentChatStage < 3) {
+                deliverPakNyomanReply();
+            }
+        }
+
+        function clearChatTimers() {
+            if (chatTimer1) clearTimeout(chatTimer1);
+            if (chatTimer2) clearTimeout(chatTimer2);
+            if (chatTimer3) clearTimeout(chatTimer3);
+            if (chatTimer4) clearTimeout(chatTimer4);
+        }
+
+        function scrollChatToBottom() {
+            const body = document.getElementById('disposisiChatBody');
+            if (body) {
+                setTimeout(() => { body.scrollTop = body.scrollHeight; }, 60);
+            }
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+            return text.replace(/[&<>"']/g, (m) => map[m]);
+        }
+
+        function saveChatState(luthfiText, timeStr, stage) {
+            try {
+                localStorage.setItem('noc_disposisi_state', JSON.stringify({
+                    hasReplied: true,
+                    luthfiText: luthfiText,
+                    timeStr: timeStr,
+                    stage: stage
+                }));
+            } catch(e) {}
+        }
+
+        function updateSavedStage(stage) {
+            try {
+                const saved = JSON.parse(localStorage.getItem('noc_disposisi_state') || '{}');
+                saved.stage = stage;
+                localStorage.setItem('noc_disposisi_state', JSON.stringify(saved));
+            } catch(e) {}
+        }
+
+        function loadChatState() {
+            try {
+                const saved = JSON.parse(localStorage.getItem('noc_disposisi_state') || 'null');
+                if (!saved || !saved.hasReplied) return;
+
+                const textarea = document.getElementById('replyTextarea');
+                const sendBtn = document.getElementById('btnSendReply');
+                const container = document.getElementById('dynamicChatContainer');
+                const statusText = document.getElementById('chatStatusText');
+
+                if (textarea) {
+                    textarea.value = '';
+                    textarea.disabled = true;
+                }
+                if (sendBtn) sendBtn.disabled = true;
+
+                // Render Luthfi message
+                const bubble = document.createElement('div');
+                bubble.className = 'chat-bubble bubble-luthfi';
+                bubble.innerHTML = `
+                    <div class="chat-sender">
+                        <span style="color: #34d399;">Luthfi Hibatullah (Peneliti / Operator)</span>
+                        <span style="font-size: 10px; color: #10b981; font-family: 'Fira Code', monospace;">${saved.timeStr} &bull; NIM: 03041182530001</span>
+                    </div>
+                    <div class="chat-text">${escapeHtml(saved.luthfiText)}</div>
+                `;
+                container.appendChild(bubble);
+
+                currentChatStage = saved.stage || 1;
+
+                if (saved.stage >= 2) {
+                    const profBubble = document.createElement('div');
+                    profBubble.id = 'msgProfFollowup';
+                    profBubble.className = 'chat-bubble bubble-prof';
+                    profBubble.innerHTML = `
+                        <div class="chat-sender">
+                            <span style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.T., Ph.D.</span>
+                            <span style="font-size: 10px; color: #64748b; font-family: 'Fira Code', monospace;">11:06 WITA &bull; Kepala Lab IoT Unsri</span>
+                        </div>
+                        <div class="chat-text">${PROF_ABU_FOLLOWUP}</div>
+                    `;
+                    container.appendChild(profBubble);
+                }
+
+                if (saved.stage >= 3) {
+                    const nyomanBubble = document.createElement('div');
+                    nyomanBubble.id = 'msgNyomanFollowup';
+                    nyomanBubble.className = 'chat-bubble bubble-pln';
+                    nyomanBubble.innerHTML = `
+                        <div class="chat-sender">
+                            <span style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
+                            <span style="font-size: 10px; color: #06b6d4; font-family: 'Fira Code', monospace;">11:07 WITA &bull; Senior Manager Distribusi PLN UID Bali</span>
+                        </div>
+                        <div class="chat-text">${PAK_NYOMAN_FOLLOWUP}</div>
+                    `;
+                    container.appendChild(nyomanBubble);
+                    if (statusText) {
+                        statusText.innerHTML = `<span style="color: #22c55e; font-weight: 700;">✓ Semua pihak telah merespons. Koordinasi keberangkatan lengkap.</span>`;
+                    }
+                } else {
+                    scheduleFollowups(saved.stage || 1);
+                }
+            } catch(e) {}
+        }
+
+        function resetChatSimulation() {
+            clearChatTimers();
+            try {
+                localStorage.removeItem('noc_disposisi_state');
+            } catch(e) {}
+
+            currentChatStage = 0;
+            const container = document.getElementById('dynamicChatContainer');
+            if (container) container.innerHTML = '';
+
+            const typingBubble = document.getElementById('typingIndicatorBubble');
+            if (typingBubble) typingBubble.style.display = 'none';
+
+            const textarea = document.getElementById('replyTextarea');
+            if (textarea) {
+                textarea.value = '';
+                textarea.disabled = false;
+            }
+
+            const sendBtn = document.getElementById('btnSendReply');
+            if (sendBtn) sendBtn.disabled = false;
+
+            const statusText = document.getElementById('chatStatusText');
+            if (statusText) statusText.innerHTML = `<span>Status: Siap membalas pesan</span>`;
+
+            appendLog('info', 'Simulasi disposisi di-reset ke kondisi awal.');
+        }
+
         function openDisposisiModal() {
             const modal = document.getElementById('disposisiModal');
             const toast = document.getElementById('disposisiToast');
             if (toast) toast.style.display = 'none';
             if (modal) {
                 modal.style.display = 'flex';
+                scrollChatToBottom();
                 appendLog('info', 'Operator membuka Disposisi Penugasan Lapangan Kuta.');
             }
         }
@@ -3030,11 +3579,12 @@
             }
         }
 
-        // Initialize chart & CCTV once DOM ready
+        // Initialize chart, CCTV & chat state once DOM ready
         window.addEventListener('DOMContentLoaded', () => {
             updateLiveTimestamps();
             initVoltageChart();
             initCCTVSimulation();
+            loadChatState();
         });
     </script>
 
@@ -3164,49 +3714,91 @@
                 <button type="button" onclick="closeDisposisiModal()" style="background: none; border: none; color: #94a3b8; font-size: 18px; cursor: pointer; padding: 4px 8px;">✕</button>
             </div>
 
-            <div class="disposisi-chat-body">
+            <!-- Chat Message List Container -->
+            <div class="disposisi-chat-body" id="disposisiChatBody">
                 <!-- Message 1: Prof Abu Bakar -->
-                <div class="chat-bubble">
+                <div class="chat-bubble bubble-prof">
                     <div class="chat-sender">
                         <span style="color: #60a5fa;">Prof. Ir. Abu Bakar, M.T., Ph.D.</span>
                         <span style="font-size: 10px; color: #64748b; font-family: 'Fira Code', monospace;">10:24 WITA &bull; Kepala Lab IoT Unsri</span>
                     </div>
-                    <div class="chat-text">
-                        Luthfi, status Node Kuta (<code>ESP32-KTA-03</code>) drop total 0.0 Volt dan kamera pengawas ikut offline. Pihak manajemen UP3 Bali Selatan barusan kontak saya. Karena seluruh firmware enkripsi AES-256 dan modul SCADA ini kamu yang buat rancang bangunnya, pihak PLN meminta kamu harus turun langsung ke lapangan untuk investigasi dan flashing fisik di gardu Kuta.
-                    </div>
+                    <div class="chat-text">Luthfi, update untuk Node Kuta (ESP32-KTA-03) pagi ini:
+Tegangan drop ke 0.0 Volt dan kamera pengawas ikut offline. Saya sudah kontak pihak manajemen UP3 Bali Selatan, dan mereka minta koordinasi langsung dengan kamu.
+
+Karena firmware-nya terenkripsi AES-256 dan modul SCADA ini kamu yang rancang, mereka minta kamu turun langsung ke lokasi untuk pengecekan dan flashing fisik di Gardu Kuta.
+
+Kalau sudah ada perkembangan, kabari saya.</div>
                 </div>
 
                 <!-- Message 2: Ir. I Nyoman Arya (PLN Bali) -->
-                <div class="chat-bubble" style="border-color: rgba(6, 182, 212, 0.4); background: rgba(6, 182, 212, 0.06);">
+                <div class="chat-bubble bubble-pln">
                     <div class="chat-sender">
                         <span style="color: #38bdf8;">Ir. I Nyoman Arya, M.T.</span>
                         <span style="font-size: 10px; color: #06b6d4; font-family: 'Fira Code', monospace;">10:48 WITA &bull; Senior Manager Distribusi PLN UID Bali</span>
                     </div>
-                    <div class="chat-text">
-                        Selamat pagi Prof Abu dan Mas Luthfi. Tim teknisi piket kami di Gardu Kuta sudah cek fisik kubikel 20kV, trafo utama aman tapi box telemetri IoT mati total akibat korosi uap garam laut pantai Kuta. Tim kami tidak punya source code dan tool debugging untuk bypass enkripsinya. Surat Perintah Kerja (<strong>#SPK-042</strong>) dan <strong>SPPD Resmi Dinas</strong> sudah kami terbitkan atas nama Mas Luthfi Hibatullah. Kami harapkan Mas Luthfi bisa segera terbang dari Palembang ke Bali secepatnya membawa laptop &amp; alat flashing UART. Untuk biaya tiket pesawat dan operasional awal mohon dikoordinasikan secara mandiri terlebih dahulu, nanti seluruh biaya akan diproses klaim reimbursement setelah pekerjaan selesai di kantor PLN UID Bali.
-                    </div>
+                    <div class="chat-text">Selamat pagi Prof. Abu dan Mas Luthfi.
+
+Tim teknisi kami di Gardu Kuta sudah melakukan pengecekan awal. Trafo utama 20 kV masih aman, tapi box telemetri IoT mati total. Dari kondisi fisiknya, sementara mengarah ke masalah korosi dan uap garam laut.
+
+Kami juga tidak punya source code maupun tool debugging untuk melakukan bypass enkripsi.
+
+Untuk penugasannya, SPK #042 dan SPPD dinas sudah kami terbitkan atas nama Mas Luthfi.
+
+Mas Luthfi bisa koordinasikan kebutuhan tiket, akomodasi, dan biaya operasional terlebih dahulu. Nanti biaya tersebut kami proses melalui reimbursement setelah pekerjaan selesai di kantor PLN UID Bali.
+
+Terima kasih, Mas. Ditunggu kabarnya.</div>
                 </div>
 
-                <!-- Message 3: Luthfi Hibatullah -->
-                <div class="chat-bubble" style="border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); margin-left: 20px;">
-                    <div class="chat-sender">
-                        <span style="color: #34d399;">Luthfi Hibatullah (Peneliti / Operator)</span>
-                        <span style="font-size: 10px; color: #10b981; font-family: 'Fira Code', monospace;">11:05 WITA &bull; NIM: 03041182530001</span>
+                <!-- Dynamic Container for Luthfi's sent reply and follow-ups -->
+                <div id="dynamicChatContainer" style="display: flex; flex-direction: column; gap: 14px;"></div>
+
+                <!-- Live Typing Indicator -->
+                <div id="typingIndicatorBubble" class="typing-bubble">
+                    <div class="typing-sender-text">
+                        <span id="typingSenderLabel">Prof. Ir. Abu Bakar, M.T., Ph.D. sedang mengetik</span>
+                        <div class="typing-dots">
+                            <span></span><span></span><span></span>
+                        </div>
                     </div>
-                    <div class="chat-text">
-                        Siap Prof Abu dan Pak Nyoman Arya. Saya sudah unduh log telemetri dan SPK-nya. Perlengkapan flasher FTDI USB-UART, modul ESP32 spare, dan multimeter sudah saya siapkan di tas kerja. Hari ini saya segera koordinasikan pengajuan modal dana operasional tiket dan keberangkatan kepada orang tua saya agar bisa langsung berangkat dari Palembang ke Bandara I Gusti Ngurah Rai secepatnya. Sampai ketemu di Bali, Pak.
-                    </div>
+                    <span style="font-size: 9.5px; color: #64748b; font-family: 'Fira Code', monospace;">SCADA Enkripsi Aktif</span>
                 </div>
             </div>
 
-            <div style="background: #090d16; border-top: 1px solid #1e293b; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                <div style="display: flex; gap: 8px;">
+            <!-- Interactive Reply Area -->
+            <div class="chat-reply-section" id="chatReplySection">
+                <div class="quick-bar">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <button type="button" class="btn-quick-fill" onclick="insertLuthfiTemplate()" title="Klik untuk otomatis mengisi draft balasan resmi Luthfi">
+                            ⚡ Isi Template Balasan Luthfi
+                        </button>
+                    </div>
+                    <div class="chat-status-indicator" id="chatStatusText">
+                        <span>Status: Siap membalas pesan</span>
+                    </div>
+                </div>
+                <div class="chat-input-row" id="chatInputControls">
+                    <textarea id="replyTextarea" class="chat-textarea" placeholder="Ketik balasan untuk Prof. Abu dan Pak Nyoman di sini..."></textarea>
+                    <button type="button" id="btnSendReply" class="btn-send-reply" onclick="submitLuthfiReply()">
+                        <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                        </svg>
+                        Kirim
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Footer Links -->
+            <div style="background: #090d16; border-top: 1px solid #1e293b; padding: 10px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
                     <a href="docs/sppd-print.html" target="_blank" class="btn-spk-sppd" style="font-size: 11px; padding: 6px 12px;">
                         📄 Buka &amp; Cetak SPPD Dinas (PDF)
                     </a>
                     <a href="docs/spk-print.html" target="_blank" class="btn-spk-download" style="font-size: 11px; padding: 6px 12px;">
                         📋 Buka &amp; Cetak SPK #042 (PDF)
                     </a>
+                    <button type="button" onclick="resetChatSimulation()" style="background: none; border: none; color: #64748b; font-size: 10px; cursor: pointer; text-decoration: underline; font-family: 'Fira Code', monospace;">
+                        ↺ Reset Chat
+                    </button>
                 </div>
                 <button type="button" class="terminal-btn" onclick="closeDisposisiModal()" style="font-size: 11px; padding: 6px 14px;">
                     Tutup
