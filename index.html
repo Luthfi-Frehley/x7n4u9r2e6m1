@@ -448,7 +448,15 @@
         const step3 = document.getElementById('step3');
         const errorAlert = document.getElementById('loginErrorAlert');
 
-        loginForm.addEventListener('submit', function(e) {
+        async function sha256Hex(str) {
+            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        const AUTH_HASH_USER = 'b3cca22be590b3f5643f90187a483782ae221d633355e4da75b2a11a951e5ea5';
+        const AUTH_HASH_PASS = '64efcab68276b04026fdb3653c5e54fe26d566f2fb908666915c8904b7eee1b4';
+
+        loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const uname = document.getElementById('username').value.trim();
@@ -456,8 +464,10 @@
             
             if (errorAlert) errorAlert.style.display = 'none';
 
-            // Validasi kredensial resmi terenkripsi (MDMwNDExODI1MzAwMDE= / THV0aGZpMzEyXw==)
-            if (btoa(uname) !== 'MDMwNDExODI1MzAwMDE=' || btoa(pwd) !== 'THV0aGZpMzEyXw==') {
+            const [hU, hP] = await Promise.all([sha256Hex(uname), sha256Hex(pwd)]);
+
+            // Validasi Kriptografi SHA-256
+            if (hU !== AUTH_HASH_USER || hP !== AUTH_HASH_PASS) {
                 if (errorAlert) errorAlert.style.display = 'block';
                 const card = document.querySelector('.login-card');
                 if (card) {
@@ -485,6 +495,11 @@
 
             setTimeout(() => {
                 step3.style.display = 'block';
+                sessionStorage.setItem('scada_auth_session', JSON.stringify({
+                    auth: true,
+                    token: 'NOC-UNSRI-SECURE-L2',
+                    ts: Date.now()
+                }));
             }, 650);
 
             setTimeout(() => {

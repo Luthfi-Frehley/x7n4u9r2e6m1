@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noodp, noydir">
     <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, max-snippet:0">
+    <!-- Security Session Guard: Cegah bypass F12 / Direct URL -->
+    <script>
+        (function() {
+            try {
+                const s = JSON.parse(sessionStorage.getItem('scada_auth_session') || '{}');
+                if (!s || !s.auth || s.token !== 'NOC-UNSRI-SECURE-L2') {
+                    window.location.replace('index.html');
+                }
+            } catch(e) {
+                window.location.replace('index.html');
+            }
+        })();
+    </script>
     <title>NOC Dashboard Telemetri IoT - PLN Bali x Universitas Sriwijaya</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
