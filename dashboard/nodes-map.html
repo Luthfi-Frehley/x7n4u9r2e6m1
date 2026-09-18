@@ -470,8 +470,7 @@
             maxZoom: 16
         });
         const darkGrayRef = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
-            maxZoom: 16,
-            pane: 'labelsPane'
+            maxZoom: 16
         });
         const darkNocGroup = L.layerGroup([darkGrayBase, darkGrayRef]);
 
@@ -490,11 +489,6 @@
 
         // Set layer default ke Dark Tactical Gray
         darkNocGroup.addTo(map);
-
-        // Buat pane terpisah untuk label agar tetap di atas
-        map.createPane('labelsPane');
-        map.getPane('labelsPane').style.zIndex = 450;
-        map.getPane('labelsPane').style.pointerEvents = 'none';
 
         // Layer Switcher Control di Pojok Kanan Bawah
         const baseMaps = {
