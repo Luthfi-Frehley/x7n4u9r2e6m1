@@ -3,7 +3,7 @@
 > **Proyek Riset Terapan & Implementasi Lapangan**  
 > Kolaborasi: **PT PLN (Persero) Unit Induk Distribusi Bali** × **Laboratorium Komputasi & IoT, Jurusan Teknik Elektro, Universitas Sriwijaya**  
 > *Dosen Pembimbing / Peneliti Utama:* Prof. Ir. Abu Bakar, M.T., Ph.D.  
-> *Peneliti & Pengembang Sistem:* Luthfi & Tim Lab IoT
+> *Peneliti & Pengembang Sistem:* Luthfi Hibatullah & Tim Lab IoT
 
 ---
 

@@ -1,7 +1,7 @@
 /**
  * @file mqtt-bridge.js
  * @description Jembatan simulasi protokol MQTT ke HTTP REST WebSocket untuk telemetry gateway
- * @author Luthfi - Lab Komputasi & IoT Teknik Elektro Unsri
+ * @author Luthfi Hibatullah - Lab Komputasi & IoT Teknik Elektro Unsri
  */
 
 const fs = require('fs');

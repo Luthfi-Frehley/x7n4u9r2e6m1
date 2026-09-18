@@ -4,7 +4,7 @@
 - **Tanggal:** 18 September 2026, 08:12:02 WIB
 - **Tingkat Keparahan:** SEV-1 (Critical / Down)
 - **Komponen Terdampak:** Node Sensor ESP32-KTA-03 (Gardu Trafo Distribusi Kuta Beach)
-- **Penyelidik:** Luthfi (Lab IoT Unsri) & Ir. Nyoman Arya (PLN UID Bali)
+- **Penyelidik:** Luthfi Hibatullah (Lab IoT Unsri) & Ir. Nyoman Arya (PLN UID Bali)
 
 ---
 

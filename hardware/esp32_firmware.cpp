@@ -1,7 +1,7 @@
 /**
  * @file esp32_firmware.cpp
  * @brief Firmware ESP32 Node Sensor Telemetri Trafo Grid PLN UID Bali
- * @author Luthfi - Lab Komputasi & IoT Teknik Elektro Universitas Sriwijaya
+ * @author Luthfi Hibatullah - Lab Komputasi & IoT Teknik Elektro Universitas Sriwijaya
  * @date 2026-09-18
  */
 
