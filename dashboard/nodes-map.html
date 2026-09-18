@@ -107,10 +107,12 @@
             color: #9ca3af;
             font-size: 12.5px;
             font-weight: 500;
-            padding: 8px 14px;
+            padding: 7px 12px;
             border-radius: 6px;
             transition: all 0.2s;
             border: 1px solid transparent;
+            white-space: nowrap !important;
+            flex-shrink: 0;
         }
 
         .nav-item:hover {
@@ -123,6 +125,152 @@
             background: rgba(59, 130, 246, 0.15);
             border-color: rgba(59, 130, 246, 0.3);
             font-weight: 600;
+        }
+
+        /* High-Visibility Radio HT Toggle Button */
+        .btn-ht-radio {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.35));
+            color: #34d399;
+            border: 1px solid rgba(16, 185, 129, 0.65);
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+            font-family: 'Fira Code', monospace;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 14px rgba(16, 185, 129, 0.3);
+            white-space: nowrap !important;
+            flex-shrink: 0;
+            position: relative;
+        }
+        .btn-ht-radio:hover {
+            transform: translateY(-1px);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.35), rgba(5, 150, 105, 0.5));
+            color: #ffffff;
+            border-color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+        }
+        .btn-ht-radio.muted {
+            background: rgba(51, 65, 85, 0.35);
+            color: #94a3b8;
+            border-color: rgba(100, 116, 139, 0.45);
+            box-shadow: none;
+        }
+        .btn-ht-radio.muted:hover {
+            background: rgba(51, 65, 85, 0.55);
+            color: #e2e8f0;
+        }
+
+        .ht-signal-pulse {
+            width: 7px;
+            height: 7px;
+            background-color: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #10b981;
+            animation: htPulse 1.4s infinite alternate;
+        }
+        .btn-ht-radio.muted .ht-signal-pulse {
+            background-color: #64748b;
+            box-shadow: none;
+            animation: none;
+        }
+        @keyframes htPulse {
+            0% { transform: scale(0.85); opacity: 0.6; }
+            100% { transform: scale(1.35); opacity: 1; box-shadow: 0 0 12px #34d399; }
+        }
+
+        /* Dokumen Dinas Dropdown Menu */
+        .nav-dropdown {
+            position: relative;
+            display: inline-block;
+            flex-shrink: 0;
+        }
+        .btn-nav-dropdown {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(30, 41, 59, 0.7);
+            border: 1px solid rgba(59, 130, 246, 0.35);
+            color: #93c5fd;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap !important;
+            font-family: inherit;
+        }
+        .btn-nav-dropdown:hover, .btn-nav-dropdown.active {
+            background: rgba(30, 41, 59, 1);
+            border-color: #3b82f6;
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
+        }
+        .dropdown-caret {
+            font-size: 9px;
+            transition: transform 0.2s;
+            color: #94a3b8;
+        }
+        .btn-nav-dropdown.active .dropdown-caret {
+            transform: rotate(180deg);
+        }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 6px);
+            right: 0;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.8), 0 0 20px rgba(56, 189, 248, 0.1);
+            min-width: 255px;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            overflow: hidden;
+            animation: modalFadeIn 0.15s ease-out;
+        }
+        .dropdown-menu.show {
+            display: flex;
+        }
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            text-decoration: none;
+            color: #cbd5e1;
+            transition: background 0.15s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        .dropdown-item:hover {
+            background: rgba(59, 130, 246, 0.15);
+            color: #ffffff;
+        }
+        .dropdown-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .dropdown-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+        .dropdown-desc {
+            font-size: 10px;
+            color: #94a3b8;
+            margin-top: 1px;
+            font-family: 'Fira Code', monospace;
+        }
+        .dropdown-divider {
+            height: 1px;
+            background: #1e293b;
+            margin: 2px 0;
         }
 
         /* Map Container */
@@ -389,51 +537,85 @@
                 <img src="../images/Logo_PLN.png" alt="PLN" style="width: 22px; height: 22px; object-fit: contain;">
             </div>
             <div class="brand-text">
-                <h1>Peta Geospasial Grid IoT Nasional - PLN x UNSRI</h1>
-                <p>Pemantauan Trafo &amp; Gateway Lapangan Se-Indonesia (Fokus Anomali: Sektor Bali)</p>
+                <h1>Peta Grid IoT Nasional <span style="font-size: 10px; color: #34d399; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.3); padding: 1px 6px; border-radius: 4px; font-family: 'Fira Code', monospace;">NUSANTARA</span></h1>
+                <p>PLN UID Bali × Lab IoT Unsri &bull; Anomali: Kuta Beach (0.0 V)</p>
             </div>
         </div>
 
         <nav class="nav-links">
             <a href="../main.html" class="nav-item">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                 </svg>
                 Dashboard
             </a>
             <a href="nodes-map.html" class="nav-item active">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
                 </svg>
-                Peta Node Bali
+                Peta Nasional
             </a>
             <a href="incidents.html" class="nav-item">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
                 Log Insiden
             </a>
             <a href="server-logs.html" class="nav-item">
-                <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                 </svg>
                 Syslog
             </a>
+            <a href="../main.html#why-no-remote" class="nav-item" style="color: #fca5a5; border-color: rgba(239, 68, 68, 0.35); background: rgba(239, 68, 68, 0.1);">
+                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                </svg>
+                Audit Forensik
+            </a>
         </nav>
 
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <a href="../docs/SPK_2026_PLN_BALI_042_Kuta.pdf" download="SPK_042_PLN_Bali_Inspeksi_Kuta.pdf" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;" title="Unduh Surat Perintah Kerja Lapangan (PDF)">
-                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                Unduh SPK (PDF)
-            </a>
-            <a href="../docs/SPPD_2026_PLN_BALI_Luthfi.pdf" download="SPPD_2026_PLN_BALI_Luthfi_Hibatullah.pdf" style="display: inline-flex; align-items: center; gap: 6px; background: rgba(37, 99, 235, 0.15); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.4); padding: 6px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; text-decoration: none; font-family: 'Fira Code', monospace;" title="Unduh SPPD Penugasan Palembang -> Bali (PDF)">
-                <svg width="13" height="13" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-                </svg>
-                Unduh SPPD Dinas (PDF)
-            </a>
+        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+            <!-- PROMINENT RADIO HT BUTTON ON MAP -->
+            <button type="button" id="btnToggleHtRadio" class="btn-ht-radio" onclick="toggleHtRadio()" title="Radio HT Komunikasi Lapangan PLN (Klik untuk Mute / Unmute)">
+                <span class="ht-signal-pulse"></span>
+                <span id="htRadioIcon" style="font-size: 13px;">📻</span>
+                <span id="htRadioText">RADIO HT: AKTIF</span>
+            </button>
+
+            <!-- DOKUMEN DINAS DROPDOWN ON MAP -->
+            <div class="nav-dropdown" id="docDropdown">
+                <button type="button" class="btn-nav-dropdown" id="btnDocDropdown" onclick="toggleDocDropdown(event)" title="Buka Dokumen SPK, SPPD, RAB">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <span>Dokumen Dinas</span>
+                    <span class="dropdown-caret">▾</span>
+                </button>
+                <div class="dropdown-menu" id="docDropdownMenu">
+                    <a href="../docs/spk-print.html" target="_blank" class="dropdown-item">
+                        <span class="dropdown-icon" style="color: #f87171;">📋</span>
+                        <div>
+                            <div class="dropdown-title">Cetak SPK Lapangan #042</div>
+                            <div class="dropdown-desc">Surat Perintah Kerja Fisik Kuta (PDF)</div>
+                        </div>
+                    </a>
+                    <a href="../docs/sppd-print.html" target="_blank" class="dropdown-item">
+                        <span class="dropdown-icon" style="color: #60a5fa;">✈️</span>
+                        <div>
+                            <div class="dropdown-title">Cetak SPPD Dinas Bali</div>
+                            <div class="dropdown-desc">Surat Perintah Perjalanan Dinas Resmi</div>
+                        </div>
+                    </a>
+                    <a href="../docs/rab-print.html" target="_blank" class="dropdown-item">
+                        <span class="dropdown-icon" style="color: #34d399;">💰</span>
+                        <div>
+                            <div class="dropdown-title">Cetak RAB Talangan</div>
+                            <div class="dropdown-desc">Klausul Reimbursement 100% PLN Bali</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -762,6 +944,116 @@
             map.flyTo([-8.7214, 115.1695], 13, { animate: true, duration: 1.5 });
             setTimeout(() => { ktaMarker.openPopup(); }, 1600);
         }
+
+        // ==========================================
+        // HT Radio Audio Simulation (Web Audio API)
+        // ==========================================
+        let isHtRadioActive = localStorage.getItem('noc_ht_radio') !== 'false';
+        let htAudioCtx = null;
+
+        function initHtAudioContext() {
+            if (!htAudioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) htAudioCtx = new AudioContext();
+            }
+            if (htAudioCtx && htAudioCtx.state === 'suspended') {
+                htAudioCtx.resume();
+            }
+        }
+
+        function playHtRadioSquelch(type = 'chirp') {
+            if (!isHtRadioActive) return;
+            initHtAudioContext();
+            if (!htAudioCtx) return;
+
+            try {
+                const now = htAudioCtx.currentTime;
+                const bufferSize = htAudioCtx.sampleRate * (type === 'burst' ? 0.35 : 0.12);
+                const buffer = htAudioCtx.createBuffer(1, bufferSize, htAudioCtx.sampleRate);
+                const data = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    data[i] = Math.random() * 2 - 1;
+                }
+
+                const noise = htAudioCtx.createBufferSource();
+                noise.buffer = buffer;
+
+                const bpf = htAudioCtx.createBiquadFilter();
+                bpf.type = 'bandpass';
+                bpf.frequency.setValueAtTime(type === 'burst' ? 1500 : 2200, now);
+                bpf.Q.setValueAtTime(2.5, now);
+
+                const gain = htAudioCtx.createGain();
+                gain.gain.setValueAtTime(0.001, now);
+                gain.gain.exponentialRampToValueAtTime(0.04, now + 0.02);
+                gain.gain.exponentialRampToValueAtTime(0.0001, now + (type === 'burst' ? 0.34 : 0.11));
+
+                noise.connect(bpf);
+                bpf.connect(gain);
+                gain.connect(htAudioCtx.destination);
+
+                noise.start(now);
+                noise.stop(now + (type === 'burst' ? 0.35 : 0.12));
+            } catch (e) {
+                console.warn('HT Radio Audio Warning:', e);
+            }
+        }
+
+        function toggleHtRadio() {
+            isHtRadioActive = !isHtRadioActive;
+            localStorage.setItem('noc_ht_radio', isHtRadioActive);
+            updateHtRadioUI();
+            if (isHtRadioActive) {
+                playHtRadioSquelch('chirp');
+            }
+        }
+
+        function updateHtRadioUI() {
+            const btn = document.getElementById('btnToggleHtRadio');
+            const icon = document.getElementById('htRadioIcon');
+            const text = document.getElementById('htRadioText');
+            if (!btn) return;
+            if (isHtRadioActive) {
+                btn.classList.remove('muted');
+                if (icon) icon.textContent = '📻';
+                if (text) text.textContent = 'RADIO HT: AKTIF';
+                btn.title = 'Mode Radio HT Lapangan PLN (Audio Aktif - Klik untuk Mute)';
+            } else {
+                btn.classList.add('muted');
+                if (icon) icon.textContent = '🔇';
+                if (text) text.textContent = 'RADIO HT: MUTE';
+                btn.title = 'Mode Radio HT Lapangan PLN (Audio Mute - Klik untuk Unmute)';
+            }
+        }
+
+        // Dokumen Dinas Dropdown Toggle
+        function toggleDocDropdown(e) {
+            if (e) e.stopPropagation();
+            const menu = document.getElementById('docDropdownMenu');
+            const btn = document.getElementById('btnDocDropdown');
+            if (!menu) return;
+            const isShowing = menu.classList.contains('show');
+            if (isShowing) {
+                menu.classList.remove('show');
+                if (btn) btn.classList.remove('active');
+            } else {
+                menu.classList.add('show');
+                if (btn) btn.classList.add('active');
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            const dropdown = document.getElementById('docDropdown');
+            const menu = document.getElementById('docDropdownMenu');
+            const btn = document.getElementById('btnDocDropdown');
+            if (dropdown && !dropdown.contains(e.target)) {
+                if (menu) menu.classList.remove('show');
+                if (btn) btn.classList.remove('active');
+            }
+        });
+
+        // Initialize HT state on load
+        window.addEventListener('DOMContentLoaded', updateHtRadioUI);
     </script>
 </body>
 </html>
