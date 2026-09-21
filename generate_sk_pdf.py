@@ -196,7 +196,7 @@ def generate_sk_pdf(target_date=None):
             Paragraph("<b>MENIMBANG</b>", style_body_bold),
             Paragraph(":", style_body_bold),
             Paragraph("a. bahwa guna menjaga keandalan transmisi cerdas Smart Grid IoT 20 kV di PT PLN UID Bali menjelang agenda strategis nasional;<br/>"
-                      "b. bahwa terdeteksi anomali kritis drop tegangan (0.0V) pada Gardu Kuta Beach (ESP32-KTA-03) yang membutuhkan intervensi teknis langsung oleh perancang sistem;<br/>"
+                      "b. bahwa guna memastikan keandalan integrasi transmisi data, pemeliharaan preventif, serta kesiapsiagaan mitigasi anomali teknis pada node sensor gardu distribusi, diperlukan tenaga ahli perancang arsitektur sistem yang kompeten;<br/>"
                       "c. bahwa Saudara Luthfi Hibatullah dinilai cakap dan memenuhi kualifikasi teknis tingkat lanjut untuk penugasan tersebut.", style_body)
         ],
         [
@@ -241,8 +241,8 @@ def generate_sk_pdf(target_date=None):
         [
             Paragraph("<b>KEDUA</b>", style_body_bold),
             Paragraph(":", style_body_bold),
-            Paragraph("Memberikan mandat dan wewenang penuh untuk: (1) Melakukan audit 25 node telemetri nasional dan investigasi Gardu Kuta Beach; "
-                      "(2) Melaksanakan manipulasi strapping pin bootloader ROM GPIO0-GND, flashing firmware UART on-site, penggantian sekring kaca 500mA, dan perlakuan conformal coating anti-garam; "
+            Paragraph("Memberikan mandat dan wewenang penuh untuk: (1) Melaksanakan audit 25 node telemetri nasional, validasi kalibrasi sensor, serta mitigasi gangguan operasional; "
+                      "(2) Melakukan intervensi teknis perangkat keras, inspeksi sekring proteksi, manipulasi bootloader ROM on-site via UART, dan perlakuan conformal coating anti-korosi; "
                       "(3) Mengesahkan BAST pemulihan fisik bersama Tim UP3 Bali Selatan.", style_body)
         ],
         [
