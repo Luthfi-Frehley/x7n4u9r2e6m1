@@ -134,20 +134,20 @@ def generate_sppd_pdf(target_date=None):
     logo_unsri_path = os.path.join(os.path.dirname(__file__), 'images', 'Lambang_Universitas_Sriwijaya.png')
     logo_pln_path = os.path.join(os.path.dirname(__file__), 'images', 'Logo_PLN.png')
 
-    logo_unsri = Image(logo_unsri_path, width=44, height=44)
-    logo_pln = Image(logo_pln_path, width=38, height=38)
+    logo_unsri = Image(logo_unsri_path, width=48, height=48)
+    logo_pln = Image(logo_pln_path, width=42, height=42)
 
     kop_text = """
     <b>KEMENTERIAN PENDIDIKAN TINGGI, SAINS, DAN TEKNOLOGI</b><br/>
     <b>UNIVERSITAS SRIWIJAYA &mdash; FAKULTAS TEKNIK</b><br/>
-    <b>LABORATORIUM SISTEM KOMPUTASI & IOT TEKNIK ELEKTRO</b><br/>
-    <font size="7" color="#475569">Jl. Raya Palembang - Prabumulih Km. 32 Indralaya 30662</font><br/>
-    <b>KERJASAMA OPERASIONAL DENGAN PT PLN (PERSERO) UID BALI</b>
+    <b>LABORATORIUM SISTEM KOMPUTASI & IOT JURUSAN TEKNIK ELEKTRO</b><br/>
+    <font size="7.5" color="#475569">Jalan Raya Palembang - Prabumulih Km. 32 Indralaya Ogan Ilir 30662</font><br/>
+    <b>BERKOLABORASI DENGAN PT PLN (PERSERO) UNIT INDUK DISTRIBUSI BALI</b>
     """
 
     kop_table = Table(
         [[logo_unsri, Paragraph(kop_text, style_kop), logo_pln]],
-        colWidths=[50, 422, 50]
+        colWidths=[55, 410, 55]
     )
     kop_table.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
@@ -156,8 +156,8 @@ def generate_sppd_pdf(target_date=None):
     ]))
     story.append(kop_table)
     story.append(Spacer(1, 4))
-    story.append(HRFlowable(width="100%", thickness=1.8, color=colors.HexColor('#0f172a'), spaceAfter=1))
-    story.append(HRFlowable(width="100%", thickness=0.8, color=colors.HexColor('#0f172a'), spaceAfter=8))
+    story.append(HRFlowable(width="100%", thickness=2, color=colors.HexColor('#0f172a'), spaceAfter=1))
+    story.append(HRFlowable(width="100%", thickness=0.8, color=colors.HexColor('#0f172a'), spaceAfter=12))
 
     # 2. TITLE
     story.append(Paragraph("SURAT PERINTAH PERJALANAN DINAS (SPPD)", style_title))

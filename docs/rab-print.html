@@ -176,35 +176,36 @@
         .kop-instansi {
             font-size: 10.5pt;
             font-weight: 700;
-            line-height: 1.25;
+            line-height: 1.3;
             color: #0f172a;
         }
 
         .kop-sub {
-            font-size: 8pt;
+            font-size: 7.5pt;
             color: #475569;
-            margin-top: 2px;
+            margin-top: 3px;
             line-height: 1.2;
             font-weight: 400;
         }
 
         .kop-collab {
-            font-size: 8.2pt;
-            font-weight: 600;
+            font-size: 8.5pt;
+            font-weight: 700;
             color: #0f172a;
             margin-top: 2px;
+            line-height: 1.25;
         }
 
         .kop-hr-thick {
             height: 2px;
             background: #0f172a;
-            margin-top: 3px;
+            margin-top: 4px;
         }
         .kop-hr-thin {
             height: 0.8px;
             background: #0f172a;
             margin-top: 1.5px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         /* TITLE & NOMOR */
@@ -487,13 +488,13 @@
                     <div class="kop-instansi">
                         KEMENTERIAN PENDIDIKAN TINGGI, SAINS, DAN TEKNOLOGI<br>
                         UNIVERSITAS SRIWIJAYA &mdash; FAKULTAS TEKNIK<br>
-                        LABORATORIUM SISTEM KOMPUTASI &amp; IOT TEKNIK ELEKTRO
+                        LABORATORIUM SISTEM KOMPUTASI &amp; IOT JURUSAN TEKNIK ELEKTRO
                     </div>
                     <div class="kop-sub">
-                        Jl. Raya Palembang - Prabumulih Km. 32 Indralaya 30662
+                        Jalan Raya Palembang - Prabumulih Km. 32 Indralaya Ogan Ilir 30662
                     </div>
                     <div class="kop-collab">
-                        KERJASAMA OPERASIONAL DENGAN PT PLN (PERSERO) UID BALI
+                        BERKOLABORASI DENGAN PT PLN (PERSERO) UNIT INDUK DISTRIBUSI<br>BALI
                     </div>
                 </div>
                 <img src="../images/Logo_PLN.png" alt="PLN" class="kop-logo">
@@ -692,21 +693,21 @@
             } else if (nilai < 20) {
                 temp = numberToTerbilang(nilai - 10) + ' Belas';
             } else if (nilai < 100) {
-                temp = numberToTerbilang(Math.floor(nilai / 10)) + ' Puluh' + numberToTerbilang(nilai % 10);
+                temp = numberToTerbilang(Math.floor(nilai / 10)) + ' Puluh ' + numberToTerbilang(nilai % 10);
             } else if (nilai < 200) {
-                temp = ' Seratus' + numberToTerbilang(nilai - 100);
+                temp = ' Seratus ' + numberToTerbilang(nilai - 100);
             } else if (nilai < 1000) {
-                temp = numberToTerbilang(Math.floor(nilai / 100)) + ' Ratus' + numberToTerbilang(nilai % 100);
+                temp = numberToTerbilang(Math.floor(nilai / 100)) + ' Ratus ' + numberToTerbilang(nilai % 100);
             } else if (nilai < 2000) {
-                temp = ' Seribu' + numberToTerbilang(nilai - 1000);
+                temp = ' Seribu ' + numberToTerbilang(nilai - 1000);
             } else if (nilai < 1000000) {
-                temp = numberToTerbilang(Math.floor(nilai / 1000)) + ' Ribu' + numberToTerbilang(nilai % 1000);
+                temp = numberToTerbilang(Math.floor(nilai / 1000)) + ' Ribu ' + numberToTerbilang(nilai % 1000);
             } else if (nilai < 1000000000) {
-                temp = numberToTerbilang(Math.floor(nilai / 1000000)) + ' Juta' + numberToTerbilang(nilai % 1000000);
+                temp = numberToTerbilang(Math.floor(nilai / 1000000)) + ' Juta ' + numberToTerbilang(nilai % 1000000);
             } else if (nilai < 1000000000000) {
-                temp = numberToTerbilang(Math.floor(nilai / 1000000000)) + ' Milyar' + numberToTerbilang(nilai % 1000000000);
+                temp = numberToTerbilang(Math.floor(nilai / 1000000000)) + ' Milyar ' + numberToTerbilang(nilai % 1000000000);
             }
-            return temp.trim();
+            return temp.replace(/\s+/g, ' ').trim();
         }
 
         function getLocalDateISO(date) {

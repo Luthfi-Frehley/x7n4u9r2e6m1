@@ -4993,21 +4993,21 @@ Seluruh nota tiket dan pengeluaran operasional harap disimpan rapi untuk kelengk
             } else if (nilai < 20) {
                 temp = numberToTerbilangIndo(nilai - 10) + ' Belas';
             } else if (nilai < 100) {
-                temp = numberToTerbilangIndo(Math.floor(nilai / 10)) + ' Puluh' + numberToTerbilangIndo(nilai % 10);
+                temp = numberToTerbilangIndo(Math.floor(nilai / 10)) + ' Puluh ' + numberToTerbilangIndo(nilai % 10);
             } else if (nilai < 200) {
-                temp = ' Seratus' + numberToTerbilangIndo(nilai - 100);
+                temp = ' Seratus ' + numberToTerbilangIndo(nilai - 100);
             } else if (nilai < 1000) {
-                temp = numberToTerbilangIndo(Math.floor(nilai / 100)) + ' Ratus' + numberToTerbilangIndo(nilai % 100);
+                temp = numberToTerbilangIndo(Math.floor(nilai / 100)) + ' Ratus ' + numberToTerbilangIndo(nilai % 100);
             } else if (nilai < 2000) {
-                temp = ' Seribu' + numberToTerbilangIndo(nilai - 1000);
+                temp = ' Seribu ' + numberToTerbilangIndo(nilai - 1000);
             } else if (nilai < 1000000) {
-                temp = numberToTerbilangIndo(Math.floor(nilai / 1000)) + ' Ribu' + numberToTerbilangIndo(nilai % 1000);
+                temp = numberToTerbilangIndo(Math.floor(nilai / 1000)) + ' Ribu ' + numberToTerbilangIndo(nilai % 1000);
             } else if (nilai < 1000000000) {
-                temp = numberToTerbilangIndo(Math.floor(nilai / 1000000)) + ' Juta' + numberToTerbilangIndo(nilai % 1000000);
+                temp = numberToTerbilangIndo(Math.floor(nilai / 1000000)) + ' Juta ' + numberToTerbilangIndo(nilai % 1000000);
             } else if (nilai < 1000000000000) {
-                temp = numberToTerbilangIndo(Math.floor(nilai / 1000000000)) + ' Milyar' + numberToTerbilangIndo(nilai % 1000000000);
+                temp = numberToTerbilangIndo(Math.floor(nilai / 1000000000)) + ' Milyar ' + numberToTerbilangIndo(nilai % 1000000000);
             }
-            return temp.trim();
+            return temp.replace(/\s+/g, ' ').trim();
         }
 
         function calculateSecretBudgetTotal() {
