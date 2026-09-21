@@ -235,12 +235,12 @@ def generate_sppd_pdf(target_date=None):
 
     ttd_data = [
         [
-            Paragraph("Menyetujui &amp; Menugaskan,<br/><b>Kepala Lab Sistem Komputasi &amp; IoT Unsri</b>", style_sign_title),
-            Paragraph("Mengetahui &amp; Memfasilitasi Akomodasi,<br/><b>Senior Manager Distribusi PLN UID Bali</b>", style_sign_title)
+            Paragraph("Menyetujui &amp; Menugaskan,<br/>Kepala Lab Sistem Komputasi &amp; IoT Unsri", style_sign_title),
+            Paragraph("Mengetahui &amp; Memfasilitasi Akomodasi,<br/>Senior Manager Distribusi PLN UID Bali", style_sign_title)
         ],
         [
-            Paragraph("<font color='#2563eb'><b>[ STAMPEL &amp; TANDA TANGAN ELEKTRONIK ]</b></font><br/><font size='6.5' color='#64748b'>Ref: BSSN-UNSRI-2026-SPPD</font><br/><br/>", ParagraphStyle('St1', fontName='Helvetica-Oblique', fontSize=7, alignment=TA_CENTER, textColor=colors.HexColor('#2563eb'))),
-            Paragraph("<font color='#dc2626'><b>[ TERVERIFIKASI ANGGARAN DINAS PLN ]</b></font><br/><font size='6.5' color='#64748b'>DIPA/PLN-BALI/DCC/2026/042</font><br/><br/>", ParagraphStyle('St2', fontName='Helvetica-Oblique', fontSize=7, alignment=TA_CENTER, textColor=colors.HexColor('#dc2626')))
+            Spacer(1, 45),
+            Spacer(1, 45)
         ],
         [
             Paragraph("<b><u>Prof. Ir. Abu Bakar, M.T., Ph.D.</u></b>", style_sign_name),

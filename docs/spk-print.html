@@ -175,7 +175,7 @@
 
         .kop-instansi {
             font-size: 11pt;
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.25;
             color: #0f172a;
         }
@@ -185,11 +185,12 @@
             color: #475569;
             margin-top: 2px;
             line-height: 1.2;
+            font-weight: 400;
         }
 
         .kop-collab {
             font-size: 8.5pt;
-            font-weight: 800;
+            font-weight: 600;
             color: #0f172a;
             margin-top: 2px;
         }
@@ -210,7 +211,7 @@
         .doc-title {
             text-align: center;
             font-size: 12pt;
-            font-weight: 800;
+            font-weight: 700;
             color: #0f172a;
             letter-spacing: 0.3px;
         }
@@ -218,7 +219,7 @@
         .doc-nomor {
             text-align: center;
             font-size: 9pt;
-            font-weight: 700;
+            font-weight: 600;
             color: #2563eb;
             margin-top: 2px;
             margin-bottom: 10px;
@@ -227,7 +228,7 @@
         /* DASAR & URAIAN */
         .section-heading {
             font-size: 8.5pt;
-            font-weight: 800;
+            font-weight: 700;
             color: #0f172a;
             margin-bottom: 4px;
         }
@@ -249,23 +250,43 @@
         }
 
         .personel-table td {
-            padding: 2.5px 0;
+            padding: 3px 4px;
             vertical-align: top;
+            line-height: 1.35;
         }
 
-        .personel-table .col-label {
-            width: 200px;
-            font-weight: 700;
-            color: #1e293b;
+        .personel-table td:first-child {
+            width: 170px;
+            color: #475569;
+            font-weight: 600;
         }
 
-        .personel-table .col-colon {
-            width: 12px;
-            text-align: center;
-        }
-
-        .personel-table .col-val {
+        .personel-table td:last-child {
             color: #0f172a;
+        }
+
+        /* TUGAS */
+        .task-list {
+            margin-left: 18px;
+            font-size: 8.5pt;
+            line-height: 1.5;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .task-list li {
+            margin-bottom: 4px;
+            text-align: justify;
+        }
+
+        .clause-box {
+            background: #f8fafc;
+            border-left: 3px solid #f59e0b;
+            padding: 6px 10px;
+            font-size: 8pt;
+            color: #78350f;
+            margin-bottom: 12px;
+            line-height: 1.4;
         }
 
         /* TANDA TANGAN */
@@ -273,9 +294,8 @@
             text-align: right;
             font-size: 8pt;
             color: #475569;
-            margin-top: 6px;
             margin-bottom: 8px;
-            line-height: 1.35;
+            line-height: 1.4;
         }
 
         .ttd-table {
@@ -293,35 +313,14 @@
 
         .sign-title {
             font-size: 8pt;
-            font-weight: 700;
+            font-weight: 600;
             color: #1e293b;
             line-height: 1.3;
             margin-bottom: 6px;
         }
 
-        .stamp-box {
-            height: 52px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 7pt;
-            font-style: italic;
-            font-weight: 700;
-            border-radius: 4px;
-            margin: 4px 20px;
-        }
-
-        .stamp-unsri {
-            color: #2563eb;
-            border: 1px dashed rgba(37, 99, 235, 0.4);
-            background: rgba(37, 99, 235, 0.04);
-        }
-
-        .stamp-pln {
-            color: #dc2626;
-            border: 1px dashed rgba(220, 38, 38, 0.4);
-            background: rgba(220, 38, 38, 0.04);
+        .sign-space {
+            height: 60px;
         }
 
         .sign-name {
@@ -499,24 +498,18 @@
                     <td>
                         <div class="sign-title">
                             Menyetujui &amp; Menugaskan,<br>
-                            <strong>Kepala Lab Sistem Komputasi &amp; IoT Unsri</strong>
+                            Kepala Lab Sistem Komputasi &amp; IoT Unsri
                         </div>
-                        <div class="stamp-box stamp-unsri">
-                            <div>[ TANDA TANGAN &amp; STEMPEL DIGITAL ]</div>
-                            <div style="font-size: 6pt; color: #64748b; font-weight: normal; margin-top: 2px;">Ref: BSSN-UNSRI-2026-SPK</div>
-                        </div>
+                        <div class="sign-space"></div>
                         <div class="sign-name">Prof. Ir. Abu Bakar, M.T., Ph.D.</div>
                         <div class="sign-nip">NIP. 19680315 199203 1 002</div>
                     </td>
                     <td>
                         <div class="sign-title">
                             Mengetahui Pihak BUMN,<br>
-                            <strong>Senior Manager Distribusi PLN UID Bali</strong>
+                            Senior Manager Distribusi PLN UID Bali
                         </div>
-                        <div class="stamp-box stamp-pln">
-                            <div>[ TERVERIFIKASI SISTEM SCADA PLN ]</div>
-                            <div style="font-size: 6pt; color: #64748b; font-weight: normal; margin-top: 2px;">DIPA/PLN-BALI/DCC/2026/042</div>
-                        </div>
+                        <div class="sign-space"></div>
                         <div class="sign-name">Ir. Nyoman Arya, M.Eng.</div>
                         <div class="sign-nip">NIP. 19750821 200003 1 001</div>
                     </td>

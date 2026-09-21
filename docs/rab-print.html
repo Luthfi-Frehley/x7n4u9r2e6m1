@@ -175,21 +175,22 @@
 
         .kop-instansi {
             font-size: 10.5pt;
-            font-weight: 800;
+            font-weight: 700;
             line-height: 1.25;
             color: #0f172a;
         }
 
         .kop-sub {
-            font-size: 7.8pt;
+            font-size: 8pt;
             color: #475569;
             margin-top: 2px;
             line-height: 1.2;
+            font-weight: 400;
         }
 
         .kop-collab {
             font-size: 8.2pt;
-            font-weight: 800;
+            font-weight: 600;
             color: #0f172a;
             margin-top: 2px;
         }
@@ -210,7 +211,7 @@
         .doc-title {
             text-align: center;
             font-size: 11.5pt;
-            font-weight: 800;
+            font-weight: 700;
             color: #0f172a;
             letter-spacing: 0.3px;
         }
@@ -218,7 +219,7 @@
         .doc-nomor {
             text-align: center;
             font-size: 8.5pt;
-            font-weight: 700;
+            font-weight: 600;
             color: #2563eb;
             margin-top: 2px;
             margin-bottom: 8px;
@@ -254,12 +255,12 @@
             margin-right: 6px;
         }
 
-        .info-value {
+        .info-val {
             color: #0f172a;
-            font-weight: 700;
+            font-weight: 500;
         }
 
-        /* TABEL RAB */
+        /* TABEL RINCIAN RAB */
         .rab-table {
             width: 100%;
             border-collapse: collapse;
@@ -270,35 +271,69 @@
 
         .rab-table th {
             background: #f1f5f9;
-            border: 0.8px solid #0f172a;
+            color: #0f172a;
+            font-weight: 700;
+            border: 0.5px solid #0f172a;
             padding: 5px 6px;
             text-align: center;
-            font-weight: 800;
-            color: #0f172a;
+            text-transform: uppercase;
+            font-size: 7.2pt;
+            letter-spacing: 0.2px;
         }
 
         .rab-table td {
             border: 0.5px solid #cbd5e1;
-            padding: 4.5px 6px;
+            padding: 4px 6px;
             vertical-align: middle;
-            line-height: 1.3;
+            line-height: 1.35;
         }
 
-        .rab-table tr:nth-child(even) td {
-            background: #fafafa;
+        .rab-table .col-no {
+            width: 28px;
+            text-align: center;
+            font-weight: 700;
         }
 
-        .text-center { text-align: center; }
-        .text-right { text-align: right; font-family: 'Fira Code', monospace; }
-        .font-bold { font-weight: 700; }
-
-        .total-row td {
-            background: #f8fafc !important;
-            border-top: 1.5px solid #0f172a !important;
-            border-bottom: 1.5px solid #0f172a !important;
-            font-weight: 800;
+        .rab-table .col-desc {
             color: #0f172a;
-            font-size: 8.5pt;
+        }
+
+        .rab-table .col-desc small {
+            display: block;
+            color: #64748b;
+            font-size: 6.8pt;
+            margin-top: 1px;
+        }
+
+        .rab-table .col-vol {
+            width: 75px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .rab-table .col-price {
+            width: 95px;
+            text-align: right;
+            font-family: 'Fira Code', monospace;
+            font-size: 7.5pt;
+            white-space: nowrap;
+        }
+
+        .rab-table .col-total {
+            width: 110px;
+            text-align: right;
+            font-family: 'Fira Code', monospace;
+            font-size: 7.5pt;
+            font-weight: 700;
+            color: #0f172a;
+            white-space: nowrap;
+        }
+
+        .rab-table .row-total td {
+            background: #f8fafc;
+            border-top: 1.2px solid #0f172a;
+            font-weight: 800;
+            padding: 6px;
         }
 
         /* TERBILANG BOX */
@@ -306,7 +341,7 @@
             background: #eff6ff;
             border: 1px solid #bfdbfe;
             border-radius: 4px;
-            padding: 5px 10px;
+            padding: 4px 8px;
             font-size: 7.8pt;
             color: #1e3a8a;
             margin-bottom: 7px;
@@ -354,41 +389,14 @@
 
         .sign-title {
             font-size: 7.5pt;
-            font-weight: 700;
+            font-weight: 600;
             color: #1e293b;
             line-height: 1.25;
             margin-bottom: 4px;
         }
 
-        .stamp-box {
-            height: 44px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 6.5pt;
-            font-style: italic;
-            font-weight: 700;
-            border-radius: 4px;
-            margin: 2px 10px;
-        }
-
-        .stamp-unsri {
-            color: #2563eb;
-            border: 1px dashed rgba(37, 99, 235, 0.4);
-            background: rgba(37, 99, 235, 0.04);
-        }
-
-        .stamp-pln {
-            color: #dc2626;
-            border: 1px dashed rgba(220, 38, 38, 0.4);
-            background: rgba(220, 38, 38, 0.04);
-        }
-
-        .stamp-tech {
-            color: #059669;
-            border: 1px dashed rgba(5, 150, 105, 0.4);
-            background: rgba(5, 150, 105, 0.04);
+        .sign-space {
+            height: 55px;
         }
 
         .sign-name {
@@ -628,36 +636,27 @@
                     <td>
                         <div class="sign-title">
                             Pelaksana Tugas Lapangan,<br>
-                            <strong>Lead Hardware &amp; Firmware Engineer</strong>
+                            Lead Hardware &amp; Firmware Engineer
                         </div>
-                        <div class="stamp-box stamp-tech">
-                            <div>[ TANDA TANGAN DIGITAL ]</div>
-                            <div style="font-size: 5.5pt; color: #64748b; font-weight: normal; margin-top: 1px;">TOKEN: TECH-UNSRI-2026-042</div>
-                        </div>
+                        <div class="sign-space"></div>
                         <div class="sign-name">Luthfi Hibatullah</div>
                         <div class="sign-nip">NIM. 03041182530001</div>
                     </td>
                     <td>
                         <div class="sign-title">
                             Menyetujui Penugasan,<br>
-                            <strong>Kepala Lab IoT Unsri</strong>
+                            Kepala Lab IoT Unsri
                         </div>
-                        <div class="stamp-box stamp-unsri">
-                            <div>[ STEMPEL ELEKTRONIK ]</div>
-                            <div style="font-size: 5.5pt; color: #64748b; font-weight: normal; margin-top: 1px;">Ref: BSSN-UNSRI-2026-RAB</div>
-                        </div>
+                        <div class="sign-space"></div>
                         <div class="sign-name">Prof. Ir. Abu Bakar, M.T., Ph.D.</div>
                         <div class="sign-nip">NIP. 19680315 199203 1 002</div>
                     </td>
                     <td>
                         <div class="sign-title">
                             Verifikator Beban Anggaran,<br>
-                            <strong>Senior Manager Distribusi PLN Bali</strong>
+                            Senior Manager Distribusi PLN Bali
                         </div>
-                        <div class="stamp-box stamp-pln">
-                            <div>[ VERIFIKASI ANGGARAN PLN ]</div>
-                            <div style="font-size: 5.5pt; color: #64748b; font-weight: normal; margin-top: 1px;">DIPA/PLN-BALI/DCC/2026/042</div>
-                        </div>
+                        <div class="sign-space"></div>
                         <div class="sign-name">Ir. Nyoman Arya, M.Eng.</div>
                         <div class="sign-nip">NIP. 19750821 200003 1 001</div>
                     </td>

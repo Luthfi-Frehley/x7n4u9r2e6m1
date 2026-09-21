@@ -221,12 +221,12 @@ def generate_spk_pdf(target_date=None):
 
     ttd_data = [
         [
-            Paragraph("Menyetujui &amp; Menugaskan,<br/><b>Kepala Lab Sistem Komputasi &amp; IoT Unsri</b>", style_sign_title),
-            Paragraph("Mengetahui Pihak BUMN,<br/><b>Senior Manager Distribusi PLN UID Bali</b>", style_sign_title)
+            Paragraph("Menyetujui &amp; Menugaskan,<br/>Kepala Lab Sistem Komputasi &amp; IoT Unsri", style_sign_title),
+            Paragraph("Mengetahui Pihak BUMN,<br/>Senior Manager Distribusi PLN UID Bali", style_sign_title)
         ],
         [
-            Paragraph("<font color='#2563eb'>[ TANDA TANGAN &amp; STEMPEL DIGITAL ]</font><br/><br/><br/>", ParagraphStyle('Stamp', fontName='Helvetica-Oblique', fontSize=7.5, alignment=TA_CENTER, textColor=colors.HexColor('#2563eb'))),
-            Paragraph("<font color='#dc2626'>[ TERVERIFIKASI SISTEM SCADA PLN ]</font><br/><br/><br/>", ParagraphStyle('Stamp2', fontName='Helvetica-Oblique', fontSize=7.5, alignment=TA_CENTER, textColor=colors.HexColor('#dc2626')))
+            Spacer(1, 45),
+            Spacer(1, 45)
         ],
         [
             Paragraph("<b><u>Prof. Ir. Abu Bakar, M.T., Ph.D.</u></b>", style_sign_name),
