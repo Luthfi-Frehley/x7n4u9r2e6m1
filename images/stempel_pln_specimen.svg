@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="130" height="130">
+  <defs>
+    <!-- Jalur Teks Melingkar Atas -->
+    <path id="circleTopPln" d="M 25,100 A 75,75 0 0,1 175,100" fill="none" />
+    <!-- Jalur Teks Melingkar Bawah -->
+    <path id="circleBottomPln" d="M 175,100 A 75,75 0 0,1 25,100" fill="none" />
+  </defs>
+
+  <g transform="rotate(2.5 100 100)" opacity="0.85">
+    <!-- Lingkaran Luar Ganda -->
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#0369a1" stroke-width="3" stroke-dasharray="200 1 180 1" />
+    <circle cx="100" cy="100" r="84" fill="none" stroke="#0369a1" stroke-width="1.2" />
+    
+    <!-- Lingkaran Dalam Ganda -->
+    <circle cx="100" cy="100" r="54" fill="none" stroke="#0369a1" stroke-width="1.2" />
+    <circle cx="100" cy="100" r="49" fill="none" stroke="#0369a1" stroke-width="1.8" />
+
+    <!-- Teks Melingkar Atas -->
+    <text font-family="'Inter', Arial, sans-serif" font-size="8.8" font-weight="800" fill="#0369a1" letter-spacing="0.8">
+      <textPath href="#circleTopPln" startOffset="50%" text-anchor="middle">
+        PT PLN (PERSERO) UID BALI
+      </textPath>
+    </text>
+
+    <!-- Teks Melingkar Bawah -->
+    <text font-family="'Inter', Arial, sans-serif" font-size="8.5" font-weight="700" fill="#0369a1" letter-spacing="1">
+      <textPath href="#circleBottomPln" startOffset="50%" text-anchor="middle">
+        ★ UNIT INDUK DISTRIBUSI ★
+      </textPath>
+    </text>
+
+    <!-- Pembatas Horisontal Tengah -->
+    <line x1="52" y1="88" x2="148" y2="88" stroke="#0369a1" stroke-width="1.5" />
+    <text x="100" y="101" font-family="'Inter', Arial, sans-serif" font-size="9.5" font-weight="800" fill="#0369a1" text-anchor="middle" letter-spacing="0.4">
+      BIDANG DISTRIBUSI
+    </text>
+    <text x="100" y="112" font-family="'Inter', Arial, sans-serif" font-size="7.5" font-weight="700" fill="#0369a1" text-anchor="middle" letter-spacing="0.3">
+      OPERASI SISTEM
+    </text>
+    <line x1="52" y1="117" x2="148" y2="117" stroke="#0369a1" stroke-width="1.5" />
+
+    <!-- Simbol Petir / Bintang Sisi Kiri & Kanan -->
+    <text x="21" y="103" font-size="9" fill="#0369a1" text-anchor="middle">⚡</text>
+    <text x="179" y="103" font-size="9" fill="#0369a1" text-anchor="middle">⚡</text>
+  </g>
+</svg>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK Pengangkatan Peneliti Utama & Lead Hardware IoT Engineer — Unsri x PLN Bali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        /* RESET & BASE */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            font-size: 8.5pt;
+            color: #0f172a;
+            background: #cbd5e1;
+            line-height: 1.35;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* TOOLBAR ATAS (HANYA LAYAR) */
+        .print-toolbar {
+            background: #1e293b;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+        }
+
+        .toolbar-title {
+            font-size: 13px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .toolbar-badge {
+            background: #059669;
+            color: white;
+            font-size: 10px;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        .toolbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 6px 13px;
+            border-radius: 5px;
+            font-size: 11.5px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+
+        .btn-action:hover {
+            background: #2563eb;
+        }
+
+        .btn-verify {
+            background: #059669;
+        }
+        .btn-verify:hover {
+            background: #047857;
+        }
+
+        .btn-back {
+            background: #475569;
+        }
+        .btn-back:hover {
+            background: #334155;
+        }
+
+        /* LEMBAR DOKUMEN KERTAS A4 */
+        .page-container {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 11mm 15mm 10mm 15mm;
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        /* KOP SURAT RESMI */
+        .kop-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+
+        .kop-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .kop-text {
+            flex-grow: 1;
+            text-align: center;
+            padding: 0 8px;
+        }
+
+        .kop-instansi {
+            font-size: 10.5pt;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #0f172a;
+        }
+
+        .kop-sub {
+            font-size: 7.5pt;
+            color: #475569;
+            margin-top: 3px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .kop-collab {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 2px;
+            line-height: 1.25;
+        }
+
+        .kop-hr-thick {
+            height: 2px;
+            background: #0f172a;
+            margin-top: 4px;
+        }
+        .kop-hr-thin {
+            height: 0.8px;
+            background: #0f172a;
+            margin-top: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        /* JUDUL & NOMOR SURAT KEPUTUSAN */
+        .sk-title-box {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .sk-title {
+            font-size: 10.5pt;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            color: #0f172a;
+            line-height: 1.3;
+            text-transform: uppercase;
+        }
+
+        .sk-nomor {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: #2563eb;
+            margin-top: 2px;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .sk-tentang {
+            font-size: 9pt;
+            font-weight: 700;
+            color: #0f172a;
+            margin-top: 4px;
+            text-transform: uppercase;
+            line-height: 1.25;
+        }
+
+        /* BADAN SURAT / KONSIDERAN */
+        .sk-body {
+            font-size: 8.2pt;
+            text-align: justify;
+            line-height: 1.35;
+            color: #1e293b;
+        }
+
+        .konsideran-row {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .konsideran-label {
+            width: 100px;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: #0f172a;
+        }
+
+        .konsideran-colon {
+            width: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .konsideran-content {
+            flex-grow: 1;
+        }
+
+        .konsideran-item {
+            display: flex;
+            margin-bottom: 3px;
+        }
+        .konsideran-item-num {
+            width: 18px;
+            flex-shrink: 0;
+            font-weight: 600;
+        }
+        .konsideran-item-text {
+            flex-grow: 1;
+        }
+
+        .sk-memutuskan-banner {
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 9pt;
+            margin: 6px 0 4px 0;
+            color: #0f172a;
+        }
+
+        .sk-menetapkan-banner {
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #0f172a;
+        }
+
+        .diktum-row {
+            display: flex;
+            margin-bottom: 5px;
+        }
+
+        .diktum-label {
+            width: 100px;
+            font-weight: 800;
+            flex-shrink: 0;
+            color: #0f172a;
+            letter-spacing: 0.4px;
+        }
+
+        .diktum-colon {
+            width: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .diktum-content {
+            flex-grow: 1;
+        }
+
+        /* BOX PROFILE PENERIMA MANDAT */
+        .mandat-box {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            border-left: 3px solid #2563eb;
+            padding: 5px 8px;
+            margin: 3px 0 4px 0;
+            font-size: 8pt;
+        }
+        .mandat-row {
+            display: flex;
+            margin-bottom: 1.5px;
+        }
+        .mandat-lbl {
+            width: 110px;
+            color: #475569;
+            font-weight: 600;
+        }
+        .mandat-val {
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        /* TANGGAL PENETAPAN */
+        .tgl-right {
+            text-align: right;
+            font-size: 8pt;
+            margin-top: 6px;
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        /* PENGESAHAN & TTE SECTION */
+        .pengesahan-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 4px;
+        }
+
+        .pengesahan-col {
+            width: 50%;
+            vertical-align: top;
+            text-align: center;
+            padding: 0 6px;
+            position: relative;
+        }
+
+        .sign-title {
+            font-size: 7.8pt;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.25;
+            min-height: 28px;
+        }
+
+        /* AREA TANDA TANGAN & STEMPEL BERTUMPUK */
+        .stamp-signature-area {
+            height: 62px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stamp-specimen-img {
+            position: absolute;
+            width: 82px;
+            height: 82px;
+            opacity: 0.85;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .stamp-left {
+            left: 20px;
+            top: -10px;
+        }
+
+        .stamp-right {
+            right: 20px;
+            top: -10px;
+        }
+
+        /* QR CODE MINI TTE PADA SETIAP PEJABAT */
+        .tte-mini-badge {
+            border: 1px solid #cbd5e1;
+            background: #f8fafc;
+            border-radius: 4px;
+            padding: 3px 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 6.8pt;
+            color: #475569;
+            z-index: 1;
+            text-decoration: none;
+        }
+
+        .tte-mini-qr {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border: 0.5px solid #94a3b8;
+            padding: 1px;
+        }
+
+        .sign-name {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: #0f172a;
+            border-bottom: 1px solid #0f172a;
+            display: inline-block;
+            padding-bottom: 1px;
+            margin-top: 2px;
+        }
+
+        .sign-nip {
+            font-size: 7.5pt;
+            color: #475569;
+            margin-top: 1px;
+        }
+
+        /* BOX RESMI TTE BSRÈ */
+        .bsre-box {
+            border: 1px solid #3b82f6;
+            background: #eff6ff;
+            border-radius: 5px;
+            padding: 6px 10px;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .bsre-qr-img {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 1px solid #93c5fd;
+            border-radius: 3px;
+            padding: 2px;
+            flex-shrink: 0;
+        }
+
+        .bsre-text {
+            font-size: 6.6pt;
+            color: #1e3a8a;
+            line-height: 1.25;
+            flex-grow: 1;
+        }
+
+        .bsre-text strong {
+            color: #1e40af;
+        }
+
+        .bsre-link {
+            color: #2563eb;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        /* FOOTER KEAMANAN */
+        .security-footer {
+            font-size: 6.2pt;
+            color: #64748b;
+            text-align: center;
+            border-top: 0.5px solid #cbd5e1;
+            padding-top: 4px;
+            margin-top: 8px;
+            font-family: 'Fira Code', monospace;
+            letter-spacing: 0.2px;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+            .print-toolbar {
+                display: none !important;
+            }
+            .page-container {
+                width: 100%;
+                min-height: auto;
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+                page-break-after: avoid;
+            }
+            @page {
+                size: A4 portrait;
+                margin: 10mm 15mm 10mm 15mm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOOLBAR ATAS (HANYA LAYAR) -->
+    <div class="print-toolbar">
+        <div class="toolbar-title">
+            <span>📜 SK PENGANGKATAN TIM IOT &bull; UNSRI × PLN UID BALI</span>
+            <span class="toolbar-badge">TTE BSrE VALID</span>
+        </div>
+        <div class="toolbar-actions">
+            <button onclick="window.print()" class="btn-action">
+                <span>🖨️ Cetak SK (Print)</span>
+            </button>
+            <button onclick="generatePdfDirect()" class="btn-action" style="background: #0284c7;">
+                <span>📥 Unduh PDF</span>
+            </button>
+            <a href="../verify.html?doc=SK-089" target="_blank" class="btn-action btn-verify">
+                <span>🛡️ Cek Status TTE (Live)</span>
+            </a>
+            <a href="../main.html" class="btn-action btn-back">
+                <span>✕ Kembali</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- LEMBAR DOKUMEN CETAK A4 -->
+    <div class="page-container" id="documentContent">
+
+        <!-- KOP SURAT STANDAR KEDINASAN -->
+        <div class="kop-header">
+            <img src="../images/Lambang_Universitas_Sriwijaya.png" alt="UNSRI" class="kop-logo">
+            <div class="kop-text">
+                <div class="kop-instansi">
+                    KEMENTERIAN PENDIDIKAN TINGGI, SAINS, DAN TEKNOLOGI<br>
+                    UNIVERSITAS SRIWIJAYA &mdash; FAKULTAS TEKNIK<br>
+                    LABORATORIUM SISTEM KOMPUTASI &amp; IOT JURUSAN TEKNIK ELEKTRO
+                </div>
+                <div class="kop-sub">
+                    Jalan Raya Palembang - Prabumulih Km. 32 Indralaya Ogan Ilir 30662
+                </div>
+                <div class="kop-collab">
+                    BERKOLABORASI DENGAN PT PLN (PERSERO) UNIT INDUK DISTRIBUSI<br>BALI
+                </div>
+            </div>
+            <img src="../images/Logo_PLN.png" alt="PLN" class="kop-logo">
+        </div>
+
+        <div class="kop-hr-thick"></div>
+        <div class="kop-hr-thin"></div>
+
+        <!-- JUDUL & NOMOR SURAT KEPUTUSAN -->
+        <div class="sk-title-box">
+            <div class="sk-title">
+                KEPUTUSAN BERSAMA DEKAN FAKULTAS TEKNIK UNIVERSITAS SRIWIJAYA<br>
+                DAN SENIOR MANAGER DISTRIBUSI PT PLN (PERSERO) UNIT INDUK DISTRIBUSI BALI
+            </div>
+            <div class="sk-nomor">
+                Nomor: SK-089/UN9.1.3/SK-PLN/IX/2026
+            </div>
+            <div class="sk-tentang">
+                TENTANG<br>
+                PENGANGKATAN TENAGA AHLI RISET TERAPAN &amp; LEAD HARDWARE IOT ENGINEER<br>
+                DALAM RANGKA AUDIT DAN PEMULIHAN KEANDALAN GRID TELEMETRI KELISTRIKAN DISTRIBUSI BALI
+            </div>
+        </div>
+
+        <!-- BADAN NASKAH KEPUTUSAN -->
+        <div class="sk-body">
+            <!-- MENIMBANG -->
+            <div class="konsideran-row">
+                <div class="konsideran-label">MENIMBANG</div>
+                <div class="konsideran-colon">:</div>
+                <div class="konsideran-content">
+                    <div class="konsideran-item">
+                        <div class="konsideran-item-num">a.</div>
+                        <div class="konsideran-item-text">
+                            bahwa dalam rangka menjaga kontinuitas keandalan sistem telemetri transmisi kelistrikan cerdas (Smart Grid IoT) 20 kV di wilayah operasional PT PLN (Persero) UID Bali menjelang agenda strategis nasional;
+                        </div>
+                    </div>
+                    <div class="konsideran-item">
+                        <div class="konsideran-item-num">b.</div>
+                        <div class="konsideran-item-text">
+                            bahwa berdasarkan laporan darurat SCADA Gateway atas anomali drop tegangan nol (0.0V) pada Gardu Trafo Distribusi Kuta Beach (Node ESP32-KTA-03), mendesak diperlukan intervensi teknis langsung oleh perancang arsitektur modul;
+                        </div>
+                    </div>
+                    <div class="konsideran-item">
+                        <div class="konsideran-item-num">c.</div>
+                        <div class="konsideran-item-text">
+                            bahwa Saudara Luthfi Hibatullah dinilai memiliki kualifikasi teknis tingkat lanjut dalam perancangan mikrokontroler, protokol SCADA MQTT/LoRaWAN, dan investigasi firmware lapangan.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MENGINGAT -->
+            <div class="konsideran-row">
+                <div class="konsideran-label">MENGINGAT</div>
+                <div class="konsideran-colon">:</div>
+                <div class="konsideran-content">
+                    <div class="konsideran-item">
+                        <div class="konsideran-item-num">1.</div>
+                        <div class="konsideran-item-text">Undang-Undang Nomor 20 Tahun 2003 tentang Sistem Pendidikan Nasional;</div>
+                    </div>
+                    <div class="konsideran-item">
+                        <div class="konsideran-item-num">2.</div>
+                        <div class="konsideran-item-text">Undang-Undang Nomor 30 Tahun 2009 tentang Ketenagalistrikan;</div>
+                    </div>
+                    <div class="konsideran-item">
+                        <div class="konsideran-item-num">3.</div>
+                        <div class="konsideran-item-text">Perjanjian Kerja Sama Riset Terapan Smart Grid IoT Unsri &mdash; PT PLN (Persero) UID Bali Nomor: PKS-012/PLN-UID-BALI/TE-UNSRI/2025.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sk-memutuskan-banner">MEMUTUSKAN:</div>
+            <div class="sk-menetapkan-banner">MENETAPKAN:</div>
+
+            <!-- DIKTUM KESATU -->
+            <div class="diktum-row">
+                <div class="diktum-label">KESATU</div>
+                <div class="diktum-colon">:</div>
+                <div class="diktum-content">
+                    Mengangkat Saudara mahasiswa peneliti di bawah ini:
+                    <div class="mandat-box">
+                        <div class="mandat-row">
+                            <span class="mandat-lbl">Nama Lengkap</span>
+                            <span>: <strong>Luthfi Hibatullah</strong></span>
+                        </div>
+                        <div class="mandat-row">
+                            <span class="mandat-lbl">NIM</span>
+                            <span>: <strong>03041182530001</strong></span>
+                        </div>
+                        <div class="mandat-row">
+                            <span class="mandat-lbl">Program Studi</span>
+                            <span>: Teknik Elektro &mdash; Konsentrasi Sistem Komputer &amp; IoT</span>
+                        </div>
+                        <div class="mandat-row">
+                            <span class="mandat-lbl">Jabatan Kedinasan</span>
+                            <span style="color: #1d4ed8; font-weight: 800;">: PENELITI UTAMA &amp; LEAD HARDWARE IOT ENGINEER</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DIKTUM KEDUA -->
+            <div class="diktum-row">
+                <div class="diktum-label">KEDUA</div>
+                <div class="diktum-colon">:</div>
+                <div class="diktum-content">
+                    Memberikan mandat penuh, wewenang otorisasi teknis, dan tanggung jawab operasional kepada pejabat yang bersangkutan untuk:
+                    <ol style="padding-left: 14px; margin-top: 2px;">
+                        <li>Melaksanakan audit komprehensif telemetri 25 node gardu transmisi, khususnya pemulihan darurat Gardu Trafo Kuta Beach;</li>
+                        <li>Melakukan manipulasi bootloader ROM (pin strapping GPIO0-GND), on-site UART flashing, penggantian sekring kaca 500mA, dan perlakuan conformal coating anti-garam;</li>
+                        <li>Menandatangani Berita Acara Serah Terima (BAST) fisik gardu bersama Tim Reaksi Cepat UP3 Bali Selatan.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- DIKTUM KETIGA -->
+            <div class="diktum-row">
+                <div class="diktum-label">KETIGA</div>
+                <div class="diktum-colon">:</div>
+                <div class="diktum-content">
+                    Segala hak fasilitas kedinasan, penerbangan tiket komersial PP (Palembang &harr; Denpasar Bali), penginapan di sekitar gardu, serta talangan operasional darurat sebesar Rp 7.800.000,- dibebankan pada DIPA Riset PT PLN UID Bali dengan jaminan <strong>100% Reimbursement</strong>.
+                </div>
+            </div>
+
+            <!-- DIKTUM KEEMPAT -->
+            <div class="diktum-row">
+                <div class="diktum-label">KEEMPAT</div>
+                <div class="diktum-colon">:</div>
+                <div class="diktum-content">
+                    Keputusan Bersama ini mulai berlaku terhitung sejak tanggal ditetapkan, dengan ketentuan apabila di kemudian hari terdapat kekeliruan akan diadakan perbaikan sebagaimana mestinya.
+                </div>
+            </div>
+        </div>
+
+        <!-- TANGGAL PENETAPAN -->
+        <div class="tgl-right">
+            Ditetapkan di : Palembang &amp; Denpasar<br>
+            Pada tanggal  : <strong>18 September 2026</strong>
+        </div>
+
+        <!-- PENGESAHAN DUA PIHAK DENGAN STEMPEL & TTE BSRE -->
+        <table class="pengesahan-table">
+            <tr>
+                <!-- PIHAK UNSRI -->
+                <td class="pengesahan-col">
+                    <div class="sign-title">
+                        Menyetujui &amp; Menetapkan,<br>
+                        Kepala Lab Sistem Komputasi &amp; IoT Unsri
+                    </div>
+                    <div class="stamp-signature-area">
+                        <!-- Stempel Transparan Unsri -->
+                        <img src="../images/stempel_unsri_specimen.svg" alt="Stempel Unsri" class="stamp-specimen-img stamp-left">
+                        <!-- TTE Mini Badge -->
+                        <a href="../verify.html?doc=SK-089" target="_blank" class="tte-mini-badge">
+                            <img src="../images/qr_sk_089.svg" alt="QR" class="tte-mini-qr">
+                            <span style="text-align: left; line-height: 1.2;">
+                                <strong>TTE TERSERTIFIKASI</strong><br>
+                                Balai Sertifikasi Elektronik<br>
+                                Root CA BSSN
+                            </span>
+                        </a>
+                    </div>
+                    <div class="sign-name">Prof. Ir. Abu Bakar, M.T., Ph.D.</div>
+                    <div class="sign-nip">NIP. 19680315 199203 1 002</div>
+                </td>
+
+                <!-- PIHAK PLN -->
+                <td class="pengesahan-col">
+                    <div class="sign-title">
+                        Mengesahkan Pihak BUMN,<br>
+                        Senior Manager Distribusi PLN UID Bali
+                    </div>
+                    <div class="stamp-signature-area">
+                        <!-- Stempel Transparan PLN -->
+                        <img src="../images/stempel_pln_specimen.svg" alt="Stempel PLN" class="stamp-specimen-img stamp-right">
+                        <!-- TTE Mini Badge -->
+                        <a href="../verify.html?doc=SK-089" target="_blank" class="tte-mini-badge">
+                            <img src="../images/qr_sk_089.svg" alt="QR" class="tte-mini-qr">
+                            <span style="text-align: left; line-height: 1.2;">
+                                <strong>TTE TERSERTIFIKASI</strong><br>
+                                Balai Sertifikasi Elektronik<br>
+                                Root CA BSSN
+                            </span>
+                        </a>
+                    </div>
+                    <div class="sign-name">Ir. Nyoman Arya, M.Eng.</div>
+                    <div class="sign-nip">NIP. 19750821 200003 1 001</div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- BOX RESMI TTE BSRÈ & KEABSAHAN -->
+        <div class="bsre-box">
+            <a href="../verify.html?doc=SK-089" target="_blank">
+                <img src="../images/qr_sk_089.svg" alt="QR BSrE" class="bsre-qr-img">
+            </a>
+            <div class="bsre-text">
+                <strong>DOKUMEN INI TELAH DITANDATANGANI SECARA ELEKTRONIK (TTE) MENGGUNAKAN SERTIFIKAT DIGITAL AKTIF.</strong><br>
+                Diterbitkan secara sah oleh <strong>Balai Sertifikasi Elektronik (BSrE), Badan Siber dan Sandi Negara (BSSN)</strong> sesuai UU ITE No. 11/2008 &amp; PP No. 71/2019.<br>
+                Pindai QR Code di samping atau kunjungi portal verifikasi: <a href="../verify.html?doc=SK-089" target="_blank" class="bsre-link">https://unsri-pln.ac.id/verify.html?doc=SK-089</a> untuk validasi integritas naskah dinas.
+            </div>
+        </div>
+
+        <!-- SECURITY FOOTER -->
+        <div class="security-footer">
+            Dokumen ini sah dan terdaftar resmi pada Sistem Administrasi Terpadu SCADA PLN UID Bali &amp; Universitas Sriwijaya | Sertifikasi Keamanan ISO 27001 | Security Token: SK-089-UN9-PLN-BALI-LUTHFI-HIBATULLAH-SHA256
+        </div>
+    </div>
+
+    <!-- Script PDF Generation -->
+    <script>
+        function generatePdfDirect() {
+            const element = document.getElementById('documentContent');
+            const opt = {
+                margin:       [8, 8, 8, 8],
+                filename:     'SK_089_Pengangkatan_Lead_IoT_Engineer_Luthfi.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().set(opt).from(element).save();
+        }
+
+        // Auto print jika ada parameter ?print=1
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('print') === '1') {
+                setTimeout(() => window.print(), 600);
+            }
+        });
+    </script>
+</body>
+</html>
