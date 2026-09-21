@@ -480,31 +480,50 @@
     <!-- MAIN CONTENT -->
     <main>
 
-        <!-- SELECTOR DOKUMEN -->
-        <div class="doc-selector-bar">
+        <!-- SELECTOR DOKUMEN (HANYA MUNCUL JIKA ?all=1) -->
+        <div class="doc-selector-bar" id="docSelectorBar" style="display: none;">
             <button class="selector-tab" id="tab-SK-089" onclick="switchDoc('SK-089')">📜 SK Pengangkatan #089</button>
             <button class="selector-tab" id="tab-SPK-042" onclick="switchDoc('SPK-042')">📋 SPK Lapangan #042</button>
             <button class="selector-tab" id="tab-SPPD-018" onclick="switchDoc('SPPD-018')">✈️ SPPD Dinas Bali #018</button>
             <button class="selector-tab" id="tab-RAB-042" onclick="switchDoc('RAB-042')">💰 RAB Talangan Mandiri</button>
         </div>
 
-        <!-- HERO STATUS VERIFIKASI -->
-        <div class="verification-hero">
-            <div class="shield-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    <polyline points="9 12 11 14 15 10"></polyline>
+        <!-- ACCESS DENIED / TOKEN MISSING SCREEN -->
+        <div id="accessDeniedScreen" style="display: none; background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 48px 24px; text-align: center; margin: 30px auto; box-shadow: 0 4px 12px rgba(0,0,0,0.04);">
+            <div style="width: 64px; height: 64px; margin: 0 auto 16px; background: #fee2e2; color: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line>
                 </svg>
             </div>
-            <h2 class="hero-title">DOKUMEN SAH &amp; TERVERIFIKASI RESMI</h2>
-            <p class="hero-subtitle">
-                Naskah dinas ini telah ditandatangani secara elektronik (TTE) menggunakan sertifikat digital aktif yang diterbitkan oleh Balai Sertifikasi Elektronik (BSrE), Badan Siber dan Sandi Negara (BSSN).
+            <h2 style="font-size: 18px; font-weight: 800; color: #991b1b; margin-bottom: 6px;">403 &mdash; TOKEN OTENTIKASI NASKAH WAJIB</h2>
+            <p style="font-size: 13px; color: #64748b; max-width: 520px; margin: 0 auto 16px; line-height: 1.6;">
+                Portal kriptografi TTE ini bersifat semi-terbatas. Verifikasi keabsahan dokumen hanya dapat dilakukan dengan <strong>memindai QR Code resmi</strong> yang tercetak pada lembar fisik dokumen dinas atau mengakses tautan verifikasi lengkap bertoken.
             </p>
-            <div class="verification-pill">
-                <span class="live-dot"></span>
-                <span id="liveTimestamp">Verifikasi Online: Memuat waktu...</span>
+            <div style="display: inline-block; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 14px; font-family: 'Fira Code', monospace; font-size: 11px; color: #475569;">
+                STATUS: ACCESS_DENIED_NO_DOC_TOKEN
             </div>
         </div>
+
+        <!-- WRAPPER VERIFIED CONTENT -->
+        <div id="verifiedContent">
+            <!-- HERO STATUS VERIFIKASI -->
+            <div class="verification-hero">
+                <div class="shield-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <polyline points="9 12 11 14 15 10"></polyline>
+                    </svg>
+                </div>
+                <h2 class="hero-title">DOKUMEN SAH &amp; TERVERIFIKASI RESMI</h2>
+                <p class="hero-subtitle">
+                    Naskah dinas ini telah ditandatangani secara elektronik (TTE) menggunakan sertifikat digital aktif yang diterbitkan oleh Balai Sertifikasi Elektronik (BSrE), Badan Siber dan Sandi Negara (BSSN).
+                </p>
+                <div class="verification-pill">
+                    <span class="live-dot"></span>
+                    <span id="liveTimestamp">Verifikasi Online: Memuat waktu...</span>
+                </div>
+            </div>
 
         <!-- CARD 1: METADATA DOKUMEN -->
         <div class="card">
@@ -546,10 +565,7 @@
 
                 <div class="actions-group">
                     <a href="docs/sk-print.html" id="btnViewOriginal" target="_blank" class="btn btn-primary">
-                        <span>👁️ Lihat Naskah Asli (Print / PDF)</span>
-                    </a>
-                    <a href="main.html" class="btn btn-outline">
-                        <span>📊 Buka Dashboard Monitoring SCADA</span>
+                        <span>📄 Unduh / Tinjau Dokumen Asli (PDF)</span>
                     </a>
                 </div>
             </div>
@@ -616,6 +632,7 @@
                 </div>
             </div>
         </div>
+        </div> <!-- /#verifiedContent -->
 
     </main>
 
@@ -624,15 +641,10 @@
         <div>
             Sistem Verifikasi Keabsahan Tanda Tangan Elektronik ini dioperasikan sesuai dengan ketentuan Undang-Undang Republik Indonesia Nomor 11 Tahun 2008 tentang Informasi dan Transaksi Elektronik (UU ITE), Peraturan Pemerintah Nomor 71 Tahun 2019 tentang Penyelenggaraan Sistem dan Transaksi Elektronik, serta Peraturan BSSN Nomor 10 Tahun 2019.
         </div>
-        <div class="footer-links">
-            <a href="index.html">Portal Login</a> &bull;
-            <a href="main.html">Dashboard SCADA</a> &bull;
-            <a href="docs/sk-print.html">SK Pengangkatan</a> &bull;
-            <a href="docs/spk-print.html">SPK Kuta</a> &bull;
-            <a href="docs/sppd-print.html">SPPD Bali</a> &bull;
-            <a href="docs/rab-print.html">RAB Talangan</a>
+        <div style="margin-top: 8px; color: #475569; font-size: 11px;">
+            Layanan Verifikasi Publik Naskah Dinas Elektronik &bull; Balai Sertifikasi Elektronik (BSrE) &bull; BSSN &bull; Kementerian Pendidikan Tinggi, Sains, dan Teknologi &bull; PT PLN (Persero)
         </div>
-        <div style="margin-top: 10px; color: #94a3b8; font-size: 10.5px;">
+        <div style="margin-top: 8px; color: #94a3b8; font-size: 10.5px;">
             &copy; 2026 Balai Sertifikasi Elektronik (BSrE) &bull; Badan Siber dan Sandi Negara (BSSN) &bull; Hak Cipta Dilindungi
         </div>
     </footer>
@@ -727,15 +739,35 @@
             const params = new URLSearchParams(window.location.search);
             const docParam = params.get('doc');
             
-            // Normalize param
-            let selectedKey = 'SK-089';
-            if (docParam) {
-                const upper = docParam.toUpperCase();
-                if (upper.includes('SPK')) selectedKey = 'SPK-042';
-                else if (upper.includes('SPPD')) selectedKey = 'SPPD-018';
-                else if (upper.includes('RAB')) selectedKey = 'RAB-042';
-                else selectedKey = 'SK-089';
+            // SECURITY GUARD: Akses ditolak jika tanpa parameter dokumen
+            if (!docParam) {
+                document.getElementById('accessDeniedScreen').style.display = 'block';
+                document.getElementById('verifiedContent').style.display = 'none';
+                return;
             }
+
+            // Jika query param ?all=1 ada, tampilkan tab switcher (developer / internal only)
+            if (params.get('all') === '1') {
+                const selector = document.getElementById('docSelectorBar');
+                if (selector) selector.style.display = 'flex';
+            }
+
+            // Normalize param
+            let selectedKey = null;
+            const upper = docParam.toUpperCase();
+            if (upper.includes('SPK')) selectedKey = 'SPK-042';
+            else if (upper.includes('SPPD')) selectedKey = 'SPPD-018';
+            else if (upper.includes('RAB')) selectedKey = 'RAB-042';
+            else if (upper.includes('SK')) selectedKey = 'SK-089';
+
+            if (!selectedKey || !DOC_DATA[selectedKey]) {
+                document.getElementById('accessDeniedScreen').style.display = 'block';
+                document.getElementById('verifiedContent').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('accessDeniedScreen').style.display = 'none';
+            document.getElementById('verifiedContent').style.display = 'block';
 
             switchDoc(selectedKey);
             updateLiveTime();
@@ -744,3 +776,4 @@
     </script>
 </body>
 </html>
+
