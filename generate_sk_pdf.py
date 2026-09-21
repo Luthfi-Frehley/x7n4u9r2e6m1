@@ -274,7 +274,7 @@ def generate_sk_pdf(target_date=None):
 
     # PENGESAHAN DUA PIHAK & QR CODE
     d_qr = Drawing(44, 44)
-    q = qr.QrCodeWidget('https://luthfi-frehley.github.io/x7n4u9r2e6m1/verify.html?doc=SK-089')
+    q = qr.QrCodeWidget('https://scada-unsri.my.id/verify.html?doc=SK-089')
     q.barWidth = 44
     q.barHeight = 44
     d_qr.add(q)
@@ -312,7 +312,7 @@ def generate_sk_pdf(target_date=None):
     # BSRÉ VERIFICATION BANNER AT BOTTOM
     bsre_banner_text = """
     <b>DOKUMEN INI TELAH DITANDATANGANI SECARA ELEKTRONIK (TTE) MENGGUNAKAN SERTIFIKAT ELEKTRONIK RESMI BSRÉ - BSSN.</b><br/>
-    Sesuai ketentuan UU ITE No. 11/2008 & PP No. 71/2019. Pindai QR Code di samping untuk memverifikasi keaslian naskah dinas atau buka: <b>https://unsri-pln.ac.id/verify.html?doc=SK-089</b>
+    Sesuai ketentuan UU ITE No. 11/2008 & PP No. 71/2019. Pindai QR Code di samping untuk memverifikasi keaslian naskah dinas atau buka: <b>https://scada-unsri.my.id/verify.html?doc=SK-089</b>
     """
 
     bsre_table = Table(
