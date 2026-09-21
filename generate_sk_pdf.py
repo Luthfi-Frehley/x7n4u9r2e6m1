@@ -248,7 +248,7 @@ def generate_sk_pdf(target_date=None):
         [
             Paragraph("<b>KETIGA</b>", style_body_bold),
             Paragraph(":", style_body_bold),
-            Paragraph("Seluruh akomodasi, tiket penerbangan komersial Palembang - Bali PP, dan talangan operasional darurat sebesar Rp 7.800.000,- dibebankan pada DIPA Riset PT PLN UID Bali dengan jaminan <b>100% Reimbursement</b>.", style_body)
+            Paragraph("Segala biaya operasional yang timbul dalam pelaksanaan tugas ini dibebankan pada Anggaran Program Kerja Sama Riset Terapan PT PLN (Persero) UID Bali Tahun Anggaran 2026, yang ketentuan dan teknis pelaksanaannya diatur tersendiri melalui Surat Perintah Perjalanan Dinas (SPPD) dan instrumen pembiayaan dinas terkait.", style_body)
         ],
         [
             Paragraph("<b>KEEMPAT</b>", style_body_bold),
