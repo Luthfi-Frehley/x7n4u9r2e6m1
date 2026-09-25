@@ -324,6 +324,55 @@
             height: 60px;
         }
 
+        .stamp-signature-area {
+            position: relative;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stamp-specimen-img {
+            position: absolute;
+            width: 95px;
+            height: 95px;
+            pointer-events: none;
+            opacity: 0.88;
+            z-index: 10;
+        }
+
+        .stamp-left {
+            top: -20px;
+            left: 20px;
+            transform: rotate(-7deg);
+        }
+
+        .stamp-right {
+            top: -20px;
+            right: 20px;
+            transform: rotate(5deg);
+        }
+
+        .tte-mini-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 3px 6px;
+            font-size: 6.5pt;
+            color: #334155;
+            text-decoration: none;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+            z-index: 5;
+        }
+
+        .tte-mini-qr {
+            width: 28px;
+            height: 28px;
+        }
+
         .sign-name {
             font-size: 8.5pt;
             font-weight: 800;
@@ -475,6 +524,11 @@
                     <td class="col-val"><strong>Peneliti Utama &amp; Lead Hardware IoT Engineer</strong></td>
                 </tr>
                 <tr>
+                    <td class="col-label">Email Resmi / Kontak</td>
+                    <td class="col-colon">:</td>
+                    <td class="col-val"><strong>luthfiab80@gmail.com</strong> (Email Pribadi) &bull; luthfi@scada-unsri.my.id</td>
+                </tr>
+                <tr>
                     <td class="col-label">Didampingi Oleh</td>
                     <td class="col-colon">:</td>
                     <td class="col-val">Tim Reaksi Cepat Pemeliharaan Gardu PLN UP3 Bali Selatan (Denpasar)</td>
@@ -488,13 +542,14 @@
                 2. Melakukan manual hardware reset mikrokontroler ESP32-WROOM-32U, memeriksa relai proteksi beban lebih, sekring fasa sekunder 220V, dan catu daya cadangan baterai LiFePO4.<br>
                 3. Melakukan re-kalibrasi sensor arus CT Non-Invasive serta menguji ulang transmisi radio MQTT over TLS 1.3 ke Gateway Pusat Udayana.<br>
                 4. Menyusun Berita Acara Pemulihan Telemetri (BAPT) bersama teknisi PLN di lokasi Kuta Beach.<br>
-                <em style="color: #475569;">Catatan: Seluruh biaya transportasi, tiket dinas, akomodasi, dan operasional lapangan dibebankan pada Anggaran Kerja Sama Riset Terapan PLN &amp; Unsri TA 2026.</em>
+                5. <strong>Fasilitas &amp; Akomodasi:</strong> Disediakan fasilitas kamar dinas di <strong>Wisma Tamu / Mess Diklat PT PLN (Persero) UID Bali (Jl. Letda Tantular No. 1, Renon, Denpasar)</strong> bebas biaya penginapan pribadi, serta didampingi armada kendaraan operasional patroli Tim TRC UP3 Bali Selatan.<br>
+                <em style="color: #475569;">Catatan: Seluruh tiket penerbangan rute Palembang (PLM) &harr; Denpasar (DPS) PP serta operasional darurat dibebankan melalui mekanisme 100% Reimbursement Kuitansi Resmi PLN UID Bali sesuai SPPD-018 dan RAB-042.</em>
             </div>
 
             <!-- TANGGAL & PENGESAHAN DUA PIHAK -->
             <div class="tgl-right">
                 Ditetapkan di : Denpasar &amp; Palembang<br>
-                Pada Tanggal : <strong id="tglDitetapkanSpk">18 September 2026</strong>
+                Pada Tanggal : <strong id="tglDitetapkanSpk">25 September 2026</strong>
             </div>
 
             <table class="ttd-table">
@@ -504,7 +559,17 @@
                             Menyetujui &amp; Menugaskan,<br>
                             Kepala Lab Sistem Komputasi &amp; IoT Unsri
                         </div>
-                        <div class="sign-space"></div>
+                        <div class="stamp-signature-area">
+                            <img src="../images/stempel_unsri_specimen.svg" alt="Stempel Unsri" class="stamp-specimen-img stamp-left">
+                            <a href="../verify.html?doc=SPK-042" target="_blank" class="tte-mini-badge">
+                                <img src="../images/qr_spk_042.svg" alt="QR" class="tte-mini-qr">
+                                <span style="text-align: left; line-height: 1.2;">
+                                    <strong>TTE TERSERTIFIKASI</strong><br>
+                                    Balai Sertifikasi Elektronik<br>
+                                    Root CA BSSN
+                                </span>
+                            </a>
+                        </div>
                         <div class="sign-name">Prof. Ir. Abu Bakar, M.T., Ph.D.</div>
                         <div class="sign-nip">NIP. 19680315 199203 1 002</div>
                     </td>
@@ -513,7 +578,17 @@
                             Mengetahui Pihak BUMN,<br>
                             Senior Manager Distribusi PLN UID Bali
                         </div>
-                        <div class="sign-space"></div>
+                        <div class="stamp-signature-area">
+                            <img src="../images/stempel_pln_specimen.svg" alt="Stempel PLN" class="stamp-specimen-img stamp-right">
+                            <a href="../verify.html?doc=SPK-042" target="_blank" class="tte-mini-badge">
+                                <img src="../images/qr_spk_042.svg" alt="QR" class="tte-mini-qr">
+                                <span style="text-align: left; line-height: 1.2;">
+                                    <strong>TTE TERSERTIFIKASI</strong><br>
+                                    Balai Sertifikasi Elektronik<br>
+                                    Root CA BSSN
+                                </span>
+                            </a>
+                        </div>
                         <div class="sign-name">Ir. Nyoman Arya, M.Eng.</div>
                         <div class="sign-nip">NIP. 19750821 200003 1 001</div>
                     </td>
