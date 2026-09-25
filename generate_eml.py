@@ -6,12 +6,12 @@ eml_path = os.path.join(os.path.dirname(__file__), 'docs', 'Email_Perintah_Tugas
 with open(html_path, 'r', encoding='utf-8') as f:
     html_content = f.read()
 
-eml_header = """From: "PT PLN (Persero) UID Bali - Divisi Distribusi" <distribusi.uidbali@pln.co.id>
-To: "Luthfi Hibatullah" <luthfi@scada-unsri.my.id>
-Cc: "Prof. Ir. Abu Bakar, M.T., Ph.D." <abubakar@unsri.ac.id>, "Sekretariat Manajer Distribusi" <sekretariat.distribusi@pln.co.id>
-Subject: [URGENT DISPATCH] Perintah Penugasan Lapangan Darurat: Anomali Drop 0.0V Gardu Kuta Beach Bali (SPK-042 / SPPD-018)
+eml_header = """From: "Prof. Ir. Abu Bakar & Ir. Nyoman Arya (Satgas Riset FT Unsri x PT PLN UID Bali)" <distribusi.uidbali@pln.co.id>
+To: "Luthfi Hibatullah" <luthfiab80@gmail.com>
+Cc: "Luthfi Hibatullah (Kedinasan)" <luthfi@scada-unsri.my.id>, "Sekretariat Lab IoT Unsri" <iot.lab@unsri.ac.id>, "Sekretariat Distribusi PLN UID Bali" <sekretariat.distribusi@pln.co.id>
+Subject: [SURAT PERINTAH TUGAS DARURAT] Penugasan Lapangan Audit & Investigasi Fisik Gardu Kuta Beach Bali (SPK-042 / SPPD-018)
 Date: Fri, 25 Sep 2026 15:45:12 +0800
-Message-ID: <DISPATCH-20260925-042-KUTA@mail.pln.co.id>
+Message-ID: <DISPATCH-20260925-SPK042-LUTHFI@pln.co.id>
 MIME-Version: 1.0
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: 8bit

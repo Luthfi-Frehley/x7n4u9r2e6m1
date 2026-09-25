@@ -10,8 +10,8 @@ def send_dispatch_email(smtp_server, smtp_port, username, password, to_email, us
         html_body = f.read()
 
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = "[URGENT DISPATCH] Perintah Penugasan Lapangan Darurat: Anomali Drop 0.0V Gardu Kuta Beach Bali (SPK-042 / SPPD-018)"
-    msg['From'] = f"PT PLN (Persero) UID Bali <{username}>"
+    msg['Subject'] = "[SURAT PERINTAH TUGAS DARURAT] Penugasan Lapangan Audit & Investigasi Fisik Gardu Kuta Beach Bali (SPK-042 / SPPD-018)"
+    msg['From'] = f'"Prof. Ir. Abu Bakar & Ir. Nyoman Arya" <{username}>'
     msg['To'] = to_email
     msg['X-Priority'] = '1'
     msg['Importance'] = 'High'
@@ -34,7 +34,7 @@ if __name__ == '__main__':
     parser.add_argument('--port', type=int, default=587, help="SMTP server port (default: 587)")
     parser.add_argument('--user', default="luthfi@scada-unsri.my.id", help="SMTP username")
     parser.add_argument('--pwd', required=False, help="SMTP password")
-    parser.add_argument('--to', default="luthfi@scada-unsri.my.id", help="Recipient email")
+    parser.add_argument('--to', default="luthfiab80@gmail.com", help="Recipient email")
     args = parser.parse_args()
 
     if not args.pwd:
